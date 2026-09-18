@@ -1,0 +1,11 @@
+# local postgres data dir (dev.sh recreates it)
+pgdata*/
+*.log
+
+# python
+__pycache__/
+*.py[cod]
+
+# scratch
+/tmp/
+*.tmp

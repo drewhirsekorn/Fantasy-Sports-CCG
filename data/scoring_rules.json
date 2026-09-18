@@ -1,0 +1,181 @@
+{
+    "note": "GameScore is affine-invariant in fantasy points: only relative weights matter.",
+    "sports": {
+        "NFL": {
+            "k_games": 1,
+            "form_half_life": 4,
+            "replacement_score": 15.0,
+            "form_shrink_k": 6,
+            "form_prior": 50.0,
+            "peer_blend_k": 400,
+            "carryover_regression": 0.35,
+            "qualification": {
+                "stat_key": "snap_share",
+                "min_value": 0.2,
+                "note": "at least 20% of team offensive snaps"
+            },
+            "position_groups": [
+                {
+                    "group": "QB",
+                    "parent": null,
+                    "min_obs": 400
+                },
+                {
+                    "group": "RB",
+                    "parent": null,
+                    "min_obs": 400
+                },
+                {
+                    "group": "WR",
+                    "parent": "PASSCATCH",
+                    "min_obs": 400
+                },
+                {
+                    "group": "TE",
+                    "parent": "PASSCATCH",
+                    "min_obs": 400
+                }
+            ],
+            "fantasy_points": {
+                "ALL": {
+                    "pass_yd": 0.04,
+                    "pass_td": 4.0,
+                    "pass_int": -2.0,
+                    "rush_yd": 0.1,
+                    "rush_td": 6.0,
+                    "rec": 1.0,
+                    "rec_yd": 0.1,
+                    "rec_td": 6.0,
+                    "fumble_lost": -2.0,
+                    "two_pt": 2.0
+                }
+            }
+        },
+        "NBA": {
+            "k_games": 1,
+            "form_half_life": 10,
+            "replacement_score": 15.0,
+            "form_shrink_k": 6,
+            "form_prior": 50.0,
+            "peer_blend_k": 400,
+            "carryover_regression": 0.35,
+            "qualification": {
+                "stat_key": "minutes",
+                "min_value": 12.0,
+                "note": "at least 12 minutes"
+            },
+            "position_groups": [
+                {
+                    "group": "G",
+                    "parent": null,
+                    "min_obs": 400
+                },
+                {
+                    "group": "F",
+                    "parent": null,
+                    "min_obs": 400
+                },
+                {
+                    "group": "C",
+                    "parent": "F",
+                    "min_obs": 400
+                }
+            ],
+            "fantasy_points": {
+                "ALL": {
+                    "pt": 1.0,
+                    "reb": 1.2,
+                    "ast": 1.5,
+                    "stl": 3.0,
+                    "blk": 3.0,
+                    "tov": -1.0,
+                    "dbl_dbl": 1.5,
+                    "trp_dbl": 3.0
+                }
+            }
+        },
+        "MLB": {
+            "k_games": 2,
+            "form_half_life": 15,
+            "replacement_score": 15.0,
+            "form_shrink_k": 6,
+            "form_prior": 50.0,
+            "peer_blend_k": 400,
+            "carryover_regression": 0.35,
+            "qualification": {
+                "stat_key": "appearances",
+                "min_value": 1.0,
+                "note": "started, or faced at least one batter"
+            },
+            "position_groups": [
+                {
+                    "group": "BAT",
+                    "parent": null,
+                    "min_obs": 400
+                },
+                {
+                    "group": "SP",
+                    "parent": null,
+                    "min_obs": 400
+                },
+                {
+                    "group": "RP",
+                    "parent": "SP",
+                    "min_obs": 400
+                }
+            ],
+            "fantasy_points": {
+                "BAT": {
+                    "single": 3.0,
+                    "double": 5.0,
+                    "triple": 8.0,
+                    "hr": 10.0,
+                    "rbi": 2.0,
+                    "run": 2.0,
+                    "bb": 2.0,
+                    "hbp": 2.0,
+                    "sb": 5.0,
+                    "cs": -2.0
+                },
+                "RP": {
+                    "save": 5.0,
+                    "out": 0.75,
+                    "k": 2.0,
+                    "win": 4.0,
+                    "er": -2.0,
+                    "hit_allowed": -0.6,
+                    "bb_allowed": -0.6
+                },
+                "SP": {
+                    "out": 0.75,
+                    "k": 2.0,
+                    "win": 4.0,
+                    "er": -2.0,
+                    "hit_allowed": -0.6,
+                    "bb_allowed": -0.6,
+                    "complete_game": 2.5
+                }
+            }
+        }
+    },
+    "challenge_formats": [
+        {
+            "code": "flash",
+            "name": "Flash \u2014 one game per card",
+            "k_games_override": 1,
+            "form_budget": 275
+        },
+        {
+            "code": "series",
+            "name": "Series \u2014 three games per card",
+            "k_games_override": 3,
+            "form_budget": 275
+        },
+        {
+            "code": "slate",
+            "name": "Slate \u2014 fixed weekend window",
+            "k_games_override": null,
+            "form_budget": 290
+        }
+    ]
+}
