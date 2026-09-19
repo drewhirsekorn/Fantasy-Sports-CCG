@@ -23,15 +23,23 @@ runs the same loop headlessly.
 
 ## Quickstart
 
+Postgres does not survive a container restart, so everything starts from cold:
+
 ```bash
-./db/dev.sh up      # start postgres (initdb on first run)
-./db/dev.sh load    # apply migrations
-./db/dev.sh demo    # replay a season, score it, settle a challenge
-./db/dev.sh verify  # check the scoring distributions
-./db/dev.sh test    # assertions on a throwaway database
+./db/dev.sh prototype   # drop, migrate, replay, score, build the fixed pool
+./db/dev.sh api         # serve on :8000
+python3 -m api.smoke    # 37 checks over the whole loop
 ```
 
-A cold container needs `up && load && demo` — about 15 seconds end to end.
+About 20 seconds end to end, verified from an empty container. The rest:
+
+```bash
+./db/dev.sh verify  # scoring distributions and the no-lookahead check
+./db/dev.sh test    # schema assertions on a throwaway database
+./db/dev.sh demo    # the other build: random collections and a pre-settled match
+python3 -m engine.test_resolution   # the scoring rules, no database
+python3 -m demo.play                # the same match loop, headless
+```
 
 ## How it works
 
@@ -71,6 +79,9 @@ Against a replayed 18-week, two-sport season (1,264 games, 25,280 stat lines):
 | Cameo lines (below usage threshold) | median 22.1, correctly well below 50 |
 | Full rebuild | deterministic, bit-identical results |
 
+The Form budget binds: `./db/dev.sh verify` prints the best legal five against
+the flash budget of 275 every run, and it has never been close.
+
 From simulation (`sim/balance_sim.py`):
 
 - Equal decks land at 48–51% cross-sport — the normalisation is fair.
@@ -85,13 +96,16 @@ These are constraints and triggers, not conventions — `./db/dev.sh test` prove
 each one rejects its violation:
 
 - Tactic payoffs are mean-neutral (`CHECK` on hit/miss against base rate)
-- Rarity floor ≤ 38; Form budget ≤ 300 (the best legal 5 is ~310–322, so a
-  higher budget could never bind)
+- Rarity floor ≤ 38; Form budget ≤ 300, above which no lineup would be
+  constrained by it
 - `game_score`, `dust_ledger` and `challenge_result` are append-only
 - A locked entry is immutable except `is_revealed`
 - The rarity floor covers a bad **game**, not an absence: a DNP keeps
-  replacement level, so rarity cannot insure against a player not appearing
-  (`python3 -m engine.test_resolution`)
+  replacement level, so rarity cannot insure against a player not appearing.
+  Checked three ways, because it is the rule most likely to rot back: the pure
+  function (`python3 -m engine.test_resolution`), a `CHECK` that refuses to
+  record a floored replacement at all, and a smoke scenario that starts a
+  scratched signature card with no bench cover and reads 15.00 out of the API
 - A result cannot exist for a challenge that never locked
 - **No lookahead**: a game is scored against the peer snapshot that existed when
   it finalised, built only from games that finished strictly before it
@@ -104,7 +118,7 @@ a correction inserts a new revision and the settled result does not move.
 
 ```bash
 uvicorn api.main:app --port 8000     # interactive docs at /docs
-python3 -m api.smoke                 # 26 checks over the whole loop
+python3 -m api.smoke                 # 37 checks over the whole loop
 ```
 
 Bearer tokens from `POST /auth/token` (dev-grade: no expiry, do not ship).
@@ -119,6 +133,7 @@ Bearer tokens from `POST /auth/token` (dev-grade: no expiry, do not ship).
 | `GET/POST /challenges`, `/accept`, `/lock` | the async match lifecycle |
 | `GET /challenges/{id}` | live board, opponent masked until revealed or resolved |
 | `GET /challenges/{id}/recap` | settled result, tactic log, and the counterfactual |
+| `POST /challenges/{id}/bot`, `/play` | demo mode: give it an opponent, settle it now |
 
 Writes are narrow on purpose: the scoring and resolution services own
 `game_score`, `slot_result` and `challenge_result`. The API never writes them.
@@ -130,21 +145,36 @@ seven violations before lock that the lock itself enforces.
 ## Layout
 
 ```
-db/         migrations 01–10, plus dev.sh
+db/         migrations 01–12, plus dev.sh
 replay/     source adapters (synthetic + CSV) and the ingest harness
 engine/     scoring and resolution services
+api/        FastAPI app, smoke test, and static/index.html — the whole client
+demo/       setup.py builds the fixed pool; play.py plays a match headlessly
 sim/        balance_sim.py — the tuning harness; re-run it whenever a constant moves
 data/       tactic_cards.json (36 cards), scoring_rules.json (Stage 0 + cold start)
 ```
 
 ## What's missing
 
+Deliberately, because the prototype exists to test whether lineup-building and
+matchup reads decide matches — not acquisition:
+
+- **No pack service.** Specified and simulated, never built. Everyone gets the
+  same 48 cards.
 - **Auth is a placeholder.** Unexpiring bearer tokens with no refresh.
 - **The opponent is a bot** that builds a legal lineup at random. No matchmaking.
+
+The one open balance question, and the thing to watch while playing it:
+
 - **Tactic multipliers are uncapped.** A 96 GameScore with Ceiling scores 163
   — over half a winning total from one card. GameScore is bounded 0–100; the
-  final score is not. Open balance question.
-- **No pack service.** Specified and simulated, never built.
+  final score is not. Left uncapped on purpose: a cap re-solves the
+  mean-neutral hit/miss pair for every card in the set, and it is worth finding
+  out from play whether one card running away with a match reads as unfair
+  before paying that.
+
+Everything else, for anything past the prototype:
+
 - **No real data.** Everything runs on synthetic seasons; `CsvSource` is the path
   real box scores take but has only been tested against generated data.
 - 15 of 36 tactic conditions need usage baselines, depth charts or transaction

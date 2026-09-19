@@ -320,12 +320,12 @@ class Resolver:
                 total += final
                 self.cur.execute("""INSERT INTO slot_result
                       (entry_slot_id, raw_game_score, floor_applied, substituted_from_bench,
-                       substitute_slot_id, tactic_multiplier, final_score)
-                      VALUES (%s,%s,%s,%s,%s,%s,%s)
+                       substitute_slot_id, was_replacement, tactic_multiplier, final_score)
+                      VALUES (%s,%s,%s,%s,%s,%s,%s,%s)
                       ON CONFLICT (entry_slot_id) DO NOTHING""",
                                  (s['entry_slot_id'], s['raw'], s['floor_applied'],
                                   s['substitute_slot_id'] is not None, s['substitute_slot_id'],
-                                  round(m, 2), final))
+                                  s['was_replacement'], round(m, 2), final))
             totals[eid] = round(total, 2)
 
         win = max(totals, key=lambda e: totals[e])

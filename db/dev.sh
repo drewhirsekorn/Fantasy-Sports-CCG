@@ -61,7 +61,7 @@ cmd_load() {
 # alone reports "ok" while every statement silently fails. Tests are a
 # separate command against a scratch database.
 MIGRATIONS=(01_schema 02_seed_tactics 03_rules 06_scoring_and_coldstart
-            07_replay 08_scoring 09_resolution 10_api 11_demo)
+            07_replay 08_scoring 09_resolution 10_api 11_demo 12_recap)
 TESTS=(04_tests 05_assertions)
 
 apply_sql() {

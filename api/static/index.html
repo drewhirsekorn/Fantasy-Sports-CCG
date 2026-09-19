@@ -4,6 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Fantasy Sports CCG</title>
+<!-- Inline, so the browser stops asking for /favicon.ico and the console
+     stays clean enough that a real error is visible in it. -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%276%27 fill=%27%230E0E12%27/%3E%3Ctext x=%2716%27 y=%2723%27 font-family=%27sans-serif%27 font-size=%2718%27 font-weight=%27700%27 fill=%27%23C9A227%27 text-anchor=%27middle%27%3EC%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
@@ -349,12 +352,17 @@ function drawRecap(r){
   const flipped = cf && cf.tactics_decided_it;
   const preMargin = cf ? (Number(mine.pre_tactic_total) - Number(theirs.pre_tactic_total)) : 0;
 
+  // A scratched starter and a bad game are both low numbers, and they are not
+  // the same thing: the floor covers the bad game and pointedly does not cover
+  // the absence. Losing to an injury is survivable; not being told is not.
   const slot = s => `<div class="slot" style="min-height:48px;border-left-color:${
+      s.was_replacement?'var(--bad)':
       s.floor_applied?'var(--elite)':(Number(s.tactic_multiplier)!==1
         ? (Number(s.tactic_multiplier)>1?'var(--good)':'var(--bad)') : 'var(--common)')}">
       <span class="sm" style="font-family:Oswald;width:26px">${s.sport||'—'}</span>
       <div><div style="font-size:13px;font-weight:500">${s.name||'Hidden'}</div>
         <div class="sm">${[
+          s.was_replacement?'did not play — replacement level, no floor':'',
           s.floor_applied?'floor caught it':'',
           s.substituted_from_bench?'bench sub':'',
           Number(s.tactic_multiplier)!==1?`tactic ${s.tactic_multiplier}x`:''
@@ -401,9 +409,11 @@ function drawRecap(r){
       <div style="margin-top:12px;background:var(--sunk);border-radius:9px;padding:11px 12px">
         <div class="lbl">ON RAW SCORES ALONE</div>
         <div class="row" style="margin-top:6px;align-items:baseline">
-          <span class="disp" style="font-size:17px;color:var(--mute)">${mine.pre_tactic_total}</span>
+          <span class="disp" style="font-size:17px;color:var(--mute)">${
+            Number(mine.pre_tactic_total).toFixed(2)}</span>
           <span class="sm">you</span><span class="grow"></span>
-          <span class="disp" style="font-size:17px">${theirs.pre_tactic_total}</span>
+          <span class="disp" style="font-size:17px">${
+            Number(theirs.pre_tactic_total).toFixed(2)}</span>
           <span class="sm">them</span>
         </div>
         <p style="margin:8px 0 0;font-size:12px;line-height:1.45" class="${flipped?'warn':'sm'}">${

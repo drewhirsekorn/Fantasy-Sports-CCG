@@ -435,12 +435,13 @@ def _board(cur, challenge_id: int, viewer_id: int, reveal_all: bool) -> dict:
                es.slot_index, es.is_revealed, es.sport, es.rarity,
                es.floor_score, es.form_at_lock, p.full_name AS name,
                sr.raw_game_score, sr.floor_applied, sr.substituted_from_bench,
+               sr.was_replacement, sr.pre_tactic_score,
                sr.tactic_multiplier, sr.final_score
         FROM challenge_entry e
         JOIN app_user u ON u.id = e.user_id
         JOIN entry_slot es ON es.entry_id = e.id AND es.slot_type = 'starter'
         LEFT JOIN player p ON p.id = es.player_id
-        LEFT JOIN slot_result sr ON sr.entry_slot_id = es.id
+        LEFT JOIN slot_result_detail sr ON sr.entry_slot_id = es.id
         WHERE e.challenge_id = %s
         ORDER BY e.id, es.slot_index""", (challenge_id,))
     sides: dict[int, dict] = {}
@@ -463,6 +464,12 @@ def _board(cur, challenge_id: int, viewer_id: int, reveal_all: bool) -> dict:
             "raw_game_score": r["raw_game_score"],
             "floor_applied": r["floor_applied"],
             "substituted_from_bench": r["substituted_from_bench"],
+            # A starter who never appeared and had no bench cover. The score
+            # is replacement level and NO rarity floor applied to it, which a
+            # recap has to be able to say out loud -- otherwise it reads as
+            # an ordinary bad game.
+            "was_replacement": r["was_replacement"],
+            "pre_tactic_score": r["pre_tactic_score"],
             "tactic_multiplier": r["tactic_multiplier"],
             "final_score": r["final_score"],
         })
@@ -526,7 +533,9 @@ def recap(challenge_id: int, user: dict = Depends(auth)):
 
     pre_tactic_total is the post-floor score before any multiplier, so a
     client can say 'without your reads you lose by 5.7' rather than just
-    showing the final number.
+    showing the final number. Post-floor, not max(raw, floor): a starter who
+    never played took replacement level and no floor applied to it, so
+    re-flooring here would credit a side for points the match never scored.
     """
     with cursor() as cur:
         cur.execute("SELECT * FROM challenge WHERE id = %s", (challenge_id,))
@@ -541,14 +550,13 @@ def recap(challenge_id: int, user: dict = Depends(auth)):
         cur.execute("""
             SELECT e.id AS entry_id, u.handle, e.user_id,
                    cr.total_score, cr.is_winner,
-                   round(sum(GREATEST(sr.raw_game_score, es.floor_score)), 2) AS pre_tactic_total,
-                   round(sum(sr.final_score - GREATEST(sr.raw_game_score, es.floor_score)), 2)
-                     AS tactic_swing
+                   round(sum(sr.pre_tactic_score), 2) AS pre_tactic_total,
+                   round(sum(sr.final_score - sr.pre_tactic_score), 2) AS tactic_swing
             FROM challenge_result cr
             JOIN challenge_entry e ON e.id = cr.entry_id
             JOIN app_user u ON u.id = e.user_id
             JOIN entry_slot es ON es.entry_id = e.id AND es.slot_type = 'starter'
-            JOIN slot_result sr ON sr.entry_slot_id = es.id
+            JOIN slot_result_detail sr ON sr.entry_slot_id = es.id
             WHERE cr.challenge_id = %s
             GROUP BY e.id, u.handle, e.user_id, cr.total_score, cr.is_winner
             ORDER BY cr.total_score DESC""", (challenge_id,))

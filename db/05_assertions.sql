@@ -74,3 +74,26 @@ SELECT '  - '||violation FROM validate_entry(9);
 \echo '=== Scoring order (floor applied BEFORE tactic multiplier) ==='
 SELECT 'raw 22 vs floor 28, x1.33 => '||compute_final_score(22,28,1.33)::text||'  (expect 37.24)';
 SELECT 'raw 60 vs floor 28, x0.67 => '||compute_final_score(60,28,0.67)::text||'  (expect 40.20)';
+
+\echo ''
+\echo '=== The floor covers a bad game, not an absence ==='
+-- A starter who never played takes replacement level and keeps it. Recording
+-- a floored replacement would mean rarity insured against an injury, so the
+-- database refuses to record one at all.
+SELECT expect_fail($$INSERT INTO slot_result
+                       (entry_slot_id,raw_game_score,floor_applied,was_replacement,
+                        tactic_multiplier,final_score)
+                     VALUES ((SELECT id FROM entry_slot WHERE entry_id=9 AND slot_index=1
+                              AND slot_type='starter'), 15.00, true, true, 1.00, 28.00)$$,
+                   'a replacement score cannot be floored');
+SELECT expect_ok($$INSERT INTO slot_result
+                     (entry_slot_id,raw_game_score,floor_applied,was_replacement,
+                      tactic_multiplier,final_score)
+                   VALUES ((SELECT id FROM entry_slot WHERE entry_id=9 AND slot_index=1
+                            AND slot_type='starter'), 15.00, false, true, 1.00, 15.00)$$,
+                 'a replacement score keeps replacement level');
+SELECT CASE WHEN pre_tactic_score = 15.00 THEN 'pass  pre-tactic score of a DNP is not lifted to the floor'
+            ELSE 'FAIL  pre-tactic score lifted to '||pre_tactic_score::text END
+FROM slot_result_detail
+WHERE entry_slot_id = (SELECT id FROM entry_slot WHERE entry_id=9 AND slot_index=1
+                       AND slot_type='starter');
