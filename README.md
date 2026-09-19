@@ -81,10 +81,37 @@ Stat corrections arrive days later, so a settled challenge must never change.
 Every `game_score` records the stat revision and peer snapshot that produced it;
 a correction inserts a new revision and the settled result does not move.
 
+## API
+
+```bash
+uvicorn api.main:app --port 8000     # interactive docs at /docs
+python3 -m api.smoke                 # 26 checks over the whole loop
+```
+
+Bearer tokens from `POST /auth/token` (dev-grade: no expiry, do not ship).
+
+| | |
+|---|---|
+| `GET /collection` | owned cards with live Form, 7-day trend, duplicate counts |
+| `GET /cards/{id}` | Form history and recent games behind one card |
+| `GET /tactics` | the printed set |
+| `GET/POST /decks`, `PUT /decks/{id}/slots` | build a lineup |
+| `GET /decks/{id}` | slots, budget, and the seven legality rules live |
+| `GET/POST /challenges`, `/accept`, `/lock` | the async match lifecycle |
+| `GET /challenges/{id}` | live board, opponent masked until revealed or resolved |
+| `GET /challenges/{id}/recap` | settled result, tactic log, and the counterfactual |
+
+Writes are narrow on purpose: the scoring and resolution services own
+`game_score`, `slot_result` and `challenge_result`. The API never writes them.
+It creates decks and challenges and snapshots a deck into `entry_slot` at lock.
+
+`validate_deck()` mirrors `validate_entry()` so the builder can show the same
+seven violations before lock that the lock itself enforces.
+
 ## Layout
 
 ```
-db/         migrations 01–09, plus dev.sh
+db/         migrations 01–10, plus dev.sh
 replay/     source adapters (synthetic + CSV) and the ingest harness
 engine/     scoring and resolution services
 sim/        balance_sim.py — the tuning harness; re-run it whenever a constant moves
@@ -93,8 +120,8 @@ data/       tactic_cards.json (36 cards), scoring_rules.json (Stage 0 + cold sta
 
 ## What's missing
 
-- **No API and no client.** Everything is CLI against Postgres. This is the
-  largest remaining gap.
+- **No client.** The API is in; nothing consumes it yet. Largest remaining gap.
+- **Auth is a placeholder.** Unexpiring bearer tokens with no refresh.
 - **No pack service.** Specified and simulated, never built.
 - **No real data.** Everything runs on synthetic seasons; `CsvSource` is the path
   real box scores take but has only been tested against generated data.

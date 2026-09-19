@@ -317,6 +317,34 @@ class Resolver:
 
 
 # ===========================================================================
+RARITY_MIX = ['common'] * 5 + ['uncommon'] * 3 + ['rare'] * 3 + ['elite'] * 2 + ['signature']
+
+
+def mint(cur, print_id, owner_id):
+    """Give a user one numbered copy of a print, keeping minted_count honest."""
+    cur.execute("""INSERT INTO card_instance (card_print_id, serial_no, owner_id, acquired_via)
+                   VALUES (%s, (SELECT COALESCE(max(serial_no),0)+1 FROM card_instance
+                                WHERE card_print_id=%s), %s, 'seed')
+                   RETURNING id""", (print_id, print_id, owner_id))
+    new_id = cur.fetchone()[0]   # must fetch BEFORE the next execute resets the cursor
+    cur.execute("UPDATE card_print SET minted_count = minted_count + 1 WHERE id=%s", (print_id,))
+    return new_id
+
+
+def seed_collection(cur, set_id, user_id, pool, rng, n=40):
+    """A browsable collection: mixed rarities, some duplicates."""
+    for pid, _sport, _form in rng.sample(pool, min(n, len(pool))):
+        rarity = rng.choice(RARITY_MIX)
+        cur.execute("""INSERT INTO card_print (set_id, player_id, rarity, print_run_limit)
+                       VALUES (%s,%s,%s,5000)
+                       ON CONFLICT (set_id,player_id,rarity) DO NOTHING""", (set_id, pid, rarity))
+        cur.execute("SELECT id FROM card_print WHERE set_id=%s AND player_id=%s AND rarity=%s",
+                    (set_id, pid, rarity))
+        print_id = cur.fetchone()[0]
+        for _ in range(rng.choice([1, 1, 1, 2, 3])):     # duplicates feed the dust economy
+            mint(cur, print_id, user_id)
+
+
 def cmd_seed(args):
     """Build a demo challenge out of the replayed season and lock it."""
     rng = random.Random(args.seed)
@@ -394,6 +422,7 @@ def cmd_seed(args):
                     cur.execute("SELECT id FROM card_print WHERE set_id=%s AND player_id=%s AND rarity='rare'",
                                 (set_id, pid))
                     print_id = cur.fetchone()[0]
+                    mint(cur, print_id, users[handle])
                     # Two of five starters are revealed at lock, per the design.
                     revealed = (kind == 'starter' and i <= 2)
                     cur.execute("""INSERT INTO entry_slot
@@ -404,9 +433,15 @@ def cmd_seed(args):
             for i, code in enumerate(tactic_codes[n*2:n*2+2], start=1):
                 cur.execute("SELECT id FROM tactic_card WHERE code=%s", (code,))
                 tid = cur.fetchone()[0]
+                cur.execute("""INSERT INTO tactic_instance (tactic_card_id, owner_id)
+                               VALUES (%s,%s)""", (tid, users[handle]))
                 cur.execute("""INSERT INTO entry_slot
                       (entry_id,slot_type,slot_index,tactic_card_id,tactic_target_index)
                       VALUES (%s,'tactic',%s,%s,%s)""", (entry, i, tid, i))
+        for handle in ('alice', 'bob'):
+            seed_collection(cur, set_id, users[handle], pool, rng)
+        cur.execute("SELECT count(*) FROM card_instance")
+        print(f"minted {cur.fetchone()[0]} card copies across 2 collections")
         print(f"challenge {chal} locked at {lock_at:%Y-%m-%d}  budget {budget}")
         cur.execute("SELECT violation FROM challenge_entry e, validate_entry(e.id) WHERE e.challenge_id=%s",
                     (chal,))

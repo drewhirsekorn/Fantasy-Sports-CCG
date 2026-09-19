@@ -58,7 +58,7 @@ cmd_load() {
 # alone reports "ok" while every statement silently fails. Tests are a
 # separate command against a scratch database.
 MIGRATIONS=(01_schema 02_seed_tactics 03_rules 06_scoring_and_coldstart
-            07_replay 08_scoring 09_resolution)
+            07_replay 08_scoring 09_resolution 10_api)
 TESTS=(04_tests 05_assertions)
 
 apply_sql() {
@@ -77,7 +77,7 @@ apply_sql() {
 cmd_test() {
   running || cmd_up
   local tdb="${PGDB}_test"
-  dropdb -h "$PGHOST" -p "$PGPORT" -U "$PGUSER" "$tdb" 2>/dev/null || true
+  dropdb --force -h "$PGHOST" -p "$PGPORT" -U "$PGUSER" "$tdb" 2>/dev/null || true
   createdb -h "$PGHOST" -p "$PGPORT" -U "$PGUSER" "$tdb"
   apply_sql "$tdb" "${MIGRATIONS[@]}" "${TESTS[0]}"
   echo "  -- assertions --"
@@ -106,7 +106,7 @@ cmd_demo() {
 
 cmd_reset() {
   running || cmd_up
-  dropdb -h "$PGHOST" -p "$PGPORT" -U "$PGUSER" "$PGDB" 2>/dev/null || true
+  dropdb --force -h "$PGHOST" -p "$PGPORT" -U "$PGUSER" "$PGDB" 2>/dev/null || true
   cmd_load; cmd_demo
 }
 
