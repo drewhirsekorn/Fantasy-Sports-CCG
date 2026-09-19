@@ -19,7 +19,24 @@
 # A cold container needs:  ./db/dev.sh up && ./db/dev.sh load && ./db/dev.sh demo
 set -euo pipefail
 
-PGBIN=/usr/lib/postgresql/16/bin
+# Find the server binaries. pg_ctl and initdb are not on PATH under Debian's
+# packaging or Postgres.app, so "postgres is installed" and "this script can
+# start it" are different questions and the answer has to be looked up.
+find_pgbin() {
+  local c
+  c=$(command -v pg_ctl 2>/dev/null) && { dirname "$c"; return; }
+  for c in /usr/lib/postgresql/*/bin \
+           /opt/homebrew/opt/postgresql@*/bin /usr/local/opt/postgresql@*/bin \
+           /opt/homebrew/bin /usr/local/bin \
+           /Applications/Postgres.app/Contents/Versions/*/bin; do
+    [ -x "$c/pg_ctl" ] && { echo "$c"; return; }
+  done
+  echo "no postgres server binaries found (looked for pg_ctl)." >&2
+  echo "  debian/ubuntu: apt install postgresql-16" >&2
+  echo "  macos:         brew install postgresql@16" >&2
+  exit 1
+}
+PGBIN=${PGBIN:-$(find_pgbin)}
 PGDATA=${PGDATA:-/tmp/pgdata_ccg}
 PGPORT=${PGPORT:-5433}
 PGHOST=${PGHOST:-/tmp}

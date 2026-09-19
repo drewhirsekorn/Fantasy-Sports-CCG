@@ -23,7 +23,18 @@ runs the same loop headlessly.
 
 ## Quickstart
 
-Postgres does not survive a container restart, so everything starts from cold:
+Needs PostgreSQL 16 and Python 3.10+. `dev.sh` finds the server binaries
+itself (they are not on `PATH` under Debian packaging or Postgres.app) and
+pip-installs `psycopg2-binary`, `fastapi` and `uvicorn` on first run. It never
+touches a system Postgres: it runs its own cluster in `/tmp/pgdata_ccg` on
+port 5433 over a unix socket, so nothing listens on a network port.
+
+```bash
+brew install postgresql@16      # macos
+apt install postgresql-16       # debian/ubuntu
+```
+
+Everything starts from cold, because that cluster does not survive a reboot:
 
 ```bash
 ./db/dev.sh prototype   # drop, migrate, replay, score, build the fixed pool
