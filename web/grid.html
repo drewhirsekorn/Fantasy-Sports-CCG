@@ -1,0 +1,300 @@
+<title>Collection Grid</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --page:#F4F5F7; --panel:#FFFFFF; --edge:rgba(16,22,30,.10);
+    --ink:#11161D; --ink2:#454F5B; --ink3:#6B7684;
+    --accent:#1F6FB2; --ok:#1E7A4F; --no:#A8402F;
+    color-scheme: light dark;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --page:#0B0E13; --panel:#141A22; --edge:rgba(255,255,255,.10);
+      --ink:#F2F5F8; --ink2:#C2CBD5; --ink3:#8995A3;
+      --accent:#63A8E8; --ok:#5CC98D; --no:#E08A8A;
+    }
+  }
+  :root[data-theme="dark"]{
+    --page:#0B0E13; --panel:#141A22; --edge:rgba(255,255,255,.10);
+    --ink:#F2F5F8; --ink2:#C2CBD5; --ink3:#8995A3;
+    --accent:#63A8E8; --ok:#5CC98D; --no:#E08A8A;
+  }
+  /* Tiles are little printed cards, so they keep their own ink in both themes. */
+  :root{
+    --t-bg:#141A22; --t-line:rgba(255,255,255,.09); --t-sunk:#0C1015;
+    --t-ink:#F4F7FA; --t-ink2:#AEB9C5; --t-ink3:#7C8896;
+  }
+
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--page);color:var(--ink);
+       font-family:'IBM Plex Sans',system-ui,-apple-system,sans-serif;
+       -webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+  .wrap{max-width:720px;margin:0 auto;padding:0 16px;padding-block:24px 56px;
+        display:flex;flex-direction:column;gap:16px}
+  h1{font-family:'Oswald',system-ui,sans-serif;font-size:19px;font-weight:600;
+     letter-spacing:.06em;margin:0;text-wrap:balance}
+  .eyebrow{font-size:10px;letter-spacing:.16em;color:var(--ink3);
+           font-family:'IBM Plex Mono',ui-monospace,monospace}
+  .sub{font-size:12.5px;line-height:1.55;color:var(--ink2);margin:6px 0 0;max-width:66ch}
+  .mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+
+  .panel{background:var(--panel);border:1px solid var(--edge);border-radius:12px;padding:13px 14px}
+  .ctlrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .ctlrow + .ctlrow{margin-top:11px}
+  .chip{border:1px solid var(--edge);background:transparent;border-radius:999px;
+        padding:6px 12px;font:inherit;font-size:12px;color:var(--ink2);cursor:pointer}
+  .chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:500}
+  :root:not([data-theme="light"]) .chip[aria-pressed="true"]{color:#0B0E13}
+  @media (prefers-color-scheme: light){.chip[aria-pressed="true"]{color:#fff}}
+  select{font:inherit;font-size:12px;padding:6px 8px;border-radius:8px;
+         border:1px solid var(--edge);background:var(--panel);color:var(--ink)}
+  label.f{font-size:11px;color:var(--ink3);letter-spacing:.04em}
+  input[type=range]{flex:1;min-width:130px;accent-color:var(--accent)}
+  button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+  /* ------------------------------- the grid ------------------------------- */
+  .grid{display:grid;gap:9px;grid-template-columns:repeat(2,1fr)}
+  @media (min-width:520px){.grid{grid-template-columns:repeat(3,1fr)}}
+  @media (min-width:700px){.grid{grid-template-columns:repeat(4,1fr)}}
+  .tile{position:relative;background:var(--t-bg);border:1px solid var(--t-line);
+        border-radius:11px;overflow:hidden;color:var(--t-ink);text-align:left;
+        padding:0;font:inherit;cursor:pointer;display:flex;flex-direction:column;
+        transition:opacity .15s ease, transform .12s ease}
+  .tile:hover{transform:translateY(-2px)}
+  .tile.out{opacity:.26}
+  .tile.picked{outline:2px solid var(--accent);outline-offset:1px}
+  /* Rarity reads as a bar across the top: its ORDER is the encoding, so one
+     hue stepped by lightness rather than five competing hues. */
+  .tbar{height:4px;background:var(--tier)}
+  .thead{display:flex;align-items:center;gap:5px;padding:7px 9px 0;
+         font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:8.5px;
+         letter-spacing:.1em;color:var(--t-ink3)}
+  .grow{flex:1}
+  .pips{display:flex;gap:2.5px}
+  .pips i{width:4px;height:4px;border-radius:50%;display:block;background:var(--tier)}
+  .pips i.off{background:rgba(255,255,255,.14)}
+  .spark{display:block;width:100%;height:30px;margin-top:4px}
+  .tname{font-family:'Oswald',system-ui,sans-serif;font-size:12.5px;font-weight:500;
+         letter-spacing:.01em;line-height:1.15;padding:5px 9px 0;
+         overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .tnums{display:flex;align-items:baseline;gap:5px;padding:2px 9px 8px;margin-top:auto}
+  .tform{font-family:'Oswald',system-ui,sans-serif;font-size:19px;font-weight:600;line-height:1}
+  .tfloor{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:8.5px;color:var(--t-ink3)}
+  /* A micro version of the card's rail: how much of 0-100 the floor covers. */
+  .trail{height:3px;border-radius:2px;background:rgba(255,255,255,.08);
+         margin:0 9px 8px;position:relative;overflow:hidden}
+  .trail i{position:absolute;left:0;top:0;bottom:0;background:var(--tier);border-radius:2px;display:block}
+  .tno{position:absolute;inset:auto 6px 6px auto;font-size:8px;
+       font-family:'IBM Plex Mono',ui-monospace,monospace;color:var(--no)}
+
+  .count{font-size:11.5px;color:var(--ink3)}
+  .legend{display:flex;flex-wrap:wrap;gap:8px 12px;font-size:11px;color:var(--ink2);
+          align-items:center}
+  .legend .sw{display:flex;align-items:center;gap:4px}
+  .legend i{width:14px;height:5px;border-radius:2px;display:block}
+  .note{font-size:11.5px;line-height:1.6;color:var(--ink3);margin:0}
+  .note b{color:var(--ink2);font-weight:600}
+  table.cmp{width:100%;border-collapse:collapse;font-size:11.5px;margin-top:9px}
+  table.cmp th,table.cmp td{text-align:left;padding:5px 7px;border-bottom:1px solid var(--edge)}
+  table.cmp th{font-size:9.5px;letter-spacing:.11em;color:var(--ink3);font-weight:500;
+               font-family:'IBM Plex Mono',ui-monospace,monospace}
+  table.cmp td.n{font-family:'IBM Plex Mono',ui-monospace,monospace}
+  .pass{color:var(--ok);font-weight:600} .fail{color:var(--no);font-weight:600}
+  @media (prefers-reduced-motion: reduce){.tile{transition:none}}
+</style>
+
+<!-- Colour-vision simulation, so the palette argument can be looked at rather
+     than taken on trust. Brettel/Vienot matrices. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <filter id="deuter"><feColorMatrix type="matrix" values="
+    0.625 0.375 0 0 0  0.700 0.300 0 0 0  0 0.300 0.700 0 0  0 0 0 1 0"/></filter>
+  <filter id="protan"><feColorMatrix type="matrix" values="
+    0.567 0.433 0 0 0  0.558 0.442 0 0 0  0 0.242 0.758 0 0  0 0 0 1 0"/></filter>
+  <filter id="tritan"><feColorMatrix type="matrix" values="
+    0.950 0.050 0 0 0  0 0.433 0.567 0 0  0 0.475 0.525 0 0  0 0 0 1 0"/></filter>
+</defs></svg>
+
+<div class="wrap">
+  <div>
+    <div class="eyebrow">COLLECTION · PROTOTYPE</div>
+    <h1 style="margin-top:6px">ALL FORTY-EIGHT AT ONCE</h1>
+    <p class="sub">Everyone holds the same pool, so this is not a trophy case —
+      it is where you find the card that fits the slot and the budget you have
+      left. Set a budget and the ones you cannot afford step back.</p>
+  </div>
+
+  <div class="panel">
+    <div class="ctlrow">
+      <label class="f" for="budget">BUDGET LEFT</label>
+      <input type="range" id="budget" min="30" max="280" step="1" value="280">
+      <span class="mono" id="budgetval" style="font-size:13px;min-width:34px;text-align:right">—</span>
+    </div>
+    <div class="ctlrow">
+      <label class="f" for="sort">SORT</label>
+      <select id="sort">
+        <option value="form-">Form, high to low</option>
+        <option value="form+">Form, low to high</option>
+        <option value="floor-">Floor, high to low</option>
+        <option value="value">Floor per Form point</option>
+        <option value="name">Name</option>
+      </select>
+      <span class="grow"></span>
+      <button class="chip" data-sport="all" aria-pressed="true">All</button>
+      <button class="chip" data-sport="NFL" aria-pressed="false">NFL</button>
+      <button class="chip" data-sport="NBA" aria-pressed="false">NBA</button>
+    </div>
+    <div class="ctlrow" style="margin-top:12px">
+      <span class="count" id="count"></span>
+      <span class="grow"></span>
+      <div class="legend" id="legend"></div>
+    </div>
+  </div>
+
+  <div class="grid" id="grid"></div>
+
+  <div class="panel">
+    <div class="eyebrow">THE COLOUR DECISION, WITH THE EVIDENCE</div>
+    <p class="sub" style="margin-top:7px">Rarity is a <b>ladder</b>, not a set of
+      identities — so it takes one hue stepped by lightness, not five competing
+      hues. One card at a time, five hues were fine. Forty-eight at once, they
+      are not. Switch the palette and the vision model and look.</p>
+    <div class="ctlrow" style="margin-top:11px">
+      <label class="f">PALETTE</label>
+      <button class="chip" data-pal="ordinal" aria-pressed="true">Ordinal · one hue</button>
+      <button class="chip" data-pal="hues" aria-pressed="false">Five hues</button>
+    </div>
+    <div class="ctlrow">
+      <label class="f">VISION</label>
+      <button class="chip" data-vis="none" aria-pressed="true">Normal</button>
+      <button class="chip" data-vis="deuter" aria-pressed="false">Deuteranopia</button>
+      <button class="chip" data-vis="protan" aria-pressed="false">Protanopia</button>
+      <button class="chip" data-vis="tritan" aria-pressed="false">Tritanopia</button>
+    </div>
+    <table class="cmp">
+      <thead><tr><th>WORST PAIR, ALL 5 TIERS ON SCREEN</th><th>ORDINAL</th><th>FIVE HUES</th></tr></thead>
+      <tbody>
+        <tr><td>Colour-vision separation ΔE</td>
+            <td class="n pass">10.1 pass</td><td class="n fail">2.7 fail</td></tr>
+        <tr><td>Normal-vision separation ΔE</td>
+            <td class="n">10.4</td><td class="n">11.8</td></tr>
+        <tr><td>Survives losing colour entirely</td>
+            <td class="n pass">yes — lightness</td><td class="n fail">no</td></tr>
+      </tbody>
+    </table>
+    <p class="note" style="margin-top:10px">Under deuteranopia the five-hue
+      Uncommon and Elite are the same colour (ΔE 2.7) — two tiers apart, with
+      nothing but the pip count to tell them apart. The ordinal ramp keeps its
+      order because lightness survives every vision model, and the pips still
+      back it up. Neither palette clears the ΔE 15 bar for <i>categorical</i>
+      use, which is the right answer: adjacent rungs of a ladder are meant to
+      look adjacent.</p>
+  </div>
+
+  <p class="note">Real Form and GameScores from the 48-card prototype pool.
+    Fictional names — likenesses need union agreements.</p>
+</div>
+
+<script>
+const DATA = {"cards":[{"id":321,"name":"NBA Player 0000","sport":"NBA","pos":"G","rarity":"signature","form":34.88,"recent":[{"score":47.27,"on":"2025-12-16"},{"score":38.55,"on":"2025-12-14"},{"score":48.19,"on":"2025-12-10"},{"score":32.29,"on":"2025-12-08"},{"score":39.47,"on":"2025-12-07"},{"score":40.53,"on":"2025-12-02"},{"score":47.88,"on":"2025-12-01"},{"score":32.29,"on":"2025-11-30"}]},{"id":337,"name":"NBA Player 0106","sport":"NBA","pos":"G","rarity":"uncommon","form":50.5,"recent":[{"score":59.68,"on":"2025-12-17"},{"score":60.53,"on":"2025-12-15"},{"score":50.9,"on":"2025-12-14"},{"score":50.0,"on":"2025-12-09"},{"score":60.53,"on":"2025-12-07"},{"score":47.27,"on":"2025-12-02"},{"score":68.9,"on":"2025-12-02"},{"score":65.38,"on":"2025-11-30"}]},{"id":362,"name":"NBA Player 0401","sport":"NBA","pos":"G","rarity":"uncommon","form":63.67,"recent":[{"score":55.61,"on":"2025-12-16"},{"score":80.49,"on":"2025-12-15"},{"score":60.98,"on":"2025-12-14"},{"score":37.04,"on":"2025-12-09"},{"score":82.62,"on":"2025-12-08"},{"score":58.67,"on":"2025-12-08"},{"score":76.56,"on":"2025-12-03"},{"score":68.86,"on":"2025-12-01"}]},{"id":364,"name":"NBA Player 0403","sport":"NBA","pos":"F","rarity":"rare","form":43.49,"recent":[{"score":25.36,"on":"2025-12-16"},{"score":51.81,"on":"2025-12-15"},{"score":27.43,"on":"2025-12-14"},{"score":60.98,"on":"2025-12-09"},{"score":27.43,"on":"2025-12-08"},{"score":22.08,"on":"2025-12-08"},{"score":29.66,"on":"2025-12-03"},{"score":56.12,"on":"2025-12-01"}]},{"id":367,"name":"NBA Player 0406","sport":"NBA","pos":"G","rarity":"common","form":80.32,"recent":[{"score":96.08,"on":"2025-12-16"},{"score":85.4,"on":"2025-12-15"},{"score":96.08,"on":"2025-12-14"},{"score":96.08,"on":"2025-12-09"},{"score":96.08,"on":"2025-12-08"},{"score":96.08,"on":"2025-12-08"},{"score":96.08,"on":"2025-12-03"},{"score":64.1,"on":"2025-11-30"}]},{"id":370,"name":"NBA Player 0409","sport":"NBA","pos":"C","rarity":"signature","form":53.66,"recent":[{"score":22.08,"on":"2025-12-16"},{"score":56.99,"on":"2025-12-15"},{"score":53.98,"on":"2025-12-14"},{"score":38.07,"on":"2025-12-08"},{"score":54.62,"on":"2025-12-08"},{"score":54.95,"on":"2025-12-03"},{"score":56.64,"on":"2025-12-01"},{"score":41.13,"on":"2025-11-30"}]},{"id":373,"name":"NBA Player 0502","sport":"NBA","pos":"F","rarity":"common","form":51.57,"recent":[{"score":58.87,"on":"2025-12-16"},{"score":57.72,"on":"2025-12-15"},{"score":22.08,"on":"2025-12-14"},{"score":22.08,"on":"2025-12-09"},{"score":53.35,"on":"2025-12-08"},{"score":48.64,"on":"2025-12-07"},{"score":22.08,"on":"2025-12-02"},{"score":47.88,"on":"2025-12-01"}]},{"id":378,"name":"NBA Player 0507","sport":"NBA","pos":"F","rarity":"uncommon","form":45.61,"recent":[{"score":51.51,"on":"2025-12-16"},{"score":56.29,"on":"2025-12-15"},{"score":50.45,"on":"2025-12-14"},{"score":46.96,"on":"2025-12-09"},{"score":44.89,"on":"2025-12-07"},{"score":34.62,"on":"2025-12-02"},{"score":37.04,"on":"2025-12-01"},{"score":39.9,"on":"2025-11-30"}]},{"id":382,"name":"NBA Player 0601","sport":"NBA","pos":"G","rarity":"elite","form":55.48,"recent":[{"score":60.1,"on":"2025-12-16"},{"score":64.72,"on":"2025-12-16"},{"score":49.85,"on":"2025-12-14"},{"score":57.35,"on":"2025-12-09"},{"score":54.62,"on":"2025-12-08"},{"score":74.54,"on":"2025-12-07"},{"score":58.87,"on":"2025-12-02"},{"score":52.73,"on":"2025-12-02"}]},{"id":386,"name":"NBA Player 0605","sport":"NBA","pos":"G","rarity":"elite","form":48.07,"recent":[{"score":44.55,"on":"2025-12-16"},{"score":39.24,"on":"2025-12-16"},{"score":22.08,"on":"2025-12-14"},{"score":44.39,"on":"2025-12-09"},{"score":55.28,"on":"2025-12-08"},{"score":53.98,"on":"2025-12-07"},{"score":53.04,"on":"2025-12-02"},{"score":40.32,"on":"2025-12-02"}]},{"id":408,"name":"NBA Player 0807","sport":"NBA","pos":"F","rarity":"elite","form":36.37,"recent":[{"score":27.43,"on":"2025-12-16"},{"score":22.08,"on":"2025-12-15"},{"score":39.02,"on":"2025-12-14"},{"score":12.92,"on":"2025-12-09"},{"score":46.49,"on":"2025-12-08"},{"score":33.91,"on":"2025-12-07"},{"score":40.32,"on":"2025-12-03"},{"score":12.92,"on":"2025-12-02"}]},{"id":413,"name":"NBA Player 0902","sport":"NBA","pos":"F","rarity":"rare","form":49.7,"recent":[{"score":44.39,"on":"2025-12-16"},{"score":57.72,"on":"2025-12-14"},{"score":55.61,"on":"2025-12-09"},{"score":44.72,"on":"2025-12-08"},{"score":53.35,"on":"2025-12-07"},{"score":43.36,"on":"2025-12-02"},{"score":55.95,"on":"2025-12-01"},{"score":65.38,"on":"2025-11-30"}]},{"id":414,"name":"NBA Player 0903","sport":"NBA","pos":"F","rarity":"rare","form":58.73,"recent":[{"score":59.68,"on":"2025-12-16"},{"score":59.68,"on":"2025-12-14"},{"score":86.55,"on":"2025-12-09"},{"score":69.23,"on":"2025-12-08"},{"score":76.65,"on":"2025-12-07"},{"score":60.32,"on":"2025-12-02"},{"score":69.1,"on":"2025-12-01"},{"score":80.81,"on":"2025-11-30"}]},{"id":450,"name":"NBA Player 1209","sport":"NBA","pos":"C","rarity":"rare","form":57.28,"recent":[{"score":64.72,"on":"2025-12-16"},{"score":47.58,"on":"2025-12-15"},{"score":57.35,"on":"2025-12-09"},{"score":64.72,"on":"2025-12-08"},{"score":51.81,"on":"2025-12-07"},{"score":22.08,"on":"2025-12-02"},{"score":42.28,"on":"2025-12-01"},{"score":59.68,"on":"2025-11-30"}]},{"id":467,"name":"NBA Player 1406","sport":"NBA","pos":"G","rarity":"signature","form":47.53,"recent":[{"score":55.61,"on":"2025-12-16"},{"score":35.28,"on":"2025-12-15"},{"score":54.3,"on":"2025-12-10"},{"score":60.98,"on":"2025-12-08"},{"score":50.6,"on":"2025-12-07"},{"score":46.33,"on":"2025-12-02"},{"score":44.39,"on":"2025-12-01"},{"score":22.08,"on":"2025-11-30"}]},{"id":488,"name":"NBA Player 1607","sport":"NBA","pos":"F","rarity":"uncommon","form":40.45,"recent":[{"score":33.14,"on":"2025-12-16"},{"score":33.91,"on":"2025-12-15"},{"score":39.9,"on":"2025-12-14"},{"score":48.95,"on":"2025-12-10"},{"score":53.67,"on":"2025-12-07"},{"score":35.28,"on":"2025-12-02"},{"score":35.28,"on":"2025-12-01"},{"score":53.35,"on":"2025-11-30"}]},{"id":522,"name":"NBA Player 2001","sport":"NBA","pos":"G","rarity":"common","form":41.06,"recent":[{"score":38.55,"on":"2025-12-16"},{"score":39.47,"on":"2025-12-16"},{"score":28.99,"on":"2025-12-14"},{"score":36.48,"on":"2025-12-09"},{"score":39.9,"on":"2025-12-09"},{"score":54.3,"on":"2025-12-07"},{"score":53.2,"on":"2025-12-03"},{"score":47.58,"on":"2025-12-02"}]},{"id":528,"name":"NBA Player 2007","sport":"NBA","pos":"F","rarity":"common","form":46.71,"recent":[{"score":50.9,"on":"2025-12-16"},{"score":22.08,"on":"2025-12-16"},{"score":51.51,"on":"2025-12-14"},{"score":46.96,"on":"2025-12-09"},{"score":49.85,"on":"2025-12-09"},{"score":56.64,"on":"2025-12-07"},{"score":22.08,"on":"2025-12-03"},{"score":46.96,"on":"2025-12-02"}]},{"id":572,"name":"NBA Player 2501","sport":"NBA","pos":"G","rarity":"signature","form":42.08,"recent":[{"score":49.4,"on":"2025-12-16"},{"score":41.13,"on":"2025-12-15"},{"score":44.39,"on":"2025-12-14"},{"score":46.8,"on":"2025-12-10"},{"score":46.33,"on":"2025-12-08"},{"score":43.36,"on":"2025-12-07"},{"score":12.92,"on":"2025-12-02"},{"score":48.64,"on":"2025-12-01"}]},{"id":594,"name":"NBA Player 2703","sport":"NBA","pos":"F","rarity":"rare","form":48.74,"recent":[{"score":43.88,"on":"2025-12-16"},{"score":46.18,"on":"2025-12-15"},{"score":22.08,"on":"2025-12-08"},{"score":49.1,"on":"2025-12-07"},{"score":48.34,"on":"2025-12-02"},{"score":46.18,"on":"2025-12-01"},{"score":55.61,"on":"2025-11-30"},{"score":46.33,"on":"2025-11-26"}]},{"id":601,"name":"NBA Player 2800","sport":"NBA","pos":"G","rarity":"rare","form":38.28,"recent":[{"score":41.52,"on":"2025-12-17"},{"score":25.36,"on":"2025-12-16"},{"score":34.62,"on":"2025-12-15"},{"score":42.83,"on":"2025-12-09"},{"score":22.08,"on":"2025-12-08"},{"score":35.9,"on":"2025-12-07"},{"score":32.73,"on":"2025-12-02"},{"score":31.34,"on":"2025-12-01"}]},{"id":606,"name":"NBA Player 2805","sport":"NBA","pos":"G","rarity":"rare","form":39.44,"recent":[{"score":25.36,"on":"2025-12-17"},{"score":45.86,"on":"2025-12-16"},{"score":28.99,"on":"2025-12-08"},{"score":34.62,"on":"2025-12-07"},{"score":36.48,"on":"2025-12-02"},{"score":53.67,"on":"2025-12-01"},{"score":37.04,"on":"2025-12-01"},{"score":50.6,"on":"2025-11-25"}]},{"id":613,"name":"NBA Player 2902","sport":"NBA","pos":"F","rarity":"rare","form":44.7,"recent":[{"score":35.6,"on":"2025-12-16"},{"score":42.83,"on":"2025-12-15"},{"score":57.72,"on":"2025-12-15"},{"score":40.32,"on":"2025-12-09"},{"score":37.82,"on":"2025-12-08"},{"score":44.72,"on":"2025-12-07"},{"score":31.34,"on":"2025-12-02"},{"score":58.87,"on":"2025-12-01"}]},{"id":619,"name":"NBA Player 2908","sport":"NBA","pos":"F","rarity":"elite","form":42.79,"recent":[{"score":47.58,"on":"2025-12-16"},{"score":47.58,"on":"2025-12-15"},{"score":22.08,"on":"2025-12-15"},{"score":48.04,"on":"2025-12-08"},{"score":45.7,"on":"2025-12-02"},{"score":51.81,"on":"2025-12-01"},{"score":27.43,"on":"2025-11-30"},{"score":54.14,"on":"2025-11-25"}]},{"id":5,"name":"NFL Player 0004","sport":"NFL","pos":"TE","rarity":"rare","form":47.4,"recent":[{"score":49.1,"on":"2025-12-14"},{"score":40.11,"on":"2025-12-07"},{"score":41.52,"on":"2025-11-30"},{"score":40.94,"on":"2025-11-23"},{"score":28.99,"on":"2025-11-16"},{"score":49.7,"on":"2025-11-02"},{"score":50.9,"on":"2025-10-26"},{"score":32.29,"on":"2025-10-19"}]},{"id":6,"name":"NFL Player 0005","sport":"NFL","pos":"QB","rarity":"signature","form":52.38,"recent":[{"score":49.7,"on":"2025-12-14"},{"score":60.98,"on":"2025-12-07"},{"score":64.72,"on":"2025-11-30"},{"score":12.92,"on":"2025-11-23"},{"score":48.49,"on":"2025-11-16"},{"score":42.65,"on":"2025-11-09"},{"score":62.44,"on":"2025-11-02"},{"score":52.42,"on":"2025-10-26"}]},{"id":16,"name":"NFL Player 0105","sport":"NFL","pos":"QB","rarity":"rare","form":56.41,"recent":[{"score":77.56,"on":"2025-12-14"},{"score":45.05,"on":"2025-12-07"},{"score":27.43,"on":"2025-11-30"},{"score":49.7,"on":"2025-11-23"},{"score":56.64,"on":"2025-11-16"},{"score":80.29,"on":"2025-11-10"},{"score":51.21,"on":"2025-11-03"},{"score":62.44,"on":"2025-10-26"}]},{"id":55,"name":"NFL Player 0504","sport":"NFL","pos":"TE","rarity":"common","form":44.34,"recent":[{"score":41.52,"on":"2025-12-14"},{"score":39.68,"on":"2025-12-07"},{"score":48.19,"on":"2025-11-30"},{"score":53.82,"on":"2025-11-23"},{"score":65.38,"on":"2025-11-16"},{"score":50.3,"on":"2025-11-09"},{"score":64.1,"on":"2025-11-02"},{"score":38.07,"on":"2025-10-26"}]},{"id":61,"name":"NFL Player 0600","sport":"NFL","pos":"QB","rarity":"elite","form":45.95,"recent":[{"score":65.38,"on":"2025-12-14"},{"score":33.14,"on":"2025-12-07"},{"score":41.91,"on":"2025-12-01"},{"score":44.72,"on":"2025-11-23"},{"score":30.26,"on":"2025-11-17"},{"score":55.61,"on":"2025-11-09"},{"score":41.52,"on":"2025-11-02"},{"score":52.12,"on":"2025-10-27"}]},{"id":66,"name":"NFL Player 0605","sport":"NFL","pos":"QB","rarity":"uncommon","form":47.94,"recent":[{"score":36.48,"on":"2025-12-14"},{"score":32.29,"on":"2025-12-07"},{"score":64.1,"on":"2025-12-01"},{"score":56.29,"on":"2025-11-23"},{"score":34.62,"on":"2025-11-17"},{"score":46.65,"on":"2025-11-09"},{"score":54.3,"on":"2025-11-02"},{"score":46.02,"on":"2025-10-27"}]},{"id":69,"name":"NFL Player 0608","sport":"NFL","pos":"WR","rarity":"rare","form":50.8,"recent":[{"score":63.8,"on":"2025-12-14"},{"score":51.51,"on":"2025-12-07"},{"score":44.55,"on":"2025-12-01"},{"score":48.19,"on":"2025-11-23"},{"score":53.35,"on":"2025-11-17"},{"score":36.76,"on":"2025-11-09"},{"score":48.79,"on":"2025-11-02"},{"score":52.27,"on":"2025-10-27"}]},{"id":87,"name":"NFL Player 0806","sport":"NFL","pos":"RB","rarity":"elite","form":49.26,"recent":[{"score":27.43,"on":"2025-12-14"},{"score":51.05,"on":"2025-12-07"},{"score":50.3,"on":"2025-11-30"},{"score":51.51,"on":"2025-11-23"},{"score":57.35,"on":"2025-11-16"},{"score":45.05,"on":"2025-11-09"},{"score":22.08,"on":"2025-10-26"},{"score":67.31,"on":"2025-10-19"}]},{"id":104,"name":"NFL Player 1003","sport":"NFL","pos":"WR","rarity":"signature","form":45.01,"recent":[{"score":46.8,"on":"2025-12-14"},{"score":37.82,"on":"2025-12-07"},{"score":46.8,"on":"2025-11-30"},{"score":53.04,"on":"2025-11-23"},{"score":62.96,"on":"2025-11-16"},{"score":37.3,"on":"2025-11-09"},{"score":51.36,"on":"2025-11-02"},{"score":58.09,"on":"2025-10-26"}]},{"id":109,"name":"NFL Player 1008","sport":"NFL","pos":"WR","rarity":"signature","form":48.79,"recent":[{"score":65.04,"on":"2025-12-14"},{"score":52.27,"on":"2025-12-07"},{"score":35.9,"on":"2025-11-30"},{"score":52.27,"on":"2025-11-23"},{"score":57.35,"on":"2025-11-16"},{"score":57.91,"on":"2025-11-09"},{"score":58.48,"on":"2025-11-02"},{"score":52.27,"on":"2025-10-26"}]},{"id":118,"name":"NFL Player 1107","sport":"NFL","pos":"WR","rarity":"rare","form":46.67,"recent":[{"score":32.29,"on":"2025-12-14"},{"score":54.3,"on":"2025-12-07"},{"score":37.56,"on":"2025-11-30"},{"score":50.15,"on":"2025-11-23"},{"score":63.24,"on":"2025-11-16"},{"score":47.58,"on":"2025-11-09"},{"score":49.85,"on":"2025-11-03"},{"score":45.86,"on":"2025-10-26"}]},{"id":120,"name":"NFL Player 1109","sport":"NFL","pos":"TE","rarity":"signature","form":39.79,"recent":[{"score":22.08,"on":"2025-12-14"},{"score":33.53,"on":"2025-12-07"},{"score":48.19,"on":"2025-11-30"},{"score":30.82,"on":"2025-11-23"},{"score":41.52,"on":"2025-11-16"},{"score":33.91,"on":"2025-11-09"},{"score":39.02,"on":"2025-11-03"},{"score":42.46,"on":"2025-10-20"}]},{"id":123,"name":"NFL Player 1202","sport":"NFL","pos":"WR","rarity":"uncommon","form":51.08,"recent":[{"score":61.93,"on":"2025-12-14"},{"score":49.4,"on":"2025-12-07"},{"score":30.26,"on":"2025-11-30"},{"score":55.28,"on":"2025-11-23"},{"score":41.91,"on":"2025-11-16"},{"score":12.92,"on":"2025-11-09"},{"score":68.05,"on":"2025-11-02"},{"score":33.14,"on":"2025-10-26"}]},{"id":136,"name":"NFL Player 1305","sport":"NFL","pos":"QB","rarity":"elite","form":40.92,"recent":[{"score":53.98,"on":"2025-12-14"},{"score":39.9,"on":"2025-12-07"},{"score":44.05,"on":"2025-11-30"},{"score":36.48,"on":"2025-11-23"},{"score":44.05,"on":"2025-11-16"},{"score":27.43,"on":"2025-11-09"},{"score":34.62,"on":"2025-11-02"},{"score":48.19,"on":"2025-10-26"}]},{"id":157,"name":"NFL Player 1506","sport":"NFL","pos":"RB","rarity":"common","form":69.98,"recent":[{"score":96.08,"on":"2025-12-14"},{"score":86.06,"on":"2025-12-07"},{"score":70.35,"on":"2025-11-30"},{"score":62.96,"on":"2025-11-23"},{"score":63.52,"on":"2025-11-16"},{"score":75.96,"on":"2025-11-02"},{"score":22.08,"on":"2025-10-26"},{"score":73.67,"on":"2025-10-19"}]},{"id":191,"name":"NFL Player 1900","sport":"NFL","pos":"QB","rarity":"elite","form":53.36,"recent":[{"score":33.91,"on":"2025-12-15"},{"score":76.99,"on":"2025-12-08"},{"score":55.61,"on":"2025-11-30"},{"score":63.52,"on":"2025-11-16"},{"score":61.45,"on":"2025-11-09"},{"score":76.63,"on":"2025-11-02"},{"score":55.95,"on":"2025-10-26"},{"score":60.98,"on":"2025-10-19"}]},{"id":192,"name":"NFL Player 1901","sport":"NFL","pos":"RB","rarity":"rare","form":42.0,"recent":[{"score":50.45,"on":"2025-12-15"},{"score":12.92,"on":"2025-12-08"},{"score":36.48,"on":"2025-11-30"},{"score":39.24,"on":"2025-11-24"},{"score":73.8,"on":"2025-11-16"},{"score":62.44,"on":"2025-11-09"},{"score":28.99,"on":"2025-11-02"},{"score":22.08,"on":"2025-10-26"}]},{"id":198,"name":"NFL Player 1907","sport":"NFL","pos":"WR","rarity":"uncommon","form":58.41,"recent":[{"score":55.61,"on":"2025-12-15"},{"score":75.83,"on":"2025-12-08"},{"score":79.05,"on":"2025-11-30"},{"score":80.33,"on":"2025-11-24"},{"score":39.24,"on":"2025-11-16"},{"score":44.39,"on":"2025-11-09"},{"score":33.91,"on":"2025-11-02"},{"score":96.08,"on":"2025-10-26"}]},{"id":233,"name":"NFL Player 2302","sport":"NFL","pos":"WR","rarity":"uncommon","form":43.76,"recent":[{"score":39.47,"on":"2025-12-14"},{"score":25.36,"on":"2025-12-08"},{"score":52.27,"on":"2025-12-01"},{"score":48.34,"on":"2025-11-23"},{"score":62.96,"on":"2025-11-17"},{"score":22.08,"on":"2025-11-10"},{"score":55.61,"on":"2025-11-02"},{"score":53.2,"on":"2025-10-27"}]},{"id":260,"name":"NFL Player 2509","sport":"NFL","pos":"TE","rarity":"common","form":51.78,"recent":[{"score":52.89,"on":"2025-12-07"},{"score":51.81,"on":"2025-12-01"},{"score":28.99,"on":"2025-11-23"},{"score":56.64,"on":"2025-11-16"},{"score":54.95,"on":"2025-11-09"},{"score":41.72,"on":"2025-11-02"},{"score":52.12,"on":"2025-10-26"},{"score":46.33,"on":"2025-10-19"}]},{"id":265,"name":"NFL Player 2604","sport":"NFL","pos":"TE","rarity":"rare","form":54.53,"recent":[{"score":38.07,"on":"2025-12-14"},{"score":42.09,"on":"2025-12-07"},{"score":53.98,"on":"2025-11-30"},{"score":27.43,"on":"2025-11-23"},{"score":28.99,"on":"2025-11-16"},{"score":60.53,"on":"2025-11-09"},{"score":77.11,"on":"2025-11-02"},{"score":36.76,"on":"2025-10-26"}]},{"id":293,"name":"NFL Player 2902","sport":"NFL","pos":"WR","rarity":"rare","form":43.18,"recent":[{"score":54.3,"on":"2025-12-14"},{"score":51.05,"on":"2025-12-08"},{"score":39.68,"on":"2025-11-23"},{"score":33.91,"on":"2025-11-17"},{"score":45.21,"on":"2025-11-09"},{"score":36.2,"on":"2025-11-02"},{"score":25.36,"on":"2025-10-26"},{"score":52.12,"on":"2025-10-20"}]},{"id":296,"name":"NFL Player 2905","sport":"NFL","pos":"QB","rarity":"common","form":48.39,"recent":[{"score":25.36,"on":"2025-12-14"},{"score":50.3,"on":"2025-12-08"},{"score":50.9,"on":"2025-11-30"},{"score":53.98,"on":"2025-11-23"},{"score":54.62,"on":"2025-11-17"},{"score":52.12,"on":"2025-11-09"},{"score":46.18,"on":"2025-11-02"},{"score":22.08,"on":"2025-10-26"}]},{"id":298,"name":"NFL Player 2907","sport":"NFL","pos":"WR","rarity":"rare","form":50.15,"recent":[{"score":54.46,"on":"2025-12-14"},{"score":38.55,"on":"2025-12-08"},{"score":62.18,"on":"2025-11-30"},{"score":35.28,"on":"2025-11-23"},{"score":73.58,"on":"2025-11-17"},{"score":38.55,"on":"2025-11-09"},{"score":63.8,"on":"2025-11-02"},{"score":31.34,"on":"2025-10-26"}]}]};
+
+// Two palettes for the same five tiers. The ordinal one is the decision; the
+// hue one is kept so the decision can be checked rather than asserted.
+const PAL = {
+  ordinal: ['#3A4653','#3F6E93','#4A8FC7','#5FB0F0','#9BD0FF'],
+  hues:    ['#7E8A99','#2F9E68','#3B7ECB','#D4356F','#C2851B'],
+};
+const TIERS = ['common','uncommon','rare','elite','signature'];
+const FLOORS = {common:0, uncommon:20, rare:28, elite:34, signature:38};
+
+const $ = id => document.getElementById(id);
+const S = {sport:'all', sort:'form-', budget:280, pal:'ordinal', vis:'none', picked:null};
+const CARDS = DATA.cards.filter(c => c.form !== null);
+
+const col = rarity => PAL[S.pal][TIERS.indexOf(rarity)];
+
+// The sparkline is DATA, so it wears an ink colour, not the tier's. Tinting
+// it by rarity dimmed every Common's line to near-invisible and encoded the
+// tier twice on a mark that is about something else entirely.
+function spark(card){
+  const tint = '#8FA0B2';
+  const g = card.recent.slice().reverse().map(r => r.score);
+  if(g.length < 2) return '';
+  const W = 100, H = 30, lo = Math.min(...g) - 4, hi = Math.max(...g) + 4;
+  const X = i => (i / (g.length - 1)) * W;
+  const Y = v => H - 3 - ((v - lo) / Math.max(.001, hi - lo)) * (H - 8);
+  const d = g.map((v,i) => `${i?'L':'M'}${X(i).toFixed(1)},${Y(v).toFixed(1)}`).join('');
+  return `<svg class="spark" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true">
+    <path d="${d}L${W},${H}L0,${H}Z" fill="${tint}" opacity=".16"/>
+    <path d="${d}" fill="none" stroke="${tint}" stroke-width="1.6"
+          stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+  </svg>`;
+}
+
+function sorted(list){
+  const by = {
+    'form-': (a,b) => b.form - a.form,
+    'form+': (a,b) => a.form - b.form,
+    'floor-': (a,b) => FLOORS[b.rarity] - FLOORS[a.rarity] || b.form - a.form,
+    // What a point of budget buys you in guaranteed floor -- the question the
+    // budget actually poses.
+    'value': (a,b) => FLOORS[b.rarity]/b.form - FLOORS[a.rarity]/a.form,
+    'name': (a,b) => a.name.localeCompare(b.name),
+  }[S.sort];
+  return list.slice().sort(by);
+}
+
+function render(){
+  const list = sorted(CARDS.filter(c => S.sport === 'all' || c.sport === S.sport));
+  const afford = list.filter(c => c.form <= S.budget).length;
+  $('budgetval').textContent = S.budget;
+  $('count').textContent = `${afford} of ${list.length} fit ${S.budget} Form`;
+
+  $('grid').innerHTML = list.map(c => {
+    const tier = col(c.rarity), n = TIERS.indexOf(c.rarity) + 1;
+    const over = c.form > S.budget;
+    return `<button class="tile ${over ? 'out' : ''} ${S.picked === c.id ? 'picked' : ''}"
+              style="--tier:${tier}" data-id="${c.id}"
+              aria-label="${c.name}, ${c.sport} ${c.pos}, ${c.rarity}, Form ${c.form.toFixed(1)}, floor ${FLOORS[c.rarity]}">
+      <span class="tbar"></span>
+      <span class="thead">${c.sport} · ${c.pos}<span class="grow"></span>
+        <span class="pips">${TIERS.map((_,i) =>
+          `<i class="${i < n ? '' : 'off'}"></i>`).join('')}</span></span>
+      ${spark(c)}
+      <span class="tname">${c.name}</span>
+      <span class="tnums"><span class="tform">${c.form.toFixed(1)}</span>
+        <span class="tfloor">FORM</span><span class="grow"></span>
+        <span class="tfloor">${FLOORS[c.rarity] ? 'FLOOR ' + FLOORS[c.rarity] : 'NO FLOOR'}</span></span>
+      <span class="trail"><i style="width:${FLOORS[c.rarity]}%"></i></span>
+      ${over ? `<span class="tno">+${Math.round(c.form - S.budget)}</span>` : ''}
+    </button>`;
+  }).join('');
+
+  $('legend').innerHTML = TIERS.map((t,i) =>
+    `<span class="sw"><i style="background:${PAL[S.pal][i]}"></i>${
+      t[0].toUpperCase() + t.slice(1)}</span>`).join('');
+  $('grid').style.filter = S.vis === 'none' ? '' : `url(#${S.vis})`;
+  $('legend').style.filter = $('grid').style.filter;
+}
+
+function group(attr, key, after){
+  document.querySelectorAll(`[data-${attr}]`).forEach(b =>
+    b.addEventListener('click', () => {
+      S[key] = b.dataset[attr];
+      document.querySelectorAll(`[data-${attr}]`).forEach(x =>
+        x.setAttribute('aria-pressed', String(x === b)));
+      (after || render)();
+    }));
+}
+group('sport', 'sport');
+group('pal', 'pal');
+group('vis', 'vis');
+$('sort').addEventListener('change', e => { S.sort = e.target.value; render(); });
+$('budget').addEventListener('input', e => { S.budget = Number(e.target.value); render(); });
+$('grid').addEventListener('click', e => {
+  const t = e.target.closest('.tile'); if(!t) return;
+  S.picked = S.picked === Number(t.dataset.id) ? null : Number(t.dataset.id);
+  render();
+});
+render();
+</script>

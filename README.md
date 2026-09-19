@@ -89,10 +89,29 @@ would have caught.
 The four coloured tiers are re-stepped for the card's dark surface and pass
 the palette checks on adjacent pairs; Common is a neutral rather than a fifth
 hue, because being untreated is what Common means, and pip count carries the
-ladder without colour. They do **not** pass all-pairs CVD separation (Uncommon
-green against Elite magenta is deutan dE 2.7), which is fine for one card at a
-time and would not be for a collection grid -- that screen needs a single-hue
-ordinal ramp.
+ladder without colour. They do **not** pass all-pairs CVD separation, which is
+fine for one card at a time and is not fine for the grid.
+
+`web/grid.template.html` (built by `python3 web/build_grid.py`) is the
+collection: all 48 at once. Since everyone holds the same pool it is not a
+trophy case but a finding tool, so it carries a budget lens — set what you
+have left and the cards that would strand you step back — plus sorts that
+answer the budget's actual question, including floor bought per point of Form.
+
+It is also where the palette decision gets forced, so it carries the evidence
+rather than the claim. Rarity is a **ladder, not a set of identities**: one
+hue stepped by lightness, with pip count as a second channel. Switch the
+palette and the vision model on the page and look.
+
+| worst pair, all five tiers on screen | ordinal | five hues |
+|---|---|---|
+| colour-vision separation | ΔE 10.1 pass | ΔE 2.7 fail |
+| normal-vision separation | ΔE 10.4 | ΔE 11.8 |
+| survives losing colour entirely | yes, lightness | no |
+
+Under deuteranopia the five-hue Uncommon, Elite and Signature are one colour.
+Neither palette clears the ΔE 15 bar for *categorical* use, which is the right
+answer: adjacent rungs of a ladder are meant to look adjacent.
 
 ## How it works
 

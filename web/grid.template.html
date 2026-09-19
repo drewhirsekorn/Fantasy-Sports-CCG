@@ -1,0 +1,300 @@
+<title>Collection Grid</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --page:#F4F5F7; --panel:#FFFFFF; --edge:rgba(16,22,30,.10);
+    --ink:#11161D; --ink2:#454F5B; --ink3:#6B7684;
+    --accent:#1F6FB2; --ok:#1E7A4F; --no:#A8402F;
+    color-scheme: light dark;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --page:#0B0E13; --panel:#141A22; --edge:rgba(255,255,255,.10);
+      --ink:#F2F5F8; --ink2:#C2CBD5; --ink3:#8995A3;
+      --accent:#63A8E8; --ok:#5CC98D; --no:#E08A8A;
+    }
+  }
+  :root[data-theme="dark"]{
+    --page:#0B0E13; --panel:#141A22; --edge:rgba(255,255,255,.10);
+    --ink:#F2F5F8; --ink2:#C2CBD5; --ink3:#8995A3;
+    --accent:#63A8E8; --ok:#5CC98D; --no:#E08A8A;
+  }
+  /* Tiles are little printed cards, so they keep their own ink in both themes. */
+  :root{
+    --t-bg:#141A22; --t-line:rgba(255,255,255,.09); --t-sunk:#0C1015;
+    --t-ink:#F4F7FA; --t-ink2:#AEB9C5; --t-ink3:#7C8896;
+  }
+
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--page);color:var(--ink);
+       font-family:'IBM Plex Sans',system-ui,-apple-system,sans-serif;
+       -webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+  .wrap{max-width:720px;margin:0 auto;padding:0 16px;padding-block:24px 56px;
+        display:flex;flex-direction:column;gap:16px}
+  h1{font-family:'Oswald',system-ui,sans-serif;font-size:19px;font-weight:600;
+     letter-spacing:.06em;margin:0;text-wrap:balance}
+  .eyebrow{font-size:10px;letter-spacing:.16em;color:var(--ink3);
+           font-family:'IBM Plex Mono',ui-monospace,monospace}
+  .sub{font-size:12.5px;line-height:1.55;color:var(--ink2);margin:6px 0 0;max-width:66ch}
+  .mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+
+  .panel{background:var(--panel);border:1px solid var(--edge);border-radius:12px;padding:13px 14px}
+  .ctlrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .ctlrow + .ctlrow{margin-top:11px}
+  .chip{border:1px solid var(--edge);background:transparent;border-radius:999px;
+        padding:6px 12px;font:inherit;font-size:12px;color:var(--ink2);cursor:pointer}
+  .chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:500}
+  :root:not([data-theme="light"]) .chip[aria-pressed="true"]{color:#0B0E13}
+  @media (prefers-color-scheme: light){.chip[aria-pressed="true"]{color:#fff}}
+  select{font:inherit;font-size:12px;padding:6px 8px;border-radius:8px;
+         border:1px solid var(--edge);background:var(--panel);color:var(--ink)}
+  label.f{font-size:11px;color:var(--ink3);letter-spacing:.04em}
+  input[type=range]{flex:1;min-width:130px;accent-color:var(--accent)}
+  button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+  /* ------------------------------- the grid ------------------------------- */
+  .grid{display:grid;gap:9px;grid-template-columns:repeat(2,1fr)}
+  @media (min-width:520px){.grid{grid-template-columns:repeat(3,1fr)}}
+  @media (min-width:700px){.grid{grid-template-columns:repeat(4,1fr)}}
+  .tile{position:relative;background:var(--t-bg);border:1px solid var(--t-line);
+        border-radius:11px;overflow:hidden;color:var(--t-ink);text-align:left;
+        padding:0;font:inherit;cursor:pointer;display:flex;flex-direction:column;
+        transition:opacity .15s ease, transform .12s ease}
+  .tile:hover{transform:translateY(-2px)}
+  .tile.out{opacity:.26}
+  .tile.picked{outline:2px solid var(--accent);outline-offset:1px}
+  /* Rarity reads as a bar across the top: its ORDER is the encoding, so one
+     hue stepped by lightness rather than five competing hues. */
+  .tbar{height:4px;background:var(--tier)}
+  .thead{display:flex;align-items:center;gap:5px;padding:7px 9px 0;
+         font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:8.5px;
+         letter-spacing:.1em;color:var(--t-ink3)}
+  .grow{flex:1}
+  .pips{display:flex;gap:2.5px}
+  .pips i{width:4px;height:4px;border-radius:50%;display:block;background:var(--tier)}
+  .pips i.off{background:rgba(255,255,255,.14)}
+  .spark{display:block;width:100%;height:30px;margin-top:4px}
+  .tname{font-family:'Oswald',system-ui,sans-serif;font-size:12.5px;font-weight:500;
+         letter-spacing:.01em;line-height:1.15;padding:5px 9px 0;
+         overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .tnums{display:flex;align-items:baseline;gap:5px;padding:2px 9px 8px;margin-top:auto}
+  .tform{font-family:'Oswald',system-ui,sans-serif;font-size:19px;font-weight:600;line-height:1}
+  .tfloor{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:8.5px;color:var(--t-ink3)}
+  /* A micro version of the card's rail: how much of 0-100 the floor covers. */
+  .trail{height:3px;border-radius:2px;background:rgba(255,255,255,.08);
+         margin:0 9px 8px;position:relative;overflow:hidden}
+  .trail i{position:absolute;left:0;top:0;bottom:0;background:var(--tier);border-radius:2px;display:block}
+  .tno{position:absolute;inset:auto 6px 6px auto;font-size:8px;
+       font-family:'IBM Plex Mono',ui-monospace,monospace;color:var(--no)}
+
+  .count{font-size:11.5px;color:var(--ink3)}
+  .legend{display:flex;flex-wrap:wrap;gap:8px 12px;font-size:11px;color:var(--ink2);
+          align-items:center}
+  .legend .sw{display:flex;align-items:center;gap:4px}
+  .legend i{width:14px;height:5px;border-radius:2px;display:block}
+  .note{font-size:11.5px;line-height:1.6;color:var(--ink3);margin:0}
+  .note b{color:var(--ink2);font-weight:600}
+  table.cmp{width:100%;border-collapse:collapse;font-size:11.5px;margin-top:9px}
+  table.cmp th,table.cmp td{text-align:left;padding:5px 7px;border-bottom:1px solid var(--edge)}
+  table.cmp th{font-size:9.5px;letter-spacing:.11em;color:var(--ink3);font-weight:500;
+               font-family:'IBM Plex Mono',ui-monospace,monospace}
+  table.cmp td.n{font-family:'IBM Plex Mono',ui-monospace,monospace}
+  .pass{color:var(--ok);font-weight:600} .fail{color:var(--no);font-weight:600}
+  @media (prefers-reduced-motion: reduce){.tile{transition:none}}
+</style>
+
+<!-- Colour-vision simulation, so the palette argument can be looked at rather
+     than taken on trust. Brettel/Vienot matrices. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <filter id="deuter"><feColorMatrix type="matrix" values="
+    0.625 0.375 0 0 0  0.700 0.300 0 0 0  0 0.300 0.700 0 0  0 0 0 1 0"/></filter>
+  <filter id="protan"><feColorMatrix type="matrix" values="
+    0.567 0.433 0 0 0  0.558 0.442 0 0 0  0 0.242 0.758 0 0  0 0 0 1 0"/></filter>
+  <filter id="tritan"><feColorMatrix type="matrix" values="
+    0.950 0.050 0 0 0  0 0.433 0.567 0 0  0 0.475 0.525 0 0  0 0 0 1 0"/></filter>
+</defs></svg>
+
+<div class="wrap">
+  <div>
+    <div class="eyebrow">COLLECTION · PROTOTYPE</div>
+    <h1 style="margin-top:6px">ALL FORTY-EIGHT AT ONCE</h1>
+    <p class="sub">Everyone holds the same pool, so this is not a trophy case —
+      it is where you find the card that fits the slot and the budget you have
+      left. Set a budget and the ones you cannot afford step back.</p>
+  </div>
+
+  <div class="panel">
+    <div class="ctlrow">
+      <label class="f" for="budget">BUDGET LEFT</label>
+      <input type="range" id="budget" min="30" max="280" step="1" value="280">
+      <span class="mono" id="budgetval" style="font-size:13px;min-width:34px;text-align:right">—</span>
+    </div>
+    <div class="ctlrow">
+      <label class="f" for="sort">SORT</label>
+      <select id="sort">
+        <option value="form-">Form, high to low</option>
+        <option value="form+">Form, low to high</option>
+        <option value="floor-">Floor, high to low</option>
+        <option value="value">Floor per Form point</option>
+        <option value="name">Name</option>
+      </select>
+      <span class="grow"></span>
+      <button class="chip" data-sport="all" aria-pressed="true">All</button>
+      <button class="chip" data-sport="NFL" aria-pressed="false">NFL</button>
+      <button class="chip" data-sport="NBA" aria-pressed="false">NBA</button>
+    </div>
+    <div class="ctlrow" style="margin-top:12px">
+      <span class="count" id="count"></span>
+      <span class="grow"></span>
+      <div class="legend" id="legend"></div>
+    </div>
+  </div>
+
+  <div class="grid" id="grid"></div>
+
+  <div class="panel">
+    <div class="eyebrow">THE COLOUR DECISION, WITH THE EVIDENCE</div>
+    <p class="sub" style="margin-top:7px">Rarity is a <b>ladder</b>, not a set of
+      identities — so it takes one hue stepped by lightness, not five competing
+      hues. One card at a time, five hues were fine. Forty-eight at once, they
+      are not. Switch the palette and the vision model and look.</p>
+    <div class="ctlrow" style="margin-top:11px">
+      <label class="f">PALETTE</label>
+      <button class="chip" data-pal="ordinal" aria-pressed="true">Ordinal · one hue</button>
+      <button class="chip" data-pal="hues" aria-pressed="false">Five hues</button>
+    </div>
+    <div class="ctlrow">
+      <label class="f">VISION</label>
+      <button class="chip" data-vis="none" aria-pressed="true">Normal</button>
+      <button class="chip" data-vis="deuter" aria-pressed="false">Deuteranopia</button>
+      <button class="chip" data-vis="protan" aria-pressed="false">Protanopia</button>
+      <button class="chip" data-vis="tritan" aria-pressed="false">Tritanopia</button>
+    </div>
+    <table class="cmp">
+      <thead><tr><th>WORST PAIR, ALL 5 TIERS ON SCREEN</th><th>ORDINAL</th><th>FIVE HUES</th></tr></thead>
+      <tbody>
+        <tr><td>Colour-vision separation ΔE</td>
+            <td class="n pass">10.1 pass</td><td class="n fail">2.7 fail</td></tr>
+        <tr><td>Normal-vision separation ΔE</td>
+            <td class="n">10.4</td><td class="n">11.8</td></tr>
+        <tr><td>Survives losing colour entirely</td>
+            <td class="n pass">yes — lightness</td><td class="n fail">no</td></tr>
+      </tbody>
+    </table>
+    <p class="note" style="margin-top:10px">Under deuteranopia the five-hue
+      Uncommon and Elite are the same colour (ΔE 2.7) — two tiers apart, with
+      nothing but the pip count to tell them apart. The ordinal ramp keeps its
+      order because lightness survives every vision model, and the pips still
+      back it up. Neither palette clears the ΔE 15 bar for <i>categorical</i>
+      use, which is the right answer: adjacent rungs of a ladder are meant to
+      look adjacent.</p>
+  </div>
+
+  <p class="note">Real Form and GameScores from the 48-card prototype pool.
+    Fictional names — likenesses need union agreements.</p>
+</div>
+
+<script>
+const DATA = /*__DATA__*/null;
+
+// Two palettes for the same five tiers. The ordinal one is the decision; the
+// hue one is kept so the decision can be checked rather than asserted.
+const PAL = {
+  ordinal: ['#3A4653','#3F6E93','#4A8FC7','#5FB0F0','#9BD0FF'],
+  hues:    ['#7E8A99','#2F9E68','#3B7ECB','#D4356F','#C2851B'],
+};
+const TIERS = ['common','uncommon','rare','elite','signature'];
+const FLOORS = {common:0, uncommon:20, rare:28, elite:34, signature:38};
+
+const $ = id => document.getElementById(id);
+const S = {sport:'all', sort:'form-', budget:280, pal:'ordinal', vis:'none', picked:null};
+const CARDS = DATA.cards.filter(c => c.form !== null);
+
+const col = rarity => PAL[S.pal][TIERS.indexOf(rarity)];
+
+// The sparkline is DATA, so it wears an ink colour, not the tier's. Tinting
+// it by rarity dimmed every Common's line to near-invisible and encoded the
+// tier twice on a mark that is about something else entirely.
+function spark(card){
+  const tint = '#8FA0B2';
+  const g = card.recent.slice().reverse().map(r => r.score);
+  if(g.length < 2) return '';
+  const W = 100, H = 30, lo = Math.min(...g) - 4, hi = Math.max(...g) + 4;
+  const X = i => (i / (g.length - 1)) * W;
+  const Y = v => H - 3 - ((v - lo) / Math.max(.001, hi - lo)) * (H - 8);
+  const d = g.map((v,i) => `${i?'L':'M'}${X(i).toFixed(1)},${Y(v).toFixed(1)}`).join('');
+  return `<svg class="spark" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true">
+    <path d="${d}L${W},${H}L0,${H}Z" fill="${tint}" opacity=".16"/>
+    <path d="${d}" fill="none" stroke="${tint}" stroke-width="1.6"
+          stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+  </svg>`;
+}
+
+function sorted(list){
+  const by = {
+    'form-': (a,b) => b.form - a.form,
+    'form+': (a,b) => a.form - b.form,
+    'floor-': (a,b) => FLOORS[b.rarity] - FLOORS[a.rarity] || b.form - a.form,
+    // What a point of budget buys you in guaranteed floor -- the question the
+    // budget actually poses.
+    'value': (a,b) => FLOORS[b.rarity]/b.form - FLOORS[a.rarity]/a.form,
+    'name': (a,b) => a.name.localeCompare(b.name),
+  }[S.sort];
+  return list.slice().sort(by);
+}
+
+function render(){
+  const list = sorted(CARDS.filter(c => S.sport === 'all' || c.sport === S.sport));
+  const afford = list.filter(c => c.form <= S.budget).length;
+  $('budgetval').textContent = S.budget;
+  $('count').textContent = `${afford} of ${list.length} fit ${S.budget} Form`;
+
+  $('grid').innerHTML = list.map(c => {
+    const tier = col(c.rarity), n = TIERS.indexOf(c.rarity) + 1;
+    const over = c.form > S.budget;
+    return `<button class="tile ${over ? 'out' : ''} ${S.picked === c.id ? 'picked' : ''}"
+              style="--tier:${tier}" data-id="${c.id}"
+              aria-label="${c.name}, ${c.sport} ${c.pos}, ${c.rarity}, Form ${c.form.toFixed(1)}, floor ${FLOORS[c.rarity]}">
+      <span class="tbar"></span>
+      <span class="thead">${c.sport} · ${c.pos}<span class="grow"></span>
+        <span class="pips">${TIERS.map((_,i) =>
+          `<i class="${i < n ? '' : 'off'}"></i>`).join('')}</span></span>
+      ${spark(c)}
+      <span class="tname">${c.name}</span>
+      <span class="tnums"><span class="tform">${c.form.toFixed(1)}</span>
+        <span class="tfloor">FORM</span><span class="grow"></span>
+        <span class="tfloor">${FLOORS[c.rarity] ? 'FLOOR ' + FLOORS[c.rarity] : 'NO FLOOR'}</span></span>
+      <span class="trail"><i style="width:${FLOORS[c.rarity]}%"></i></span>
+      ${over ? `<span class="tno">+${Math.round(c.form - S.budget)}</span>` : ''}
+    </button>`;
+  }).join('');
+
+  $('legend').innerHTML = TIERS.map((t,i) =>
+    `<span class="sw"><i style="background:${PAL[S.pal][i]}"></i>${
+      t[0].toUpperCase() + t.slice(1)}</span>`).join('');
+  $('grid').style.filter = S.vis === 'none' ? '' : `url(#${S.vis})`;
+  $('legend').style.filter = $('grid').style.filter;
+}
+
+function group(attr, key, after){
+  document.querySelectorAll(`[data-${attr}]`).forEach(b =>
+    b.addEventListener('click', () => {
+      S[key] = b.dataset[attr];
+      document.querySelectorAll(`[data-${attr}]`).forEach(x =>
+        x.setAttribute('aria-pressed', String(x === b)));
+      (after || render)();
+    }));
+}
+group('sport', 'sport');
+group('pal', 'pal');
+group('vis', 'vis');
+$('sort').addEventListener('change', e => { S.sort = e.target.value; render(); });
+$('budget').addEventListener('input', e => { S.budget = Number(e.target.value); render(); });
+$('grid').addEventListener('click', e => {
+  const t = e.target.closest('.tile'); if(!t) return;
+  S.picked = S.picked === Number(t.dataset.id) ? null : Number(t.dataset.id);
+  render();
+});
+render();
+</script>
