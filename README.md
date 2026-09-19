@@ -52,6 +52,31 @@ python3 -m engine.test_resolution   # the scoring rules, no database
 python3 -m demo.play                # the same match loop, headless
 ```
 
+## The standalone build
+
+`web/` freezes the prototype into one HTML file with no server: the season is
+already replayed, so every card's next GameScore is knowable up front and the
+whole game fits in 67 KB.
+
+```bash
+python3 -m demo.export > web/data.json   # the frozen pool, from a live database
+python3 web/build.py                     # inline it -> web/index.html
+python3 web/parity.py                    # prove it scores like the real engine
+```
+
+`web/data.json` is committed rather than generated on demand, because a
+rebuild does **not** reproduce it -- see the note under "What's missing".
+
+The page re-implements the resolution rules in JavaScript, which is exactly
+the setup where two copies of one rule quietly drift apart. `parity.py` plays
+a real match through the API and feeds both lineups into the page's engine,
+comparing every slot's raw score, floor, multiplier and final. Its fixture
+deliberately starts the players who do not play that week, so bench cover and
+the replacement rule are both exercised rather than the happy path.
+
+It is a demo, not the system: the database enforces the invariants, and the
+page only obeys them.
+
 ## How it works
 
 ```
@@ -88,7 +113,7 @@ Against a replayed 18-week, two-sport season (1,264 games, 25,280 stat lines):
 | GameScore p90 | 64.9 – 67.8 (target 65) |
 | Scores using a future snapshot | 0 |
 | Cameo lines (below usage threshold) | median 22.1, correctly well below 50 |
-| Full rebuild | deterministic, bit-identical results |
+| Full rebuild | **not** reproducible — see below |
 
 The Form budget binds: `./db/dev.sh verify` prints the best legal five against
 the flash budget of 275 every run, and it has never been close.
@@ -185,6 +210,15 @@ The one open balance question, and the thing to watch while playing it:
   before paying that.
 
 Everything else, for anything past the prototype:
+
+- **A rebuild does not reproduce the same season.** Both RNGs are seeded
+  (`--seed 42`, and `random.Random(11)` for the pool), but two consecutive
+  `./db/dev.sh prototype` runs share only 5 of 48 pool cards, and the players
+  they do share come back with different Form and different GameScores. So
+  something outside those two generators is feeding the pipeline. Not chased
+  down yet. It is why `web/data.json` is committed rather than regenerated,
+  and it has to be fixed before any measurement taken from one run means
+  anything across runs.
 
 - **No real data.** Everything runs on synthetic seasons; `CsvSource` is the path
   real box scores take but has only been tested against generated data.

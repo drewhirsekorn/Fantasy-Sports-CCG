@@ -1,0 +1,635 @@
+<title>Fantasy Sports CCG</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  /* Single-theme on purpose: this is a scoreboard, and a scoreboard is dark.
+     Every colour is painted from a token so the page never borrows the host's
+     ground. */
+  :root{
+    --bg:#0D1117; --surface:#161C24; --sunk:#0F141B; --line:rgba(255,255,255,.09);
+    --ink:#F2F5F8; --ink2:#C6CFD8; --mute:#9AA6B2; --dim:#6E7A88; --faint:#57616D;
+    --accent:#63A8E8; --good:#5CC98D; --bad:#E08A8A; --warn:#EDB443;
+    /* Rarity ramp, separated for colour-vision deficiency as well as normal
+       vision -- blue and purple collapse under deuteranopia, so Elite is
+       magenta. Pips carry the same information without relying on hue. */
+    --common:#69747F; --uncommon:#5CC98D; --rare:#63A8E8; --elite:#EE5C93; --signature:#EDB443;
+    color-scheme: dark;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font-family:'IBM Plex Sans',system-ui,-apple-system,sans-serif;
+       -webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+  .wrap{max-width:430px;margin:0 auto;padding:0 16px;padding-block:0 40px}
+  h1,h2,.disp{font-family:'Oswald','Oswald Fallback',system-ui,sans-serif;
+              font-weight:600;letter-spacing:.01em;margin:0;text-wrap:balance}
+  button{font-family:inherit;cursor:pointer}
+  button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .btn{width:100%;min-height:50px;border:none;border-radius:10px;background:#263140;
+       color:var(--ink);font-size:15px;font-weight:600}
+  .btn.go{background:#2F6F4E;color:#EAF6EF}
+  .btn:disabled{background:#1C242E;color:var(--faint);cursor:not-allowed}
+  .ghost{background:transparent;border:1px solid var(--line);color:var(--mute);
+         border-radius:10px;min-height:44px;font-size:14px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .row{display:flex;align-items:center;gap:10px}
+  .grow{flex-grow:1}
+  .lbl{font-size:10px;letter-spacing:.15em;color:var(--dim)}
+  .sm{font-size:11px;color:var(--dim)}
+  .slot{display:flex;align-items:center;gap:10px;width:100%;text-align:left;
+        background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--common);
+        border-radius:10px;padding:9px 12px;min-height:58px;color:var(--ink)}
+  .slot.empty{background:transparent;border:1px dashed rgba(255,255,255,.2);
+              border-left:1px dashed rgba(255,255,255,.2);color:var(--accent)}
+  .slot.over{opacity:.45}
+  .num{font-family:'Oswald',system-ui,sans-serif;font-size:20px;font-weight:600;line-height:1}
+  .bar{height:8px;border-radius:4px;background:rgba(255,255,255,.07);overflow:hidden}
+  .bar > div{height:8px;border-radius:4px;background:var(--accent);transition:width .18s ease}
+  .tabs{display:flex;background:#131920;border-radius:10px;padding:4px;gap:0}
+  .tabs button{flex:1;height:40px;border:none;border-radius:7px;background:transparent;
+               color:var(--mute);font-size:12px}
+  .tabs button[aria-selected="true"]{background:#263140;color:var(--ink);font-weight:600}
+  .pips{display:flex;gap:2px}
+  .pips i{width:3px;height:3px;border-radius:50%;display:block}
+  .stack{display:flex;flex-direction:column;gap:7px}
+  .bad{color:var(--bad)} .good{color:var(--good)} .warn{color:var(--warn)}
+  .viol{background:var(--surface);border:1px solid rgba(224,138,138,.25);
+        border-left:3px solid var(--bad);border-radius:10px;padding:10px 12px;font-size:12px}
+  input{background:var(--sunk);border:1px solid var(--line);border-radius:10px;
+        color:var(--ink);font:inherit;padding:0 12px;height:46px;width:100%}
+  .sticky{position:sticky;bottom:0;background:linear-gradient(transparent,var(--bg) 22%);
+          padding:20px 0 8px;margin-top:18px;
+          padding-bottom:calc(8px + env(safe-area-inset-bottom, 0px))}
+  @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<div class="wrap">
+
+  <!-- ===================== sign in ===================== -->
+  <section id="v-login">
+    <div style="padding:56px 0 24px">
+      <h1 style="font-size:26px">FANTASY SPORTS CCG</h1>
+      <p class="sm" style="margin:10px 0 0;line-height:1.6;font-size:12px">
+        A fixed 48-card pool. Build five starters under a Form budget, attach two
+        tactics, and play a match that settles against an already-replayed season.
+      </p>
+    </div>
+    <div class="stack">
+      <input id="handle" value="alice" autocomplete="off" aria-label="Your handle">
+      <button class="btn go" id="start">Start</button>
+      <p class="sm" style="margin:4px 0 0;line-height:1.5">
+        No packs, no live updates, no account. Everyone gets the same cards, so
+        the only thing left is whether you build and read the matchup better.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== deck builder ===================== -->
+  <section id="v-build" hidden>
+    <div class="row" style="padding:16px 0 12px">
+      <h1 style="font-size:20px">BUILD</h1>
+      <span class="grow"></span>
+      <span class="sm" id="who"></span>
+    </div>
+
+    <div class="card">
+      <div class="row" style="align-items:baseline">
+        <span class="lbl">FORM BUDGET</span><span class="grow"></span>
+        <span class="disp" style="font-size:24px" id="spent">0</span>
+        <span class="sm" id="budget">/ 275</span>
+      </div>
+      <div class="bar" style="margin-top:10px"><div id="bar" style="width:0%"></div></div>
+      <div class="row" style="margin-top:9px">
+        <span class="sm" id="left"></span><span class="grow"></span>
+        <span class="sm" id="mix"></span>
+      </div>
+    </div>
+
+    <div class="tabs" style="margin-top:14px" role="tablist">
+      <button role="tab" id="t-starter" aria-selected="true" data-tab="starter">Starters</button>
+      <button role="tab" id="t-bench"   aria-selected="false" data-tab="bench">Bench</button>
+      <button role="tab" id="t-tactic"  aria-selected="false" data-tab="tactic">Tactics</button>
+    </div>
+
+    <div class="stack" style="margin-top:12px" id="chosen"></div>
+
+    <div class="lbl" style="margin:18px 0 8px" id="poolLabel">AVAILABLE</div>
+    <div class="stack" id="pool"></div>
+
+    <div class="sticky">
+      <div class="stack" id="violations" style="margin-bottom:10px"></div>
+      <button class="btn go" id="play" disabled>Play match</button>
+    </div>
+  </section>
+
+  <!-- ===================== recap ===================== -->
+  <section id="v-recap" hidden>
+    <div class="row" style="padding:16px 0 12px">
+      <h1 style="font-size:20px">RESULT</h1><span class="grow"></span>
+      <button class="ghost" style="width:auto;padding:0 14px;min-height:36px"
+              id="again">New match</button>
+    </div>
+    <div id="recap"></div>
+  </section>
+
+  <div id="err" hidden style="position:fixed;left:16px;right:16px;
+       bottom:calc(16px + env(safe-area-inset-bottom, 0px));
+       background:#2A1A1E;border:1px solid rgba(224,138,138,.4);border-radius:10px;
+       padding:12px 14px;font-size:12px;max-width:398px;margin:0 auto;color:var(--ink)"></div>
+</div>
+
+<script>
+// ===========================================================================
+//  The prototype, with the server folded in.
+//
+//  The playable build runs FastAPI over Postgres; the rules live in SQL
+//  constraints and engine/resolution.py. None of that is reachable from a
+//  link, and none of it has to be: the season is already replayed and every
+//  game a match could need is final, so each card's next GameScore is knowable
+//  up front. DATA below is that export. The rules are re-implemented here to
+//  match the engine exactly -- where the two could drift, the comment says
+//  which line in the engine is being mirrored.
+// ===========================================================================
+const DATA = {"generated_from":"db/dev.sh prototype","lock_at":"2025-12-17","budget":275,"replacement":{"NFL":15.0,"NBA":15.0,"MLB":15.0},"floors":{"common":0.0,"uncommon":20.0,"rare":28.0,"elite":34.0,"signature":38.0},"cards":[{"id":321,"name":"NBA Player 0000","sport":"NBA","pos":"G","rarity":"signature","floor":38.0,"form":35.62,"score":41.13,"prior":[44.05,31.34,32.29],"form_history":[{"form":34.24,"on":"2025-09-17"},{"form":34.26,"on":"2025-09-29"},{"form":34.18,"on":"2025-10-08"},{"form":34.23,"on":"2025-10-21"},{"form":35.56,"on":"2025-10-30"},{"form":34.55,"on":"2025-11-11"},{"form":32.17,"on":"2025-11-24"},{"form":33.79,"on":"2025-12-07"},{"form":35.0,"on":"2025-12-17"}],"recent":[{"score":32.29,"on":"2025-12-16"},{"score":31.34,"on":"2025-12-15"},{"score":44.05,"on":"2025-12-14"},{"score":34.62,"on":"2025-12-10"},{"score":33.91,"on":"2025-12-08"},{"score":42.28,"on":"2025-12-07"},{"score":26.48,"on":"2025-12-02"},{"score":50.0,"on":"2025-12-01"}]},{"id":361,"name":"NBA Player 0400","sport":"NBA","pos":"G","rarity":"rare","floor":28.0,"form":56.87,"score":60.53,"prior":[56.29,76.91,59.68],"form_history":[{"form":58.01,"on":"2025-09-17"},{"form":59.74,"on":"2025-09-29"},{"form":57.64,"on":"2025-10-08"},{"form":57.59,"on":"2025-10-21"},{"form":58.68,"on":"2025-10-30"},{"form":56.96,"on":"2025-11-11"},{"form":58.96,"on":"2025-11-24"},{"form":55.03,"on":"2025-12-07"},{"form":58.91,"on":"2025-12-17"}],"recent":[{"score":59.68,"on":"2025-12-16"},{"score":76.91,"on":"2025-12-15"},{"score":56.29,"on":"2025-12-14"},{"score":66.41,"on":"2025-12-09"},{"score":74.24,"on":"2025-12-08"},{"score":79.7,"on":"2025-12-08"},{"score":60.98,"on":"2025-12-03"},{"score":27.43,"on":"2025-12-01"}]},{"id":364,"name":"NBA Player 0403","sport":"NBA","pos":"F","rarity":"uncommon","floor":20.0,"form":45.36,"score":46.65,"prior":[35.9,38.55,41.13],"form_history":[{"form":35.53,"on":"2025-09-17"},{"form":35.01,"on":"2025-09-29"},{"form":36.71,"on":"2025-10-08"},{"form":37.7,"on":"2025-10-21"},{"form":36.76,"on":"2025-10-30"},{"form":39.48,"on":"2025-11-11"},{"form":38.57,"on":"2025-11-24"},{"form":41.53,"on":"2025-12-07"},{"form":42.8,"on":"2025-12-17"}],"recent":[{"score":41.13,"on":"2025-12-16"},{"score":38.55,"on":"2025-12-15"},{"score":35.9,"on":"2025-12-14"},{"score":46.96,"on":"2025-12-09"},{"score":52.73,"on":"2025-12-08"},{"score":52.42,"on":"2025-12-08"},{"score":44.22,"on":"2025-12-03"},{"score":53.35,"on":"2025-12-01"}]},{"id":367,"name":"NBA Player 0406","sport":"NBA","pos":"G","rarity":"common","floor":0.0,"form":80.76,"score":34.96,"prior":[77.14,96.08,66.36],"form_history":[{"form":68.58,"on":"2025-09-17"},{"form":71.47,"on":"2025-09-29"},{"form":73.59,"on":"2025-10-08"},{"form":77.28,"on":"2025-10-21"},{"form":75.28,"on":"2025-10-30"},{"form":77.42,"on":"2025-11-11"},{"form":80.74,"on":"2025-11-24"},{"form":82.17,"on":"2025-12-07"},{"form":78.88,"on":"2025-12-17"}],"recent":[{"score":66.36,"on":"2025-12-16"},{"score":96.08,"on":"2025-12-15"},{"score":77.14,"on":"2025-12-14"},{"score":86.77,"on":"2025-12-09"},{"score":86.34,"on":"2025-12-08"},{"score":96.08,"on":"2025-12-08"},{"score":86.45,"on":"2025-12-03"},{"score":96.08,"on":"2025-12-01"}]},{"id":372,"name":"NBA Player 0501","sport":"NBA","pos":"G","rarity":"rare","floor":28.0,"form":48.56,"score":44.39,"prior":[53.67,47.27,51.81],"form_history":[{"form":47.82,"on":"2025-09-17"},{"form":45.91,"on":"2025-09-29"},{"form":46.52,"on":"2025-10-08"},{"form":46.46,"on":"2025-10-21"},{"form":43.9,"on":"2025-10-30"},{"form":45.25,"on":"2025-11-11"},{"form":43.54,"on":"2025-11-24"},{"form":44.71,"on":"2025-12-07"},{"form":46.1,"on":"2025-12-17"}],"recent":[{"score":51.81,"on":"2025-12-16"},{"score":47.27,"on":"2025-12-15"},{"score":53.67,"on":"2025-12-14"},{"score":42.09,"on":"2025-12-09"},{"score":54.79,"on":"2025-12-08"},{"score":51.81,"on":"2025-12-07"},{"score":49.1,"on":"2025-12-02"},{"score":22.08,"on":"2025-12-01"}]},{"id":373,"name":"NBA Player 0502","sport":"NBA","pos":"F","rarity":"uncommon","floor":20.0,"form":51.37,"score":43.18,"prior":[70.95,58.09,22.08],"form_history":[{"form":52.2,"on":"2025-09-17"},{"form":53.21,"on":"2025-09-29"},{"form":51.16,"on":"2025-10-08"},{"form":51.29,"on":"2025-10-21"},{"form":50.17,"on":"2025-10-30"},{"form":50.1,"on":"2025-11-11"},{"form":51.5,"on":"2025-11-24"},{"form":48.7,"on":"2025-12-07"},{"form":49.62,"on":"2025-12-17"}],"recent":[{"score":22.08,"on":"2025-12-16"},{"score":58.09,"on":"2025-12-15"},{"score":70.95,"on":"2025-12-14"},{"score":69.07,"on":"2025-12-09"},{"score":53.98,"on":"2025-12-08"},{"score":27.43,"on":"2025-12-02"},{"score":48.79,"on":"2025-12-01"},{"score":22.08,"on":"2025-11-30"}]},{"id":376,"name":"NBA Player 0505","sport":"NBA","pos":"G","rarity":"elite","floor":34.0,"form":55.14,"score":56.47,"prior":[60.32,54.3,53.35],"form_history":[{"form":52.01,"on":"2025-09-17"},{"form":53.23,"on":"2025-09-29"},{"form":51.14,"on":"2025-10-08"},{"form":52.28,"on":"2025-10-21"},{"form":53.68,"on":"2025-10-30"},{"form":53.39,"on":"2025-11-11"},{"form":51.77,"on":"2025-11-24"},{"form":53.11,"on":"2025-12-07"},{"form":54.53,"on":"2025-12-17"}],"recent":[{"score":53.35,"on":"2025-12-16"},{"score":54.3,"on":"2025-12-15"},{"score":60.32,"on":"2025-12-14"},{"score":68.99,"on":"2025-12-09"},{"score":57.35,"on":"2025-12-08"},{"score":65.38,"on":"2025-12-07"},{"score":60.1,"on":"2025-12-02"},{"score":44.39,"on":"2025-12-01"}]},{"id":399,"name":"NBA Player 0708","sport":"NBA","pos":"F","rarity":"elite","floor":34.0,"form":42.89,"score":33.14,"prior":[35.9,12.92,50.9],"form_history":[{"form":36.14,"on":"2025-09-17"},{"form":33.45,"on":"2025-09-29"},{"form":34.51,"on":"2025-10-08"},{"form":35.3,"on":"2025-10-21"},{"form":37.74,"on":"2025-10-30"},{"form":40.62,"on":"2025-11-11"},{"form":39.68,"on":"2025-11-24"},{"form":42.37,"on":"2025-12-07"},{"form":40.98,"on":"2025-12-17"}],"recent":[{"score":50.9,"on":"2025-12-17"},{"score":12.92,"on":"2025-12-15"},{"score":35.9,"on":"2025-12-14"},{"score":47.88,"on":"2025-12-09"},{"score":43.71,"on":"2025-12-09"},{"score":36.48,"on":"2025-12-07"},{"score":61.69,"on":"2025-12-02"},{"score":45.54,"on":"2025-12-01"}]},{"id":419,"name":"NBA Player 0908","sport":"NBA","pos":"F","rarity":"rare","floor":28.0,"form":38.38,"score":50.9,"prior":[38.07,28.99,35.6],"form_history":[{"form":47.88,"on":"2025-09-17"},{"form":46.9,"on":"2025-09-29"},{"form":46.62,"on":"2025-10-08"},{"form":44.56,"on":"2025-10-21"},{"form":42.85,"on":"2025-10-30"},{"form":40.6,"on":"2025-11-11"},{"form":39.26,"on":"2025-11-24"},{"form":39.21,"on":"2025-12-07"},{"form":38.64,"on":"2025-12-17"}],"recent":[{"score":35.6,"on":"2025-12-16"},{"score":28.99,"on":"2025-12-15"},{"score":38.07,"on":"2025-12-14"},{"score":19.09,"on":"2025-12-09"},{"score":42.28,"on":"2025-12-08"},{"score":47.73,"on":"2025-12-07"},{"score":35.9,"on":"2025-12-02"},{"score":37.04,"on":"2025-12-01"}]},{"id":452,"name":"NBA Player 1301","sport":"NBA","pos":"G","rarity":"rare","floor":28.0,"form":39.12,"score":22.08,"prior":[38.07,44.72,40.73],"form_history":[{"form":35.47,"on":"2025-09-17"},{"form":36.41,"on":"2025-09-29"},{"form":36.37,"on":"2025-10-08"},{"form":36.67,"on":"2025-10-21"},{"form":34.48,"on":"2025-10-30"},{"form":34.81,"on":"2025-11-11"},{"form":36.17,"on":"2025-11-24"},{"form":38.37,"on":"2025-12-07"},{"form":38.71,"on":"2025-12-17"}],"recent":[{"score":40.73,"on":"2025-12-17"},{"score":44.72,"on":"2025-12-15"},{"score":38.07,"on":"2025-12-15"},{"score":41.13,"on":"2025-12-09"},{"score":42.09,"on":"2025-12-08"},{"score":43.88,"on":"2025-12-08"},{"score":57.72,"on":"2025-12-02"},{"score":41.91,"on":"2025-12-01"}]},{"id":455,"name":"NBA Player 1304","sport":"NBA","pos":"C","rarity":"elite","floor":34.0,"form":47.67,"score":52.27,"prior":[22.08,46.02,22.08],"form_history":[{"form":50.68,"on":"2025-09-17"},{"form":49.25,"on":"2025-09-29"},{"form":51.05,"on":"2025-10-08"},{"form":49.83,"on":"2025-10-21"},{"form":49.04,"on":"2025-10-30"},{"form":49.87,"on":"2025-11-11"},{"form":49.68,"on":"2025-11-24"},{"form":48.93,"on":"2025-12-07"},{"form":46.19,"on":"2025-12-17"}],"recent":[{"score":22.08,"on":"2025-12-17"},{"score":46.02,"on":"2025-12-15"},{"score":22.08,"on":"2025-12-15"},{"score":62.96,"on":"2025-12-09"},{"score":43.71,"on":"2025-12-08"},{"score":36.48,"on":"2025-12-08"},{"score":48.95,"on":"2025-12-02"},{"score":51.51,"on":"2025-12-01"}]},{"id":456,"name":"NBA Player 1305","sport":"NBA","pos":"G","rarity":"elite","floor":34.0,"form":36.96,"score":null,"prior":[47.88,44.55,12.92],"form_history":[{"form":44.42,"on":"2025-09-17"},{"form":41.47,"on":"2025-09-29"},{"form":40.08,"on":"2025-10-08"},{"form":38.51,"on":"2025-10-21"},{"form":36.09,"on":"2025-10-30"},{"form":35.9,"on":"2025-11-11"},{"form":35.94,"on":"2025-11-24"},{"form":37.29,"on":"2025-12-07"},{"form":36.91,"on":"2025-12-17"}],"recent":[{"score":12.92,"on":"2025-12-17"},{"score":44.55,"on":"2025-12-15"},{"score":47.88,"on":"2025-12-15"},{"score":22.08,"on":"2025-12-09"},{"score":41.91,"on":"2025-12-08"},{"score":44.05,"on":"2025-12-08"},{"score":31.34,"on":"2025-12-02"},{"score":33.14,"on":"2025-12-01"}]},{"id":469,"name":"NBA Player 1408","sport":"NBA","pos":"F","rarity":"signature","floor":38.0,"form":41.93,"score":56.29,"prior":[27.43,45.86,47.27],"form_history":[{"form":48.82,"on":"2025-09-17"},{"form":47.12,"on":"2025-09-29"},{"form":48.07,"on":"2025-10-08"},{"form":47.99,"on":"2025-10-21"},{"form":45.67,"on":"2025-10-30"},{"form":46.9,"on":"2025-11-11"},{"form":47.95,"on":"2025-11-24"},{"form":43.09,"on":"2025-12-07"},{"form":43.21,"on":"2025-12-17"}],"recent":[{"score":47.27,"on":"2025-12-16"},{"score":45.86,"on":"2025-12-15"},{"score":27.43,"on":"2025-12-14"},{"score":52.12,"on":"2025-12-10"},{"score":22.08,"on":"2025-12-08"},{"score":47.11,"on":"2025-12-07"},{"score":12.92,"on":"2025-12-02"},{"score":22.08,"on":"2025-11-30"}]},{"id":472,"name":"NBA Player 1501","sport":"NBA","pos":"G","rarity":"rare","floor":28.0,"form":44.43,"score":48.49,"prior":[52.73,32.29,39.9],"form_history":[{"form":46.25,"on":"2025-09-17"},{"form":46.53,"on":"2025-09-29"},{"form":46.15,"on":"2025-10-08"},{"form":46.45,"on":"2025-10-21"},{"form":45.69,"on":"2025-10-30"},{"form":45.81,"on":"2025-11-11"},{"form":45.08,"on":"2025-11-24"},{"form":43.31,"on":"2025-12-07"},{"form":42.63,"on":"2025-12-17"}],"recent":[{"score":39.9,"on":"2025-12-17"},{"score":32.29,"on":"2025-12-16"},{"score":52.73,"on":"2025-12-14"},{"score":33.14,"on":"2025-12-09"},{"score":31.34,"on":"2025-12-07"},{"score":41.33,"on":"2025-12-01"},{"score":49.4,"on":"2025-11-30"},{"score":22.08,"on":"2025-11-25"}]},{"id":495,"name":"NBA Player 1704","sport":"NBA","pos":"C","rarity":"common","floor":0.0,"form":46.3,"score":41.91,"prior":[42.65,56.99,54.95],"form_history":[{"form":50.0,"on":"2025-09-17"},{"form":48.51,"on":"2025-09-29"},{"form":45.57,"on":"2025-10-08"},{"form":44.26,"on":"2025-10-21"},{"form":45.07,"on":"2025-10-30"},{"form":45.8,"on":"2025-11-11"},{"form":46.55,"on":"2025-11-24"},{"form":45.19,"on":"2025-12-07"},{"form":46.44,"on":"2025-12-17"}],"recent":[{"score":54.95,"on":"2025-12-16"},{"score":56.99,"on":"2025-12-15"},{"score":42.65,"on":"2025-12-14"},{"score":55.28,"on":"2025-12-09"},{"score":46.02,"on":"2025-12-09"},{"score":39.47,"on":"2025-12-08"},{"score":22.08,"on":"2025-12-02"},{"score":43.71,"on":"2025-12-01"}]},{"id":514,"name":"NBA Player 1903","sport":"NBA","pos":"F","rarity":"rare","floor":28.0,"form":58.88,"score":52.73,"prior":[22.08,58.09,56.12],"form_history":[{"form":54.48,"on":"2025-09-17"},{"form":56.39,"on":"2025-09-29"},{"form":58.55,"on":"2025-10-08"},{"form":56.61,"on":"2025-10-21"},{"form":60.85,"on":"2025-10-30"},{"form":61.31,"on":"2025-11-11"},{"form":63.29,"on":"2025-11-24"},{"form":63.31,"on":"2025-12-07"},{"form":59.4,"on":"2025-12-17"}],"recent":[{"score":56.12,"on":"2025-12-16"},{"score":58.09,"on":"2025-12-15"},{"score":22.08,"on":"2025-12-14"},{"score":96.08,"on":"2025-12-09"},{"score":22.08,"on":"2025-12-08"},{"score":33.91,"on":"2025-12-07"},{"score":74.04,"on":"2025-12-03"},{"score":62.7,"on":"2025-12-01"}]},{"id":525,"name":"NBA Player 2004","sport":"NBA","pos":"C","rarity":"common","floor":0.0,"form":40.92,"score":42.28,"prior":[42.28,53.35,28.99],"form_history":[{"form":42.63,"on":"2025-09-17"},{"form":40.19,"on":"2025-09-29"},{"form":39.32,"on":"2025-10-08"},{"form":38.8,"on":"2025-10-21"},{"form":39.12,"on":"2025-10-30"},{"form":40.32,"on":"2025-11-11"},{"form":41.35,"on":"2025-11-24"},{"form":41.13,"on":"2025-12-07"},{"form":42.57,"on":"2025-12-17"}],"recent":[{"score":28.99,"on":"2025-12-16"},{"score":53.35,"on":"2025-12-16"},{"score":42.28,"on":"2025-12-14"},{"score":51.51,"on":"2025-12-09"},{"score":56.47,"on":"2025-12-09"},{"score":58.09,"on":"2025-12-07"},{"score":39.9,"on":"2025-12-03"},{"score":39.02,"on":"2025-12-02"}]},{"id":561,"name":"NBA Player 2400","sport":"NBA","pos":"G","rarity":"uncommon","floor":20.0,"form":40.02,"score":null,"prior":[12.92,38.55,39.02],"form_history":[{"form":44.47,"on":"2025-09-17"},{"form":44.52,"on":"2025-09-29"},{"form":43.9,"on":"2025-10-08"},{"form":41.09,"on":"2025-10-21"},{"form":41.04,"on":"2025-10-30"},{"form":40.73,"on":"2025-11-11"},{"form":40.54,"on":"2025-11-24"},{"form":41.29,"on":"2025-12-07"},{"form":39.88,"on":"2025-12-17"}],"recent":[{"score":39.02,"on":"2025-12-16"},{"score":38.55,"on":"2025-12-15"},{"score":12.92,"on":"2025-12-14"},{"score":33.14,"on":"2025-12-08"},{"score":52.89,"on":"2025-12-08"},{"score":52.12,"on":"2025-12-02"},{"score":12.92,"on":"2025-12-02"},{"score":56.82,"on":"2025-11-30"}]},{"id":563,"name":"NBA Player 2402","sport":"NBA","pos":"F","rarity":"rare","floor":28.0,"form":43.92,"score":34.62,"prior":[52.42,39.68,56.64],"form_history":[{"form":46.41,"on":"2025-09-17"},{"form":45.54,"on":"2025-09-29"},{"form":43.39,"on":"2025-10-08"},{"form":43.41,"on":"2025-10-21"},{"form":42.97,"on":"2025-10-30"},{"form":40.32,"on":"2025-11-11"},{"form":42.54,"on":"2025-11-24"},{"form":42.93,"on":"2025-12-07"},{"form":42.91,"on":"2025-12-17"}],"recent":[{"score":56.64,"on":"2025-12-16"},{"score":39.68,"on":"2025-12-15"},{"score":52.42,"on":"2025-12-14"},{"score":25.36,"on":"2025-12-09"},{"score":41.52,"on":"2025-12-08"},{"score":44.39,"on":"2025-12-08"},{"score":41.52,"on":"2025-12-02"},{"score":33.91,"on":"2025-12-02"}]},{"id":574,"name":"NBA Player 2503","sport":"NBA","pos":"F","rarity":"uncommon","floor":20.0,"form":62.07,"score":58.48,"prior":[62.96,74.46,68.42],"form_history":[{"form":60.46,"on":"2025-09-17"},{"form":64.94,"on":"2025-09-29"},{"form":66.06,"on":"2025-10-08"},{"form":64.41,"on":"2025-10-21"},{"form":64.79,"on":"2025-10-30"},{"form":61.34,"on":"2025-11-11"},{"form":59.49,"on":"2025-11-24"},{"form":60.38,"on":"2025-12-07"},{"form":61.27,"on":"2025-12-17"}],"recent":[{"score":68.42,"on":"2025-12-15"},{"score":74.46,"on":"2025-12-08"},{"score":62.96,"on":"2025-12-07"},{"score":34.62,"on":"2025-12-02"},{"score":80.33,"on":"2025-12-01"},{"score":74.5,"on":"2025-12-01"},{"score":70.91,"on":"2025-11-26"},{"score":28.26,"on":"2025-11-24"}]},{"id":575,"name":"NBA Player 2504","sport":"NBA","pos":"C","rarity":"common","floor":0.0,"form":52.44,"score":50.15,"prior":[72.41,63.52,60.98],"form_history":[{"form":53.94,"on":"2025-09-17"},{"form":56.08,"on":"2025-09-29"},{"form":53.82,"on":"2025-10-08"},{"form":54.58,"on":"2025-10-21"},{"form":54.65,"on":"2025-10-30"},{"form":54.02,"on":"2025-11-11"},{"form":57.09,"on":"2025-11-24"},{"form":57.66,"on":"2025-12-07"},{"form":57.77,"on":"2025-12-17"}],"recent":[{"score":60.98,"on":"2025-12-16"},{"score":63.52,"on":"2025-12-15"},{"score":72.41,"on":"2025-12-14"},{"score":66.95,"on":"2025-12-10"},{"score":37.56,"on":"2025-12-08"},{"score":50.9,"on":"2025-12-07"},{"score":64.4,"on":"2025-12-02"},{"score":55.95,"on":"2025-12-01"}]},{"id":595,"name":"NBA Player 2704","sport":"NBA","pos":"C","rarity":"signature","floor":38.0,"form":53.72,"score":74.2,"prior":[65.38,54.46,50.3],"form_history":[{"form":38.3,"on":"2025-09-17"},{"form":39.05,"on":"2025-09-29"},{"form":43.03,"on":"2025-10-08"},{"form":44.8,"on":"2025-10-21"},{"form":44.21,"on":"2025-10-30"},{"form":49.07,"on":"2025-11-11"},{"form":49.9,"on":"2025-11-24"},{"form":51.33,"on":"2025-12-07"},{"form":53.46,"on":"2025-12-17"}],"recent":[{"score":50.3,"on":"2025-12-16"},{"score":54.46,"on":"2025-12-15"},{"score":65.38,"on":"2025-12-14"},{"score":52.42,"on":"2025-12-08"},{"score":50.6,"on":"2025-12-07"},{"score":96.08,"on":"2025-12-02"},{"score":22.08,"on":"2025-12-01"},{"score":56.29,"on":"2025-11-30"}]},{"id":627,"name":"NBA Player 3006","sport":"NBA","pos":"G","rarity":"signature","floor":38.0,"form":47.04,"score":58.09,"prior":[38.55,22.08,42.65],"form_history":[{"form":46.4,"on":"2025-09-17"},{"form":46.93,"on":"2025-09-29"},{"form":46.85,"on":"2025-10-08"},{"form":45.83,"on":"2025-10-21"},{"form":45.52,"on":"2025-10-30"},{"form":47.94,"on":"2025-11-11"},{"form":49.87,"on":"2025-11-24"},{"form":50.11,"on":"2025-12-07"},{"form":48.2,"on":"2025-12-17"}],"recent":[{"score":42.65,"on":"2025-12-16"},{"score":22.08,"on":"2025-12-16"},{"score":38.55,"on":"2025-12-14"},{"score":47.58,"on":"2025-12-09"},{"score":53.51,"on":"2025-12-09"},{"score":56.47,"on":"2025-12-07"},{"score":46.8,"on":"2025-12-01"},{"score":50.6,"on":"2025-11-30"}]},{"id":632,"name":"NBA Player 3101","sport":"NBA","pos":"G","rarity":"rare","floor":28.0,"form":49.88,"score":null,"prior":[70.36,38.78,52.42],"form_history":[{"form":51.69,"on":"2025-09-17"},{"form":51.64,"on":"2025-09-29"},{"form":48.94,"on":"2025-10-08"},{"form":51.33,"on":"2025-10-21"},{"form":51.99,"on":"2025-10-30"},{"form":53.46,"on":"2025-11-11"},{"form":54.08,"on":"2025-11-24"},{"form":52.25,"on":"2025-12-07"},{"form":52.73,"on":"2025-12-17"}],"recent":[{"score":52.42,"on":"2025-12-16"},{"score":38.78,"on":"2025-12-15"},{"score":70.36,"on":"2025-12-14"},{"score":60.98,"on":"2025-12-10"},{"score":50.6,"on":"2025-12-08"},{"score":55.95,"on":"2025-12-02"},{"score":67.83,"on":"2025-11-30"},{"score":32.29,"on":"2025-11-25"}]},{"id":5,"name":"NFL Player 0004","sport":"NFL","pos":"TE","rarity":"uncommon","floor":20.0,"form":43.91,"score":36.2,"prior":[48.34,38.55,33.53],"form_history":[{"form":47.78,"on":"2025-09-29"},{"form":46.93,"on":"2025-10-08"},{"form":48.04,"on":"2025-10-21"},{"form":47.02,"on":"2025-10-30"},{"form":44.99,"on":"2025-11-11"},{"form":42.94,"on":"2025-11-24"},{"form":43.32,"on":"2025-12-07"},{"form":42.44,"on":"2025-12-17"}],"recent":[{"score":33.53,"on":"2025-12-14"},{"score":38.55,"on":"2025-12-07"},{"score":48.34,"on":"2025-11-30"},{"score":22.08,"on":"2025-11-23"},{"score":45.21,"on":"2025-11-16"},{"score":22.08,"on":"2025-11-09"},{"score":49.1,"on":"2025-11-02"},{"score":35.28,"on":"2025-10-26"}]},{"id":14,"name":"NFL Player 0103","sport":"NFL","pos":"WR","rarity":"rare","floor":28.0,"form":42.45,"score":52.58,"prior":[22.08,32.29,59.68],"form_history":[{"form":47.8,"on":"2025-09-17"},{"form":46.54,"on":"2025-09-29"},{"form":44.74,"on":"2025-10-08"},{"form":45.28,"on":"2025-10-21"},{"form":46.22,"on":"2025-10-30"},{"form":44.1,"on":"2025-11-11"},{"form":42.25,"on":"2025-11-24"},{"form":39.72,"on":"2025-12-07"},{"form":42.24,"on":"2025-12-17"}],"recent":[{"score":59.68,"on":"2025-12-14"},{"score":32.29,"on":"2025-12-07"},{"score":22.08,"on":"2025-11-30"},{"score":41.91,"on":"2025-11-23"},{"score":22.08,"on":"2025-11-16"},{"score":34.27,"on":"2025-11-10"},{"score":32.29,"on":"2025-11-03"},{"score":55.78,"on":"2025-10-26"}]},{"id":19,"name":"NFL Player 0108","sport":"NFL","pos":"WR","rarity":"signature","floor":38.0,"form":40.98,"score":22.08,"prior":[39.9,46.65,48.19],"form_history":[{"form":49.27,"on":"2025-09-17"},{"form":46.5,"on":"2025-09-29"},{"form":46.57,"on":"2025-10-08"},{"form":44.99,"on":"2025-10-21"},{"form":43.07,"on":"2025-10-30"},{"form":43.78,"on":"2025-11-11"},{"form":44.92,"on":"2025-11-24"},{"form":45.24,"on":"2025-12-07"},{"form":45.7,"on":"2025-12-17"}],"recent":[{"score":48.19,"on":"2025-12-14"},{"score":46.65,"on":"2025-12-07"},{"score":39.9,"on":"2025-11-23"},{"score":58.09,"on":"2025-11-16"},{"score":49.55,"on":"2025-11-10"},{"score":41.13,"on":"2025-11-03"},{"score":22.08,"on":"2025-10-26"},{"score":39.24,"on":"2025-10-19"}]},{"id":22,"name":"NFL Player 0201","sport":"NFL","pos":"RB","rarity":"rare","floor":28.0,"form":46.54,"score":42.46,"prior":[58.87,43.18,37.04],"form_history":[{"form":50.52,"on":"2025-09-17"},{"form":48.84,"on":"2025-09-29"},{"form":50.02,"on":"2025-10-08"},{"form":47.92,"on":"2025-10-21"},{"form":47.92,"on":"2025-10-30"},{"form":44.74,"on":"2025-11-11"},{"form":44.23,"on":"2025-11-24"},{"form":45.72,"on":"2025-12-07"},{"form":44.89,"on":"2025-12-17"}],"recent":[{"score":37.04,"on":"2025-12-14"},{"score":43.18,"on":"2025-12-07"},{"score":58.87,"on":"2025-11-30"},{"score":53.67,"on":"2025-11-23"},{"score":25.36,"on":"2025-11-17"},{"score":31.34,"on":"2025-11-09"},{"score":25.36,"on":"2025-11-02"},{"score":31.34,"on":"2025-10-19"}]},{"id":42,"name":"NFL Player 0401","sport":"NFL","pos":"RB","rarity":"signature","floor":38.0,"form":48.59,"score":null,"prior":[41.13,71.92,52.12],"form_history":[{"form":52.71,"on":"2025-09-17"},{"form":54.32,"on":"2025-09-29"},{"form":53.17,"on":"2025-10-08"},{"form":52.52,"on":"2025-10-21"},{"form":51.65,"on":"2025-10-30"},{"form":47.54,"on":"2025-11-11"},{"form":46.87,"on":"2025-11-24"},{"form":46.87,"on":"2025-12-07"},{"form":49.97,"on":"2025-12-17"}],"recent":[{"score":52.12,"on":"2025-12-14"},{"score":71.92,"on":"2025-12-08"},{"score":41.13,"on":"2025-11-23"},{"score":46.33,"on":"2025-11-16"},{"score":33.14,"on":"2025-11-09"},{"score":25.36,"on":"2025-11-02"},{"score":43.36,"on":"2025-10-27"},{"score":40.94,"on":"2025-10-19"}]},{"id":50,"name":"NFL Player 0409","sport":"NFL","pos":"TE","rarity":"signature","floor":38.0,"form":52.78,"score":null,"prior":[49.1,49.55,48.19],"form_history":[{"form":50.94,"on":"2025-09-17"},{"form":51.44,"on":"2025-09-29"},{"form":53.41,"on":"2025-10-08"},{"form":55.54,"on":"2025-10-21"},{"form":54.97,"on":"2025-10-30"},{"form":51.24,"on":"2025-11-11"},{"form":52.21,"on":"2025-11-24"},{"form":52.21,"on":"2025-12-07"},{"form":51.4,"on":"2025-12-17"}],"recent":[{"score":48.19,"on":"2025-12-14"},{"score":49.55,"on":"2025-12-08"},{"score":49.1,"on":"2025-11-23"},{"score":65.38,"on":"2025-11-16"},{"score":25.36,"on":"2025-11-09"},{"score":48.19,"on":"2025-11-02"},{"score":50.3,"on":"2025-10-27"},{"score":70.62,"on":"2025-10-19"}]},{"id":114,"name":"NFL Player 1103","sport":"NFL","pos":"WR","rarity":"rare","floor":28.0,"form":43.32,"score":22.08,"prior":[53.67,45.54,52.58],"form_history":[{"form":49.83,"on":"2025-09-17"},{"form":48.49,"on":"2025-09-29"},{"form":48.42,"on":"2025-10-08"},{"form":46.15,"on":"2025-10-21"},{"form":44.71,"on":"2025-10-30"},{"form":41.72,"on":"2025-11-11"},{"form":41.02,"on":"2025-11-24"},{"form":43.14,"on":"2025-12-07"},{"form":44.38,"on":"2025-12-17"}],"recent":[{"score":52.58,"on":"2025-12-14"},{"score":45.54,"on":"2025-12-07"},{"score":53.67,"on":"2025-11-30"},{"score":38.31,"on":"2025-11-23"},{"score":33.14,"on":"2025-11-16"},{"score":23.96,"on":"2025-11-09"},{"score":29.66,"on":"2025-11-03"},{"score":28.99,"on":"2025-10-26"}]},{"id":155,"name":"NFL Player 1504","sport":"NFL","pos":"TE","rarity":"rare","floor":28.0,"form":49.89,"score":53.35,"prior":[58.87,45.7,77.21],"form_history":[{"form":51.08,"on":"2025-09-17"},{"form":50.64,"on":"2025-09-29"},{"form":50.09,"on":"2025-10-08"},{"form":50.53,"on":"2025-10-21"},{"form":48.88,"on":"2025-10-30"},{"form":46.41,"on":"2025-11-11"},{"form":49.07,"on":"2025-11-24"},{"form":49.64,"on":"2025-12-07"},{"form":52.65,"on":"2025-12-17"}],"recent":[{"score":77.21,"on":"2025-12-14"},{"score":45.7,"on":"2025-12-07"},{"score":58.87,"on":"2025-11-30"},{"score":72.32,"on":"2025-11-23"},{"score":43.53,"on":"2025-11-09"},{"score":23.96,"on":"2025-11-02"},{"score":31.34,"on":"2025-10-26"},{"score":48.79,"on":"2025-10-19"}]},{"id":156,"name":"NFL Player 1505","sport":"NFL","pos":"QB","rarity":"rare","floor":28.0,"form":47.21,"score":null,"prior":[44.39,45.38,43.36],"form_history":[{"form":52.77,"on":"2025-09-17"},{"form":54.31,"on":"2025-09-29"},{"form":51.99,"on":"2025-10-08"},{"form":51.99,"on":"2025-10-21"},{"form":51.11,"on":"2025-10-30"},{"form":48.64,"on":"2025-11-11"},{"form":49.11,"on":"2025-11-24"},{"form":48.36,"on":"2025-12-07"},{"form":47.87,"on":"2025-12-17"}],"recent":[{"score":43.36,"on":"2025-12-14"},{"score":45.38,"on":"2025-12-07"},{"score":44.39,"on":"2025-11-30"},{"score":42.28,"on":"2025-11-23"},{"score":61.45,"on":"2025-11-16"},{"score":27.43,"on":"2025-11-09"},{"score":45.05,"on":"2025-11-02"},{"score":39.02,"on":"2025-10-26"}]},{"id":161,"name":"NFL Player 1600","sport":"NFL","pos":"QB","rarity":"common","floor":0.0,"form":51.74,"score":61.69,"prior":[40.94,55.61,45.38],"form_history":[{"form":47.49,"on":"2025-09-29"},{"form":47.13,"on":"2025-10-08"},{"form":47.37,"on":"2025-10-21"},{"form":47.4,"on":"2025-10-30"},{"form":47.83,"on":"2025-11-11"},{"form":48.6,"on":"2025-11-24"},{"form":48.96,"on":"2025-12-07"},{"form":48.96,"on":"2025-12-17"}],"recent":[{"score":45.38,"on":"2025-12-07"},{"score":55.61,"on":"2025-11-30"},{"score":40.94,"on":"2025-11-23"},{"score":64.1,"on":"2025-11-17"},{"score":48.49,"on":"2025-11-09"},{"score":50.9,"on":"2025-11-02"},{"score":47.88,"on":"2025-10-26"},{"score":51.51,"on":"2025-10-19"}]},{"id":173,"name":"NFL Player 1702","sport":"NFL","pos":"WR","rarity":"uncommon","floor":20.0,"form":47.59,"score":59.27,"prior":[44.55,56.99,42.09],"form_history":[{"form":50.42,"on":"2025-09-17"},{"form":50.74,"on":"2025-09-29"},{"form":49.28,"on":"2025-10-08"},{"form":50.35,"on":"2025-10-21"},{"form":49.71,"on":"2025-10-30"},{"form":47.62,"on":"2025-11-11"},{"form":47.57,"on":"2025-11-24"},{"form":47.97,"on":"2025-12-07"},{"form":47.97,"on":"2025-12-17"}],"recent":[{"score":42.09,"on":"2025-12-07"},{"score":56.99,"on":"2025-11-30"},{"score":44.55,"on":"2025-11-23"},{"score":49.4,"on":"2025-11-16"},{"score":27.43,"on":"2025-11-09"},{"score":51.05,"on":"2025-11-02"},{"score":43.36,"on":"2025-10-26"},{"score":50.9,"on":"2025-10-19"}]},{"id":188,"name":"NFL Player 1807","sport":"NFL","pos":"WR","rarity":"uncommon","floor":20.0,"form":58.04,"score":53.2,"prior":[45.05,28.26,86.5],"form_history":[{"form":51.85,"on":"2025-09-17"},{"form":52.41,"on":"2025-09-29"},{"form":53.41,"on":"2025-10-08"},{"form":55.94,"on":"2025-10-21"},{"form":57.03,"on":"2025-10-30"},{"form":57.41,"on":"2025-11-11"},{"form":59.12,"on":"2025-11-24"},{"form":57.38,"on":"2025-12-07"},{"form":57.51,"on":"2025-12-17"}],"recent":[{"score":86.5,"on":"2025-12-15"},{"score":28.26,"on":"2025-12-08"},{"score":45.05,"on":"2025-11-30"},{"score":69.75,"on":"2025-11-23"},{"score":66.63,"on":"2025-11-16"},{"score":57.17,"on":"2025-11-09"},{"score":64.72,"on":"2025-11-02"},{"score":69.29,"on":"2025-10-27"}]},{"id":194,"name":"NFL Player 1903","sport":"NFL","pos":"WR","rarity":"rare","floor":28.0,"form":54.64,"score":55.78,"prior":[48.64,60.1,60.32],"form_history":[{"form":51.5,"on":"2025-09-17"},{"form":53.22,"on":"2025-09-29"},{"form":53.95,"on":"2025-10-08"},{"form":56.05,"on":"2025-10-21"},{"form":55.65,"on":"2025-10-30"},{"form":53.47,"on":"2025-11-11"},{"form":53.19,"on":"2025-11-24"},{"form":52.66,"on":"2025-12-07"},{"form":54.0,"on":"2025-12-17"}],"recent":[{"score":60.32,"on":"2025-12-15"},{"score":60.1,"on":"2025-12-08"},{"score":48.64,"on":"2025-11-30"},{"score":51.36,"on":"2025-11-24"},{"score":32.73,"on":"2025-11-09"},{"score":51.96,"on":"2025-10-26"},{"score":63.52,"on":"2025-10-19"},{"score":72.23,"on":"2025-10-12"}]},{"id":197,"name":"NFL Player 1906","sport":"NFL","pos":"RB","rarity":"common","floor":0.0,"form":48.25,"score":54.3,"prior":[39.9,45.7,54.3],"form_history":[{"form":48.62,"on":"2025-09-17"},{"form":47.78,"on":"2025-09-29"},{"form":48.28,"on":"2025-10-08"},{"form":47.11,"on":"2025-10-21"},{"form":48.08,"on":"2025-10-30"},{"form":49.56,"on":"2025-11-11"},{"form":46.49,"on":"2025-11-24"},{"form":46.51,"on":"2025-12-07"},{"form":47.45,"on":"2025-12-17"}],"recent":[{"score":54.3,"on":"2025-12-08"},{"score":45.7,"on":"2025-11-30"},{"score":39.9,"on":"2025-11-24"},{"score":25.36,"on":"2025-11-16"},{"score":54.46,"on":"2025-11-09"},{"score":58.09,"on":"2025-11-02"},{"score":58.09,"on":"2025-10-26"},{"score":39.02,"on":"2025-10-19"}]},{"id":208,"name":"NFL Player 2007","sport":"NFL","pos":"WR","rarity":"rare","floor":28.0,"form":50.41,"score":62.18,"prior":[41.13,43.71,58.67],"form_history":[{"form":51.78,"on":"2025-09-17"},{"form":52.65,"on":"2025-09-29"},{"form":52.51,"on":"2025-10-08"},{"form":51.68,"on":"2025-10-21"},{"form":51.65,"on":"2025-10-30"},{"form":50.66,"on":"2025-11-11"},{"form":51.4,"on":"2025-11-24"},{"form":49.55,"on":"2025-12-07"},{"form":50.58,"on":"2025-12-17"}],"recent":[{"score":58.67,"on":"2025-12-14"},{"score":43.71,"on":"2025-12-07"},{"score":41.13,"on":"2025-11-30"},{"score":64.72,"on":"2025-11-24"},{"score":42.83,"on":"2025-11-16"},{"score":50.15,"on":"2025-11-09"},{"score":41.91,"on":"2025-11-02"},{"score":51.51,"on":"2025-10-27"}]},{"id":212,"name":"NFL Player 2101","sport":"NFL","pos":"RB","rarity":"common","floor":0.0,"form":44.59,"score":39.02,"prior":[48.19,32.29,39.24],"form_history":[{"form":51.57,"on":"2025-09-17"},{"form":52.36,"on":"2025-09-29"},{"form":52.11,"on":"2025-10-08"},{"form":51.09,"on":"2025-10-21"},{"form":50.24,"on":"2025-10-30"},{"form":50.19,"on":"2025-11-11"},{"form":47.57,"on":"2025-11-24"},{"form":46.12,"on":"2025-12-07"},{"form":45.48,"on":"2025-12-17"}],"recent":[{"score":39.24,"on":"2025-12-14"},{"score":32.29,"on":"2025-12-07"},{"score":48.19,"on":"2025-12-01"},{"score":35.9,"on":"2025-11-23"},{"score":35.9,"on":"2025-11-16"},{"score":49.7,"on":"2025-11-09"},{"score":41.33,"on":"2025-10-26"},{"score":51.81,"on":"2025-10-19"}]},{"id":221,"name":"NFL Player 2200","sport":"NFL","pos":"QB","rarity":"elite","floor":34.0,"form":41.76,"score":31.34,"prior":[44.22,12.92,37.56],"form_history":[{"form":49.7,"on":"2025-09-17"},{"form":48.88,"on":"2025-09-29"},{"form":48.4,"on":"2025-10-08"},{"form":46.63,"on":"2025-10-21"},{"form":46.44,"on":"2025-10-30"},{"form":44.52,"on":"2025-11-11"},{"form":44.31,"on":"2025-11-24"},{"form":41.14,"on":"2025-12-07"},{"form":41.0,"on":"2025-12-17"}],"recent":[{"score":37.56,"on":"2025-12-14"},{"score":12.92,"on":"2025-12-07"},{"score":44.22,"on":"2025-11-24"},{"score":39.47,"on":"2025-11-17"},{"score":42.65,"on":"2025-11-10"},{"score":25.36,"on":"2025-11-02"},{"score":44.05,"on":"2025-10-26"},{"score":35.9,"on":"2025-10-19"}]},{"id":253,"name":"NFL Player 2502","sport":"NFL","pos":"WR","rarity":"uncommon","floor":20.0,"form":50.94,"score":64.72,"prior":[42.65,40.32,64.72],"form_history":[{"form":51.21,"on":"2025-09-17"},{"form":52.01,"on":"2025-09-29"},{"form":51.61,"on":"2025-10-08"},{"form":50.21,"on":"2025-10-21"},{"form":49.01,"on":"2025-10-30"},{"form":47.61,"on":"2025-11-11"},{"form":45.0,"on":"2025-11-24"},{"form":44.65,"on":"2025-12-07"},{"form":46.98,"on":"2025-12-17"}],"recent":[{"score":64.72,"on":"2025-12-14"},{"score":40.32,"on":"2025-12-01"},{"score":42.65,"on":"2025-11-23"},{"score":22.08,"on":"2025-11-16"},{"score":12.92,"on":"2025-11-09"},{"score":74.09,"on":"2025-11-02"},{"score":36.2,"on":"2025-10-26"},{"score":47.11,"on":"2025-10-19"}]},{"id":254,"name":"NFL Player 2503","sport":"NFL","pos":"WR","rarity":"elite","floor":34.0,"form":53.86,"score":71.84,"prior":[68.91,85.92,53.67],"form_history":[{"form":52.2,"on":"2025-09-17"},{"form":52.9,"on":"2025-09-29"},{"form":53.46,"on":"2025-10-08"},{"form":54.43,"on":"2025-10-21"},{"form":57.76,"on":"2025-10-30"},{"form":55.99,"on":"2025-11-11"},{"form":52.68,"on":"2025-11-24"},{"form":57.52,"on":"2025-12-07"},{"form":56.89,"on":"2025-12-17"}],"recent":[{"score":53.67,"on":"2025-12-14"},{"score":85.92,"on":"2025-12-07"},{"score":68.91,"on":"2025-12-01"},{"score":31.34,"on":"2025-11-23"},{"score":48.79,"on":"2025-11-16"},{"score":31.83,"on":"2025-11-09"},{"score":67.9,"on":"2025-11-02"},{"score":96.08,"on":"2025-10-26"}]},{"id":256,"name":"NFL Player 2505","sport":"NFL","pos":"QB","rarity":"common","floor":0.0,"form":75.55,"score":96.08,"prior":[96.08,96.08,96.08],"form_history":[{"form":53.45,"on":"2025-09-17"},{"form":58.81,"on":"2025-09-29"},{"form":59.72,"on":"2025-10-08"},{"form":63.98,"on":"2025-10-21"},{"form":64.41,"on":"2025-10-30"},{"form":63.26,"on":"2025-11-11"},{"form":61.48,"on":"2025-11-24"},{"form":67.82,"on":"2025-12-07"},{"form":70.46,"on":"2025-12-17"}],"recent":[{"score":96.08,"on":"2025-12-14"},{"score":96.08,"on":"2025-12-07"},{"score":96.08,"on":"2025-12-01"},{"score":46.02,"on":"2025-11-23"},{"score":70.61,"on":"2025-11-16"},{"score":62.44,"on":"2025-11-09"},{"score":58.87,"on":"2025-11-02"},{"score":70.48,"on":"2025-10-26"}]},{"id":268,"name":"NFL Player 2607","sport":"NFL","pos":"WR","rarity":"elite","floor":34.0,"form":49.26,"score":60.98,"prior":[31.83,54.3,39.47],"form_history":[{"form":51.7,"on":"2025-09-17"},{"form":52.82,"on":"2025-09-29"},{"form":52.68,"on":"2025-10-08"},{"form":51.59,"on":"2025-10-21"},{"form":50.8,"on":"2025-10-30"},{"form":51.27,"on":"2025-11-11"},{"form":52.82,"on":"2025-11-24"},{"form":50.96,"on":"2025-12-07"},{"form":49.68,"on":"2025-12-17"}],"recent":[{"score":39.47,"on":"2025-12-14"},{"score":54.3,"on":"2025-12-07"},{"score":31.83,"on":"2025-11-30"},{"score":53.67,"on":"2025-11-23"},{"score":67.63,"on":"2025-11-16"},{"score":56.12,"on":"2025-11-09"},{"score":42.46,"on":"2025-10-26"},{"score":60.98,"on":"2025-10-19"}]},{"id":271,"name":"NFL Player 2700","sport":"NFL","pos":"QB","rarity":"signature","floor":38.0,"form":45.41,"score":48.79,"prior":[25.36,56.99,46.65],"form_history":[{"form":49.96,"on":"2025-09-17"},{"form":49.76,"on":"2025-09-29"},{"form":49.57,"on":"2025-10-08"},{"form":47.67,"on":"2025-10-21"},{"form":47.19,"on":"2025-10-30"},{"form":47.85,"on":"2025-11-11"},{"form":49.83,"on":"2025-11-24"},{"form":48.38,"on":"2025-12-07"},{"form":48.23,"on":"2025-12-17"}],"recent":[{"score":46.65,"on":"2025-12-14"},{"score":56.99,"on":"2025-12-07"},{"score":25.36,"on":"2025-11-30"},{"score":73.92,"on":"2025-11-24"},{"score":38.55,"on":"2025-11-16"},{"score":55.61,"on":"2025-11-09"},{"score":44.05,"on":"2025-11-03"},{"score":41.91,"on":"2025-10-26"}]},{"id":285,"name":"NFL Player 2804","sport":"NFL","pos":"TE","rarity":"elite","floor":34.0,"form":45.98,"score":34.27,"prior":[55.95,27.43,41.33],"form_history":[{"form":47.0,"on":"2025-09-17"},{"form":46.56,"on":"2025-09-29"},{"form":47.17,"on":"2025-10-08"},{"form":46.81,"on":"2025-10-21"},{"form":47.65,"on":"2025-10-30"},{"form":50.54,"on":"2025-11-11"},{"form":48.94,"on":"2025-11-24"},{"form":47.34,"on":"2025-12-07"},{"form":46.76,"on":"2025-12-17"}],"recent":[{"score":41.33,"on":"2025-12-14"},{"score":27.43,"on":"2025-12-07"},{"score":55.95,"on":"2025-11-30"},{"score":34.62,"on":"2025-11-23"},{"score":66.23,"on":"2025-11-09"},{"score":60.53,"on":"2025-11-02"},{"score":56.29,"on":"2025-10-26"},{"score":51.51,"on":"2025-10-20"}]},{"id":319,"name":"NFL Player 3108","sport":"NFL","pos":"WR","rarity":"rare","floor":28.0,"form":56.09,"score":54.62,"prior":[71.3,33.91,50.6],"form_history":[{"form":54.14,"on":"2025-09-17"},{"form":55.23,"on":"2025-09-29"},{"form":56.11,"on":"2025-10-08"},{"form":57.04,"on":"2025-10-21"},{"form":57.77,"on":"2025-10-30"},{"form":57.18,"on":"2025-11-11"},{"form":57.62,"on":"2025-11-24"},{"form":55.86,"on":"2025-12-07"},{"form":55.09,"on":"2025-12-17"}],"recent":[{"score":50.6,"on":"2025-12-14"},{"score":33.91,"on":"2025-12-07"},{"score":71.3,"on":"2025-11-30"},{"score":73.14,"on":"2025-11-23"},{"score":47.11,"on":"2025-11-16"},{"score":51.96,"on":"2025-11-10"},{"score":61.69,"on":"2025-11-02"},{"score":66.44,"on":"2025-10-27"}]}],"tactics":[{"code":"ALL_IN","name":"All In","text":"Card is your top scorer this challenge","family":"Risk Structure","condition":"all_in","base_rate":0.2,"hit":1.7,"miss":0.83,"counterplay":false,"multi_sport":false},{"code":"BOUNCE_BACK","name":"Bounce Back","text":"GameScore >= 55 after a sub-40 game","family":"Ceiling/Floor","condition":"bounce_back","base_rate":0.38,"hit":1.59,"miss":0.64,"counterplay":false,"multi_sport":false},{"code":"CEILING","name":"Ceiling","text":"GameScore >= 65 (90th pct)","family":"Ceiling/Floor","condition":"ceiling","base_rate":0.1,"hit":1.7,"miss":0.92,"counterplay":false,"multi_sport":false},{"code":"COLD_SNAP","name":"Cold Snap","text":"A revealed opposing card misses its median","family":"Counterplay","condition":"cold_snap","base_rate":0.5,"hit":1.35,"miss":0.65,"counterplay":true,"multi_sport":false},{"code":"DOUBLE_DOWN","name":"Double Down","text":"Card clears median; else replacement-level","family":"Risk Structure","condition":"double_down","base_rate":0.5,"hit":1.33,"miss":0.67,"counterplay":false,"multi_sport":false},{"code":"LOCKDOWN","name":"Lockdown","text":"A revealed opposing card scores below 40","family":"Counterplay","condition":"lockdown","base_rate":0.32,"hit":1.53,"miss":0.75,"counterplay":true,"multi_sport":false},{"code":"OVERRATED","name":"Overrated","text":"Opponent's highest-Form card is outscored by yours","family":"Counterplay","condition":"overrated","base_rate":0.4,"hit":1.43,"miss":0.71,"counterplay":true,"multi_sport":false},{"code":"RELIABLE","name":"Reliable","text":"GameScore >= 40","family":"Ceiling/Floor","condition":"reliable","base_rate":0.68,"hit":1.23,"miss":0.51,"counterplay":false,"multi_sport":false},{"code":"STEADY","name":"Steady","text":"GameScore >= 50 (median)","family":"Ceiling/Floor","condition":"steady","base_rate":0.5,"hit":1.33,"miss":0.67,"counterplay":false,"multi_sport":false},{"code":"TWO_SPORT","name":"Two-Sport","text":"Two different sports each clear median","family":"Cross-Sport","condition":"two_sport","base_rate":0.25,"hit":1.64,"miss":0.79,"counterplay":false,"multi_sport":true}]};
+
+const MEDIAN = 50;
+const CAP = {starter:5, bench:3, tactic:2};
+const RAR = {common:'--common',uncommon:'--uncommon',rare:'--rare',
+             elite:'--elite',signature:'--signature'};
+const PIP = {common:1,uncommon:2,rare:3,elite:4,signature:5};
+
+const S = { handle:'alice', tab:'starter', pick:{starter:[],bench:[],tactic:[]},
+            budget:DATA.budget };
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c =>
+  ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const r2 = x => Math.round(x * 100) / 100;
+
+function show(v){ ['login','build','recap'].forEach(n => $('v-'+n).hidden = n !== v); }
+function oops(msg){
+  const e = $('err'); e.textContent = msg; e.hidden = false;
+  clearTimeout(oops.t); oops.t = setTimeout(() => e.hidden = true, 5000);
+}
+
+// ---------------------------------------------------------------- the rules
+// Mirrors engine/resolution.py:apply_floor. The rarity floor covers a bad
+// GAME, not an absence: a card that never played takes replacement level with
+// NO floor. Letting a Signature floor of 38 rescue a replacement 15 would make
+// rarity insure against injury and gut the reason to carry a bench at all.
+function applyFloor(raw, floor, wasReplacement){
+  if(wasReplacement) return [raw, false];
+  return [Math.max(raw, floor), raw < floor];
+}
+
+// Mirrors Resolver._slot_scores. A scratched starter is covered by the first
+// unused bench card that DID play; the floor then belongs to the card that
+// actually played, so a substitute brings its own rarity rather than
+// inheriting the scratched starter's.
+function scoreSide(lineup){
+  const benchUsed = new Set();
+  return lineup.starters.map((c, i) => {
+    let raw = c.score, sub = null, wasReplacement = false, rarity = c.rarity;
+    if(raw === null){
+      const b = lineup.bench.find(x => x.score !== null && !benchUsed.has(x.id));
+      if(b){ benchUsed.add(b.id); raw = b.score; sub = b; rarity = b.rarity; }
+      else { raw = DATA.replacement[c.sport]; wasReplacement = true; }
+    }
+    const [pre, floorApplied] = applyFloor(raw, DATA.floors[rarity], wasReplacement);
+    return {
+      slot_index: i + 1, card: c, sub, rarity,
+      form_at_lock: c.form, prior: c.prior,
+      // Starters 1 and 2 are face-up at lock -- that is the information
+      // counterplay tactics read, and the reason slot order is a decision.
+      is_revealed: i < 2,
+      raw: r2(raw), pre: r2(pre), floor_applied: floorApplied,
+      was_replacement: wasReplacement,
+    };
+  });
+}
+
+// The ten conditions the demo pool ships. Each returns [hit, evidence], and
+// reads POST-floor PRE-multiplier scores on both sides, so no tactic can feed
+// another and the order stays well defined.
+const revealed = ctx => ctx.opp.filter(s => s.is_revealed);
+const worstRevealed = ctx => {
+  const r = revealed(ctx);
+  return r.length ? Math.min(...r.map(s => s.pre)) : null;
+};
+const sportsClearing = ctx => {
+  const by = {};
+  ctx.own.forEach(s => (by[s.card.sport] = by[s.card.sport] || []).push(s.pre));
+  return Object.keys(by).filter(sp => by[sp].some(x => x >= MEDIAN));
+};
+const CONDITIONS = {
+  steady:   ctx => [ctx.slot.pre >= MEDIAN, {score: ctx.slot.pre, threshold: MEDIAN}],
+  reliable: ctx => [ctx.slot.pre >= 40,     {score: ctx.slot.pre, threshold: 40}],
+  ceiling:  ctx => [ctx.slot.pre >= 65,     {score: ctx.slot.pre, threshold: 65}],
+  bounce_back: ctx => {
+    const prev = ctx.slot.prior, last = prev.length ? prev[prev.length-1] : null;
+    return [ctx.slot.pre >= 55 && last !== null && last < 40,
+            {score: ctx.slot.pre, previous_game: last}];
+  },
+  cold_snap: ctx => { const w = worstRevealed(ctx);
+    return [w !== null && w < MEDIAN, {worst_revealed_opponent: w}]; },
+  lockdown:  ctx => { const w = worstRevealed(ctx);
+    return [w !== null && w < 40, {worst_revealed_opponent: w}]; },
+  overrated: ctx => {
+    const r = revealed(ctx);
+    if(!r.length) return [false, {reason: 'no opponent card revealed'}];
+    const top = r.reduce((a,b) => b.form_at_lock > a.form_at_lock ? b : a);
+    const mine = Math.max(...ctx.own.map(s => s.pre));
+    return [mine > top.pre, {their_top_form_card: top.pre, my_best: mine}];
+  },
+  two_sport: ctx => { const sp = sportsClearing(ctx);
+    return [sp.length >= 2, {sports_clearing_median: sp.join(', ')}]; },
+  double_down: ctx => [ctx.slot.pre >= MEDIAN, {score: ctx.slot.pre}],
+  all_in: ctx => { const best = Math.max(...ctx.own.map(s => s.pre));
+    return [ctx.slot.pre >= best, {score: ctx.slot.pre, best_in_lineup: best}]; },
+};
+
+// Mirrors Resolver.resolve. Tactics on the same target multiply.
+function resolveMatch(you, them){
+  const sides = [
+    {handle: S.handle, is_you: true,  lineup: you,  slots: scoreSide(you)},
+    {handle: 'the house', is_you: false, lineup: them, slots: scoreSide(them)},
+  ];
+  const log = [];
+  sides.forEach((side, i) => {
+    const opp = sides[1 - i].slots;
+    const mult = {};
+    side.lineup.tactics.forEach((t, ti) => {
+      const target = side.slots[ti];            // tactic n attaches to starter n
+      const fn = CONDITIONS[t.condition];
+      let hit = false, evidence = {unsupported_condition: t.condition}, m = 1.0;
+      if(fn && target){
+        [hit, evidence] = fn({slot: target, own: side.slots, opp});
+        m = hit ? t.hit : t.miss;
+        mult[target.slot_index] = (mult[target.slot_index] || 1) * m;
+      }
+      log.push({handle: side.handle, is_you: side.is_you, name: t.name,
+                did_hit: hit, multiplier: m,
+                target_name: target ? target.card.name : null, evidence});
+    });
+    let total = 0, pre = 0;
+    side.slots.forEach(s => {
+      s.tactic_multiplier = mult[s.slot_index] || 1;
+      s.final_score = r2(s.pre * s.tactic_multiplier);
+      total += s.final_score; pre += s.pre;
+    });
+    side.total_score = r2(total);
+    side.pre_tactic_total = r2(pre);
+    side.tactic_swing = r2(total - pre);
+  });
+  const [a, b] = sides;
+  a.is_winner = a.total_score >= b.total_score;
+  b.is_winner = !a.is_winner;
+  const finalMargin = r2(a.total_score - b.total_score);
+  const preMargin = r2(a.pre_tactic_total - b.pre_tactic_total);
+  return {sides, tactic_log: log, counterfactual: {
+    final_margin: finalMargin, pre_tactic_margin: preMargin,
+    tactics_decided_it: (finalMargin > 0) !== (preMargin > 0),
+  }};
+}
+
+// Mirrors validate_deck(): the same seven rules the lock itself enforces, so
+// the builder can never show you a lineup the match would refuse.
+function violations(){
+  const out = [];
+  const {starter, bench, tactic} = S.pick;
+  if(starter.length !== 5) out.push(`starters must be exactly 5, found ${starter.length}`);
+  if(bench.length   !== 3) out.push(`bench must be exactly 3, found ${bench.length}`);
+  if(tactic.length  !== 2) out.push(`tactics must be exactly 2, found ${tactic.length}`);
+  const cp = tactic.filter(t => t.counterplay).length;
+  if(cp > 1) out.push(`at most 1 counterplay tactic, found ${cp}`);
+  const sports = new Set(starter.map(c => c.sport));
+  tactic.filter(t => t.multi_sport).forEach(t => {
+    if(sports.size < 2) out.push(`cross-sport tactic ${t.name} requires 2+ sports in lineup`);
+  });
+  const seen = new Set();
+  [...starter, ...bench].forEach(c => {
+    if(seen.has(c.id)) out.push(`duplicate player in lineup: ${c.name}`);
+    seen.add(c.id);
+  });
+  const sp = spent();
+  if(sp > S.budget) out.push(`form budget exceeded: ${Math.round(sp)} > ${S.budget}`);
+  return out;
+}
+
+// Mirrors _autobuild_deck: one of each sport first, then the best that still
+// fits, reserving room for the slots still to fill. Reserving against the pool
+// minimum instead overstates what is left once that card is taken, and the
+// last slot misses by a fraction.
+function autobuild(){
+  const pool = shuffled(DATA.cards.filter(c => c.form !== null));
+  const starters = [], bench = [], used = new Set();
+  let spentB = 0;
+  const affordable = c => {
+    const need = 4 - starters.length;
+    const rest = pool.filter(x => !used.has(x.id) && x.id !== c.id)
+                     .map(x => x.form).sort((a,b) => a - b).slice(0, Math.max(0, need));
+    return spentB + c.form + rest.reduce((a,b) => a + b, 0) <= S.budget;
+  };
+  const take = c => { used.add(c.id); spentB += c.form; starters.push(c); };
+  [...new Set(pool.map(c => c.sport))].sort().forEach(sport => {
+    const c = pool.find(x => x.sport === sport && !used.has(x.id) && affordable(x));
+    if(c) take(c);
+  });
+  [...pool].sort((a,b) => b.form - a.form).forEach(c => {
+    if(starters.length < 5 && !used.has(c.id) && affordable(c)) take(c);
+  });
+  pool.forEach(c => { if(bench.length < 3 && !used.has(c.id)){ used.add(c.id); bench.push(c); } });
+  // At most one counterplay tactic -- the same rule a human faces.
+  const tactics = []; let counter = 0;
+  shuffled(DATA.tactics).forEach(t => {
+    if(tactics.length === 2) return;
+    if(t.multi_sport && new Set(starters.map(c => c.sport)).size < 2) return;
+    if(t.counterplay){ if(counter) return; counter++; }
+    tactics.push(t);
+  });
+  return {starters, bench, tactics};
+}
+function shuffled(a){
+  const x = a.slice();
+  for(let i = x.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1)); [x[i], x[j]] = [x[j], x[i]];
+  }
+  return x;
+}
+
+// ---------------------------------------------------------------- building
+const spent = () => S.pick.starter.reduce((a,c) => a + c.form, 0);
+const chosenIds = () => new Set([...S.pick.starter, ...S.pick.bench].map(c => c.id));
+
+// A card is only affordable if taking it still leaves enough budget to FILL
+// the remaining starter slots. Without this you can spend 274 of 275 on four
+// players and strand the fifth -- a dead end the player cannot see coming.
+function reserveAfter(card){
+  const need = 4 - S.pick.starter.length;
+  if(need <= 0) return 0;
+  const taken = chosenIds();
+  return DATA.cards.filter(c => c.form !== null && !taken.has(c.id) && c.id !== card.id)
+                   .map(c => c.form).sort((a,b) => a - b)
+                   .slice(0, need).reduce((a,b) => a + b, 0);
+}
+const affordable = c => spent() + c.form + reserveAfter(c) <= S.budget;
+
+function add(kind, key){
+  const list = S.pick[kind];
+  if(list.length >= CAP[kind]) return oops(`only ${CAP[kind]} ${kind} slots`);
+  if(kind === 'tactic'){
+    const t = DATA.tactics.find(x => x.code === key);
+    if(t.counterplay && S.pick.tactic.some(x => x.counterplay))
+      return oops('only one counterplay tactic per deck');
+    list.push(t);
+  } else {
+    const c = DATA.cards.find(x => x.id === Number(key));
+    if(chosenIds().has(c.id)) return oops('that player is already in your lineup');
+    if(kind === 'starter' && !affordable(c)){
+      const short = Math.round(spent() + c.form + reserveAfter(c) - S.budget);
+      return oops(spent() + c.form > S.budget
+        ? `over budget by ${Math.round(spent() + c.form - S.budget)}`
+        : `that leaves too little for your last ${4 - S.pick.starter.length} slot(s) — short ${short}`);
+    }
+    list.push(c);
+  }
+  render();
+}
+
+function pips(rarity){
+  const n = PIP[rarity] || 1, col = `var(${RAR[rarity] || '--common'})`;
+  // Parenthesised: `.` binds tighter than `+`, so without these the repeat
+  // applies to the last operand only and emits bare `"></i>` fragments.
+  return `<span class="pips">${('<i style="background:' + col + '"></i>').repeat(n)}</span>`;
+}
+
+function setTab(t){
+  S.tab = t;
+  ['starter','bench','tactic'].forEach(n =>
+    $('t-' + n).setAttribute('aria-selected', String(n === t)));
+  render();
+}
+
+function render(){
+  const sp = spent(), rem = S.budget - sp;
+  $('spent').textContent = Math.round(sp);
+  $('bar').style.width = Math.min(100, sp / S.budget * 100) + '%';
+  $('bar').style.background = sp > S.budget ? 'var(--bad)' : 'var(--accent)';
+  $('left').innerHTML = `<span class="${rem < 0 ? 'bad' : 'good'}">${Math.round(rem)} left</span>` +
+    (S.pick.starter.length < 5 ? `<span class="sm"> for ${5 - S.pick.starter.length} more</span>` : '');
+  const mix = {};
+  S.pick.starter.forEach(c => mix[c.sport] = (mix[c.sport] || 0) + 1);
+  $('mix').textContent = Object.entries(mix).map(([k,v]) => `${k} x${v}`).join('  ') || '—';
+
+  const list = S.pick[S.tab], out = [];
+  list.forEach((c,i) => {
+    const col = S.tab === 'tactic' ? 'var(--accent)' : `var(${RAR[c.rarity] || '--common'})`;
+    out.push(`<button class="slot" style="border-left-color:${col}" data-drop="${i}">
+      <div style="width:34px" class="stack">
+        <span class="sm" style="font-family:Oswald">${S.tab === 'tactic' ? 'TAC' : esc(c.sport)}</span>
+        ${S.tab === 'tactic' ? '' : pips(c.rarity)}
+      </div>
+      <div><div style="font-size:14px;font-weight:500">${esc(c.name)}</div>
+        <div class="sm">${S.tab === 'tactic'
+          ? `${c.hit}x / ${c.miss}x · on starter ${i + 1}`
+          : `${esc(c.pos)} · ${c.rarity} · floor ${c.floor}`}</div></div>
+      <span class="grow"></span>
+      ${S.tab === 'tactic' ? '<span class="sm">remove</span>'
+        : `<span class="num">${Math.round(c.form)}</span>`}
+    </button>`);
+  });
+  for(let i = list.length; i < CAP[S.tab]; i++){
+    let hint = '';
+    if(S.tab === 'starter'){
+      const ok = DATA.cards.filter(c => c.form !== null && !chosenIds().has(c.id) && affordable(c))
+                           .map(c => c.form);
+      hint = ok.length ? 'Form ' + Math.round(Math.max(...ok)) + ' or less' : 'no card fits';
+    }
+    out.push(`<div class="slot empty"><span style="font-size:14px">+ ${S.tab} ${i + 1}</span>
+      <span class="grow"></span><span class="sm">${hint}</span></div>`);
+  }
+  $('chosen').innerHTML = out.join('');
+
+  const used = chosenIds();
+  const takenT = new Set(S.pick.tactic.map(t => t.code));
+  $('poolLabel').textContent = S.tab === 'tactic' ? 'YOUR TACTICS' : 'AVAILABLE';
+  if(S.tab === 'tactic'){
+    $('pool').innerHTML = DATA.tactics.filter(t => !takenT.has(t.code)).map(t => `
+      <button class="slot" style="border-left-color:var(--accent)" data-add="${t.code}">
+        <div><div style="font-size:14px;font-weight:500">${esc(t.name)}</div>
+          <div class="sm">${esc(t.text)}</div>
+          <div class="sm" style="margin-top:2px">hits ${Math.round(t.base_rate * 100)}% · avg x1.00${
+            t.counterplay ? ' · counterplay' : ''}</div></div>
+        <span class="grow"></span>
+        <span class="sm good">${t.hit}x</span><span class="sm bad">${t.miss}x</span>
+      </button>`).join('');
+  } else {
+    const full = S.tab === 'starter' && S.pick.starter.length >= CAP.starter;
+    $('pool').innerHTML = [...DATA.cards].filter(c => c.form !== null && !used.has(c.id))
+      .sort((a,b) => b.form - a.form).map(c => {
+        const over = S.tab === 'starter' && !full && !affordable(c);
+        const short = over ? Math.round(spent() + c.form + reserveAfter(c) - S.budget) : 0;
+        return `<button class="slot ${over || full ? 'over' : ''}"
+                  style="border-left-color:var(${RAR[c.rarity] || '--common'})" data-add="${c.id}">
+          <div style="width:34px" class="stack">
+            <span class="sm" style="font-family:Oswald">${esc(c.sport)}</span>${pips(c.rarity)}
+          </div>
+          <div><div style="font-size:14px;font-weight:500">${esc(c.name)}</div>
+            <div class="sm ${over ? 'bad' : ''}">${over
+              ? (c.form > rem ? 'over budget by ' + Math.round(c.form - rem)
+                              : 'would strand your last slots by ' + short)
+              : esc(c.pos) + ' · ' + c.rarity + ' · floor ' + c.floor}</div></div>
+          <span class="grow"></span><span class="num">${Math.round(c.form)}</span>
+        </button>`;
+      }).join('');
+  }
+
+  const v = violations();
+  $('violations').innerHTML = v.map(x => `<div class="viol">${esc(x)}</div>`).join('');
+  $('play').disabled = v.length > 0;
+  $('play').textContent = v.length ? 'Finish your deck' : 'Play match';
+}
+
+// -------------------------------------------------------------------- recap
+function drawRecap(r){
+  const you = r.sides.find(s => s.is_you), them = r.sides.find(s => !s.is_you);
+  const won = you.is_winner, cf = r.counterfactual;
+  const flipped = cf.tactics_decided_it;
+
+  // A scratched starter and a bad game are both low numbers, and they are not
+  // the same thing: the floor covers the bad game and pointedly does not cover
+  // the absence. Losing to an injury is survivable; not being told is not.
+  const slot = s => `<div class="slot" style="min-height:48px;border-left-color:${
+      s.was_replacement ? 'var(--bad)' :
+      s.floor_applied ? 'var(--elite)' : (s.tactic_multiplier !== 1
+        ? (s.tactic_multiplier > 1 ? 'var(--good)' : 'var(--bad)') : 'var(--common)')}">
+      <span class="sm" style="font-family:Oswald;width:26px">${esc(
+        (s.sub || s.card).sport)}</span>
+      <div><div style="font-size:13px;font-weight:500">${esc(
+            (s.sub || s.card).name)}</div>
+        <div class="sm">${[
+          s.was_replacement ? 'did not play — replacement level, no floor' : '',
+          s.sub ? `bench sub for ${esc(s.card.name)}` : '',
+          s.floor_applied ? 'floor caught it' : '',
+          s.tactic_multiplier !== 1 ? `tactic ${r2(s.tactic_multiplier)}x` : ''
+        ].filter(Boolean).join(' · ') || 'no tactic'}</div></div>
+      <span class="grow"></span>
+      <span class="sm">${s.raw.toFixed(2)}</span>
+      <span class="num" style="width:58px;text-align:right">${s.final_score.toFixed(2)}</span>
+    </div>`;
+
+  $('recap').innerHTML = `
+    <div class="card" style="border-color:${won ? 'rgba(92,201,141,.3)' : 'rgba(224,138,138,.3)'};
+         background:${won ? '#13221A' : '#1B1416'}">
+      <div class="row">
+        <span class="disp" style="font-size:30px;color:var(${won ? '--good' : '--bad'})">${
+          won ? 'WON' : 'LOST'}</span>
+        <span class="disp" style="font-size:16px;color:var(${won ? '--good' : '--bad'})">${
+          (you.total_score - them.total_score).toFixed(1)}</span>
+      </div>
+      <div class="row" style="margin-top:14px;align-items:flex-end">
+        <div><div class="lbl">YOU</div>
+          <div class="disp" style="font-size:30px">${you.total_score.toFixed(2)}</div></div>
+        <span class="grow"></span>
+        <div style="text-align:right"><div class="lbl">THE HOUSE</div>
+          <div class="disp" style="font-size:30px;color:var(--mute)">${
+            them.total_score.toFixed(2)}</div></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:12px">
+      <div class="lbl">WHAT DECIDED IT</div>
+      <p style="margin:7px 0 0;font-size:14px;line-height:1.45;font-weight:500">${
+        flipped ? 'Your tactics reversed this match.' : 'The lineups decided this one.'}</p>
+      <div class="row" style="gap:10px;margin-top:12px">${
+        [['YOUR TACTICS', you.tactic_swing], ['THEIRS', them.tactic_swing]].map(([lab, v]) => {
+          const up = v >= 0, tint = up ? '92,201,141' : '224,138,138';
+          return `<div style="flex:1;border-radius:8px;padding:9px 11px;
+               background:rgba(${tint},.1);border:1px solid rgba(${tint},.28)">
+            <div class="lbl">${lab}</div>
+            <div class="disp" style="font-size:20px;color:var(${up ? '--good' : '--bad'})">${
+              (up ? '+' : '') + v.toFixed(1)}</div></div>`;
+        }).join('')}
+      </div>
+      <div style="margin-top:12px;background:var(--sunk);border-radius:9px;padding:11px 12px">
+        <div class="lbl">ON RAW SCORES ALONE</div>
+        <div class="row" style="margin-top:6px;align-items:baseline">
+          <span class="disp" style="font-size:17px;color:var(--mute)">${
+            you.pre_tactic_total.toFixed(2)}</span>
+          <span class="sm">you</span><span class="grow"></span>
+          <span class="disp" style="font-size:17px">${them.pre_tactic_total.toFixed(2)}</span>
+          <span class="sm">them</span>
+        </div>
+        <p style="margin:8px 0 0;font-size:12px;line-height:1.45" class="${flipped ? 'warn' : 'sm'}">${
+          flipped
+            ? `You ${won ? 'lose' : 'win'} this match by ${
+                Math.abs(cf.pre_tactic_margin).toFixed(1)} without the tactics.`
+            : `Tactics moved it by ${Math.abs(
+                cf.final_margin - cf.pre_tactic_margin).toFixed(1)}, not enough to flip it.`}</p>
+      </div>
+    </div>
+
+    <div class="lbl" style="margin:18px 0 8px">YOUR LINEUP</div>
+    <div class="stack">${you.slots.map(slot).join('')}</div>
+    <div class="lbl" style="margin:18px 0 8px">THE HOUSE</div>
+    <div class="stack">${them.slots.map(slot).join('')}</div>
+
+    <div class="lbl" style="margin:18px 0 8px">TACTIC LOG</div>
+    <div class="stack">${r.tactic_log.map(t => `
+      <div class="card" style="padding:10px 12px;border-left:3px solid var(${
+        t.did_hit ? '--good' : '--bad'})">
+        <div class="row">
+          <span class="sm" style="font-family:Oswald">${t.is_you ? 'YOU' : 'THEM'}</span>
+          <span class="disp" style="font-size:14px">${esc(t.name)}</span>
+          <span class="grow"></span>
+          <span class="disp" style="font-size:14px;color:var(${t.did_hit ? '--good' : '--bad'})">${
+            t.did_hit ? 'HIT' : 'MISS'} ${r2(t.multiplier)}x</span>
+        </div>
+        <div class="sm" style="margin-top:4px">on ${esc(t.target_name || '—')}</div>
+        <div style="margin-top:5px;font-size:12px;color:var(--ink2)">${esc(
+          Object.entries(t.evidence || {})
+            .map(([k,v]) => `${k.replace(/_/g,' ')}: ${v === null ? 'none' : v}`)
+            .join(' · '))}</div>
+      </div>`).join('')}</div>
+
+    <p class="sm" style="margin:22px 0 0;line-height:1.6">
+      Scored against the week after ${esc(DATA.lock_at)} of a replayed two-sport
+      season. Every game was already final when you locked, so nothing here
+      waited on a result — and nothing could look ahead to one.</p>`;
+}
+
+// --------------------------------------------------------------------- flow
+function signIn(){
+  S.handle = ($('handle').value || '').trim().slice(0, 24) || 'alice';
+  $('who').textContent = S.handle;
+  $('budget').textContent = '/ ' + S.budget;
+  show('build'); render(); window.scrollTo(0,0);
+}
+
+function play(){
+  if(violations().length) return;
+  const you = {starters: S.pick.starter, bench: S.pick.bench, tactics: S.pick.tactic};
+  drawRecap(resolveMatch(you, autobuild()));
+  show('recap'); window.scrollTo(0,0);
+}
+
+function newMatch(){
+  S.pick = {starter:[], bench:[], tactic:[]};
+  setTab('starter'); show('build'); window.scrollTo(0,0);
+}
+
+$('start').addEventListener('click', signIn);
+$('play').addEventListener('click', play);
+$('again').addEventListener('click', newMatch);
+document.querySelectorAll('.tabs button').forEach(b =>
+  b.addEventListener('click', () => setTab(b.dataset.tab)));
+$('chosen').addEventListener('click', e => {
+  const b = e.target.closest('[data-drop]');
+  if(b){ S.pick[S.tab].splice(Number(b.dataset.drop), 1); render(); }
+});
+$('pool').addEventListener('click', e => {
+  const b = e.target.closest('[data-add]');
+  if(b) add(S.tab, b.dataset.add);
+});
+$('handle').addEventListener('keydown', e => { if(e.key === 'Enter') signIn(); });
+render();
+</script>
