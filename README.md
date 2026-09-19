@@ -86,11 +86,16 @@ shows the shelf rise while the ceiling does not move. The back puts the floor
 straight across that player's last eight GameScores and counts how many it
 would have caught.
 
-The four coloured tiers are re-stepped for the card's dark surface and pass
-the palette checks on adjacent pairs; Common is a neutral rather than a fifth
-hue, because being untreated is what Common means, and pip count carries the
-ladder without colour. They do **not** pass all-pairs CVD separation, which is
-fine for one card at a time and is not fine for the grid.
+It draws on the same ordinal rarity ramp as the grid, and keeps three
+encodings apart rather than letting them inherit colours: the rarity
+**ladder** in blue, the **floor** in gold, and **Form** -- the card's primary
+datum -- in plain ink, each separable from the others under all three
+colour-vision models. The five-hue palette it replaced collided with itself
+twice over: its Signature was the same gold as the floor mark, so on a
+Signature card the tier and the floor were one colour.
+
+Pip count is the channel that has to survive with no colour at all, so it
+never takes a rung of the ramp too dark to count.
 
 `web/grid.template.html` (built by `python3 web/build_grid.py`) is the
 collection: all 48 at once. Since everyone holds the same pool it is not a
