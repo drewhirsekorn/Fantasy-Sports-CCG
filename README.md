@@ -78,6 +78,22 @@ the replacement rule are both exercised rather than the happy path.
 It is a demo, not the system: the database enforces the invariants, and the
 page only obeys them.
 
+`web/card.template.html` (built by `python3 web/build_card.py`) is a separate
+prototype for a single card face, front and back. Its job is to make the
+rarity rule legible rather than merely true: Form sits on a 0-100 rail and the
+floor is drawn as a shelf under it, so stepping a real player up the ladder
+shows the shelf rise while the ceiling does not move. The back puts the floor
+straight across that player's last eight GameScores and counts how many it
+would have caught.
+
+The four coloured tiers are re-stepped for the card's dark surface and pass
+the palette checks on adjacent pairs; Common is a neutral rather than a fifth
+hue, because being untreated is what Common means, and pip count carries the
+ladder without colour. They do **not** pass all-pairs CVD separation (Uncommon
+green against Elite magenta is deutan dE 2.7), which is fine for one card at a
+time and would not be for a collection grid -- that screen needs a single-hue
+ordinal ramp.
+
 ## How it works
 
 ```
