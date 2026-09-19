@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fantasy Sports CCG</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --bg:#0D1117; --surface:#161C24; --sunk:#0F141B; --line:rgba(255,255,255,.09);
+    --ink:#F2F5F8; --ink2:#C6CFD8; --mute:#9AA6B2; --dim:#6E7A88; --faint:#57616D;
+    --accent:#63A8E8; --good:#5CC98D; --bad:#E08A8A; --warn:#EDB443;
+    /* rarity ramp, validated for colour-blind separation */
+    --common:#69747F; --uncommon:#5CC98D; --rare:#63A8E8; --elite:#EE5C93; --signature:#EDB443;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font-family:'IBM Plex Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:430px;margin:0 auto;padding:0 16px 40px;min-height:100vh}
+  h1,h2,.disp{font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:.01em;margin:0}
+  button{font-family:inherit;cursor:pointer}
+  .btn{width:100%;min-height:50px;border:none;border-radius:10px;background:#263140;
+       color:var(--ink);font-size:15px;font-weight:600}
+  .btn.go{background:#2F6F4E;color:#EAF6EF}
+  .btn:disabled{background:#1C242E;color:var(--faint);cursor:not-allowed}
+  .ghost{background:transparent;border:1px solid var(--line);color:var(--mute);
+         border-radius:10px;min-height:44px;font-size:14px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .row{display:flex;align-items:center;gap:10px}
+  .grow{flex-grow:1}
+  .lbl{font-size:10px;letter-spacing:.15em;color:var(--dim)}
+  .sm{font-size:11px;color:var(--dim)}
+  .slot{display:flex;align-items:center;gap:10px;width:100%;text-align:left;
+        background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--common);
+        border-radius:10px;padding:9px 12px;min-height:58px;color:var(--ink)}
+  .slot.empty{background:transparent;border:1px dashed rgba(255,255,255,.2);
+              border-left:1px dashed rgba(255,255,255,.2);color:var(--accent)}
+  .slot.over{opacity:.45}
+  .num{font-family:'Oswald',sans-serif;font-size:20px;font-weight:600;line-height:1}
+  .bar{height:8px;border-radius:4px;background:rgba(255,255,255,.07);overflow:hidden}
+  .bar > div{height:8px;border-radius:4px;background:var(--accent)}
+  .tabs{display:flex;background:#131920;border-radius:10px;padding:4px;gap:0}
+  .tabs button{flex:1;height:40px;border:none;border-radius:7px;background:transparent;
+               color:var(--mute);font-size:12px}
+  .tabs button[aria-selected="true"]{background:#263140;color:var(--ink);font-weight:600}
+  .pips{display:flex;gap:2px}
+  .pips i{width:3px;height:3px;border-radius:50%;display:block}
+  .stack{display:flex;flex-direction:column;gap:7px}
+  .bad{color:var(--bad)} .good{color:var(--good)} .warn{color:var(--warn)}
+  .viol{background:var(--surface);border:1px solid rgba(224,138,138,.25);
+        border-left:3px solid var(--bad);border-radius:10px;padding:10px 12px;font-size:12px}
+  .hide{display:none}
+  input{background:var(--sunk);border:1px solid var(--line);border-radius:10px;
+        color:var(--ink);font:inherit;padding:0 12px;height:46px;width:100%}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ============ sign in ============ -->
+  <section id="v-login">
+    <div style="padding:64px 0 24px">
+      <h1 style="font-size:26px">FANTASY SPORTS CCG</h1>
+      <p class="sm" style="margin:8px 0 0;line-height:1.55">
+        A fixed 48-card pool. Build five starters under a Form budget, attach two
+        tactics, and play a match that settles against a real replayed season.
+      </p>
+    </div>
+    <div class="stack">
+      <input id="handle" value="alice" autocomplete="off" aria-label="Your handle">
+      <button class="btn go" onclick="signIn()">Start</button>
+      <p class="sm" style="margin:4px 0 0">No packs. No live updates. Matches settle instantly.</p>
+    </div>
+  </section>
+
+  <!-- ============ deck builder ============ -->
+  <section id="v-build" class="hide">
+    <div class="row" style="padding:16px 0 12px">
+      <h1 style="font-size:20px">BUILD</h1>
+      <span class="grow"></span>
+      <span class="sm" id="who"></span>
+    </div>
+
+    <div class="card">
+      <div class="row" style="align-items:baseline">
+        <span class="lbl">FORM BUDGET</span><span class="grow"></span>
+        <span class="disp" style="font-size:24px" id="spent">0</span>
+        <span class="sm" id="budget">/ 275</span>
+      </div>
+      <div class="bar" style="margin-top:10px"><div id="bar" style="width:0%"></div></div>
+      <div class="row" style="margin-top:9px">
+        <span class="sm" id="left"></span><span class="grow"></span>
+        <span class="sm" id="mix"></span>
+      </div>
+    </div>
+
+    <div class="tabs" style="margin-top:14px" role="tablist">
+      <button role="tab" id="t-starter" aria-selected="true" onclick="setTab('starter')">Starters</button>
+      <button role="tab" id="t-bench"   aria-selected="false" onclick="setTab('bench')">Bench</button>
+      <button role="tab" id="t-tactic"  aria-selected="false" onclick="setTab('tactic')">Tactics</button>
+    </div>
+
+    <div class="stack" style="margin-top:12px" id="chosen"></div>
+
+    <div class="lbl" style="margin:18px 0 8px" id="poolLabel">AVAILABLE</div>
+    <div class="stack" id="pool"></div>
+
+    <div style="position:sticky;bottom:0;background:linear-gradient(transparent,var(--bg) 22%);
+                padding:20px 0 8px;margin-top:18px">
+      <div class="stack" id="violations" style="margin-bottom:10px"></div>
+      <button class="btn go" id="play" onclick="play()" disabled>Play match</button>
+    </div>
+  </section>
+
+  <!-- ============ recap ============ -->
+  <section id="v-recap" class="hide">
+    <div class="row" style="padding:16px 0 12px">
+      <h1 style="font-size:20px">RESULT</h1><span class="grow"></span>
+      <button class="ghost" style="width:auto;padding:0 14px;min-height:36px"
+              onclick="newMatch()">New match</button>
+    </div>
+    <div id="recap"></div>
+  </section>
+
+  <div id="err" class="hide" style="position:fixed;left:16px;right:16px;bottom:16px;
+       background:#2A1A1E;border:1px solid rgba(224,138,138,.4);border-radius:10px;
+       padding:12px 14px;font-size:12px;max-width:398px;margin:0 auto"></div>
+</div>
+
+<script>
+const S = { token:null, handle:null, pool:[], tactics:[], deck:null, chal:null,
+            tab:'starter', pick:{starter:[], bench:[], tactic:[]}, budget:275 };
+const RAR = {common:'--common',uncommon:'--uncommon',rare:'--rare',elite:'--elite',signature:'--signature'};
+const PIP = {common:1,uncommon:2,rare:3,elite:4,signature:5};
+const CAP = {starter:5, bench:3, tactic:2};
+
+const $ = id => document.getElementById(id);
+const show = v => ['login','build','recap'].forEach(n =>
+  $('v-'+n).classList.toggle('hide', n !== v));
+
+function oops(msg){ const e=$('err'); e.textContent=msg; e.classList.remove('hide');
+  clearTimeout(oops.t); oops.t=setTimeout(()=>e.classList.add('hide'), 5000); }
+
+async function api(path, method='GET', body){
+  const r = await fetch(path, {
+    method,
+    headers: Object.assign({'Content-Type':'application/json'},
+                           S.token ? {Authorization:'Bearer '+S.token} : {}),
+    body: body===undefined ? undefined : JSON.stringify(body)
+  });
+  const data = await r.json().catch(()=>null);
+  if(!r.ok){ throw new Error(typeof data?.detail === 'string' ? data.detail
+                             : JSON.stringify(data?.detail ?? data)); }
+  return data;
+}
+
+// --------------------------------------------------------------- sign in
+async function signIn(){
+  try{
+    const h = $('handle').value.trim() || 'alice';
+    const t = await api('/auth/token','POST',{handle:h});
+    S.token = t.token; S.handle = t.handle;
+    $('who').textContent = S.handle;
+
+    const [col, tac] = await Promise.all([api('/collection?limit=200'), api('/my/tactics')]);
+    S.pool = col.items; S.tactics = tac.items;
+    const d = await api('/decks','POST',{name:'my deck'});
+    S.deck = d.id;
+    const full = await api('/decks/'+S.deck);
+    S.budget = full.budget.limit;
+    $('budget').textContent = '/ ' + S.budget;
+    show('build'); render();
+  }catch(e){ oops(e.message); }
+}
+
+// --------------------------------------------------------------- building
+function setTab(t){ S.tab = t;
+  ['starter','bench','tactic'].forEach(n =>
+    $('t-'+n).setAttribute('aria-selected', String(n===t)));
+  render(); }
+
+const spent = () => S.pick.starter.reduce((a,c)=>a+Number(c.form||0),0);
+const chosenIds = () => new Set(
+  [...S.pick.starter, ...S.pick.bench].map(c=>c.player_id));
+
+// A card is only affordable if taking it still leaves enough budget to FILL
+// the remaining starter slots. Without this you can spend 274 of 275 on four
+// players and strand the fifth -- a dead end the player cannot see coming.
+function reserveAfter(card){
+  const need = 4 - S.pick.starter.length;
+  if(need <= 0) return 0;
+  const taken = chosenIds();
+  return S.pool.filter(c => !taken.has(c.player_id) && c.player_id !== card.player_id)
+               .map(c => Number(c.form)).sort((a,b)=>a-b)
+               .slice(0, need).reduce((a,b)=>a+b, 0);
+}
+const affordable = c => spent() + Number(c.form) + reserveAfter(c) <= S.budget;
+
+function add(c){
+  const list = S.pick[S.tab];
+  if(list.length >= CAP[S.tab]) return oops(`only ${CAP[S.tab]} ${S.tab} slots`);
+  if(S.tab !== 'tactic'){
+    if(chosenIds().has(c.player_id)) return oops('that player is already in your lineup');
+    if(S.tab === 'starter' && !affordable(c)){
+      const short = Math.round(spent() + Number(c.form) + reserveAfter(c) - S.budget);
+      return oops(spent() + Number(c.form) > S.budget
+        ? `over budget by ${Math.round(spent()+Number(c.form)-S.budget)}`
+        : `that leaves too little for your last ${4-S.pick.starter.length} slot(s) — short ${short}`);
+    }
+  } else if(c.requires_opponent_reveal &&
+            S.pick.tactic.some(t=>t.requires_opponent_reveal)){
+    return oops('only one counterplay tactic per deck');
+  }
+  list.push(c); render(); save();
+}
+function drop(i){ S.pick[S.tab].splice(i,1); render(); save(); }
+
+function pips(rarity){
+  const n = PIP[rarity]||1, col = `var(${RAR[rarity]||'--common'})`;
+  // Parenthesised: `.` binds tighter than `+`, so without these the repeat
+  // applies to the last operand only and emits bare `"></i>` fragments.
+  return `<span class="pips">${('<i style="background:'+col+'"></i>').repeat(n)}</span>`;
+}
+
+function render(){
+  const sp = spent(), pct = Math.min(100, sp/S.budget*100);
+  $('spent').textContent = Math.round(sp);
+  $('bar').style.width = pct+'%';
+  $('bar').style.background = sp > S.budget ? 'var(--bad)' : 'var(--accent)';
+  const rem = S.budget - sp;
+  $('left').innerHTML = S.pick.starter.length < 5
+    ? `<span class="${rem<0?'bad':'good'}">${Math.round(rem)} left</span>
+       <span class="sm"> for ${5-S.pick.starter.length} more</span>`
+    : `<span class="${rem<0?'bad':'good'}">${Math.round(rem)} left</span>`;
+  const mix = {};
+  S.pick.starter.forEach(c => mix[c.sport] = (mix[c.sport]||0)+1);
+  $('mix').textContent = Object.entries(mix).map(([k,v])=>`${k} x${v}`).join('  ') || '—';
+
+  // chosen slots for the active tab
+  const list = S.pick[S.tab], out = [];
+  list.forEach((c,i)=>{
+    const col = S.tab==='tactic' ? 'var(--accent)' : `var(${RAR[c.rarity]||'--common'})`;
+    out.push(`<button class="slot" style="border-left-color:${col}" onclick="drop(${i})">
+      <div style="width:34px" class="stack">
+        <span class="sm" style="font-family:Oswald">${S.tab==='tactic'?'TAC':c.sport}</span>
+        ${S.tab==='tactic'?'':pips(c.rarity)}
+      </div>
+      <div><div style="font-size:14px;font-weight:500">${c.name}</div>
+        <div class="sm">${S.tab==='tactic'
+          ? `${c.hit_mult}x / ${c.miss_mult}x · on starter ${i+1}`
+          : `${c.position_group} · ${c.rarity} · floor ${c.floor_score}`}</div></div>
+      <span class="grow"></span>
+      ${S.tab==='tactic'?'<span class="sm">remove</span>'
+        :`<span class="num">${Math.round(c.form)}</span>`}
+    </button>`);
+  });
+  for(let i=list.length; i<CAP[S.tab]; i++)
+    out.push(`<div class="slot empty"><span style="font-size:14px">+ ${S.tab} ${i+1}</span>
+      <span class="grow"></span><span class="sm">${
+        S.tab==='starter' ? (()=>{ const ok = S.pool.filter(c=>!chosenIds().has(c.player_id)
+                                       && affordable(c)).map(c=>Number(c.form));
+          return ok.length ? 'Form '+Math.round(Math.max(...ok))+' or less' : 'no card fits';
+        })() : ''}</span></div>`);
+  $('chosen').innerHTML = out.join('');
+
+  // available pool
+  const taken = new Set(list.map(c => S.tab==='tactic' ? c.instance_id : c.player_id));
+  const used = chosenIds();
+  const src = S.tab==='tactic' ? S.tactics
+            : [...S.pool].sort((a,b)=>Number(b.form)-Number(a.form));
+  $('poolLabel').textContent = S.tab==='tactic' ? 'YOUR TACTICS' : 'AVAILABLE';
+  $('pool').innerHTML = src.map(c=>{
+    if(S.tab==='tactic'){
+      if(taken.has(c.instance_id)) return '';
+      return `<button class="slot" style="border-left-color:var(--accent)"
+                onclick='add(${JSON.stringify(c)})'>
+        <div><div style="font-size:14px;font-weight:500">${c.name}</div>
+          <div class="sm">${c.family.toLowerCase()} · hits ${Math.round(c.base_rate*100)}% · avg x1.00</div></div>
+        <span class="grow"></span>
+        <span class="sm good">${c.hit_mult}x</span><span class="sm bad">${c.miss_mult}x</span>
+      </button>`;
+    }
+    if(used.has(c.player_id)) return '';
+    const full = S.tab==='starter' && S.pick.starter.length >= CAP.starter;
+    const over = S.tab==='starter' && !full && !affordable(c);
+    const short = over ? Math.round(spent()+Number(c.form)+reserveAfter(c)-S.budget) : 0;
+    return `<button class="slot ${over||full?'over':''}"
+              style="border-left-color:var(${RAR[c.rarity]||'--common'})"
+              onclick='add(${JSON.stringify(c)})'>
+      <div style="width:34px" class="stack">
+        <span class="sm" style="font-family:Oswald">${c.sport}</span>${pips(c.rarity)}
+      </div>
+      <div><div style="font-size:14px;font-weight:500">${c.name}</div>
+        <div class="sm ${over?'bad':''}">${over
+          ? (Number(c.form) > rem ? 'over budget by '+Math.round(Number(c.form)-rem)
+                                  : 'would strand your last slots by '+short)
+          : c.position_group+' · '+c.rarity+' · floor '+c.floor_score}</div></div>
+      <span class="grow"></span><span class="num">${Math.round(c.form)}</span>
+    </button>`;
+  }).join('');
+}
+
+// Persist to the server so validate_deck() is the single source of legality.
+let saving = null;
+async function save(){
+  if(saving) return; saving = 1;
+  try{
+    const body = {
+      starters: S.pick.starter.map((c,i)=>({slot_index:i+1, card_instance_id:c.instance_id})),
+      bench:    S.pick.bench.map((c,i)=>({slot_index:i+1, card_instance_id:c.instance_id})),
+      tactics:  S.pick.tactic.map((c,i)=>({slot_index:i+1, tactic_instance_id:c.instance_id,
+                                           tactic_target_index:i+1}))
+    };
+    const d = await api('/decks/'+S.deck+'/slots','PUT',body);
+    $('violations').innerHTML = d.legal ? ''
+      : d.violations.map(v=>`<div class="viol">${v}</div>`).join('');
+    $('play').disabled = !d.legal;
+    $('play').textContent = d.legal ? 'Play match' : 'Finish your deck';
+  }catch(e){ oops(e.message); }
+  finally{ saving = null; }
+}
+
+// ------------------------------------------------------------------ play
+async function play(){
+  const b = $('play'); b.disabled = true; b.textContent = 'Settling…';
+  try{
+    const ch = await api('/challenges','POST',{format:'flash'});
+    S.chal = ch.id;
+    await api('/challenges/'+S.chal+'/lock','POST',{deck_id:S.deck});
+    await api('/challenges/'+S.chal+'/bot','POST');
+    const r = await api('/challenges/'+S.chal+'/play','POST');
+    drawRecap(r); show('recap'); window.scrollTo(0,0);
+  }catch(e){ oops(e.message); b.disabled=false; b.textContent='Play match'; }
+}
+
+async function newMatch(){
+  S.pick = {starter:[], bench:[], tactic:[]};
+  const d = await api('/decks','POST',{name:'my deck'});
+  S.deck = d.id; setTab('starter'); show('build'); save(); window.scrollTo(0,0);
+}
+
+function drawRecap(r){
+  const you = r.sides.find(s=>s.is_you), them = r.sides.find(s=>!s.is_you);
+  const mine = r.results.find(x=>x.handle===S.handle);
+  const theirs = r.results.find(x=>x.handle!==S.handle);
+  const won = mine.is_winner;
+  const cf = r.counterfactual;
+  const flipped = cf && cf.tactics_decided_it;
+  const preMargin = cf ? (Number(mine.pre_tactic_total) - Number(theirs.pre_tactic_total)) : 0;
+
+  const slot = s => `<div class="slot" style="min-height:48px;border-left-color:${
+      s.floor_applied?'var(--elite)':(Number(s.tactic_multiplier)!==1
+        ? (Number(s.tactic_multiplier)>1?'var(--good)':'var(--bad)') : 'var(--common)')}">
+      <span class="sm" style="font-family:Oswald;width:26px">${s.sport||'—'}</span>
+      <div><div style="font-size:13px;font-weight:500">${s.name||'Hidden'}</div>
+        <div class="sm">${[
+          s.floor_applied?'floor caught it':'',
+          s.substituted_from_bench?'bench sub':'',
+          Number(s.tactic_multiplier)!==1?`tactic ${s.tactic_multiplier}x`:''
+        ].filter(Boolean).join(' · ') || 'no tactic'}</div></div>
+      <span class="grow"></span>
+      <span class="sm">${s.raw_game_score ?? '—'}</span>
+      <span class="num" style="width:52px;text-align:right">${s.final_score ?? '—'}</span>
+    </div>`;
+
+  $('recap').innerHTML = `
+    <div class="card" style="border-color:${won?'rgba(92,201,141,.3)':'rgba(224,138,138,.3)'};
+         background:${won?'#13221A':'#1B1416'}">
+      <div class="row">
+        <span class="disp" style="font-size:30px;color:var(${won?'--good':'--bad'})">${won?'WON':'LOST'}</span>
+        <span class="disp" style="font-size:16px;color:var(${won?'--good':'--bad'})">${
+          (Number(mine.total_score)-Number(theirs.total_score)).toFixed(1)}</span>
+      </div>
+      <div class="row" style="margin-top:14px;align-items:flex-end">
+        <div><div class="lbl">YOU</div>
+          <div class="disp" style="font-size:30px">${mine.total_score}</div></div>
+        <span class="grow"></span>
+        <div style="text-align:right"><div class="lbl">${theirs.handle.toUpperCase()}</div>
+          <div class="disp" style="font-size:30px;color:var(--mute)">${theirs.total_score}</div></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:12px">
+      <div class="lbl">WHAT DECIDED IT</div>
+      <p style="margin:7px 0 0;font-size:14px;line-height:1.45;font-weight:500">${
+        flipped ? 'Your tactics reversed this match.'
+                : 'The lineups decided this one.'}</p>
+      <div class="row" style="gap:10px;margin-top:12px">
+        <div style="flex:1;border-radius:8px;padding:9px 11px;background:rgba(92,201,141,.1);
+             border:1px solid rgba(92,201,141,.28)">
+          <div class="lbl">YOUR TACTICS</div>
+          <div class="disp" style="font-size:20px;color:var(--good)">${
+            (Number(mine.tactic_swing)>0?'+':'')+Number(mine.tactic_swing).toFixed(1)}</div></div>
+        <div style="flex:1;border-radius:8px;padding:9px 11px;background:rgba(224,138,138,.1);
+             border:1px solid rgba(224,138,138,.28)">
+          <div class="lbl">THEIRS</div>
+          <div class="disp" style="font-size:20px;color:var(--bad)">${
+            (Number(theirs.tactic_swing)>0?'+':'')+Number(theirs.tactic_swing).toFixed(1)}</div></div>
+      </div>
+      <div style="margin-top:12px;background:var(--sunk);border-radius:9px;padding:11px 12px">
+        <div class="lbl">ON RAW SCORES ALONE</div>
+        <div class="row" style="margin-top:6px;align-items:baseline">
+          <span class="disp" style="font-size:17px;color:var(--mute)">${mine.pre_tactic_total}</span>
+          <span class="sm">you</span><span class="grow"></span>
+          <span class="disp" style="font-size:17px">${theirs.pre_tactic_total}</span>
+          <span class="sm">them</span>
+        </div>
+        <p style="margin:8px 0 0;font-size:12px;line-height:1.45" class="${flipped?'warn':'sm'}">${
+          flipped
+            ? `You ${won?'lose':'win'} this match by ${Math.abs(preMargin).toFixed(1)} without the tactics.`
+            : `Tactics moved it by ${Math.abs(
+                (Number(mine.total_score)-Number(theirs.total_score)) - preMargin).toFixed(1)}, not enough to flip it.`}</p>
+      </div>
+    </div>
+
+    <div class="lbl" style="margin:18px 0 8px">YOUR LINEUP</div>
+    <div class="stack">${you.slots.map(slot).join('')}</div>
+    <div class="lbl" style="margin:18px 0 8px">${theirs.handle.toUpperCase()}</div>
+    <div class="stack">${them.slots.map(slot).join('')}</div>
+
+    <div class="lbl" style="margin:18px 0 8px">TACTIC LOG</div>
+    <div class="stack">${r.tactic_log.map(t=>`
+      <div class="card" style="padding:10px 12px;border-left:3px solid var(${
+        t.did_hit?'--good':'--bad'})">
+        <div class="row">
+          <span class="sm" style="font-family:Oswald">${
+            t.handle===S.handle?'YOU':'THEM'}</span>
+          <span class="disp" style="font-size:14px">${t.name}</span>
+          <span class="grow"></span>
+          <span class="disp" style="font-size:14px;color:var(${t.did_hit?'--good':'--bad'})">${
+            t.did_hit?'HIT':'MISS'} ${t.multiplier}x</span>
+        </div>
+        <div class="sm" style="margin-top:4px">on ${t.target_name||'—'}</div>
+        <div style="margin-top:5px;font-size:12px;color:var(--ink2)">${
+          Object.entries(t.evidence||{}).filter(([k])=>k!=='tactic')
+            .map(([k,v])=>`${k.replace(/_/g,' ')}: ${v}`).join(' · ')}</div>
+      </div>`).join('')}</div>`;
+}
+
+document.addEventListener('keydown', e => {
+  if(e.key === 'Enter' && !$('v-login').classList.contains('hide')) signIn();
+});
+</script>
+</body>
+</html>

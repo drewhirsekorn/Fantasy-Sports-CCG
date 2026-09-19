@@ -5,6 +5,22 @@ box scores, and an NBA guard can be played against an NFL running back on one
 scoresheet. Matches resolve asynchronously as real games finish — neither player
 is ever online at the same time.
 
+## Play it
+
+```bash
+./db/dev.sh prototype     # replay a season, score it, build a FIXED 48-card pool
+./db/dev.sh api           # serve on :8000
+open http://localhost:8000
+```
+
+No packs, no live data, no waiting. Everyone gets the same 48 cards and the same
+10 tactics, so nothing turns on acquisition — what is left is whether you build a
+better lineup under the budget and read the matchup better than your opponent.
+
+Because the season is already replayed, every game a match needs is final before
+it starts, so a match settles the moment both sides lock. `python3 -m demo.play`
+runs the same loop headlessly.
+
 ## Quickstart
 
 ```bash
@@ -120,8 +136,13 @@ data/       tactic_cards.json (36 cards), scoring_rules.json (Stage 0 + cold sta
 
 ## What's missing
 
-- **No client.** The API is in; nothing consumes it yet. Largest remaining gap.
 - **Auth is a placeholder.** Unexpiring bearer tokens with no refresh.
+- **The opponent is a bot** that builds a legal lineup at random. No matchmaking.
+- **Two open balance questions**, both visible in a single demo match:
+  the rarity floor also catches a DNP (raw 15 becomes 34 on an Elite card),
+  which makes rarity insure against absence and weakens the bench; and tactic
+  multipliers are uncapped, so a 96 GameScore with Ceiling scores 163 — over
+  half a winning total from one card.
 - **No pack service.** Specified and simulated, never built.
 - **No real data.** Everything runs on synthetic seasons; `CsvSource` is the path
   real box scores take but has only been tested against generated data.

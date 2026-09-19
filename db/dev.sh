@@ -8,8 +8,11 @@
 #   ./db/dev.sh up        start the server (initdb on first run)
 #   ./db/dev.sh load      create the database and apply every migration in order
 #   ./db/dev.sh demo      replay a season, score it, settle a challenge
+#   ./db/dev.sh prototype replay + score + a FIXED card pool (no packs, no live data)
 #   ./db/dev.sh reset     drop, reload, and re-run the demo from scratch
 #   ./db/dev.sh test      migrations + fixtures + assertions on a scratch db
+#   ./db/dev.sh api       start the API (detached, pidfile-tracked)
+#   ./db/dev.sh api-stop  stop it
 #   ./db/dev.sh status    what is currently in there
 #   ./db/dev.sh psql      open a shell on it
 #
@@ -58,7 +61,7 @@ cmd_load() {
 # alone reports "ok" while every statement silently fails. Tests are a
 # separate command against a scratch database.
 MIGRATIONS=(01_schema 02_seed_tactics 03_rules 06_scoring_and_coldstart
-            07_replay 08_scoring 09_resolution 10_api)
+            07_replay 08_scoring 09_resolution 10_api 11_demo)
 TESTS=(04_tests 05_assertions)
 
 apply_sql() {
@@ -104,6 +107,21 @@ cmd_demo() {
   python3 -m engine.resolution resolve                                 | sed 's/^/  /'
 }
 
+# The demo build: replay + score, then a FIXED card pool. Deliberately skips
+# engine.resolution's seed, whose random collections would pollute the fixed
+# set (and whose settled challenge pins cards that then cannot be pruned).
+cmd_prototype() {
+  running || cmd_up
+  dropdb --force -h "$PGHOST" -p "$PGPORT" -U "$PGUSER" "$PGDB" 2>/dev/null || true
+  cmd_load
+  python3 -c "import psycopg2" 2>/dev/null || pip install -q psycopg2-binary
+  cd "$ROOT"
+  python3 -m replay.harness load --sports NFL,NBA --weeks 18 --teams 32 | sed 's/^/  /'
+  python3 -m replay.harness run --step-hours 24                        | sed 's/^/  /'
+  python3 -m engine.scoring   run                                      | sed 's/^/  /'
+  python3 -m demo.setup                                                | sed 's/^/  /'
+}
+
 cmd_reset() {
   running || cmd_up
   dropdb --force -h "$PGHOST" -p "$PGPORT" -U "$PGUSER" "$PGDB" 2>/dev/null || true
@@ -130,10 +148,42 @@ cmd_status() {
   || echo "  database '$PGDB' not loaded - run: ./db/dev.sh load"
 }
 
+# The API runs detached, tracked by a pidfile. Matching it with pgrep -f is a
+# trap: any command that also mentions the uvicorn invocation matches its own
+# shell and kills it.
+APIPID=/tmp/ccg_api.pid
+APIPORT=${APIPORT:-8000}
+
+cmd_api() {
+  running || cmd_up
+  cmd_api_stop
+  cd "$ROOT"
+  python3 -c "import fastapi, uvicorn" 2>/dev/null || pip install -q fastapi "uvicorn[standard]"
+  nohup python3 -m uvicorn api.main:app --port "$APIPORT" --log-level warning \
+        > /tmp/ccg_api.log 2>&1 &
+  echo $! > "$APIPID"
+  for _ in $(seq 1 30); do
+    curl -sf "http://localhost:$APIPORT/health" >/dev/null 2>&1 && break; sleep 0.5
+  done
+  if curl -sf "http://localhost:$APIPORT/health" >/dev/null 2>&1; then
+    echo "api up on http://localhost:$APIPORT  (docs at /docs)"
+  else
+    echo "api FAILED to start:"; tail -15 /tmp/ccg_api.log; exit 1
+  fi
+}
+
+cmd_api_stop() {
+  [ -f "$APIPID" ] && kill "$(cat "$APIPID")" 2>/dev/null && sleep 1
+  rm -f "$APIPID"
+  return 0
+}
+
 cmd_psql() { exec psql -h "$PGHOST" -p "$PGPORT" -U "$PGUSER" -d "$PGDB"; }
 
 case "${1:-status}" in
   up) cmd_up ;; load) cmd_load ;; demo) cmd_demo ;; reset) cmd_reset ;;
+  prototype) cmd_prototype ;;
   test) cmd_test ;; verify) cmd_verify ;; status) cmd_status ;; psql) cmd_psql ;;
+  api) cmd_api ;; api-stop) cmd_api_stop ;;
   *) sed -n '2,18p' "${BASH_SOURCE[0]}" | sed 's/^# \{0,1\}//'; exit 1 ;;
 esac

@@ -13,10 +13,13 @@ creates decks and challenges, and snapshots a deck into entry_slots at lock.
 from __future__ import annotations
 import secrets
 
+import os
+
 from fastapi import Depends, FastAPI, Header, HTTPException, Query
+from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 
-from api.db import cursor, one, rows
+from api.db import DSN, cursor, one, rows
 
 app = FastAPI(
     title="Fantasy Sports CCG",
@@ -86,7 +89,7 @@ def collection(user: dict = Depends(auth),
                    latest_form(p.id, current_date)
                      - latest_form(p.id, (current_date - 7)) AS trend,
                    count(*) AS copies, min(ci.serial_no) AS best_serial,
-                   cp.print_run_limit
+                   min(ci.id) AS instance_id, cp.print_run_limit
             FROM card_instance ci
             JOIN card_print cp ON cp.id = ci.card_print_id
             JOIN player     p  ON p.id  = cp.player_id
@@ -151,6 +154,21 @@ def card_detail(card_print_id: int, user: dict = Depends(auth)):
                     (card_print_id, user["id"]))
         owned = one(cur)
     return {"card": card, "owned": owned, "form_history": history, "recent_games": games}
+
+
+@app.get("/my/tactics", tags=["collection"])
+def my_tactics(user: dict = Depends(auth)):
+    """Owned tactic copies, with the instance ids a deck slot needs."""
+    with cursor() as cur:
+        cur.execute("""SELECT ti.id AS instance_id, tc.code, tc.name, tc.family,
+                              tc.condition_key, tc.base_rate, tc.hit_mult, tc.miss_mult,
+                              tc.card_class, tc.rarity, tc.requires_opponent_reveal,
+                              tc.requires_multi_sport
+                       FROM tactic_instance ti
+                       JOIN tactic_card tc ON tc.id = ti.tactic_card_id
+                       WHERE ti.owner_id = %s
+                       ORDER BY tc.family, tc.name""", (user["id"],))
+        return {"items": rows(cur)}
 
 
 @app.get("/tactics", tags=["collection"])
@@ -363,11 +381,17 @@ def lock(challenge_id: int, body: LockRequest, user: dict = Depends(auth)):
         if violations:
             raise HTTPException(422, {"error": "deck is not legal", "violations": violations})
 
+        cur.execute("SELECT value FROM app_config WHERE key = 'demo_lock_at'")
+        cfg = one(cur)
+        lock_ts = cfg["value"] if cfg else None
+
         cur.execute("""INSERT INTO challenge_entry
                          (challenge_id, user_id, deck_id, form_budget_used, locked_at)
-                       VALUES (%s, %s, %s, deck_form_total(%s), now())
+                       VALUES (%s, %s, %s, deck_form_total(%s),
+                               COALESCE(%s::timestamptz, now()))
                        ON CONFLICT (challenge_id, user_id) DO NOTHING
-                       RETURNING id""", (challenge_id, user["id"], body.deck_id, body.deck_id))
+                       RETURNING id""",
+                    (challenge_id, user["id"], body.deck_id, body.deck_id, lock_ts))
         entry = one(cur)
         if not entry:
             raise HTTPException(409, "you have already locked this challenge")
@@ -396,8 +420,10 @@ def lock(challenge_id: int, body: LockRequest, user: dict = Depends(auth)):
                        WHERE challenge_id = %s AND locked_at IS NOT NULL""", (challenge_id,))
         both = one(cur)["n"] >= 2
         if both:
-            cur.execute("""UPDATE challenge SET status = 'locked', locked_at = now()
-                           WHERE id = %s AND locked_at IS NULL""", (challenge_id,))
+            cur.execute("""UPDATE challenge
+                           SET status = 'locked',
+                               locked_at = COALESCE(%s::timestamptz, now())
+                           WHERE id = %s AND locked_at IS NULL""", (lock_ts, challenge_id))
     return {"challenge_id": challenge_id, "entry_id": entry_id,
             "both_locked": both,
             "status": "locked" if both else "waiting for opponent"}
@@ -544,6 +570,195 @@ def recap(challenge_id: int, user: dict = Depends(auth)):
         }
     return {"challenge_id": challenge_id, "results": results,
             "counterfactual": counterfactual, **board, "tactic_log": log}
+
+
+def _autobuild_deck(cur, user_id: int, budget: int, name: str) -> int:
+    """A legal lineup for the demo opponent.
+
+    Spans two sports (so cross-sport tactics are legal), fits the budget, and
+    takes at most one counterplay tactic -- the same rules a human faces.
+    """
+    import random as _rnd
+    cur.execute("""
+        SELECT ci.id AS instance_id, cp.player_id, p.sport,
+               latest_form(p.id, current_date) AS form
+        FROM card_instance ci
+        JOIN card_print cp ON cp.id = ci.card_print_id
+        JOIN player p ON p.id = cp.player_id
+        WHERE ci.owner_id = %s AND latest_form(p.id, current_date) IS NOT NULL""",
+                (user_id,))
+    pool = rows(cur)
+    _rnd.shuffle(pool)
+
+    starters, bench, used, spent = [], [], set(), 0.0
+
+    # Reserve room for the slots still to fill, priced on the cheapest cards
+    # STILL AVAILABLE -- reserving against the pool minimum overstates what is
+    # left once that card is taken, and the last slot misses by a fraction.
+    def affordable(c):
+        need = 4 - len(starters)
+        rest = sorted(float(x["form"]) for x in pool
+                      if x["player_id"] not in used and x["player_id"] != c["player_id"])
+        return spent + float(c["form"]) + sum(rest[:need]) <= budget
+
+    for sport in sorted({c["sport"] for c in pool}):        # one of each sport first
+        for c in pool:
+            if c["sport"] == sport and c["player_id"] not in used and affordable(c):
+                used.add(c["player_id"]); spent += float(c["form"]); starters.append(c)
+                break
+    for c in sorted(pool, key=lambda c: -float(c["form"])):  # then best that still fits
+        if len(starters) == 5:
+            break
+        if c["player_id"] in used or not affordable(c):
+            continue
+        used.add(c["player_id"]); spent += float(c["form"]); starters.append(c)
+    for c in pool:
+        if len(bench) == 3:
+            break
+        if c["player_id"] in used:
+            continue
+        used.add(c["player_id"]); bench.append(c)
+    if len(starters) < 5 or len(bench) < 3:
+        raise HTTPException(500, "opponent could not field a legal lineup")
+
+    cur.execute("""SELECT ti.id, tc.requires_opponent_reveal
+                   FROM tactic_instance ti JOIN tactic_card tc ON tc.id = ti.tactic_card_id
+                   WHERE ti.owner_id = %s""", (user_id,))
+    tac = rows(cur)
+    _rnd.shuffle(tac)
+    picked, counterplay = [], 0
+    for t in tac:
+        if len(picked) == 2:
+            break
+        if t["requires_opponent_reveal"]:
+            if counterplay:                                  # max one per deck
+                continue
+            counterplay += 1
+        picked.append(t)
+
+    cur.execute("INSERT INTO deck (user_id, name) VALUES (%s, %s) RETURNING id",
+                (user_id, name))
+    deck_id = one(cur)["id"]
+    for kind, group in (("starter", starters), ("bench", bench)):
+        for i, c in enumerate(group, 1):
+            cur.execute("""INSERT INTO deck_slot (deck_id, slot_type, slot_index, card_instance_id)
+                           VALUES (%s, %s, %s, %s)""", (deck_id, kind, i, c["instance_id"]))
+    for i, t in enumerate(picked, 1):
+        cur.execute("""INSERT INTO deck_slot
+                         (deck_id, slot_type, slot_index, tactic_instance_id, tactic_target_index)
+                       VALUES (%s, 'tactic', %s, %s, %s)""", (deck_id, i, t["id"], i))
+    return deck_id
+
+
+@app.post("/challenges/{challenge_id}/bot", tags=["challenges"])
+def bot_opponent(challenge_id: int, user: dict = Depends(auth)):
+    """Demo mode: have the house accept and lock a legal lineup."""
+    with cursor(commit=True) as cur:
+        cur.execute("SELECT * FROM challenge WHERE id = %s", (challenge_id,))
+        ch = one(cur)
+        if not ch:
+            raise HTTPException(404, "no such challenge")
+        if ch["created_by"] != user["id"]:
+            raise HTTPException(403, "not your challenge")
+
+        cur.execute("""SELECT id, handle FROM app_user WHERE id <> %s
+                       ORDER BY id LIMIT 1""", (user["id"],))
+        opp = one(cur)
+        if not opp:
+            raise HTTPException(409, "no opponent account exists")
+
+        if ch["opponent_id"] is None:
+            cur.execute("""UPDATE challenge SET opponent_id = %s, status = 'accepted'
+                           WHERE id = %s""", (opp["id"], challenge_id))
+
+        cur.execute("""SELECT 1 FROM challenge_entry
+                       WHERE challenge_id = %s AND user_id = %s""", (challenge_id, opp["id"]))
+        if one(cur):
+            return {"opponent": opp["handle"], "already_locked": True}
+
+        deck_id = _autobuild_deck(cur, opp["id"], ch["form_budget"],
+                                  f"house deck #{challenge_id}")
+        cur.execute("SELECT violation FROM validate_deck(%s, %s)", (deck_id, ch["form_budget"]))
+        bad = [r["violation"] for r in cur.fetchall()]
+        if bad:
+            raise HTTPException(500, {"error": "opponent built an illegal deck", "violations": bad})
+
+        cur.execute("SELECT value FROM app_config WHERE key = 'demo_lock_at'")
+        cfg = one(cur)
+        lock_ts = cfg["value"] if cfg else None
+        cur.execute("""INSERT INTO challenge_entry
+                         (challenge_id, user_id, deck_id, form_budget_used, locked_at)
+                       VALUES (%s, %s, %s, deck_form_total(%s),
+                               COALESCE(%s::timestamptz, now()))
+                       RETURNING id""",
+                    (challenge_id, opp["id"], deck_id, deck_id, lock_ts))
+        entry_id = one(cur)["id"]
+        cur.execute("""INSERT INTO entry_slot
+                (entry_id, slot_type, slot_index, card_print_id, player_id, sport,
+                 rarity, floor_score, form_at_lock, is_revealed)
+            SELECT %s, slot_type, slot_index, card_print_id, player_id, sport,
+                   rarity, floor_score, form, (slot_type = 'starter' AND slot_index <= 2)
+            FROM deck_slot_detail WHERE deck_id = %s AND slot_type IN ('starter','bench')""",
+                    (entry_id, deck_id))
+        cur.execute("""INSERT INTO entry_slot
+                (entry_id, slot_type, slot_index, tactic_card_id, tactic_target_index)
+            SELECT %s, 'tactic', slot_index, tactic_card_id,
+                   COALESCE(tactic_target_index, slot_index)
+            FROM deck_slot_detail WHERE deck_id = %s AND slot_type = 'tactic'""",
+                    (entry_id, deck_id))
+        cur.execute("""SELECT count(*) AS n FROM challenge_entry
+                       WHERE challenge_id = %s AND locked_at IS NOT NULL""", (challenge_id,))
+        if one(cur)["n"] >= 2:
+            cur.execute("""UPDATE challenge SET status = 'locked',
+                             locked_at = COALESCE(%s::timestamptz, now())
+                           WHERE id = %s AND locked_at IS NULL""", (lock_ts, challenge_id))
+    return {"opponent": opp["handle"], "locked": True}
+
+
+@app.post("/challenges/{challenge_id}/play", tags=["challenges"])
+def play(challenge_id: int, user: dict = Depends(auth)):
+    """Demo mode: settle the match now.
+
+    With no live data the whole season is already final, so every game a
+    challenge needs has been played. This arms and resolves in one call
+    instead of waiting days, then hands back the recap.
+    """
+    import psycopg2
+    from engine.resolution import Resolver
+
+    with cursor() as cur:
+        cur.execute("SELECT * FROM challenge WHERE id = %s", (challenge_id,))
+        ch = one(cur)
+        if not ch:
+            raise HTTPException(404, "no such challenge")
+        if user["id"] not in (ch["created_by"], ch["opponent_id"]):
+            raise HTTPException(403, "not your challenge")
+        if ch["status"] == "resolved":
+            return recap(challenge_id, user)
+        cur.execute("""SELECT count(*) AS n FROM challenge_entry
+                       WHERE challenge_id = %s AND locked_at IS NOT NULL""", (challenge_id,))
+        if one(cur)["n"] < 2:
+            raise HTTPException(409, "both sides must lock first")
+
+    # Resolver unpacks tuple rows, so it needs a plain cursor rather than the
+    # dict cursor the rest of the API uses.
+    cx = psycopg2.connect(DSN)
+    try:
+        with cx.cursor() as rc:
+            resolver = Resolver(rc)
+            resolver.arm(challenge_id)
+            _totals, err = resolver.resolve(challenge_id)
+        cx.commit()
+    finally:
+        cx.close()
+    if err:
+        raise HTTPException(409, err)
+    return recap(challenge_id, user)
+
+
+@app.get("/", include_in_schema=False)
+def index():
+    return FileResponse(os.path.join(os.path.dirname(__file__), "static", "index.html"))
 
 
 @app.get("/health", tags=["ops"])
