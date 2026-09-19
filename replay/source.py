@@ -8,7 +8,7 @@ Stat keys MUST match fantasy_rule.stat_key, plus the key named by
 qualification_rule (snap_share / minutes / appearances).
 """
 from __future__ import annotations
-import csv, json, os, random
+import csv, hashlib, json, os, random
 from datetime import datetime, timedelta, timezone
 
 # --------------------------------------------------------------------------
@@ -34,7 +34,13 @@ class SyntheticSource:
         self.sports, self.season_year, self.weeks = list(sports), season_year, weeks
         self.teams_per_sport, self.players_per_team = teams_per_sport, players_per_team
         self.dnp_rate, self.cameo_rate = dnp_rate, cameo_rate
-        self.rng = random.Random(seed)
+        self.seed = seed
+        # Two generators, on purpose. _build_rng lays out the season once.
+        # self.rng is re-seeded per game in stat_lines(), so a box score is a
+        # property of THAT fixture rather than of how many games were asked
+        # for before it -- see the note there.
+        self._build_rng = random.Random(seed)
+        self.rng = self._build_rng
         self.start = datetime(season_year, 9, 7, tzinfo=timezone.utc)
         self._teams, self._players, self._games = [], [], []
         self._talent = {}
@@ -53,16 +59,16 @@ class SyntheticSource:
                                           'full_name': f'{sport} Player {t:02d}{i:02d}',
                                           'position_group': pos})
                     # Latent talent: the signal the scoring pipeline must recover.
-                    self._talent[ref] = self.rng.lognormvariate(0, 0.30)
+                    self._talent[ref] = self._build_rng.lognormvariate(0, 0.30)
 
         for sport in self.sports:
             codes = [t['code'] for t in self._teams if t['sport'] == sport]
             per_week = GAMES_PER_WEEK[sport]
             for wk in range(self.weeks):
-                n = int(per_week) + (1 if self.rng.random() < (per_week % 1) else 0)
+                n = int(per_week) + (1 if self._build_rng.random() < (per_week % 1) else 0)
                 for slot in range(n):
                     shuffled = codes[:]
-                    self.rng.shuffle(shuffled)
+                    self._build_rng.shuffle(shuffled)
                     for j in range(0, len(shuffled) - 1, 2):
                         tip = self.start + timedelta(weeks=wk, days=slot, hours=17 + (j % 5))
                         self._games.append({
@@ -76,8 +82,23 @@ class SyntheticSource:
     def players(self): return list(self._players)
     def games(self):   return list(self._games)
 
+    def _game_rng(self, game):
+        """A generator belonging to one fixture.
+
+        Seeded from the fixture's identity, so the same game yields the same
+        box score no matter when it is asked for. Drawing from one shared
+        generator instead made every line depend on the ORDER games were
+        replayed in -- and the harness read them back with a non-unique
+        ORDER BY, so that order changed between runs and no two rebuilds
+        produced the same season.
+        """
+        key = "|".join((str(self.seed), game["sport"], game["home_code"],
+                        game["away_code"], game["starts_at"].isoformat()))
+        return random.Random(hashlib.sha256(key.encode()).hexdigest())
+
     def stat_lines(self, game):
         """Box score for one game: every player on both clubs."""
+        self.rng = self._game_rng(game)
         out = []
         for p in self._players:
             if p['team_code'] not in (game['home_code'], game['away_code']):

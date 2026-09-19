@@ -83,7 +83,10 @@ def tick(cur, run_id, source, players, step_hours):
                    JOIN team ht ON ht.id = g.home_team_id
                    JOIN team at ON at.id = g.away_team_id
                    WHERE g.final_at IS NULL AND g.scheduled_end <= %s
-                   ORDER BY g.scheduled_end""", (sim_now,))
+                   -- g.id breaks the tie. scheduled_end is far from unique
+                   -- (a slate shares end times), so ordering by it alone let
+                   -- Postgres return ties in whatever order it liked.
+                   ORDER BY g.scheduled_end, g.id""", (sim_now,))
     due = cur.fetchall()
 
     finalised = lines = skipped = 0
@@ -150,11 +153,14 @@ def cmd_run(args):
         sim_now, sim_end = cur.fetchone()
         ticks = tot_g = tot_l = tot_skip = 0
         while sim_now < sim_end:
+            if args.max_ticks and ticks >= args.max_ticks:
+                break
             sim_now, g, l, skipped = tick(cur, run_id, source, players, args.step_hours)
             ticks += 1; tot_g += g; tot_l += l; tot_skip += skipped
             if args.verbose and g:
                 print(f"  {sim_now:%Y-%m-%d %H:%M}  +{g:3d} games  +{l:5d} lines")
-        print(f"replayed {tot_g} games / {tot_l} stat lines over {ticks} ticks")
+        done = "" if sim_now >= sim_end else f", clock at {sim_now:%Y-%m-%d} of {sim_end:%Y-%m-%d}"
+        print(f"replayed {tot_g} games / {tot_l} stat lines over {ticks} ticks{done}")
         if tot_skip:
             # Silence here once hid an entire sport going missing. Never again.
             print(f"WARNING: {tot_skip} stat lines dropped - unknown external_ref")
@@ -183,6 +189,10 @@ def main():
     ap.add_argument('--csv', default=None, help='directory of real box-score CSVs')
     ap.add_argument('--label', default='synthetic replay')
     ap.add_argument('--step-hours', type=float, default=24.0)
+    ap.add_argument('--max-ticks', type=int, default=0,
+                    help='stop after N ticks; a later run resumes from the clock. '
+                         'Resuming must reproduce an uninterrupted replay exactly '
+                         '-- ./db/dev.sh reproducible checks that it does.')
     ap.add_argument('--verbose', action='store_true')
     args = ap.parse_args()
     {'load': cmd_load, 'run': cmd_run, 'status': cmd_status}[args.command](args)

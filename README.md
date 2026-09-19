@@ -47,6 +47,7 @@ About 20 seconds end to end, verified from an empty container. The rest:
 ```bash
 ./db/dev.sh verify  # scoring distributions and the no-lookahead check
 ./db/dev.sh test    # schema assertions on a throwaway database
+./db/dev.sh reproducible   # build the season twice and compare, hash by hash
 ./db/dev.sh demo    # the other build: random collections and a pre-settled match
 python3 -m engine.test_resolution   # the scoring rules, no database
 python3 -m demo.play                # the same match loop, headless
@@ -64,8 +65,8 @@ python3 web/build.py                     # inline it -> web/index.html
 python3 web/parity.py                    # prove it scores like the real engine
 ```
 
-`web/data.json` is committed rather than generated on demand, because a
-rebuild does **not** reproduce it -- see the note under "What's missing".
+`web/data.json` is committed so the published page is pinned to one export,
+and `./db/dev.sh reproducible` is what makes regenerating it safe.
 
 The page re-implements the resolution rules in JavaScript, which is exactly
 the setup where two copies of one rule quietly drift apart. `parity.py` plays
@@ -109,11 +110,16 @@ Against a replayed 18-week, two-sport season (1,264 games, 25,280 stat lines):
 
 | check | result |
 |---|---|
-| GameScore p50, all 7 peer groups | 49.8 – 50.6 (target 50) |
-| GameScore p90 | 64.9 – 67.8 (target 65) |
+| GameScore p50, all 7 peer groups | 49.2 – 51.5 (target 50) |
+| GameScore p90 | 64.7 – 69.2 (target 65) |
 | Scores using a future snapshot | 0 |
 | Cameo lines (below usage threshold) | median 22.1, correctly well below 50 |
-| Full rebuild | **not** reproducible — see below |
+| Full rebuild | bit-identical (`./db/dev.sh reproducible`) |
+| Replay resumed in a second process | bit-identical to running straight through |
+
+Those figures are now stable across rebuilds, which they were not before — see
+**Reproducibility** below. The remaining spread is sampling noise on the small
+groups (NFL RB, n=526).
 
 The Form budget binds: `./db/dev.sh verify` prints the best legal five against
 the flash budget of 275 every run, and it has never been close.
@@ -125,6 +131,31 @@ From simulation (`sim/balance_sim.py`):
   player. Roster alone is 62.3%; reads alone 56.7%.
 - Tactics compress roster dominance as well as adding skill, which is what keeps
   collection size from deciding matches.
+
+## Reproducibility
+
+Every calibration number above is measured on one build, so they mean nothing
+unless another build produces the same season. For a long time it did not, and
+the README claimed otherwise. Two defects, found by hashing the pipeline stage
+by stage — load matched, replay did not:
+
+**The tick query was not totally ordered.** It read due games with
+`ORDER BY g.scheduled_end`, and a slate shares end times, so Postgres returned
+ties in whatever order it liked. **The source drew every stat line from one
+shared generator**, so a game's box score depended on how many games had been
+asked for before it. Together: two consecutive builds shared 5 of 48 pool
+cards, and the players they shared came back with different Form and different
+GameScores.
+
+The ordering fix alone makes a rebuild reproducible. The generator fix is what
+makes it *robust* — a box score is now a property of its fixture, seeded from
+the fixture's identity, so it no longer depends on tick size, ordering, or
+where a replay was interrupted. That second one was hiding a bug of its own:
+the harness promises a tick can be replayed after a crash, and resuming used
+to produce a different season from that point on. Nothing checked.
+
+`./db/dev.sh reproducible` now checks both, and was confirmed to fail against
+each defect before being kept.
 
 ## Invariants, enforced rather than documented
 
@@ -211,14 +242,6 @@ The one open balance question, and the thing to watch while playing it:
 
 Everything else, for anything past the prototype:
 
-- **A rebuild does not reproduce the same season.** Both RNGs are seeded
-  (`--seed 42`, and `random.Random(11)` for the pool), but two consecutive
-  `./db/dev.sh prototype` runs share only 5 of 48 pool cards, and the players
-  they do share come back with different Form and different GameScores. So
-  something outside those two generators is feeding the pipeline. Not chased
-  down yet. It is why `web/data.json` is committed rather than regenerated,
-  and it has to be fixed before any measurement taken from one run means
-  anything across runs.
 
 - **No real data.** Everything runs on synthetic seasons; `CsvSource` is the path
   real box scores take but has only been tested against generated data.

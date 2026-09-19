@@ -11,6 +11,7 @@
 #   ./db/dev.sh prototype replay + score + a FIXED card pool (no packs, no live data)
 #   ./db/dev.sh reset     drop, reload, and re-run the demo from scratch
 #   ./db/dev.sh test      migrations + fixtures + assertions on a scratch db
+#   ./db/dev.sh reproducible  build the season twice and compare, hash by hash
 #   ./db/dev.sh api       start the API (detached, pidfile-tracked)
 #   ./db/dev.sh api-stop  stop it
 #   ./db/dev.sh status    what is currently in there
@@ -145,6 +146,61 @@ cmd_reset() {
   cmd_load; cmd_demo
 }
 
+# Two independent builds, compared hash by hash. This existed as a claim in
+# the README long before it was true: the harness read due games back with a
+# non-unique ORDER BY and the source drew every stat line from one shared
+# generator, so the order games happened to come back in decided the season.
+# Two consecutive builds shared 5 of 48 pool cards. Nothing downstream can be
+# compared across runs unless this passes, so it is a command, not a comment.
+cmd_reproducible() {
+  running || cmd_up
+  cd "$ROOT"
+  # The third build is stopped half way and finished by a SECOND process --
+  # what a crash and restart actually looks like. The harness promises a tick
+  # can be replayed and insert nothing new; before the source drew from a
+  # per-fixture generator, resuming silently produced a different season from
+  # there on, and nothing checked.
+  local out=() db
+  for db in ccg_rep_a ccg_rep_b ccg_rep_c; do
+    dropdb --force -h "$PGHOST" -p "$PGPORT" -U "$PGUSER" "$db" 2>/dev/null || true
+    createdb -h "$PGHOST" -p "$PGPORT" -U "$PGUSER" "$db"
+    apply_sql "$db" "${MIGRATIONS[@]}" >/dev/null
+    CCG_DSN="host=$PGHOST port=$PGPORT user=$PGUSER dbname=$db" \
+      python3 -m replay.harness load --sports NFL,NBA --weeks 18 --teams 32 >/dev/null
+    if [ "$db" = ccg_rep_c ]; then
+      CCG_DSN="host=$PGHOST port=$PGPORT user=$PGUSER dbname=$db" \
+        python3 -m replay.harness run --step-hours 24 --max-ticks 60 >/dev/null
+    fi
+    CCG_DSN="host=$PGHOST port=$PGPORT user=$PGUSER dbname=$db" \
+      python3 -m replay.harness run --step-hours 24 >/dev/null
+    CCG_DSN="host=$PGHOST port=$PGPORT user=$PGUSER dbname=$db" \
+      python3 -m engine.scoring run >/dev/null
+    out+=("$(psql -h "$PGHOST" -p "$PGPORT" -U "$PGUSER" -d "$db" -tAc "
+      select 'stats  '||md5(string_agg(game_id||'|'||player_id||'|'||fantasy_points::text,
+                                       ',' order by game_id, player_id)) from player_game_stat;
+      select 'scores '||md5(string_agg(game_id||'|'||player_id||'|'||game_score::text,
+                                       ',' order by game_id, player_id)) from game_score;
+      select 'forms  '||md5(string_agg(player_id||'|'||as_of::text||'|'||form::text,
+                                       ',' order by player_id, as_of)) from player_form;")")
+    dropdb -h "$PGHOST" -p "$PGPORT" -U "$PGUSER" "$db" 2>/dev/null || true
+  done
+  printf '%s\n' "${out[0]}" | sed 's/^/  /'
+  local bad=0
+  if [ "${out[0]}" = "${out[1]}" ]; then
+    echo "  pass  two independent builds are bit-identical"
+  else
+    echo "  FAIL  a rebuild does not reproduce the season:"
+    printf '%s\n' "${out[1]}" | sed 's/^/    /'; bad=1
+  fi
+  if [ "${out[0]}" = "${out[2]}" ]; then
+    echo "  pass  a replay resumed in a second process matches one that ran straight through"
+  else
+    echo "  FAIL  resuming a replay produces a different season:"
+    printf '%s\n' "${out[2]}" | sed 's/^/    /'; bad=1
+  fi
+  [ "$bad" -eq 0 ] || exit 1
+}
+
 cmd_verify() {
   running || cmd_up
   cd "$ROOT"
@@ -201,6 +257,7 @@ case "${1:-status}" in
   up) cmd_up ;; load) cmd_load ;; demo) cmd_demo ;; reset) cmd_reset ;;
   prototype) cmd_prototype ;;
   test) cmd_test ;; verify) cmd_verify ;; status) cmd_status ;; psql) cmd_psql ;;
+  reproducible) cmd_reproducible ;;
   api) cmd_api ;; api-stop) cmd_api_stop ;;
   *) sed -n '2,18p' "${BASH_SOURCE[0]}" | sed 's/^# \{0,1\}//'; exit 1 ;;
 esac
