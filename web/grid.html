@@ -72,7 +72,9 @@
          letter-spacing:.1em;color:var(--t-ink3)}
   .grow{flex:1}
   .pips{display:flex;gap:2.5px}
-  .pips i{width:4px;height:4px;border-radius:50%;display:block;background:var(--tier)}
+  /* Ink, not the tier: at Common the ramp's own step is too dark to count,
+     and counting them is the whole reason they are here. */
+  .pips i{width:4px;height:4px;border-radius:50%;display:block;background:var(--pip)}
   .pips i.off{background:rgba(255,255,255,.14)}
   .spark{display:block;width:100%;height:30px;margin-top:4px}
   .tname{font-family:'Oswald',system-ui,sans-serif;font-size:12.5px;font-weight:500;
@@ -254,7 +256,7 @@ function render(){
     const tier = col(c.rarity), n = TIERS.indexOf(c.rarity) + 1;
     const over = c.form > S.budget;
     return `<button class="tile ${over ? 'out' : ''} ${S.picked === c.id ? 'picked' : ''}"
-              style="--tier:${tier}" data-id="${c.id}"
+              style="--tier:${tier};--pip:${n === 1 ? 'var(--t-ink2)' : tier}" data-id="${c.id}"
               aria-label="${c.name}, ${c.sport} ${c.pos}, ${c.rarity}, Form ${c.form.toFixed(1)}, floor ${FLOORS[c.rarity]}">
       <span class="tbar"></span>
       <span class="thead">${c.sport} · ${c.pos}<span class="grow"></span>

@@ -24,16 +24,25 @@
     --accent:#63A8E8;
   }
 
-  /* The card's own ink, identical in both themes. Rarity is re-stepped for
-     this dark surface: the four coloured tiers pass lightness band, chroma
-     floor, adjacent-pair CVD separation, normal-vision separation and
-     contrast. Common is deliberately NOT one of them -- it is the absence of
-     a treatment, a neutral, carried by the pip count instead of a hue. */
+  /* The card's own ink, identical in both themes.
+
+     Three different things are being encoded here and none of them may wear
+     another's colour:
+       rarity  an ordinal LADDER  -> one hue stepped by lightness (see the
+               grid, where all five on screen at once forced the decision)
+       floor   a semantic mark    -> gold, separable from every rung of that
+               ladder under all three colour-vision models
+       Form    the card's primary datum -> ink, because the number that
+               matters most should be the highest-contrast thing on the card
+
+     The five-hue ramp broke this twice over: its Signature was the same gold
+     as the floor, so on a Signature card the tier and the floor were one
+     colour. */
   :root{
     --c-bg:#11161D; --c-panel:#1A222C; --c-sunk:#0C1015; --c-line:rgba(255,255,255,.10);
     --c-ink:#F4F7FA; --c-ink2:#AEB9C5; --c-ink3:#7C8896;
-    --common:#7E8A99; --uncommon:#2F9E68; --rare:#3B7ECB; --elite:#D4356F; --signature:#C2851B;
-    --floor-col:#C2851B; --form-col:#5FB0F0;
+    --data-ink:#8FA0B2;
+    --floor-col:#C2851B; --form-col:#EDF3F9;
   }
 
   *{box-sizing:border-box}
@@ -115,7 +124,7 @@
         letter-spacing:.17em;color:var(--tier)}
   .tier.plain{color:var(--c-ink3)}
   .pips{display:flex;gap:3px}
-  .pips i{width:5px;height:5px;border-radius:50%;display:block;background:var(--tier)}
+  .pips i{width:5px;height:5px;border-radius:50%;display:block;background:var(--pip)}
   .pips i.off{background:rgba(255,255,255,.13)}
   .serial{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9px;color:var(--c-ink3)}
 
@@ -154,11 +163,13 @@
                   background:transparent;color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
   .rowbtns button:hover{border-color:var(--accent);color:var(--accent)}
   button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-  .legend{display:flex;flex-wrap:wrap;gap:10px 14px;margin-top:11px;
-          font-size:10.5px;color:var(--ink2)}
-  .legend span{display:flex;align-items:center;gap:5px}
-  .legend i{width:9px;height:3px;border-radius:2px;display:block}
+  .legend{display:flex;flex-wrap:wrap;gap:7px;margin-top:11px;font-size:10.5px}
+  .legend .key{display:flex;align-items:center;gap:6px;background:var(--c-bg);
+               color:var(--c-ink2);border:1px solid var(--c-line);
+               border-radius:999px;padding:5px 10px 5px 8px}
+  .legend i{width:10px;height:3px;border-radius:2px;display:block;flex:0 0 auto}
   .note{font-size:11px;line-height:1.55;color:var(--ink3);margin:0}
+  .note b{color:var(--ink2);font-weight:600}
   .note code{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px}
   @media (prefers-reduced-motion: reduce){.card{transition:none}}
 </style>
@@ -247,30 +258,45 @@
       <button id="next">Player ›</button>
     </div>
     <div class="legend">
-      <span><i style="background:var(--form-col)"></i> Form — live, same on every copy</span>
-      <span><i style="background:var(--floor-col)"></i> Floor — what this rarity guarantees</span>
+      <span class="key"><i style="background:var(--form-col)"></i> Form — live, same on every copy</span>
+      <span class="key"><i style="background:var(--floor-col)"></i> Floor — what this rarity guarantees</span>
     </div>
   </div>
 
   <p class="note">Real data: this is card <code id="idlbl"></code> of the 48-card
     prototype pool, with its actual Form history and GameScores. Names are
     fictional on purpose — player likenesses need union agreements.</p>
-  <p class="note">The four coloured tiers are re-stepped for this card's dark
-    surface and pass adjacent-pair separation for colour-vision deficiency;
-    Common is a neutral rather than a fifth hue, because being untreated is
-    what Common means. Pip count carries the ladder without relying on colour
-    at all.</p>
+  <p class="note">Rarity is a <b>ladder</b>, so it takes one hue stepped by
+    lightness rather than five competing hues — the same ramp the collection
+    grid uses, where having all five on screen at once forced the decision.
+    Pip count carries the order without relying on colour at all, and Common
+    goes unframed, because being untreated is what Common means.</p>
+  <p class="note">Three things are encoded on this card and none of them wears
+    another's colour: the rarity <b>ladder</b> in blue, the <b>floor</b> in
+    gold, and <b>Form</b> — the number that matters most — in plain ink. The
+    old palette failed that twice: its Signature was the same gold as the
+    floor, so on a Signature card the tier and the floor were one colour.</p>
 </div>
 
 <script>
 const DATA = /*__DATA__*/null;
 
+// The same ordinal ramp the grid uses, so one card and forty-eight cards are
+// the same visual system. Common keeps `plain`: at this end of the ramp the
+// step is too dark to frame with, which is the correct reading -- being
+// untreated is what Common means.
+// Data marks -- the Form history line, the art ridge on an untreated card --
+// wear this, never the tier. Tinting a chart by rarity dims a Common's own
+// history to nothing and encodes the tier twice on a mark about something
+// else. Same rule as the grid's sparkline.
+const INK = '#8FA0B2';
+
 const TIERS = [
-  {key:'common',    label:'COMMON',    floor:0,  pips:1, col:'#7E8A99', plain:true},
-  {key:'uncommon',  label:'UNCOMMON',  floor:20, pips:2, col:'#2F9E68'},
-  {key:'rare',      label:'RARE',      floor:28, pips:3, col:'#3B7ECB'},
-  {key:'elite',     label:'ELITE',     floor:34, pips:4, col:'#D4356F'},
-  {key:'signature', label:'SIGNATURE', floor:38, pips:5, col:'#C2851B'},
+  {key:'common',    label:'COMMON',    floor:0,  pips:1, col:'#3A4653', plain:true},
+  {key:'uncommon',  label:'UNCOMMON',  floor:20, pips:2, col:'#3F6E93'},
+  {key:'rare',      label:'RARE',      floor:28, pips:3, col:'#4A8FC7'},
+  {key:'elite',     label:'ELITE',     floor:34, pips:4, col:'#5FB0F0'},
+  {key:'signature', label:'SIGNATURE', floor:38, pips:5, col:'#9BD0FF'},
 ];
 
 // Cards with enough history to fill the back. Sorted so stepping through them
@@ -317,7 +343,7 @@ function drawArt(card, tierDef){
   for(let i = 0; i < 90; i++){
     const x = rnd() * W, y = rnd() * H, r = rnd() * 2.2 + .4;
     ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2);
-    ctx.fillStyle = rnd() > .82 ? tierDef.col : 'rgba(255,255,255,.28)';
+    ctx.fillStyle = rnd() > .82 && !tierDef.plain ? tierDef.col : 'rgba(255,255,255,.28)';
     ctx.fill();
   }
   ctx.globalAlpha = 1;
@@ -335,11 +361,13 @@ function drawArt(card, tierDef){
     xy.forEach(([x, y]) => ctx.lineTo(x, y));
     ctx.lineTo(xy[xy.length - 1][0], H); ctx.closePath();
     const f = ctx.createLinearGradient(0, 0, 0, H);
-    f.addColorStop(0, tierDef.plain ? 'rgba(126,138,153,.30)' : tierDef.col + '55');
+    f.addColorStop(0, tierDef.plain ? INK + '48' : tierDef.col + '55');
     f.addColorStop(1, 'rgba(0,0,0,0)');
     ctx.fillStyle = f; ctx.fill();
     ctx.beginPath(); xy.forEach(([x, y], i) => i ? ctx.lineTo(x, y) : ctx.moveTo(x, y));
-    ctx.strokeStyle = tierDef.plain ? '#9AA6B4' : tierDef.col;
+    // The art is decoration, not a chart -- it may wear the tier. It may not
+    // go invisible doing it, so the darkest rungs fall back to ink.
+    ctx.strokeStyle = tierDef.plain ? INK : tierDef.col;
     ctx.lineWidth = 2.5; ctx.lineJoin = 'round'; ctx.stroke();
   }
 }
@@ -352,7 +380,12 @@ function render(){
   const card = POOL[idx], t = TIERS[tier];
   const form = card.form;
 
-  document.querySelectorAll('#front,#back').forEach(el => el.style.setProperty('--tier', t.col));
+  document.querySelectorAll('#front,#back').forEach(el => {
+    el.style.setProperty('--tier', t.col);
+    // The pips are the channel that must read with no colour at all, so they
+    // never take a rung too dark to count.
+    el.style.setProperty('--pip', t.plain ? 'var(--c-ink2)' : t.col);
+  });
   $('frame').className  = 'frame' + (t.plain ? ' plain' : '');
   $('frameb').className = 'frame' + (t.plain ? ' plain' : '');
 
@@ -380,8 +413,10 @@ function render(){
        — worst was ${worst.toFixed(1)}.`
     : `No floor. A bad game scores what it scores — the worst of the last
        ${card.recent.length} was <b>${worst.toFixed(1)}</b>.`;
+  // The floor is what these numbers are about, so they wear the floor's
+  // colour rather than the tier's -- which on Common was unreadably dark.
   $('railnote').querySelectorAll('b').forEach(b =>
-    b.style.color = t.plain ? 'var(--c-ink)' : t.col);
+    b.style.color = t.floor ? 'var(--floor-col)' : 'var(--c-ink)');
 
   [['pips','tier'], ['pipsb','tierb']].forEach(([p, ti]) => {
     $(p).innerHTML = pipHtml(t.pips);
@@ -416,15 +451,15 @@ function drawBack(card, t){
   sv.setAttribute('viewBox', `0 0 ${W} ${H}`);
   sv.innerHTML = `
     <defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="${t.plain ? '#7E8A99' : t.col}" stop-opacity=".30"/>
-      <stop offset="1" stop-color="${t.plain ? '#7E8A99' : t.col}" stop-opacity="0"/>
+      <stop offset="0" stop-color="${INK}" stop-opacity=".28"/>
+      <stop offset="1" stop-color="${INK}" stop-opacity="0"/>
     </linearGradient></defs>
     <line x1="0" y1="${H-pad.b}" x2="${W}" y2="${H-pad.b}" stroke="rgba(255,255,255,.10)" stroke-width="1"/>
     <path d="${area}" fill="url(#sg)"/>
-    <path d="${line}" fill="none" stroke="${t.plain ? '#9AA6B4' : t.col}"
+    <path d="${line}" fill="none" stroke="${INK}"
           stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
     <circle cx="${X(h.length-1).toFixed(1)}" cy="${Y(last.form).toFixed(1)}" r="4"
-            fill="${t.plain ? '#9AA6B4' : t.col}" stroke="#1A222C" stroke-width="2"/>
+            fill="${INK}" stroke="#1A222C" stroke-width="2"/>
     <text x="${W-2}" y="8" text-anchor="end" fill="#7C8896"
           font-family="IBM Plex Mono, monospace" font-size="8">${last.form.toFixed(1)} now</text>
     <text x="0" y="${H-4}" fill="#7C8896"
@@ -433,7 +468,7 @@ function drawBack(card, t){
           font-family="IBM Plex Mono, monospace" font-size="8">${last.on}</text>
     <g id="cross" style="display:none">
       <line y1="${pad.t-4}" y2="${H-pad.b}" stroke="rgba(255,255,255,.35)" stroke-width="1"/>
-      <circle r="4" fill="${t.plain ? '#9AA6B4' : t.col}" stroke="#1A222C" stroke-width="2"/>
+      <circle r="4" fill="${INK}" stroke="#1A222C" stroke-width="2"/>
     </g>
     <rect x="0" y="0" width="${W}" height="${H}" fill="transparent" id="hit"/>`;
 
