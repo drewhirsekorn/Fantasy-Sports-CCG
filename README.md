@@ -89,6 +89,9 @@ each one rejects its violation:
   higher budget could never bind)
 - `game_score`, `dust_ledger` and `challenge_result` are append-only
 - A locked entry is immutable except `is_revealed`
+- The rarity floor covers a bad **game**, not an absence: a DNP keeps
+  replacement level, so rarity cannot insure against a player not appearing
+  (`python3 -m engine.test_resolution`)
 - A result cannot exist for a challenge that never locked
 - **No lookahead**: a game is scored against the peer snapshot that existed when
   it finalised, built only from games that finished strictly before it
@@ -138,18 +141,14 @@ data/       tactic_cards.json (36 cards), scoring_rules.json (Stage 0 + cold sta
 
 - **Auth is a placeholder.** Unexpiring bearer tokens with no refresh.
 - **The opponent is a bot** that builds a legal lineup at random. No matchmaking.
-- **Two open balance questions**, both visible in a single demo match:
-  the rarity floor also catches a DNP (raw 15 becomes 34 on an Elite card),
-  which makes rarity insure against absence and weakens the bench; and tactic
-  multipliers are uncapped, so a 96 GameScore with Ceiling scores 163 — over
-  half a winning total from one card.
+- **Tactic multipliers are uncapped.** A 96 GameScore with Ceiling scores 163
+  — over half a winning total from one card. GameScore is bounded 0–100; the
+  final score is not. Open balance question.
 - **No pack service.** Specified and simulated, never built.
 - **No real data.** Everything runs on synthetic seasons; `CsvSource` is the path
   real box scores take but has only been tested against generated data.
 - 15 of 36 tactic conditions need usage baselines, depth charts or transaction
   history the ingest layer doesn't carry. They resolve as ×1.00 and say so.
-- Bench substitution is implemented but has never executed — no starter DNP'd in
-  the demo run.
 - Push notifications, the retention mechanism, are unbuilt.
 
 ## Two things to know before shipping

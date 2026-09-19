@@ -17,7 +17,7 @@ transaction history that the ingest layer does not carry yet; they resolve as
 a no-op (x1.00) and say so in their evidence.
 
     python3 -m engine.resolution seed      # build a demo challenge and lock it
-    python3 -m engine.resolution arm       # pick each starter's K games
+    python3 -m engine.resolution arm       # pick each card's K games
     python3 -m engine.resolution resolve   # score, fire tactics, settle
 """
 from __future__ import annotations
@@ -134,6 +134,19 @@ CONDITIONS = {
 }
 
 
+def apply_floor(raw, floor, was_replacement):
+    """Post-floor score for one card, and whether the floor did anything.
+
+    The rarity floor covers a bad GAME, not an absence. A card that never
+    played takes replacement level with NO floor: letting an Elite floor of 34
+    rescue a replacement 15 would make rarity insure against injury, and gut
+    the reason to carry a bench at all.
+    """
+    if was_replacement:
+        return raw, False
+    return max(raw, floor), raw < floor
+
+
 # ===========================================================================
 class Resolver:
     def __init__(self, cur):
@@ -145,15 +158,23 @@ class Resolver:
 
     # ------------------------------------------------------------------ arm
     def arm(self, challenge_id):
-        """Pick each starter's next K games after lock. Idempotent."""
+        """Pick each starter's AND bench card's next K games after lock.
+
+        Idempotent. The bench needs its own games because a substitute is
+        scored on what it played, not on the scratched starter's fixture.
+        """
         self.cur.execute("""SELECT e.id, e.locked_at FROM challenge_entry e
                             WHERE e.challenge_id=%s AND e.locked_at IS NOT NULL""", (challenge_id,))
         entries = self.cur.fetchall()
         linked = 0
         for entry_id, locked_at in entries:
+            # Bench slots are armed too: a substitute is scored on the games
+            # IT plays, not the scratched starter's. Looking the bench card up
+            # in the starter's game only ever worked for a teammate, so the
+            # substitution never fired.
             self.cur.execute("""SELECT id, player_id, sport FROM entry_slot
-                                WHERE entry_id=%s AND slot_type='starter' ORDER BY slot_index""",
-                             (entry_id,))
+                                WHERE entry_id=%s AND slot_type IN ('starter','bench')
+                                ORDER BY slot_type, slot_index""", (entry_id,))
             for slot_id, player_id, sport in self.cur.fetchall():
                 k = self.sport[sport]['k']
                 self.cur.execute("""SELECT g.id FROM game g, player p
@@ -195,7 +216,7 @@ class Resolver:
         slots = []
         for (sid, idx, pid, sport, rarity, form, revealed,
              avg_score, n_linked, n_scored, final_at) in rows:
-            sub_slot = None; was_replacement = False
+            sub_slot = None; sub_rarity = None; was_replacement = False
             if n_linked and n_scored == n_linked and avg_score is not None:
                 raw = float(avg_score)
             else:
@@ -207,23 +228,26 @@ class Resolver:
                                         FROM entry_slot_game esg
                                         JOIN game_score gs ON gs.game_id=esg.game_id
                                                           AND gs.player_id=%s
-                                        WHERE esg.entry_slot_id=%s""", (b_pid, sid))
+                                        WHERE esg.entry_slot_id=%s""", (b_pid, b_id))
                     got = self.cur.fetchone()[0]
                     if got is not None:
-                        raw, sub_slot = float(got), b_id
+                        raw, sub_slot, sub_rarity = float(got), b_id, b_rar
                         used_bench.add(b_id)
                         break
                 if raw is None:
                     raw = self.sport[sport]['replacement']
                     was_replacement = True
 
-            floor = self.floor.get(rarity, 0.0)
-            pre = max(raw, floor)
+            # The floor belongs to the card that actually played, so a bench
+            # substitute brings its own rarity rather than inheriting the
+            # scratched starter's.
+            floor = self.floor.get(sub_rarity or rarity, 0.0)
+            pre, floor_applied = apply_floor(raw, floor, was_replacement)
             slots.append({'entry_slot_id': sid, 'slot_index': idx, 'player_id': pid,
-                          'sport': sport, 'rarity': rarity,
+                          'sport': sport, 'rarity': sub_rarity or rarity,
                           'form_at_lock': float(form or 50), 'is_revealed': revealed,
                           'raw': round(raw, 2), 'floor': floor,
-                          'floor_applied': raw < floor, 'pre': round(pre, 2),
+                          'floor_applied': floor_applied, 'pre': round(pre, 2),
                           'substitute_slot_id': sub_slot, 'was_replacement': was_replacement,
                           'resolved_at': final_at})
         return slots

@@ -185,8 +185,12 @@ def main() -> int:
         check("counterfactual computed", cf is not None,
               f"final {cf['final_margin']:+} vs pre-tactic {cf['pre_tactic_margin']:+}"
               if cf else "")
-        check("tactics decided it", cf and cf["tactics_decided_it"],
-              "the result flips without tactics" if cf and cf["tactics_decided_it"] else "")
+        # Assert the flag is CONSISTENT with the margins, not that tactics
+        # always flip the result -- whether they do depends on the fixture.
+        flipped = (cf["final_margin"] > 0) != (cf["pre_tactic_margin"] > 0)
+        check("tactics_decided_it matches the margins",
+              cf["tactics_decided_it"] == flipped,
+              "tactics reversed it" if flipped else "lineups decided it")
         check("opponent fully revealed after settling",
               all(not s["hidden"] for side in r["sides"] for s in side["slots"]))
         check("tactic log has evidence",
