@@ -769,6 +769,22 @@ def index():
     return FileResponse(os.path.join(os.path.dirname(__file__), "static", "index.html"))
 
 
+@app.get("/trivia", include_in_schema=False)
+def trivia_page():
+    """The daily trivia game. A built file, not a rendered one.
+
+    It carries its own day inlined and needs nothing from this database, so
+    serving it here is a convenience rather than a dependency: the same file
+    works opened off disk or from a static host.
+    """
+    page = os.path.join(os.path.dirname(os.path.dirname(__file__)), "web", "trivia.html")
+    if not os.path.exists(page):
+        raise HTTPException(404, "not built yet -- run python3 -m trivia.build")
+    # One day at a time, and the day turns at 07:00 ET, so a long cache would
+    # serve an expired set to anyone who loaded the page before the rollover.
+    return FileResponse(page, headers={"Cache-Control": "no-cache"})
+
+
 @app.get("/health", tags=["ops"])
 def health():
     with cursor() as cur:
