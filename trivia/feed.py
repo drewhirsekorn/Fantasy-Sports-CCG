@@ -17,6 +17,7 @@ day its puzzle.
 """
 from __future__ import annotations
 
+import http.client
 import json
 import os
 import time
@@ -65,7 +66,12 @@ def _get(url: str, *, attempts: int = 4, timeout: int = 25) -> dict:
                 if exc.code == 403:
                     continue          # the next agent may be accepted
                 break
-            except (urllib.error.URLError, TimeoutError, json.JSONDecodeError, OSError) as exc:
+            except (urllib.error.URLError, TimeoutError, json.JSONDecodeError,
+                    http.client.HTTPException, OSError) as exc:
+                # http.client.HTTPException is the one that is easy to miss:
+                # IncompleteRead is raised for a truncated chunked response and
+                # descends from Exception, not OSError, so leaving it out let a
+                # single cut-off box score kill a whole run.
                 last = exc
                 break
         if i < attempts - 1:

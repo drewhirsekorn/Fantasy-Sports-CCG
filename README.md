@@ -247,15 +247,21 @@ hues: the page has to survive losing colour entirely.
 
 ESPN's box scores reach back further than the seeded ledger does:
 
-| | box scores available from | seeded here |
+| | box scores available from | scanned here |
 |---|---|---|
-| NBA | 1993 | `2023-10-01` → `2026-09-19` |
-| NFL | 2002 | `2023-09-01` → `2026-09-19` |
-| MLB | 2003 | `2025-01-01` → `2026-09-19` |
+| NBA | 1993 | `1993-11-01` → `1995-11-30` · `2018-10-01` → `2019-01-31` · `2023-10-01` → `2026-09-19` |
+| NFL | 2002 | `2002-09-01` → `2005-12-31` · `2023-09-01` → `2026-09-19` |
+| MLB | 2003 | `2022-01-01` → `2023-06-30` · `2025-01-01` → `2026-09-19` |
 
-1,799 occurrences across 28 feats. Twenty-six of them have happened at least
-once in that window; a six-touchdown game and a complete-game no-hitter have
-not, which is the kind of thing the rare tier is for.
+3,582 occurrences across 28 feats, 832 of them from the 1990s. 27 feats have
+happened at least once in those windows; a
+six-touchdown game has not, which is the kind of thing the rare tier is for.
+
+The windows are deliberately not one span each. Scanning runs backward from
+the present to deepen "who did it before", and forward from 1993 to give the
+anniversaries somewhere to reach — and an anniversary needs no contiguity,
+since it states a fact rather than claiming nobody did it in between. The
+gaps between the spans are honest: no question is built across one.
 
 The seed is what one session could scan, not a limit of the design. Deepening
 it is one command, and the questions get better the further back it goes —
