@@ -197,12 +197,82 @@ to produce a different season from that point on. Nothing checked.
 `./db/dev.sh reproducible` now checks both, and was confirmed to fail against
 each defect before being kept.
 
+## Mean-neutral is not measured
+
+Every tactic's hit/miss pair is solved so `E[multiplier] = 1.00` at its printed
+base rate, and a `CHECK` enforces that arithmetic. The constraint verifies the
+**solve**, not the game: `base_rate` is a designed number, and nothing compared
+it to how often the condition actually fires until now.
+
+`python3 -m engine.deltap neutrality` does. Against the replayed season, **8 of
+the 10 demo cards are not neutral in play**:
+
+| card | printed rate | actual | pays |
+|---|---|---|---|
+| Two-Sport | 0.25 | 0.73 / 0.51 | **1.41× / 1.22×** |
+| Overrated | 0.40 | 0.93 / 0.75 | **1.38× / 1.25×** |
+| Bounce Back | 0.38 | 0.00 | **0.64×** — never fires at all |
+| Lockdown | 0.32 | 0.64 / 0.62 | 1.25× / 1.23× |
+| Cold Snap | 0.50 | 0.83 | 1.23× |
+| Ceiling | 0.10 | 0.40 / 0.11 | 1.23× / 1.00× |
+
+Two rates per card because how people build changes how often a condition
+fires: the first column is the best legal five, the second any legal five.
+A single printed base rate cannot be right for both, which is a design problem
+before it is a tuning one.
+
+Every one of these satisfies the `CHECK`. Re-solving is not applied —
+`--resolve` prints what the pairs would become, and for four cards the
+required miss goes below the 0.35 floor, meaning the spread has to come down
+rather than the miss: a card that fires 83% of the time cannot carry a 1.35×
+hit and stay neutral.
+
+## Measuring delta_p
+
+`delta_p` is the edge a player gets from pointing a tactic at a better target
+than chance would. It is measured against the counterfactual, which the
+replayed season makes exact — for the lineup actually fielded, evaluate the
+tactic against **every** legal target:
+
+    chosen   1 if the player's target hit
+    chance   the fraction of that lineup's targets that would have hit
+    delta    chosen - chance
+
+Pairing inside one match removes lineup quality, opponent and week, which is
+what brings the sample size within reach:
+
+| true edge | plays to detect it 80% of the time |
+|---|---|
+| 0.50 | 100 |
+| 0.25 | 400 |
+| 0.10 | more than 800 |
+
+The estimator is calibrated against edges of known size, established on an
+independent large sample — a 200-play interval covers the truth 91–97% of the
+time, and a blind player is called skilled 2.5% of the time, which is what a
+95% interval should do. (The first version of this test compared the estimate
+to the edge on the same plays, which is the same arithmetic twice and passes
+unconditionally.)
+
+**Half the demo cards cannot carry a target edge at all.**
+`python3 -m engine.deltap sensitivity` separates three reasons: Cold Snap,
+Lockdown, Overrated and Two-Sport read the lineup or the opponent, so they hit
+the same way wherever they are pinned — their skill is in bringing them, not
+aiming them. Bounce Back is per-slot but never satisfiable here. Pooling those
+into one number would dilute it with plays that were never able to contribute.
+
+**What is missing is the choice itself.** Both clients hard-wire tactic *n* to
+starter *n*. The API and schema carry `tactic_target_index` and always have;
+the interfaces never expose it. Until they do there is nothing to measure.
+
 ## Invariants, enforced rather than documented
 
 These are constraints and triggers, not conventions — `./db/dev.sh test` proves
 each one rejects its violation:
 
-- Tactic payoffs are mean-neutral (`CHECK` on hit/miss against base rate)
+- Tactic payoffs satisfy their own solve (`CHECK` on hit/miss against the
+  **printed** base rate). Note what that does and does not say — see
+  **Mean-neutral is not measured** below
 - Rarity floor ≤ 38; Form budget ≤ 300, above which no lineup would be
   constrained by it
 - `game_score`, `dust_ledger` and `challenge_result` are append-only
@@ -295,9 +365,11 @@ Everything else, for anything past the prototype:
 (MLBPA/NFLPA/NBPA). Every name in this repo and in the designs is fictional on
 purpose.
 
-**`delta_p` is a guess.** The per-card forecastability figures driving every
-skill-expression number are judgment, not measurement. Measuring them is the
-prototype's main job, and the whole card list re-solves once they're real.
+**`delta_p` is still a guess, but there is now a way to stop guessing.**
+`engine/deltap.py` measures it against an exact counterfactual rather than
+against the printed base rate — see **Measuring delta_p** below. What blocks
+it is not the estimator: it is that no client lets a player choose a tactic's
+target, so the decision `delta_p` is *about* is never made.
 
 ## Design
 
