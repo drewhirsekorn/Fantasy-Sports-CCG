@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import json
 import sys
+import urllib.error
 from datetime import date, datetime
 from zoneinfo import ZoneInfo
 
@@ -70,6 +71,19 @@ def main() -> int:
     check("and slashes count too", feed._split("18/25", 1), 25.0)
     check("a DNP line has no minutes, so no line",
           feed._parse_nba({"points": "0"}), None)
+
+    print("\n=== the feed survives the ways a response goes wrong ===")
+    # A truncated chunked response raises IncompleteRead, which descends from
+    # Exception rather than OSError. Leaving it out of the retry meant one
+    # cut-off box score killed a whole run.
+    import http.client
+    retried = (urllib.error.URLError, TimeoutError, json.JSONDecodeError,
+               http.client.HTTPException, OSError)
+    for exc in (http.client.IncompleteRead, http.client.RemoteDisconnected,
+                urllib.error.URLError, TimeoutError, json.JSONDecodeError,
+                ConnectionResetError):
+        check(f"{exc.__name__} is caught by the feed's retry",
+              issubclass(exc, retried), True)
 
     print("\n=== which games count ===")
     # A 50-point All-Star Game is not a 50-point game. Letting one in makes
