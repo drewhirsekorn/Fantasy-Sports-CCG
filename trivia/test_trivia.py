@@ -277,11 +277,37 @@ def main() -> int:
           != json.dumps(first["questions"]), True)
     check("it sources from the day before", first["source_date"], "2025-02-03")
 
+    print("\n=== every question hangs off the night just played ===")
+    # The "on this date in 1997" shape was removed on purpose. It filled a lot
+    # of mornings, which is exactly why its absence needs a test rather than a
+    # comment -- the pressure to bring it back will come from an empty day.
+    from datetime import timedelta as _td
+    for offset in range(40):
+        day = date(2025, 1, 10) + _td(days=offset)
+        for q in puzzle.build(day, stocked())["questions"]:
+            if q["kind"] not in ("last_before", "most_recent") or "On this date" in q["setup"]:
+                FAILS.append(f"calendar-year question on {day}")
+    check("40 days of builds, no question about an earlier year",
+          [f for f in FAILS if "calendar-year" in f], [])
+
+    print("\n=== one board, three different answers ===")
+    dupes = []
+    for offset in range(120):
+        day = date(2025, 10, 1) + __import__("datetime").timedelta(days=offset)
+        qs = puzzle.build(day, stocked())["questions"]
+        answers = [q["options"][q["answer"]] for q in qs]
+        if len(set(answers)) != len(answers):
+            dupes.append((day.isoformat(), answers))
+    check("120 builds, no day answers itself twice", dupes, [])
+
     print("\n=== a quiet night still has a game ===")
     quiet = puzzle.build(date(2025, 1, 6), stocked())     # nothing on 2025-01-05
     check("questions were still found", len(quiet["questions"]) > 0, True)
     check("and they say so rather than inventing a headline",
-          quiet["questions"][0]["kind"] in ("anniversary", "most_recent"), True)
+          quiet["questions"][0]["kind"], "most_recent")
+    check("no question is ever about a different calendar year",
+          any(q["kind"] == "anniversary" or "On this date" in q["setup"]
+              for q in quiet["questions"]), False)
     for q in quiet["questions"]:
         check(f"answer is inside options ({q['kind']})",
               0 <= q["answer"] < len(q["options"]), True)

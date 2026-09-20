@@ -1,69 +1,69 @@
 {
  "version": 1,
  "date": "2026-09-20",
- "stamp": "29d53386a11d",
+ "stamp": "fb7ad0ff6964",
  "source_date": "2026-09-19",
  "opens": "2026-09-20T07:00:00-04:00",
  "questions": [
   {
-   "kind": "anniversary",
+   "kind": "most_recent",
    "sport": "NFL",
-   "setup": "On this date in 2004, an NFL player had a 150-yard receiving game.",
-   "prompt": "Who was it? (151 yards against BAL)",
+   "setup": "Nobody managed a three-sack game in the NFL yesterday.",
+   "prompt": "Who had the most recent one?",
    "options": [
-    "Quentin Johnston",
-    "Larry Fitzgerald",
-    "Torry Holt",
-    "Hines Ward"
+    "Montae Reagor",
+    "Dexter Lawrence II",
+    "Kyle Vanden Bosch",
+    "Will Anderson Jr."
    ],
    "answer": 3,
-   "explain": "Hines Ward, Hines Ward caught 6 passes for 151 yards, September 19, 2004.",
+   "explain": "Will Anderson Jr. \u2014 3 sacks for HOU vs NE on January 18, 2026.",
    "links": [
     {
-     "label": "September 19, 2004 box score",
-     "url": "https://www.espn.com/nfl/boxscore/_/gameId/240919033"
+     "label": "January 18, 2026 box score",
+     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401772983"
     }
    ],
    "id": "2026-09-20-1"
   },
   {
-   "kind": "anniversary",
+   "kind": "most_recent",
    "sport": "MLB",
-   "setup": "On this date in 2022, an MLB player had a five-RBI game.",
-   "prompt": "Who was it? (5 RBI against LAA)",
+   "setup": "Nobody managed a five-hit game in the majors yesterday.",
+   "prompt": "Who had the most recent one?",
    "options": [
-    "Ceddanne Rafaela",
-    "Eugenio Suarez",
-    "Carlos Santana",
-    "Kody Clemens"
+    "Yandy Diaz",
+    "Cedric Mullins",
+    "Adolis Garcia",
+    "Weston Wilson"
    ],
-   "answer": 2,
-   "explain": "Carlos Santana, Carlos Santana drove in 5 runs for SEA, September 19, 2022.",
+   "answer": 3,
+   "explain": "Weston Wilson \u2014 5 hits for SEA vs ATH on September 12, 2026.",
    "links": [
     {
-     "label": "September 19, 2022 box score",
-     "url": "https://www.espn.com/mlb/boxscore/_/gameId/401356404"
+     "label": "September 12, 2026 box score",
+     "url": "https://www.espn.com/mlb/boxscore/_/gameId/401816916"
     }
    ],
    "id": "2026-09-20-2"
   },
   {
    "kind": "most_recent",
-   "sport": "NBA",
-   "setup": "Nobody managed a 40-point triple-double in the NBA yesterday.",
+   "sport": "NFL",
+   "setup": "Nobody managed a four-touchdown game in the NFL yesterday.",
    "prompt": "Who had the most recent one?",
    "options": [
-    "Luka Doncic",
-    "James Harden",
-    "Giannis Antetokounmpo",
-    "Stephon Castle"
+    "Kirk Cousins",
+    "Joe Flacco",
+    "Kyler Murray",
+    "Jared Goff"
    ],
    "answer": 3,
-   "explain": "Stephon Castle \u2014 40 points for SA vs DAL on February 7, 2026.",
+   "explain": "Jared Goff \u2014 4 touchdowns for DET vs BUF on September 17, 2026.",
    "links": [
     {
-     "label": "February 7, 2026 box score",
-     "url": "https://www.espn.com/nba/boxscore/_/gameId/401810604"
+     "label": "September 17, 2026 box score",
+     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401872932"
     }
    ],
    "id": "2026-09-20-3"
@@ -183,6 +183,6 @@
    }
   ]
  },
- "built_at": "2026-09-20T18:55:10Z",
+ "built_at": "2026-09-20T19:05:42Z",
  "closes": "2026-09-21T07:00:00-04:00"
 }
