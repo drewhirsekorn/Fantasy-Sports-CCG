@@ -26,7 +26,7 @@ import sys
 from datetime import date, datetime, timedelta
 from zoneinfo import ZoneInfo
 
-from trivia import backfill, feed, puzzle
+from trivia import backfill, feats, feed, puzzle
 from trivia.ledger import Ledger
 
 ET = ZoneInfo("America/New_York")
@@ -74,7 +74,7 @@ def scan(ledger: Ledger, day: date, *, workers: int = 12, verbose: bool = True) 
         new = [o for o in found if ledger.add(o)]
         added += len(new)
         if day.isoformat() in read:
-            ledger.cover(sport, day, day)
+            ledger.cover(sport, day, day, [f.key for f in feats.BY_SPORT.get(sport, ())])
         elif verbose:
             print(f"  ! {sport} {day} could not be read; not claiming it", file=sys.stderr)
         if verbose:

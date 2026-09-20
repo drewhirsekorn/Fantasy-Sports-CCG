@@ -31,6 +31,10 @@ from datetime import date, datetime, timedelta, timezone
 from trivia import feats
 from trivia.ledger import Ledger
 
+# All three initialisms take "an" when read aloud -- en-bee-ay, en-eff-el,
+# em-el-bee -- and only the NBA and NFL take a definite article comfortably.
+LEAGUE = {"NBA": "the NBA", "NFL": "the NFL", "MLB": "the majors"}
+
 OPTIONS = 4
 QUESTIONS = 3
 SPORTS = ("NBA", "NFL", "MLB")
@@ -171,7 +175,7 @@ def anniversary(ledger: Ledger, source_day: date, rng: random.Random) -> list[di
         out.append({
             "kind": "anniversary",
             "sport": feat.sport,
-            "setup": f"On this date in {year}, a {feat.sport} player had {feat.label}.",
+            "setup": f"On this date in {year}, an {feat.sport} player had {feat.label}.",
             "prompt": f"Who was it? ({_value(occurrence)} against {occurrence['opponent']})",
             "options": options,
             "answer": answer,
@@ -208,7 +212,7 @@ def most_recent(ledger: Ledger, sport: str, source_day: date, rng: random.Random
         out.append({
             "kind": "most_recent",
             "sport": sport,
-            "setup": f"Nobody managed {feat.label} in the {sport} yesterday.",
+            "setup": f"Nobody managed {feat.label} in {LEAGUE[sport]} yesterday.",
             "prompt": f"Who had the most recent one?",
             "options": options,
             "answer": answer,
@@ -217,6 +221,24 @@ def most_recent(ledger: Ledger, sport: str, source_day: date, rng: random.Random
             "links": [l for l in (_source_link(previous),) if l],
         })
     return out
+
+
+def _playing(ledger: Ledger, sport: str, source_day: date, *, within: int = 21) -> bool:
+    """Is this league in season?
+
+    Asked of the ledger rather than a calendar, because the ledger is the
+    thing that knows: a league that produced a feat in the last three weeks
+    was playing. It decides ordering only -- a wrong guess costs a question
+    its place in the list, never its correctness.
+    """
+    floor = (source_day - timedelta(days=within)).isoformat()
+    return any(o["sport"] == sport and floor <= o["date"] <= source_day.isoformat()
+               for o in ledger.occurrences)
+
+
+def _spread(candidates: list[dict], used: set[str]) -> list[dict]:
+    """Stable reorder that puts leagues not yet asked about first."""
+    return sorted(candidates, key=lambda q: q["sport"] in used)
 
 
 # ------------------------------------------------------------------- build
@@ -243,30 +265,36 @@ def build(puzzle_day: date, ledger: Ledger, *, questions: int = QUESTIONS) -> di
             chosen.append(question)
             used_sports.add(occurrence["sport"])
 
-    # 2. Same date, earlier years.
+    # 2. Same date, earlier years. Rarest first, and a league that has not
+    #    been asked about yet goes ahead of one that has.
     if len(chosen) < questions:
-        for question in anniversary(ledger, source_day, rng):
+        for question in _spread(anniversary(ledger, source_day, rng), used_sports):
             if len(chosen) >= questions:
                 break
-            if question["sport"] in used_sports and len(used_sports) < len(SPORTS):
-                continue
             chosen.append(question)
             used_sports.add(question["sport"])
 
-    # 3. Whatever the ledger can still answer, preferring leagues not yet asked
-    #    about and the sports that were actually playing yesterday.
+    # 3. Whatever the ledger can still answer. Taken one league at a time so a
+    #    September morning -- NBA dark, NFL two games in, MLB the only thing
+    #    that played -- does not hand back three NBA questions in a row.
     if len(chosen) < questions:
+        pools = {sport: most_recent(ledger, sport, source_day, rng) for sport in SPORTS}
         order = sorted(SPORTS, key=lambda s: (s in used_sports,
-                                              not ledger.covers(s, source_day)))
-        for sport in order:
-            for question in most_recent(ledger, sport, source_day, rng):
-                if len(chosen) >= questions:
-                    break
+                                              not _playing(ledger, s, source_day)))
+        while len(chosen) < questions and any(pools.values()):
+            took = False
+            for sport in order:
+                if len(chosen) >= questions or not pools[sport]:
+                    continue
+                question = pools[sport].pop(0)
                 if any(q["setup"] == question["setup"] and q["prompt"] == question["prompt"]
                        for q in chosen):
                     continue
                 chosen.append(question)
                 used_sports.add(sport)
+                took = True
+            if not took:
+                break
 
     for i, question in enumerate(chosen, 1):
         question["id"] = f"{puzzle_day.isoformat()}-{i}"

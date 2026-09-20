@@ -109,16 +109,26 @@ def main() -> int:
     check("nine innings with no hits is",
           feats.BY_KEY["mlb_no_hitter"].value(
               {"sport": "MLB", "role": "pitching", "innings": 9.0, "hits_allowed": 0.0}), 9.0)
-    check("one line can clear two feats",
-          len(feats.detect([{**line, "points": 50.0, "rebounds": 12.0, "assists": 11.0,
-                             "date": "2025-01-10", "player": "P", "game_id": "g"}])), 2)
+    # A 50-point triple-double is a 50-point game, a 40-point triple-double
+    # and a 40-point game. All three are real questions with different
+    # answers; what matters is which one gets asked.
+    tiers = feats.detect([{**line, "points": 50.0, "rebounds": 12.0, "assists": 11.0,
+                           "date": "2025-01-10", "player": "P", "game_id": "g"}])
+    check("one line clears every tier it qualifies for",
+          sorted(o["feat"] for o in tiers),
+          ["nba_40_10_10", "nba_40_points", "nba_50_points"])
+    check("and the rarest is the one offered first", tiers[0]["feat"], "nba_40_10_10")
+    check("ranked, not alphabetical",
+          [feats.BY_KEY[o["feat"]].rank for o in tiers],
+          sorted(feats.BY_KEY[o["feat"]].rank for o in tiers))
 
     print("\n=== coverage is a claim, so it is only widened when earned ===")
     ledger = Ledger()
     ledger.cover("NBA", date(2025, 1, 1), date(2025, 1, 31))
     ledger.cover("NBA", date(2025, 2, 1), date(2025, 2, 28))
     check("an adjoining window extends the claim",
-          ledger.coverage["NBA"], [{"from": "2025-01-01", "through": "2025-02-28"}])
+          [(w["from"], w["through"]) for w in ledger.coverage["NBA"]],
+          [("2025-01-01", "2025-02-28")])
     ledger.cover("NBA", date(2025, 6, 1), date(2025, 6, 30))
     check("a window with a gap in front of it does not paper over the gap",
           len(ledger.coverage["NBA"]), 2)
@@ -126,7 +136,8 @@ def main() -> int:
           ledger.covers("NBA", date(2025, 1, 15)), True)
     ledger.cover("NBA", date(2025, 3, 1), date(2025, 5, 31))
     check("scanning the gap later heals it into one window",
-          ledger.coverage["NBA"], [{"from": "2025-01-01", "through": "2025-06-30"}])
+          [(w["from"], w["through"]) for w in ledger.coverage["NBA"]],
+          [("2025-01-01", "2025-06-30")])
     check("a day inside a window is covered", ledger.covers("NBA", date(2025, 6, 15)), True)
     check("a day past every window is not", ledger.covers("NBA", date(2025, 9, 15)), False)
     check("an unscanned sport is not covered", ledger.covers("MLB", date(2025, 6, 15)), False)
@@ -140,6 +151,33 @@ def main() -> int:
     check("the missed day itself is not", missed.covers("NBA", date(2025, 3, 1)), False)
     check("and questions inside the old window still build",
           bool(missed.previous("nba_50_points", date(2025, 2, 3), sport="NBA")), True)
+
+    print("\n=== adding a feat is not retroactive ===")
+    # The old scans could not have found something the detector could not yet
+    # see, so their windows must not vouch for it.
+    narrow = Ledger()
+    narrow.add(occurrence("nba_50_points", "2025-01-02", "Player One", 51))
+    narrow.add(occurrence("nba_50_points", "2025-01-09", "Player Two", 55))
+    narrow.cover("NBA", date(2025, 1, 1), date(2025, 2, 28), ["nba_50_points"])
+    check("the feat the scan looked for is covered",
+          narrow.covers("NBA", date(2025, 1, 15), "nba_50_points"), True)
+    check("a feat added afterwards is not",
+          narrow.covers("NBA", date(2025, 1, 15), "nba_20_assists"), False)
+    check("and no question is built about it",
+          narrow.previous("nba_20_assists", date(2025, 2, 3), sport="NBA"), None)
+    narrow.cover("NBA", date(2025, 1, 1), date(2025, 2, 28), ["nba_50_points", "nba_20_assists"])
+    check("re-scanning the same range wider absorbs the claim it supersedes",
+          len(narrow.coverage["NBA"]), 1)
+    check("and it covers the new feat", narrow.covers("NBA", date(2025, 1, 15), "nba_20_assists"), True)
+    check("without losing the old one", narrow.covers("NBA", date(2025, 1, 15), "nba_50_points"), True)
+    partial = Ledger()
+    partial.cover("NBA", date(2025, 1, 1), date(2025, 3, 31), ["nba_50_points"])
+    partial.cover("NBA", date(2025, 1, 1), date(2025, 1, 31), ["nba_50_points", "nba_20_assists"])
+    check("a wider catalogue over a shorter range keeps both windows",
+          len(partial.coverage["NBA"]), 2)
+    check("the new feat is covered only where it was actually scanned",
+          (partial.covers("NBA", date(2025, 1, 15), "nba_20_assists"),
+           partial.covers("NBA", date(2025, 3, 15), "nba_20_assists")), (True, False))
 
     print("\n=== 'who did it before' is refused unless the gap was searched ===")
     ledger = stocked()

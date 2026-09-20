@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yesterday's Game</title>
+<meta name="description" content="Three questions a day about what just happened in the NBA, NFL and MLB. New set at 7am Eastern.">
+<style>
+/* One hue plus ink. The grid and the card pages settled this already: extra
+   hues have to earn their place, and here only two things need to be told
+   apart at a glance -- right and wrong -- so those two get colour and
+   everything else gets ink. Both also carry a glyph and a border weight, so
+   the page still works with no colour at all. */
+:root {
+  color-scheme: light dark;
+  --bg: #fbfaf7;
+  --panel: #ffffff;
+  --ink: #16181d;
+  --ink-soft: #565b66;
+  --ink-faint: #8b909b;
+  --rule: #e2e0da;
+  --rule-strong: #c9c6bd;
+  --accent: #1f4e9c;
+  --accent-soft: #e8eefa;
+  --right: #17633a;
+  --right-soft: #e4f2e9;
+  --wrong: #98331f;
+  --wrong-soft: #fae9e4;
+  --shadow: 0 1px 2px rgba(20,22,28,.06), 0 8px 24px rgba(20,22,28,.06);
+  --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+  --sans: ui-sans-serif, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14161a;
+    --panel: #1c1f25;
+    --ink: #eceef2;
+    --ink-soft: #a8aeba;
+    --ink-faint: #757c8a;
+    --rule: #2b2f37;
+    --rule-strong: #3d434e;
+    --accent: #8fb4f2;
+    --accent-soft: #1e2a3d;
+    --right: #6cd39b;
+    --right-soft: #16301f;
+    --wrong: #f09a83;
+    --wrong-soft: #341d18;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.25);
+  }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg); color: var(--ink); font-family: var(--sans);
+  font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased;
+  padding: 0 16px 64px;
+}
+main { max-width: 680px; margin: 0 auto; }
+a { color: var(--accent); }
+
+/* ------------------------------------------------------------- masthead */
+header { padding: 32px 0 20px; border-bottom: 1px solid var(--rule); }
+.title {
+  font-size: 13px; letter-spacing: .14em; text-transform: uppercase;
+  font-weight: 650; color: var(--ink-soft); margin: 0 0 6px;
+}
+h1 { font-size: 27px; line-height: 1.2; margin: 0 0 8px; letter-spacing: -.015em; }
+.dateline { margin: 0; color: var(--ink-soft); font-size: 14px; }
+.dateline b { color: var(--ink); font-weight: 600; }
+
+/* ---------------------------------------------------------------- meter */
+.meter { display: flex; gap: 8px; align-items: center; margin: 16px 0 0; }
+.pip {
+  width: 34px; height: 6px; border-radius: 3px;
+  background: var(--rule-strong); transition: background .25s ease;
+}
+.pip[data-state="right"] { background: var(--right); }
+.pip[data-state="wrong"] { background: var(--wrong); }
+.meter .count { font: 600 13px/1 var(--mono); color: var(--ink-soft); margin-left: 4px; }
+
+/* -------------------------------------------------------------- question */
+.card {
+  background: var(--panel); border: 1px solid var(--rule); border-radius: 12px;
+  padding: 22px; margin: 20px 0; box-shadow: var(--shadow);
+}
+.tags { display: flex; gap: 8px; align-items: center; margin-bottom: 14px; flex-wrap: wrap; }
+.tag {
+  font: 650 11px/1 var(--sans); letter-spacing: .1em; text-transform: uppercase;
+  padding: 5px 8px; border-radius: 5px; background: var(--accent-soft);
+  color: var(--accent); border: 1px solid transparent;
+}
+.tag.plain { background: transparent; color: var(--ink-faint); border-color: var(--rule); }
+.setup { color: var(--ink-soft); margin: 0 0 8px; font-size: 15px; }
+.prompt { font-size: 19px; font-weight: 600; margin: 0 0 18px; line-height: 1.35; }
+
+.options { display: grid; gap: 10px; }
+.option {
+  display: flex; align-items: center; gap: 12px; width: 100%;
+  padding: 13px 15px; border-radius: 9px; cursor: pointer;
+  border: 1px solid var(--rule-strong); background: var(--panel);
+  color: var(--ink); font: inherit; text-align: left;
+  transition: border-color .12s ease, background .12s ease;
+}
+.option:hover:not(:disabled) { border-color: var(--accent); background: var(--accent-soft); }
+.option:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.option:disabled { cursor: default; }
+.option .key {
+  flex: 0 0 auto; width: 24px; height: 24px; border-radius: 6px;
+  display: grid; place-items: center; font: 600 12px/1 var(--mono);
+  background: var(--bg); border: 1px solid var(--rule); color: var(--ink-faint);
+}
+.option .name { flex: 1 1 auto; }
+.option .mark { flex: 0 0 auto; font: 600 15px/1 var(--mono); opacity: 0; }
+/* Right and wrong are told three ways: border weight, tint, and glyph. */
+.option[data-state="right"] {
+  border: 2px solid var(--right); background: var(--right-soft);
+}
+.option[data-state="right"] .mark { opacity: 1; color: var(--right); }
+.option[data-state="right"] .key { border-color: var(--right); color: var(--right); }
+.option[data-state="wrong"] {
+  border: 2px dashed var(--wrong); background: var(--wrong-soft);
+}
+.option[data-state="wrong"] .mark { opacity: 1; color: var(--wrong); }
+.option[data-state="muted"] { opacity: .5; }
+
+.verdict { margin: 18px 0 0; padding: 14px 16px; border-radius: 9px; font-size: 15px; }
+.verdict[data-state="right"] { background: var(--right-soft); border-left: 3px solid var(--right); }
+.verdict[data-state="wrong"] { background: var(--wrong-soft); border-left: 3px solid var(--wrong); }
+.verdict .lead { font-weight: 650; display: block; margin-bottom: 3px; }
+.verdict .links { margin-top: 8px; font-size: 13px; }
+.verdict .links a { margin-right: 14px; }
+
+.nav { display: flex; justify-content: space-between; align-items: center; margin-top: 18px; gap: 12px; }
+button.go {
+  font: 600 15px/1 var(--sans); padding: 11px 20px; border-radius: 8px;
+  background: var(--accent); color: var(--bg); border: 1px solid var(--accent);
+  cursor: pointer;
+}
+@media (prefers-color-scheme: dark) { button.go { color: #10141c; } }
+button.go:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+button.go[hidden] { display: none; }
+.progress { font: 500 13px/1 var(--mono); color: var(--ink-faint); }
+
+/* --------------------------------------------------------------- results */
+.score { font-size: 34px; font-weight: 700; letter-spacing: -.02em; margin: 0 0 4px; }
+.score small { font-size: 18px; font-weight: 500; color: var(--ink-faint); }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 20px 0 0; }
+.stat { border: 1px solid var(--rule); border-radius: 9px; padding: 12px; text-align: center; }
+.stat .n { font: 700 22px/1.1 var(--sans); }
+.stat .k { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-faint); }
+
+.history { margin-top: 22px; }
+.history h3 { font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--ink-faint); margin: 0 0 10px; font-weight: 650; }
+.strip { display: flex; gap: 5px; flex-wrap: wrap; }
+.day {
+  width: 30px; height: 34px; border-radius: 6px; border: 1px solid var(--rule);
+  display: grid; place-items: center; font: 600 12px/1 var(--mono);
+  color: var(--ink-soft); background: var(--panel);
+}
+.day[data-perfect="yes"] { border-color: var(--right); color: var(--right); background: var(--right-soft); }
+.day[data-zero="yes"] { border-style: dashed; color: var(--ink-faint); }
+
+.countdown {
+  margin-top: 26px; padding: 16px; border: 1px dashed var(--rule-strong);
+  border-radius: 9px; text-align: center; color: var(--ink-soft); font-size: 14px;
+}
+.countdown b { font-family: var(--mono); color: var(--ink); font-size: 17px; }
+
+footer {
+  margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--rule);
+  color: var(--ink-faint); font-size: 12.5px; line-height: 1.7;
+}
+footer code { font-family: var(--mono); font-size: 12px; }
+.stale {
+  background: var(--wrong-soft); border: 1px solid var(--wrong); color: var(--ink);
+  padding: 14px 16px; border-radius: 9px; margin: 20px 0; font-size: 15px;
+}
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+@media (max-width: 480px) {
+  h1 { font-size: 23px; }
+  .prompt { font-size: 17px; }
+  .card { padding: 17px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <p class="title">Yesterday's Game</p>
+    <h1 id="headline">Three questions about what just happened.</h1>
+    <p class="dateline">Games of <b id="sourcedate">—</b> · new set at 7am Eastern</p>
+    <div class="meter" id="meter" role="img" aria-label="today's score"></div>
+  </header>
+
+  <div id="stale" class="stale" hidden>
+    This set expired at 7am Eastern. <a href="" onclick="location.reload();return false;">Reload</a> for today's questions.
+  </div>
+
+  <section id="quiz" aria-live="polite"></section>
+  <section id="results" hidden></section>
+
+  <footer>
+    <p id="provenance">Every question is built from a box score, not from memory.</p>
+    <p>Your answers stay in this browser. Yesterday's questions are gone — the page
+       only ever holds one day, and only your daily scores are kept.</p>
+  </footer>
+</main>
+
+<script>
+"use strict";
+const PUZZLE = {"version":1,"date":"2026-09-20","stamp":"fe2d559c5139","source_date":"2026-09-19","opens":"2026-09-20T07:00:00-04:00","questions":[{"kind":"most_recent","sport":"NFL","setup":"Nobody managed a four-rushing-touchdown game in the NFL yesterday.","prompt":"Who had the most recent one?","options":["Jer'Zhan Newton","Dallas Goedert","Derrick Henry","Tyler Shough"],"answer":2,"explain":"Derrick Henry \u2014 4 touchdowns for BAL vs GB on December 27, 2025.","links":[{"label":"December 27, 2025 box score","url":"https://www.espn.com/nfl/boxscore/_/gameId/401772953"}],"id":"2026-09-20-1"},{"kind":"most_recent","sport":"MLB","setup":"Nobody managed a 15-strikeout game in the majors yesterday.","prompt":"Who had the most recent one?","options":["Grant Holmes","Dustin May","Jacob Gonzalez","Jacob Misiorowski"],"answer":3,"explain":"Jacob Misiorowski \u2014 15 strikeouts for MIL vs PHI on June 12, 2026.","links":[{"label":"June 12, 2026 box score","url":"https://www.espn.com/mlb/boxscore/_/gameId/401815729"}],"id":"2026-09-20-2"},{"kind":"most_recent","sport":"NBA","setup":"Nobody managed a 40-point triple-double in the NBA yesterday.","prompt":"Who had the most recent one?","options":["Giannis Antetokounmpo","Cade Cunningham","Stephon Castle","James Harden"],"answer":2,"explain":"Stephon Castle \u2014 40 points for SA vs DAL on February 7, 2026.","links":[{"label":"February 7, 2026 box score","url":"https://www.espn.com/nba/boxscore/_/gameId/401810604"}],"id":"2026-09-20-3"}],"coverage":{"MLB":[{"from":"2025-01-01","through":"2026-09-19","feats":["mlb_12_k","mlb_15_k","mlb_3_hr","mlb_5_hits","mlb_5_rbi","mlb_7_rbi","mlb_no_hitter","mlb_shutout"]}],"NBA":[{"from":"2023-10-01","through":"2026-09-19","feats":["nba_10_threes","nba_20_assists","nba_25_rebounds","nba_40_10_10","nba_40_points","nba_50_points","nba_5_blocks","nba_6_steals"]}],"NFL":[{"from":"2023-09-01","through":"2026-09-19","feats":["nfl_150_rec_yards","nfl_150_rush_yards","nfl_200_rec_yards","nfl_200_rush_yards","nfl_3_picks","nfl_3_sacks","nfl_400_pass_yards","nfl_450_pass_yards","nfl_4_pass_td","nfl_4_rush_td","nfl_4_sacks","nfl_6_pass_td"]}]},"built_at":"2026-09-20T17:36:54Z","closes":"2026-09-21T07:00:00-04:00"};
+const KEY = "yesterdays-game/v1";
+const HISTORY_DAYS = 14;
+
+/* ------------------------------------------------------------------ store
+   Deliberately small. The only thing worth keeping across days is how you
+   did, so that is all that is kept: a date and two numbers per day. The
+   questions themselves are never written here, which is what makes "old
+   questions are deleted each day" true rather than merely claimed. */
+const blank = () => ({
+  v: 1, day: null, stamp: null, answers: [], streak: 0, best: 0, lastPlayed: null,
+  history: [], lifetimeRight: 0, lifetimeAsked: 0
+});
+
+function load() {
+  let s;
+  try { s = JSON.parse(localStorage.getItem(KEY) || "null"); } catch (e) { s = null; }
+  if (!s || s.v !== 1) s = blank();
+  // The day turned over -- or the same day was rebuilt against a deeper
+  // ledger and is no longer the same three questions. Either way the
+  // in-progress answers go and the record stays.
+  if (s.day !== PUZZLE.date || s.stamp !== PUZZLE.stamp) {
+    s.day = PUZZLE.date; s.stamp = PUZZLE.stamp; s.answers = [];
+  }
+  s.history = (s.history || []).slice(-HISTORY_DAYS);
+  return s;
+}
+function save(s) {
+  try { localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) { /* private mode */ }
+}
+const yesterdayOf = iso => {
+  const d = new Date(iso + "T12:00:00Z"); d.setUTCDate(d.getUTCDate() - 1);
+  return d.toISOString().slice(0, 10);
+};
+
+let state = load();
+const questions = PUZZLE.questions || [];
+let index = state.answers.findIndex(a => a === null || a === undefined);
+if (index < 0) index = state.answers.length;
+
+/* --------------------------------------------------------------- helpers */
+const $ = id => document.getElementById(id);
+const el = (tag, attrs, kids) => {
+  const n = document.createElement(tag);
+  for (const k in (attrs || {})) {
+    if (k === "text") n.textContent = attrs[k];
+    else if (attrs[k] !== null && attrs[k] !== false) n.setAttribute(k, attrs[k]);
+  }
+  (kids || []).forEach(k => n.appendChild(k));
+  return n;
+};
+const longDate = iso => new Date(iso + "T12:00:00Z").toLocaleDateString(undefined, {
+  weekday: "long", month: "long", day: "numeric", timeZone: "UTC"
+});
+const rightCount = () => state.answers.reduce(
+  (n, a, i) => n + (questions[i] && a === questions[i].answer ? 1 : 0), 0);
+const finished = () => state.answers.length >= questions.length &&
+  state.answers.every(a => a !== null && a !== undefined);
+
+/* ----------------------------------------------------------------- meter */
+function drawMeter() {
+  const m = $("meter"); m.textContent = "";
+  questions.forEach((q, i) => {
+    const a = state.answers[i];
+    const st = (a === null || a === undefined) ? "open" : (a === q.answer ? "right" : "wrong");
+    m.appendChild(el("span", { class: "pip", "data-state": st }));
+  });
+  m.appendChild(el("span", { class: "count",
+    text: `${rightCount()}/${questions.length}` }));
+  m.setAttribute("aria-label", `${rightCount()} of ${questions.length} correct today`);
+}
+
+/* -------------------------------------------------------------- question */
+function drawQuestion() {
+  const quiz = $("quiz"); quiz.textContent = "";
+  const q = questions[index];
+  if (!q) return drawResults();
+
+  const answered = state.answers[index] !== null && state.answers[index] !== undefined;
+  const card = el("div", { class: "card" });
+  card.appendChild(el("div", { class: "tags" }, [
+    el("span", { class: "tag", text: q.sport }),
+    el("span", { class: "tag plain", text: `Question ${index + 1} of ${questions.length}` })
+  ]));
+  if (q.setup) card.appendChild(el("p", { class: "setup", text: q.setup }));
+  card.appendChild(el("h2", { class: "prompt", text: q.prompt }));
+
+  const list = el("div", { class: "options", role: "group",
+                           "aria-label": q.prompt });
+  q.options.forEach((name, i) => {
+    const b = el("button", { class: "option", type: "button",
+                             "data-i": i, disabled: answered ? "disabled" : null }, [
+      el("span", { class: "key", text: String.fromCharCode(65 + i) }),
+      el("span", { class: "name", text: name }),
+      el("span", { class: "mark", "aria-hidden": "true" })
+    ]);
+    if (answered) mark(b, i, q, state.answers[index]);
+    else b.addEventListener("click", () => answer(i));
+    list.appendChild(b);
+  });
+  card.appendChild(list);
+
+  if (answered) {
+    const was = state.answers[index] === q.answer;
+    const v = el("div", { class: "verdict", "data-state": was ? "right" : "wrong" }, [
+      el("strong", { class: "lead", text: was ? "Correct." : `Not quite — ${q.options[q.answer]}.` }),
+      el("span", { text: q.explain || "" })
+    ]);
+    if ((q.links || []).length) {
+      const links = el("div", { class: "links" });
+      q.links.forEach(l => links.appendChild(
+        el("a", { href: l.url, target: "_blank", rel: "noopener noreferrer", text: l.label })));
+      v.appendChild(links);
+    }
+    card.appendChild(v);
+    const nav = el("div", { class: "nav" }, [
+      el("span", { class: "progress", text: `${rightCount()}/${questions.length} right` })
+    ]);
+    const next = el("button", { class: "go", type: "button",
+      text: index + 1 < questions.length ? "Next question" : "See how you did" });
+    next.addEventListener("click", () => { index += 1; drawQuestion(); next.blur(); });
+    nav.appendChild(next);
+    card.appendChild(nav);
+  }
+  quiz.appendChild(card);
+  $("results").hidden = true;
+  $("quiz").hidden = false;
+}
+
+function mark(button, i, q, picked) {
+  const markEl = button.querySelector(".mark");
+  if (i === q.answer) { button.dataset.state = "right"; markEl.textContent = "✓"; }
+  else if (i === picked) { button.dataset.state = "wrong"; markEl.textContent = "✗"; }
+  else { button.dataset.state = "muted"; }
+}
+
+function answer(choice) {
+  if (state.answers[index] !== null && state.answers[index] !== undefined) return;
+  while (state.answers.length < index) state.answers.push(null);
+  state.answers[index] = choice;
+  state.lifetimeAsked += 1;
+  if (choice === questions[index].answer) state.lifetimeRight += 1;
+  if (finished()) recordDay();
+  save(state);
+  drawMeter();
+  drawQuestion();
+}
+
+/* A day is recorded once, when its last question is answered. Re-opening the
+   page later re-renders from the record rather than counting it again. */
+function recordDay() {
+  if (state.history.some(h => h.date === PUZZLE.date)) return;
+  const right = rightCount();
+  const previous = state.history.length ? state.history[state.history.length - 1] : null;
+  state.streak = (previous && previous.date === yesterdayOf(PUZZLE.date)) ? state.streak + 1 : 1;
+  state.best = Math.max(state.best || 0, state.streak);
+  state.lastPlayed = PUZZLE.date;
+  state.history.push({ date: PUZZLE.date, right: right, asked: questions.length });
+  state.history = state.history.slice(-HISTORY_DAYS);
+}
+
+/* --------------------------------------------------------------- results */
+function drawResults() {
+  const right = rightCount(), total = questions.length;
+  const box = $("results"); box.textContent = "";
+  const card = el("div", { class: "card" });
+  card.appendChild(el("p", { class: "score" }, [
+    document.createTextNode(`${right}`), el("small", { text: ` / ${total} today` })
+  ]));
+  const verdict = right === total ? "Clean sweep."
+    : right === 0 ? "Rough morning. Tomorrow is a new set."
+    : right === 1 ? "One on the board." : `${right} of ${total}.`;
+  card.appendChild(el("p", { class: "setup", text: verdict }));
+
+  const pct = state.lifetimeAsked
+    ? Math.round(100 * state.lifetimeRight / state.lifetimeAsked) + "%" : "—";
+  card.appendChild(el("div", { class: "stats" }, [
+    stat(state.streak || 0, "day streak"),
+    stat(state.best || 0, "best streak"),
+    stat(pct, "all-time")
+  ]));
+
+  if (state.history.length) {
+    const h = el("div", { class: "history" }, [el("h3", { text: `Last ${HISTORY_DAYS} days` })]);
+    const strip = el("div", { class: "strip" });
+    state.history.slice().reverse().forEach(d => {
+      strip.appendChild(el("span", {
+        class: "day", text: `${d.right}/${d.asked}`,
+        title: d.date,
+        "data-perfect": d.right === d.asked ? "yes" : "no",
+        "data-zero": d.right === 0 ? "yes" : "no"
+      }));
+    });
+    h.appendChild(strip);
+    card.appendChild(h);
+  }
+
+  const cd = el("div", { class: "countdown" }, [
+    document.createTextNode("Next set in "), el("b", { id: "clock", text: "—" })
+  ]);
+  card.appendChild(cd);
+
+  const nav = el("div", { class: "nav" });
+  const back = el("button", { class: "go", type: "button", text: "Review the answers" });
+  back.addEventListener("click", () => { index = 0; drawQuestion(); });
+  nav.appendChild(el("span", { class: "progress", text: PUZZLE.date }));
+  nav.appendChild(back);
+  card.appendChild(nav);
+
+  box.appendChild(card);
+  box.hidden = false;
+  $("quiz").hidden = true;
+  tick();
+}
+const stat = (n, k) => el("div", { class: "stat" },
+  [el("div", { class: "n", text: String(n) }), el("div", { class: "k", text: k })]);
+
+/* ------------------------------------------------------------- the clock
+   The page is a static file, so a tab left open overnight would happily keep
+   serving a set that expired. The countdown is also the guard: at zero the
+   board locks and asks for a reload rather than accepting answers to a dead
+   day. */
+function tick() {
+  const closes = PUZZLE.closes ? new Date(PUZZLE.closes) : null;
+  const clock = $("clock");
+  if (!closes) return;
+  const left = closes - new Date();
+  if (left <= 0) {
+    $("stale").hidden = false;
+    document.querySelectorAll(".option").forEach(b => { b.disabled = true; });
+    if (clock) clock.textContent = "now";
+    return;
+  }
+  if (clock) {
+    const h = Math.floor(left / 3.6e6), m = Math.floor(left % 3.6e6 / 6e4),
+          s = Math.floor(left % 6e4 / 1000);
+    clock.textContent = `${h}h ${String(m).padStart(2, "0")}m ${String(s).padStart(2, "0")}s`;
+  }
+}
+setInterval(tick, 1000);
+
+/* ---------------------------------------------------------------- keyboard */
+document.addEventListener("keydown", e => {
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  const options = [...document.querySelectorAll(".option:not([disabled])")];
+  const i = "abcd".indexOf(e.key.toLowerCase());
+  if (i >= 0 && options[i]) { options[i].click(); e.preventDefault(); return; }
+  if (e.key === "Enter") {
+    const go = document.querySelector("button.go");
+    if (go && document.activeElement === document.body) { go.click(); e.preventDefault(); }
+  }
+});
+
+/* -------------------------------------------------------------------- go */
+function start() {
+  if (!PUZZLE || !questions.length) {
+    $("quiz").innerHTML = '<div class="card"><p class="prompt">No set today.</p>' +
+      '<p class="setup">The build had nothing it could vouch for. ' +
+      'Rather than guess, it published nothing.</p></div>';
+    return;
+  }
+  $("sourcedate").textContent = longDate(PUZZLE.source_date);
+  const lead = questions[0];
+  $("headline").textContent = lead && lead.kind === "last_before"
+    ? "It happened last night. Who did it before?"
+    : "Three questions about what just happened.";
+  // Coverage is a list of scanned windows per sport; the page names the
+  // span, and how many pieces it is in when it is not one.
+  const cov = Object.entries(PUZZLE.coverage || {}).map(([sport, ws]) => {
+    const list = Array.isArray(ws) ? ws : [ws];
+    if (!list.length) return null;
+    const span = `${list[0].from}→${list[list.length - 1].through}`;
+    return `${sport} ${span}` + (list.length > 1 ? ` (${list.length} spans)` : "");
+  }).filter(Boolean).join(" · ");
+  if (cov) $("provenance").textContent =
+    "Every question is built from a box score, not from memory. Searched: " + cov + ".";
+  drawMeter();
+  if (finished() && index >= questions.length) drawResults(); else drawQuestion();
+  tick();
+}
+start();
+</script>
+</body>
+</html>

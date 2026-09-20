@@ -17,6 +17,13 @@ miss a morning eventually -- a workflow outage, a feed that will not answer --
 and a single window would have to choose between forgetting everything before
 the gap and lying about the gap. Segments cost a missed day exactly one day.
 
+Each window also names the feats it was scanned for. Adding a feat to the
+catalogue would otherwise be silently retroactive: the old windows would
+claim to have searched for something the detector could not yet see, and the
+first question about it would have a wrong answer. Instead a new feat simply
+has no coverage until someone backfills it, and until then it is not asked
+about.
+
 The daily build appends to it, so the ledger deepens on its own: tomorrow's
 question is answered by an entry today's run wrote.
 """
@@ -42,15 +49,41 @@ def _windows(value) -> list[dict]:
     return [dict(w) for w in (value or [])]
 
 
-def _merge(windows: list[tuple[date, date]]) -> list[dict]:
-    """Sort, and fuse anything touching or adjoining. A real gap survives."""
-    out: list[list[date]] = []
-    for start, through in sorted(windows):
-        if out and start - out[-1][1] <= _DAY:
-            out[-1][1] = max(out[-1][1], through)
+def _merge(windows: list[tuple[date, date, tuple[str, ...]]]) -> list[dict]:
+    """Sort and fuse anything touching or adjoining. A real gap survives.
+
+    Windows only fuse when they were scanned for the same feats, so a range
+    re-read with a wider catalogue sits alongside the older claim instead of
+    inheriting its dates.
+    """
+    out: list[dict] = []
+    by_feats: dict[tuple[str, ...], list[list[date]]] = {}
+    for start, through, keys in sorted(windows, key=lambda w: (w[2], w[0], w[1])):
+        runs = by_feats.setdefault(keys, [])
+        if runs and start - runs[-1][1] <= _DAY:
+            runs[-1][1] = max(runs[-1][1], through)
         else:
-            out.append([start, through])
-    return [{"from": a.isoformat(), "through": b.isoformat()} for a, b in out]
+            runs.append([start, through])
+    for keys, runs in by_feats.items():
+        for a, b in runs:
+            out.append({"from": a.isoformat(), "through": b.isoformat(),
+                        "feats": list(keys)})
+    # A re-scan with a wider catalogue says everything the narrower claim said
+    # and more, so the narrower one is redundant rather than wrong. Dropping it
+    # keeps the ledger from accumulating a window per catalogue revision.
+    kept = []
+    for w in out:
+        covered = any(
+            other is not w
+            and other["from"] <= w["from"] and other["through"] >= w["through"]
+            and set(w["feats"]) <= set(other["feats"])
+            and (set(w["feats"]) != set(other["feats"])
+                 or (other["from"], other["through"]) != (w["from"], w["through"]))
+            for other in out)
+        if not covered:
+            kept.append(w)
+    kept.sort(key=lambda w: (w["from"], w["through"], w["feats"]))
+    return kept
 
 
 class Ledger:
@@ -107,7 +140,7 @@ class Ledger:
         added = sum(1 for o in other.occurrences if self.add(dict(o)))
         for sport, windows in other.coverage.items():
             for w in windows:
-                self.cover(sport, _day(w["from"]), _day(w["through"]))
+                self.cover(sport, _day(w["from"]), _day(w["through"]), w.get("feats"))
         return added
 
     def replace(self, occurrences: list[dict]) -> None:
@@ -115,29 +148,40 @@ class Ledger:
         self.occurrences = list(occurrences)
         self._seen = {self._identity(o) for o in self.occurrences}
 
-    def cover(self, sport: str, start: date, through: date) -> None:
+    def cover(self, sport: str, start: date, through: date,
+              feat_keys: list[str] | None = None) -> None:
         """Record that every day in [start, through] was scanned for `sport`.
 
         Adjacent is not a gap: a scan of January followed by a scan of
         February leaves nothing unsearched between them, so the two fuse. A
         day nobody looked at does break the claim, and stays broken -- the
         window on either side of it is kept, and nothing spans it.
-        """
-        existing = [(_day(w["from"]), _day(w["through"]))
-                    for w in self.coverage.get(sport, [])]
-        self.coverage[sport] = _merge(existing + [(start, through)])
 
-    def window_for(self, sport: str, day: date) -> tuple[date, date] | None:
-        """The scanned window containing `day`, if any."""
+        `feat_keys` is what the detector was looking for. It defaults to the
+        catalogue as it stands, which is right for a scan happening now and
+        wrong for one that happened before a feat was added -- hence the
+        argument.
+        """
+        if feat_keys is None:
+            from trivia import feats as _feats          # local: ledger stays importable alone
+            feat_keys = [f.key for f in _feats.BY_SPORT.get(sport, ())]
+        keys = tuple(sorted(feat_keys))
+        existing = [(_day(w["from"]), _day(w["through"]), tuple(sorted(w.get("feats") or [])))
+                    for w in self.coverage.get(sport, [])]
+        self.coverage[sport] = _merge(existing + [(start, through, keys)])
+
+    def window_for(self, sport: str, day: date,
+                   feat: str | None = None) -> tuple[date, date] | None:
+        """The scanned window containing `day` that looked for `feat`, if any."""
         for w in self.coverage.get(sport, []):
             start, through = _day(w["from"]), _day(w["through"])
-            if start <= day <= through:
+            if start <= day <= through and (feat is None or feat in (w.get("feats") or [])):
                 return start, through
         return None
 
     # --------------------------------------------------------------- reads
-    def covers(self, sport: str, day: date) -> bool:
-        return self.window_for(sport, day) is not None
+    def covers(self, sport: str, day: date, feat: str | None = None) -> bool:
+        return self.window_for(sport, day, feat) is not None
 
     def of(self, feat: str) -> list[dict]:
         return sorted((o for o in self.occurrences if o["feat"] == feat),
@@ -150,7 +194,7 @@ class Ledger:
         was scanned -- an unscanned gap could hide a more recent one, and a
         question nobody can vouch for is worse than no question.
         """
-        window = self.window_for(sport, before)
+        window = self.window_for(sport, before, feat)
         if not window:
             return None
         start, _through = window
@@ -184,8 +228,9 @@ class Ledger:
             by_feat[o["feat"]] = by_feat.get(o["feat"], 0) + 1
         lines = [f"{len(self.occurrences)} occurrences over {len(by_feat)} feats"]
         for sport, windows in sorted(self.coverage.items()):
-            spans = ", ".join(f"{w['from']} -> {w['through']}" for w in windows)
-            lines.append(f"  {sport}: {spans}")
+            for w in windows:
+                lines.append(f"  {sport}: {w['from']} -> {w['through']}  "
+                             f"({len(w.get('feats') or [])} feats)")
         for feat, count in sorted(by_feat.items(), key=lambda kv: -kv[1]):
             lines.append(f"  {count:4d}  {feat}")
         return "\n".join(lines)
