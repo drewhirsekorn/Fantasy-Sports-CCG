@@ -26,7 +26,7 @@ import sys
 from datetime import date, datetime, timedelta
 from zoneinfo import ZoneInfo
 
-from trivia import backfill, feats, feed, puzzle
+from trivia import backfill, feats, feed, leaders, puzzle
 from trivia.ledger import Ledger
 
 ET = ZoneInfo("America/New_York")
@@ -35,6 +35,7 @@ ROLLOVER_HOUR = 7
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 TEMPLATE = ROOT / "web" / "trivia.template.html"
 DATA = ROOT / "web" / "trivia_data.json"
+NIGHT = ROOT / "data" / "last_night.json"
 PAGE = ROOT / "web" / "trivia.html"
 MARKER = "/*__PUZZLE__*/null"
 
@@ -69,8 +70,11 @@ def scan(ledger: Ledger, day: date, *, workers: int = 12, verbose: bool = True) 
     never saw.
     """
     added = 0
+    night: list[dict] = []
     for sport in feed.SPORTS:
-        found, read = backfill.scan_days(sport, [day], workers=workers)
+        found, read, lines = backfill.scan_days(sport, [day], workers=workers,
+                                                keep_lines=True)
+        night += lines
         new = [o for o in found if ledger.add(o)]
         added += len(new)
         if day.isoformat() in read:
@@ -80,7 +84,27 @@ def scan(ledger: Ledger, day: date, *, workers: int = 12, verbose: bool = True) 
         if verbose:
             for o in new:
                 print(f"  + {o['date']} {o['feat']:22s} {o['player']}")
+
+    # Last night's leaderboards, trimmed to what a question needs. Kept on
+    # disk so a rebuild without a scan asks the same things, and small enough
+    # -- a few KB -- that keeping it costs nothing.
+    boards = leaders.collect(day.isoformat(), night)
+    NIGHT.parent.mkdir(parents=True, exist_ok=True)
+    NIGHT.write_text(json.dumps(boards, indent=1) + "\n")
+    if verbose:
+        print(f"  {len(boards['boards'])} leaderboards from {len(night)} box-score lines")
     return added
+
+
+def last_night(day: date) -> dict | None:
+    """The cached leaderboards, if they are for the night this puzzle wants."""
+    if not NIGHT.exists():
+        return None
+    try:
+        boards = json.loads(NIGHT.read_text())
+    except json.JSONDecodeError:
+        return None
+    return boards if boards.get("date") == day.isoformat() else None
 
 
 def bake(data: dict) -> int:
@@ -124,7 +148,8 @@ def main(argv=None) -> int:
         ledger.save()
         print(f"  {added} new occurrences; ledger holds {len(ledger.occurrences)}")
 
-    data = puzzle.build(day, ledger, questions=args.questions)
+    data = puzzle.build(day, ledger, questions=args.questions,
+                        night=last_night(source))
     if not data["questions"]:
         print("no question could be built from the ledger -- refusing to publish "
               "an empty day. Deepen the ledger with trivia.backfill.", file=sys.stderr)

@@ -207,43 +207,55 @@ from a game that counts. A date that will not load drops nothing: *could not
 check* and *does not count* are different answers, and only one of them is
 grounds for deleting evidence.
 
-### Two shapes, both about last night
-
-The leagues do not cooperate. Mid-July has no NBA and no NFL; late February
-has no MLB; and some nights nothing rare happens anywhere.
+### Three shapes, all about last night
 
 | shape | when | the question |
 |---|---|---|
 | `last_before` | something rare happened last night | who did it before them? |
-| `most_recent` | a quiet night | who had the most recent one? |
+| `led_the_night` | any night with games | who topped the box scores? |
+| `most_recent` | nobody played | who had the most recent one? |
 
-There was a third, asking who did something on this same date in an earlier
-year. It filled two thirds of the mornings and it was **removed on purpose**:
-the game is about last night, and a question opening "on this date in 2004"
-is a different game wearing the same page. Both remaining shapes hang off the
-night just played — either something happened, or nothing did and the absence
-is the setup. A test walks forty days of builds asserting no question about
-another calendar year, because the pressure to bring it back will come from a
-morning that looks thin.
+`last_before` is the best question when there is one, and often there is not:
+a 50-point game happens twenty times a season, so most mornings had nothing
+from last night to ask about.
 
-Losing it cost nothing in coverage: every day of a test year still fills.
-What it cost was concentration, and three things had to be fixed before the
-remaining shapes could carry the load alone.
+**The fix for that is not a lower threshold.** Thirty-three players homered in
+the majors on an ordinary Saturday — "who was the last to go deep" has
+thirty-three right answers and the most recent is four minutes old. Dropping
+the bar does not make the common stuff askable; it breaks the question.
 
-- **`most_recent` picked the rarest feat, so the rarest feat won every quiet
-  night.** Same question, same eight-month-old answer, every week. It now
-  sorts by how recently the feat last happened and shuffles among the
-  freshest few. Median answer age across a test year: **8 days**, a quarter
-  of them inside 4.
-- **It asked about leagues that were not playing.** "Nobody managed four
-  rushing touchdowns in the NFL yesterday" is true in mid-July, deadpan and
-  faintly ridiculous. Leagues that were actually playing are asked about
-  first; a dark one is only reached for if the board would be short.
-- **Two questions could share an answer.** Get one and you have the other,
-  and the day is really two questions long.
+What the common ground needs is the question a fan actually asks: **who led?**
+Exactly one pitcher struck out the most last night. That has one answer, it
+exists every night there are games, and the wrong options are the other men
+who played — so each is wrong for a checkable reason rather than because it
+sounds unlikely. `leaders.py` holds fifteen of these boards, five per league.
 
-If the ledger cannot honestly support even one question, the build **fails
-rather than publishing a thin day**.
+Two guards keep a board honest. A **tied** leader is dropped, because "who
+led" then has two answers. A leader below the board's minimum is dropped too:
+nobody wants to be asked who led the majors in strikeouts on a night the
+answer is four. Ties are common in baseball, where the field clusters — a
+typical night yields 2–3 of the 5 baseball boards, against 5 of 5 in
+basketball.
+
+Measured over four real nights spread across the calendar, **11 of 12
+questions now come from last night**, against 3 of 12 before the boards
+existed. The one exception was 19 September: no basketball, no football, and
+baseball winding down.
+
+### A question must not answer another one
+
+Two questions with the same answer make a three-question day into a
+two-question one. Worse is a leaked answer, which the boards introduced:
+
+> **Q1.** Brice Sensabaugh scored 43 points for Utah last night. Before him,
+> who was the last NBA player to score 40?
+>
+> **Q2.** Who scored the most in the NBA last night?
+
+Both are fine questions. Together the second is not a question at all. So
+every shape declares who it names — in its setup, its options and its
+explanation — and nobody an earlier question named can be a later question's
+answer. The strikeout board simply does not get asked that morning.
 
 ### 07:00 Eastern, and the two mornings a year it moves
 

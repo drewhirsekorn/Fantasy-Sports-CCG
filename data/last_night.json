@@ -1,0 +1,195 @@
+{
+ "date": "2026-09-19",
+ "boards": {
+  "mlb_strikeouts": {
+   "sport": "MLB",
+   "rows": [
+    {
+     "player": "Brayan Bello",
+     "team": "BOS",
+     "opponent": "TB",
+     "value": 11.0,
+     "detail": "11 strikeouts over 8.0 innings for BOS against TB",
+     "game_id": "401816998",
+     "field": 140
+    },
+    {
+     "player": "Trevor Rogers",
+     "team": "BAL",
+     "opponent": "MIL",
+     "value": 10.0,
+     "detail": "10 strikeouts over 8.0 innings for BAL against MIL",
+     "game_id": "401817001",
+     "field": 140
+    },
+    {
+     "player": "Jackson Jobe",
+     "team": "DET",
+     "opponent": "CHW",
+     "value": 9.0,
+     "detail": "9 strikeouts over 6.0 innings for DET against CHW",
+     "game_id": "401817004",
+     "field": 140
+    },
+    {
+     "player": "Andrew Alvarez",
+     "team": "WSH",
+     "opponent": "STL",
+     "value": 8.0,
+     "detail": "8 strikeouts over 6.0 innings for WSH against STL",
+     "game_id": "401817006",
+     "field": 140
+    },
+    {
+     "player": "Jose Soriano",
+     "team": "TOR",
+     "opponent": "TEX",
+     "value": 8.0,
+     "detail": "8 strikeouts over 5.0 innings for TOR against TEX",
+     "game_id": "401817005",
+     "field": 140
+    },
+    {
+     "player": "Andrew Painter",
+     "team": "PHI",
+     "opponent": "NYM",
+     "value": 7.0,
+     "detail": "7 strikeouts over 5.1 innings for PHI against NYM",
+     "game_id": "401817002",
+     "field": 140
+    },
+    {
+     "player": "Christian Scott",
+     "team": "NYM",
+     "opponent": "PHI",
+     "value": 7.0,
+     "detail": "7 strikeouts over 4.2 innings for NYM against PHI",
+     "game_id": "401817002",
+     "field": 140
+    },
+    {
+     "player": "Bryce Miller",
+     "team": "SEA",
+     "opponent": "COL",
+     "value": 6.0,
+     "detail": "6 strikeouts over 5.1 innings for SEA against COL",
+     "game_id": "401817007",
+     "field": 140
+    },
+    {
+     "player": "Bubba Chandler",
+     "team": "PIT",
+     "opponent": "KC",
+     "value": 6.0,
+     "detail": "6 strikeouts over 4.0 innings for PIT against KC",
+     "game_id": "401817000",
+     "field": 140
+    },
+    {
+     "player": "Cam Schlittler",
+     "team": "NYY",
+     "opponent": "ARI",
+     "value": 6.0,
+     "detail": "6 strikeouts over 6.0 innings for NYY against ARI",
+     "game_id": "401817010",
+     "field": 140
+    }
+   ]
+  },
+  "mlb_home_runs": {
+   "sport": "MLB",
+   "rows": [
+    {
+     "player": "Angel Martinez",
+     "team": "CLE",
+     "opponent": "ATH",
+     "value": 2.0,
+     "detail": "2 home runs and 4 driven in for CLE against ATH",
+     "game_id": "401816997",
+     "field": 337
+    },
+    {
+     "player": "Austin Wells",
+     "team": "NYY",
+     "opponent": "ARI",
+     "value": 1.0,
+     "detail": "1 home runs and 1 driven in for NYY against ARI",
+     "game_id": "401817010",
+     "field": 337
+    },
+    {
+     "player": "Brandon Lowe",
+     "team": "PIT",
+     "opponent": "KC",
+     "value": 1.0,
+     "detail": "1 home runs and 2 driven in for PIT against KC",
+     "game_id": "401817000",
+     "field": 337
+    },
+    {
+     "player": "Cal Raleigh",
+     "team": "SEA",
+     "opponent": "COL",
+     "value": 1.0,
+     "detail": "1 home runs and 2 driven in for SEA against COL",
+     "game_id": "401817007",
+     "field": 337
+    },
+    {
+     "player": "Carson Benge",
+     "team": "NYM",
+     "opponent": "PHI",
+     "value": 1.0,
+     "detail": "1 home runs and 2 driven in for NYM against PHI",
+     "game_id": "401817002",
+     "field": 337
+    },
+    {
+     "player": "Carter Jensen",
+     "team": "KC",
+     "opponent": "PIT",
+     "value": 1.0,
+     "detail": "1 home runs and 1 driven in for KC against PIT",
+     "game_id": "401817000",
+     "field": 337
+    },
+    {
+     "player": "Chase DeLauter",
+     "team": "CLE",
+     "opponent": "ATH",
+     "value": 1.0,
+     "detail": "1 home runs and 3 driven in for CLE against ATH",
+     "game_id": "401816997",
+     "field": 337
+    },
+    {
+     "player": "Dansby Swanson",
+     "team": "CHC",
+     "opponent": "CIN",
+     "value": 1.0,
+     "detail": "1 home runs and 1 driven in for CHC against CIN",
+     "game_id": "401816999",
+     "field": 337
+    },
+    {
+     "player": "Davis Schneider",
+     "team": "TOR",
+     "opponent": "TEX",
+     "value": 1.0,
+     "detail": "1 home runs and 1 driven in for TOR against TEX",
+     "game_id": "401817005",
+     "field": 337
+    },
+    {
+     "player": "Daylen Lile",
+     "team": "WSH",
+     "opponent": "STL",
+     "value": 1.0,
+     "detail": "1 home runs and 2 driven in for WSH against STL",
+     "game_id": "401817006",
+     "field": 337
+    }
+   ]
+  }
+ }
+}

@@ -1,10 +1,52 @@
 {
  "version": 1,
  "date": "2026-09-20",
- "stamp": "fb7ad0ff6964",
+ "stamp": "a550058546ee",
  "source_date": "2026-09-19",
  "opens": "2026-09-20T07:00:00-04:00",
  "questions": [
+  {
+   "kind": "led_the_night",
+   "sport": "MLB",
+   "setup": "Last night's box scores list 337 batters.",
+   "prompt": "Who hit the most home runs in the majors last night?",
+   "options": [
+    "Davis Schneider",
+    "Dansby Swanson",
+    "Angel Martinez",
+    "Daylen Lile"
+   ],
+   "answer": 2,
+   "explain": "Angel Martinez \u2014 2 home runs and 4 driven in for CLE against ATH.",
+   "links": [
+    {
+     "label": "September 19, 2026 box score",
+     "url": "https://www.espn.com/mlb/boxscore/_/gameId/401816997"
+    }
+   ],
+   "id": "2026-09-20-1"
+  },
+  {
+   "kind": "led_the_night",
+   "sport": "MLB",
+   "setup": "Last night's box scores list 140 pitchers.",
+   "prompt": "Who struck out the most batters in the majors last night?",
+   "options": [
+    "Brayan Bello",
+    "Bubba Chandler",
+    "Christian Scott",
+    "Trevor Rogers"
+   ],
+   "answer": 0,
+   "explain": "Brayan Bello \u2014 11 strikeouts over 8.0 innings for BOS against TB.",
+   "links": [
+    {
+     "label": "September 19, 2026 box score",
+     "url": "https://www.espn.com/mlb/boxscore/_/gameId/401816998"
+    }
+   ],
+   "id": "2026-09-20-2"
+  },
   {
    "kind": "most_recent",
    "sport": "NFL",
@@ -22,48 +64,6 @@
     {
      "label": "January 18, 2026 box score",
      "url": "https://www.espn.com/nfl/boxscore/_/gameId/401772983"
-    }
-   ],
-   "id": "2026-09-20-1"
-  },
-  {
-   "kind": "most_recent",
-   "sport": "MLB",
-   "setup": "Nobody managed a five-hit game in the majors yesterday.",
-   "prompt": "Who had the most recent one?",
-   "options": [
-    "Yandy Diaz",
-    "Cedric Mullins",
-    "Adolis Garcia",
-    "Weston Wilson"
-   ],
-   "answer": 3,
-   "explain": "Weston Wilson \u2014 5 hits for SEA vs ATH on September 12, 2026.",
-   "links": [
-    {
-     "label": "September 12, 2026 box score",
-     "url": "https://www.espn.com/mlb/boxscore/_/gameId/401816916"
-    }
-   ],
-   "id": "2026-09-20-2"
-  },
-  {
-   "kind": "most_recent",
-   "sport": "NFL",
-   "setup": "Nobody managed a four-touchdown game in the NFL yesterday.",
-   "prompt": "Who had the most recent one?",
-   "options": [
-    "Kirk Cousins",
-    "Joe Flacco",
-    "Kyler Murray",
-    "Jared Goff"
-   ],
-   "answer": 3,
-   "explain": "Jared Goff \u2014 4 touchdowns for DET vs BUF on September 17, 2026.",
-   "links": [
-    {
-     "label": "September 17, 2026 box score",
-     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401872932"
     }
    ],
    "id": "2026-09-20-3"
@@ -183,6 +183,6 @@
    }
   ]
  },
- "built_at": "2026-09-20T21:27:25Z",
+ "built_at": "2026-09-20T23:08:54Z",
  "closes": "2026-09-21T07:00:00-04:00"
 }
