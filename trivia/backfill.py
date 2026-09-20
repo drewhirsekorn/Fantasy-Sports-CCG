@@ -33,8 +33,8 @@ def _dates(start: date, end: date):
         day += timedelta(days=1)
 
 
-def scan_days(sport: str, days: list[date], *,
-              workers: int = 12) -> tuple[list[dict], set[str]]:
+def scan_days(sport: str, days: list[date], *, workers: int = 12,
+              keep_lines: bool = False) -> tuple[list[dict], set[str], list[dict]]:
     """Every feat over a list of dates, and which of those dates were fully read.
 
     Two fan-outs, not one. The first asks each date what it played, the second
@@ -59,7 +59,9 @@ def scan_days(sport: str, days: list[date], *,
             failed.add(day.isoformat())
     read = {d.isoformat() for d in days} - failed
     lines = [line for game in scored if game for line in game.lines]
-    return feats.detect(lines), read
+    # A month of box scores is a lot to hold; only the daily build, which
+    # asks for one night, wants them back.
+    return feats.detect(lines), read, (lines if keep_lines else [])
 
 
 def _board(sport: str, day: date) -> list[feed.Game] | None:
@@ -109,7 +111,7 @@ def backfill(sport: str, start: date, end: date, *, workers: int = 12,
     added = 0
     unread: list[str] = []
     for chunk_start, chunk_end in _months(start, end):
-        found, read = scan_days(sport, list(_dates(chunk_start, chunk_end)), workers=workers)
+        found, read, _ = scan_days(sport, list(_dates(chunk_start, chunk_end)), workers=workers)
         new = [o for o in found if ledger.add(o)]
         added += len(new)
         # Cover as we go, and only what was actually read: a run killed halfway

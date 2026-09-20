@@ -17,7 +17,7 @@ from datetime import date, datetime
 from zoneinfo import ZoneInfo
 
 from trivia import build as daily
-from trivia import feats, feed, puzzle
+from trivia import feats, feed, leaders, puzzle
 from trivia.ledger import Ledger
 
 FAILS: list[str] = []
@@ -289,6 +289,55 @@ def main() -> int:
                 FAILS.append(f"calendar-year question on {day}")
     check("40 days of builds, no question about an earlier year",
           [f for f in FAILS if "calendar-year" in f], [])
+
+    print("\n=== who led last night: the question the common stuff needs ===")
+    # Thirty-three players homer on a normal night, so "who was the last to
+    # homer" has thirty-three right answers. The fix is a different question,
+    # not a lower threshold.
+    def pitchers(*ks):
+        return [{"sport": "MLB", "role": "pitching", "player": f"P{i}", "team": "AAA",
+                 "opponent": "BBB", "game_id": "g", "strikeouts_thrown": float(k),
+                 "innings": 6.0} for i, k in enumerate(ks)]
+    strikeouts = leaders.BY_KEY["mlb_strikeouts"]
+    top = leaders.board(strikeouts, pitchers(11, 9, 8, 7, 6))
+    check("the leader comes back first", top and top[0]["player"], "P0")
+    check("with the rest behind him", [r["player"] for r in top[1:3]], ["P1", "P2"])
+    check("a tie at the top has no single answer, so no question",
+          leaders.board(strikeouts, pitchers(11, 11, 8, 7)), None)
+    check("leading with four strikeouts is not an achievement",
+          leaders.board(strikeouts, pitchers(4, 3, 2, 1)), None)
+    check("three players cannot fill four options",
+          leaders.board(strikeouts, pitchers(11, 9, 8)), None)
+    twice = pitchers(11, 9, 8, 7)
+    twice.append({**twice[0], "strikeouts_thrown": 5.0})
+    board = leaders.board(strikeouts, twice)
+    check("a man in the box score twice is one option, at his best line",
+          [r["player"] for r in board].count("P0"), 1)
+    check("and the field is counted honestly", board[0]["field"], 4)
+
+    print("\n=== no question gives away another one's answer ===")
+    # "Sensabaugh scored 43 for Utah last night" as question one hands over
+    # "who scored the most last night?" as question two.
+    night = {"date": "2025-02-03", "boards": {"mlb_strikeouts": {"sport": "MLB", "rows": [
+        {"player": "Player Six", "team": "AAA", "opponent": "BBB", "value": 11.0,
+         "detail": "11 strikeouts", "game_id": "g", "field": 40},
+        {"player": "Other One", "team": "AAA", "opponent": "BBB", "value": 9.0,
+         "detail": "9", "game_id": "g", "field": 40},
+        {"player": "Other Two", "team": "AAA", "opponent": "BBB", "value": 8.0,
+         "detail": "8", "game_id": "g", "field": 40},
+        {"player": "Other Three", "team": "AAA", "opponent": "BBB", "value": 7.0,
+         "detail": "7", "game_id": "g", "field": 40}]}}}
+    # Player Six is last night's 50-point scorer, so he is named in question one.
+    board_day = puzzle.build(date(2025, 2, 4), stocked(), night=night)
+    setups = " ".join(q["setup"] + q["explain"] for q in board_day["questions"])
+    leaked = [q for q in board_day["questions"]
+              if q["options"][q["answer"]] in setups.replace(
+                  q["options"][q["answer"]], "", 1)]
+    check("a name used in one question is not another's answer", leaked, [])
+    check("the strikeout question was dropped rather than leaked",
+          any(q["kind"] == "led_the_night" for q in board_day["questions"]), False)
+    check("no question carries its internal bookkeeping into the page",
+          any("_names" in q for q in board_day["questions"]), False)
 
     print("\n=== one board, three different answers ===")
     dupes = []

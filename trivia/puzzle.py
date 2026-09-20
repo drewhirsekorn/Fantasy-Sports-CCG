@@ -13,13 +13,20 @@ by two players is dropped rather than asked, because "who was the last" has
 two right answers that night and a four-option question has room for one. The
 day loses a question; it never gains a wrong one.
 
-Two shapes, in the order they are tried:
+Three shapes, in the order they are tried:
 
-  last_before   something happened yesterday -- who did it before?
-  most_recent   nothing happened yesterday -- when did it last happen?
+  last_before    something rare happened last night -- who did it before?
+  led_the_night  who topped the box scores last night?
+  most_recent    nothing happened last night -- when did it last happen?
 
-The first is the game. The second is what keeps an All-Star break, a February
-Tuesday and the second week of July from being blank.
+The first is the best question when there is one, and there often is not: a
+50-point game happens twenty times a season. The second is what makes a
+morning never empty, because every night with games has someone who led it --
+most strikeouts, most rebounds, most yards. It exists because lowering the
+feat thresholds does not work: thirty-three players homer on a normal night,
+so "who was the last to go deep" has thirty-three right answers. The common
+ground needs a different question, not a lower bar. The third is the
+fallback for a night nobody played at all.
 
 There was a third, asking about the same calendar date in an earlier year.
 It filled a lot of mornings and it is gone on purpose: the game is about last
@@ -33,7 +40,7 @@ import hashlib
 import random
 from datetime import date, datetime, timedelta, timezone
 
-from trivia import feats
+from trivia import feats, leaders
 from trivia.ledger import Ledger
 
 # All three initialisms take "an" when read aloud -- en-bee-ay, en-eff-el,
@@ -156,7 +163,48 @@ def last_before(ledger: Ledger, occurrence: dict, rng: random.Random) -> dict | 
         "explain": (f"{previous['player']} — {_value(previous)} for {previous['team']} "
                     f"on {_pretty(previous['date'])}, {gap:,} days earlier."),
         "links": [l for l in (_source_link(occurrence), _source_link(previous)) if l],
+        "_names": set(options) | {occurrence["player"], previous["player"]},
     }
+
+
+def led_the_night(night: dict, rng: random.Random) -> list[dict]:
+    """Who topped each of last night's leaderboards.
+
+    Everything here is decided in leaders.py, which has already dropped the
+    boards with a tied leader and the ones where leading was not an
+    achievement. What is left is a board whose first row is the single right
+    answer and whose other rows are men who played the same night and did
+    less -- so every wrong option is wrong for a checkable reason.
+    """
+    out = []
+    for key, data in (night.get("boards") or {}).items():
+        leader = leaders.BY_KEY.get(key)
+        rows = data.get("rows") or []
+        if not leader or len(rows) < OPTIONS:
+            continue
+        answer_row, rest = rows[0], rows[1:]
+        wrong = [r["player"] for r in rest if r["player"] != answer_row["player"]]
+        rng.shuffle(wrong)
+        built = _multiple_choice(answer_row["player"], wrong[:OPTIONS - 1], rng)
+        if not built:
+            continue
+        options, answer = built
+        field = answer_row.get("field") or len(rows)
+        out.append({
+            "kind": "led_the_night",
+            "sport": leader.sport,
+            "setup": f"Last night's box scores list {field} {leader.noun}.",
+            "prompt": leader.asks,
+            "options": options,
+            "answer": answer,
+            "explain": f"{answer_row['player']} — {answer_row['detail']}.",
+            "_names": set(options) | {answer_row["player"]},
+            "links": [l for l in (_source_link({
+                "sport": leader.sport, "date": night.get("date", ""),
+                "source": f"espn:{answer_row.get('game_id','')}"}),) if l],
+        })
+    rng.shuffle(out)
+    return out
 
 
 def most_recent(ledger: Ledger, sport: str, source_day: date, rng: random.Random) -> list[dict]:
@@ -194,6 +242,7 @@ def most_recent(ledger: Ledger, sport: str, source_day: date, rng: random.Random
             "answer": answer,
             "explain": (f"{previous['player']} — {_value(previous)} for {previous['team']} "
                         f"vs {previous['opponent']} on {_pretty(previous['date'])}."),
+            "_names": set(options) | {previous["player"]},
             "links": [l for l in (_source_link(previous),) if l],
         })
 
@@ -230,7 +279,8 @@ def _playing(ledger: Ledger, sport: str, source_day: date, *, within: int = 21) 
 
 
 # ------------------------------------------------------------------- build
-def build(puzzle_day: date, ledger: Ledger, *, questions: int = QUESTIONS) -> dict:
+def build(puzzle_day: date, ledger: Ledger, *, questions: int = QUESTIONS,
+          night: dict | None = None) -> dict:
     """The puzzle that goes live at 07:00 ET on `puzzle_day`.
 
     Sources from the day before, which is the day whose games are all final by
@@ -243,12 +293,19 @@ def build(puzzle_day: date, ledger: Ledger, *, questions: int = QUESTIONS) -> di
     # Two questions with the same right answer is a thin board: get one and
     # you have the other, and the day is really two questions long.
     used_answers: set[str] = set()
+    # Worse than a repeated answer is a leaked one. "Sensabaugh scored 43 for
+    # Utah last night" as the setup of question one hands over "who scored the
+    # most last night?" as question two. The questions are different; the
+    # second is no longer a question. So anyone an earlier question named --
+    # in its setup, its options or its explanation -- cannot be a later
+    # question's answer.
+    named: set[str] = set()
 
     def take(question: dict | None) -> bool:
         if not question:
             return False
         answer = question["options"][question["answer"]]
-        if answer in used_answers:
+        if answer in used_answers or answer in named:
             return False
         if any(q["setup"] == question["setup"] and q["prompt"] == question["prompt"]
                for q in chosen):
@@ -256,6 +313,8 @@ def build(puzzle_day: date, ledger: Ledger, *, questions: int = QUESTIONS) -> di
         chosen.append(question)
         used_sports.add(question["sport"])
         used_answers.add(answer)
+        named.update(question.pop("_names", ()) or ())
+        named.add(answer)
         return True
 
     # 1. Yesterday's feats, rarest first. One per league on the first pass so
@@ -269,9 +328,12 @@ def build(puzzle_day: date, ledger: Ledger, *, questions: int = QUESTIONS) -> di
     yesterday = [o for o in ledger.occurrences if o["date"] == source_day.isoformat()]
     yesterday.sort(key=lambda o: (feats.BY_KEY[o["feat"]].rank, -o["value"]))
     used_players: set[str] = set()
-    for first_pass in (True, False):
+    # Capped at two on the first sweep, so a board is never three variations
+    # of "who did it before" when last night also had leaders worth asking
+    # about. The rest of them come back below if the leaders run out.
+    for first_pass in (True,):
         for occurrence in yesterday:
-            if len(chosen) >= questions:
+            if len(chosen) >= min(questions - 1, questions):
                 break
             if occurrence["player"] in used_players:
                 continue
@@ -280,7 +342,26 @@ def build(puzzle_day: date, ledger: Ledger, *, questions: int = QUESTIONS) -> di
             if take(last_before(ledger, occurrence, rng)):
                 used_players.add(occurrence["player"])
 
-    # 2. Whatever the ledger can still answer. Taken one league at a time so a
+    # 2. Who led last night. This is the shape that makes a morning never
+    #    empty, so it is tried before falling back to nights nobody played.
+    if night and len(chosen) < questions:
+        for question in led_the_night(night, rng):
+            if len(chosen) >= questions:
+                break
+            take(question)
+
+    # 3. Any remaining feats from last night, now that the leaders have had
+    #    their turn at the board.
+    if len(chosen) < questions:
+        for occurrence in yesterday:
+            if len(chosen) >= questions:
+                break
+            if occurrence["player"] in used_players:
+                continue
+            if take(last_before(ledger, occurrence, rng)):
+                used_players.add(occurrence["player"])
+
+    # 4. Whatever the ledger can still answer. Taken one league at a time so a
     #    September morning -- NBA dark, NFL two games in, MLB the only thing
     #    that played -- does not hand back three NBA questions in a row.
     if len(chosen) < questions:
@@ -307,6 +388,7 @@ def build(puzzle_day: date, ledger: Ledger, *, questions: int = QUESTIONS) -> di
 
     for i, question in enumerate(chosen, 1):
         question["id"] = f"{puzzle_day.isoformat()}-{i}"
+        question.pop("_names", None)
 
     # A rebuild of the same day with a deeper ledger can produce a different
     # set. The stamp lets the page notice that and start the day over rather
