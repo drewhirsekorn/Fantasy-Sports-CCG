@@ -1,0 +1,60 @@
+# Publish the trivia game at the site root.
+#
+# The page is one self-contained file -- the questions are baked into it --
+# so "the site" is that file renamed to index.html and nothing else. No build
+# step, no framework, no dependencies to go stale.
+#
+# This fires whenever the page changes on main, which includes the 07:00 ET
+# job pushing the new day's questions. So the published page follows the
+# daily build on its own, a minute or so behind it.
+name: publish the page
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "web/trivia.html"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never two deploys at once, and never cancel one halfway: a cancelled deploy
+# can leave the live site mid-swap.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: assemble the site
+        run: |
+          mkdir -p site
+          cp web/trivia.html site/index.html
+          # Turn off the default Jekyll pass. Nothing here needs it, and it is
+          # one less thing that can quietly rewrite a page that already works.
+          touch site/.nojekyll
+          ls -la site
+
+      # enablement: true switches Pages on if it is off, so this repository
+      # needs no setting changed by hand before the first deploy.
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - id: deploy
+        uses: actions/deploy-pages@v4

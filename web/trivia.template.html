@@ -264,6 +264,9 @@ const el = (tag, attrs, kids) => {
   (kids || []).forEach(k => n.appendChild(k));
   return n;
 };
+// "Will Anderson Jr." already ends in a full stop; a template that appends
+// one gives "Will Anderson Jr..". Plenty of players carry Jr., Sr. or III.
+const sentence = text => (/[.!?]$/.test(text) ? text : text + ".");
 const longDate = iso => new Date(iso + "T12:00:00Z").toLocaleDateString(undefined, {
   weekday: "long", month: "long", day: "numeric", timeZone: "UTC"
 });
@@ -318,7 +321,8 @@ function drawQuestion() {
   if (answered) {
     const was = state.answers[index] === q.answer;
     const v = el("div", { class: "verdict", "data-state": was ? "right" : "wrong" }, [
-      el("strong", { class: "lead", text: was ? "Correct." : `Not quite — ${q.options[q.answer]}.` }),
+      el("strong", { class: "lead",
+                     text: was ? "Correct." : sentence(`Not quite — ${q.options[q.answer]}`) }),
       el("span", { text: q.explain || "" })
     ]);
     if ((q.links || []).length) {

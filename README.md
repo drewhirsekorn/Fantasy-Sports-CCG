@@ -131,6 +131,13 @@ open web/trivia.html               # or ./db/dev.sh api and visit /trivia
 python3 -m trivia.test_trivia      # the rules that decide whether a question is honest
 ```
 
+It is also published, at the root of this repository's GitHub Pages site.
+`.github/workflows/pages.yml` copies `web/trivia.html` to `index.html` and
+deploys it whenever that file changes on `main` -- which includes the 07:00
+job pushing the new day, so the published page follows the daily build a
+minute or so behind it. The page is one self-contained file with the
+questions baked in, so there is no build step and nothing to go stale.
+
 The question is the one the example asks for — *X did this last night; who did
 it before?* — and the interesting part is not asking it but being sure of the
 answer.
