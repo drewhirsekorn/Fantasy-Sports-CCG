@@ -204,15 +204,6 @@ class Ledger:
         candidate = earlier[-1]
         return candidate if _day(candidate["date"]) >= start else None
 
-    def on_day(self, month: int, day: int, *, before_year: int) -> list[dict]:
-        """Occurrences on this calendar day in an earlier year -- anniversaries."""
-        out = []
-        for o in self.occurrences:
-            d = _day(o["date"])
-            if d.month == month and d.day == day and d.year < before_year:
-                out.append(o)
-        return sorted(out, key=lambda o: o["date"], reverse=True)
-
     def players(self, feat: str) -> list[str]:
         """Everyone who has ever done it -- the pool that distractors come from."""
         seen, out = set(), []

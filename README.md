@@ -200,7 +200,7 @@ from a game that counts. A date that will not load drops nothing: *could not
 check* and *does not count* are different answers, and only one of them is
 grounds for deleting evidence.
 
-### Three shapes, so no day is blank
+### Two shapes, both about last night
 
 The leagues do not cooperate. Mid-July has no NBA and no NFL; late February
 has no MLB; and some nights nothing rare happens anywhere.
@@ -208,12 +208,35 @@ has no MLB; and some nights nothing rare happens anywhere.
 | shape | when | the question |
 |---|---|---|
 | `last_before` | something rare happened last night | who did it before them? |
-| `anniversary` | it happened on this date in an earlier year | who was it? |
 | `most_recent` | a quiet night | who had the most recent one? |
 
-The first is the game. The other two are what keeps an All-Star break and the
-second week of July from being empty. If the ledger cannot honestly support
-even one question, the build **fails rather than publishing a thin day**.
+There was a third, asking who did something on this same date in an earlier
+year. It filled two thirds of the mornings and it was **removed on purpose**:
+the game is about last night, and a question opening "on this date in 2004"
+is a different game wearing the same page. Both remaining shapes hang off the
+night just played — either something happened, or nothing did and the absence
+is the setup. A test walks forty days of builds asserting no question about
+another calendar year, because the pressure to bring it back will come from a
+morning that looks thin.
+
+Losing it cost nothing in coverage: every day of a test year still fills.
+What it cost was concentration, and three things had to be fixed before the
+remaining shapes could carry the load alone.
+
+- **`most_recent` picked the rarest feat, so the rarest feat won every quiet
+  night.** Same question, same eight-month-old answer, every week. It now
+  sorts by how recently the feat last happened and shuffles among the
+  freshest few. Median answer age across a test year: **8 days**, a quarter
+  of them inside 4.
+- **It asked about leagues that were not playing.** "Nobody managed four
+  rushing touchdowns in the NFL yesterday" is true in mid-July, deadpan and
+  faintly ridiculous. Leagues that were actually playing are asked about
+  first; a dark one is only reached for if the board would be short.
+- **Two questions could share an answer.** Get one and you have the other,
+  and the day is really two questions long.
+
+If the ledger cannot honestly support even one question, the build **fails
+rather than publishing a thin day**.
 
 ### 07:00 Eastern, and the two mornings a year it moves
 
@@ -257,16 +280,15 @@ ESPN's box scores reach back further than the seeded ledger does:
 happened at least once in those windows; a
 six-touchdown game has not, which is the kind of thing the rare tier is for.
 
-The windows are deliberately not one span each. Scanning runs backward from
-the present to deepen "who did it before", and forward from 1993 to give the
-anniversaries somewhere to reach — and an anniversary needs no contiguity,
-since it states a fact rather than claiming nobody did it in between. The
-gaps between the spans are honest: no question is built across one.
+The windows are deliberately not one span each: scanning ran backward from
+the present in one process and forward from 1993 in another, and the middle
+was never reached. The gaps are honest — no question is built across one.
 
-The seed is what one session could scan, not a limit of the design. Deepening
-it is one command, and the questions get better the further back it goes —
-`last_before` answers a year old instead of a month, and anniversaries that
-reach the decade the request asked about:
+Depth now buys less than it did. The 1990s were scanned to give the
+anniversary questions somewhere to reach, and those questions are gone, so
+the archive is no longer load-bearing. What deepening still buys is a denser
+recent ledger: more nights with something on them, so more mornings open with
+something that actually happened rather than something that did not.
 
 ```bash
 python3 -m trivia.backfill --sport NBA --since 1993-11-01     # the whole archive

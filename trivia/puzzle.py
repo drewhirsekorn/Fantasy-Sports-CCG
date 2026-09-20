@@ -13,14 +13,19 @@ by two players is dropped rather than asked, because "who was the last" has
 two right answers that night and a four-option question has room for one. The
 day loses a question; it never gains a wrong one.
 
-Three shapes, in the order they are tried:
+Two shapes, in the order they are tried:
 
   last_before   something happened yesterday -- who did it before?
-  anniversary   it happened on this date in an earlier year -- who was it?
   most_recent   nothing happened yesterday -- when did it last happen?
 
-The first is the game. The other two are what keeps an All-Star break, a
-February Tuesday and the second week of July from being blank.
+The first is the game. The second is what keeps an All-Star break, a February
+Tuesday and the second week of July from being blank.
+
+There was a third, asking about the same calendar date in an earlier year.
+It filled a lot of mornings and it is gone on purpose: the game is about last
+night, and a question that opens "on this date in 2004" is a different game
+wearing the same page. Every question now hangs off the night just played --
+either something happened, or nothing did and that absence is the setup.
 """
 from __future__ import annotations
 
@@ -154,37 +159,6 @@ def last_before(ledger: Ledger, occurrence: dict, rng: random.Random) -> dict | 
     }
 
 
-def anniversary(ledger: Ledger, source_day: date, rng: random.Random) -> list[dict]:
-    """Same calendar date, earlier year. Rarest feat first."""
-    out = []
-    candidates = ledger.on_day(source_day.month, source_day.day,
-                               before_year=source_day.year)
-    candidates.sort(key=lambda o: (feats.BY_KEY[o["feat"]].rank, -o["value"]))
-    for occurrence in candidates:
-        feat = feats.BY_KEY[occurrence["feat"]]
-        if _ambiguous(ledger, occurrence):
-            continue
-        wrong = _distractors(ledger, feat.key, rng=rng, exclude={occurrence["player"]})
-        if len(wrong) < OPTIONS - 1:
-            continue
-        built = _multiple_choice(occurrence["player"], wrong, rng)
-        if not built:
-            continue
-        options, answer = built
-        year = occurrence["date"][:4]
-        out.append({
-            "kind": "anniversary",
-            "sport": feat.sport,
-            "setup": f"On this date in {year}, an {feat.sport} player had {feat.label}.",
-            "prompt": f"Who was it? ({_value(occurrence)} against {occurrence['opponent']})",
-            "options": options,
-            "answer": answer,
-            "explain": f"{occurrence['player']}, {feats.headline(occurrence)}, {_pretty(occurrence['date'])}.",
-            "links": [l for l in (_source_link(occurrence),) if l],
-        })
-    return out
-
-
 def most_recent(ledger: Ledger, sport: str, source_day: date, rng: random.Random) -> list[dict]:
     """Nothing last night. So: who did it last, before last night?
 
@@ -196,7 +170,8 @@ def most_recent(ledger: Ledger, sport: str, source_day: date, rng: random.Random
     """
     out = []
     happened = {o["feat"] for o in ledger.occurrences if o["date"] == source_day.isoformat()}
-    for feat in sorted(feats.BY_SPORT.get(sport, ()), key=lambda f: f.rank):
+    candidates = list(feats.BY_SPORT.get(sport, ()))
+    for feat in candidates:
         if feat.key in happened:
             continue
         previous = ledger.previous(feat.key, source_day, sport=sport)
@@ -210,6 +185,7 @@ def most_recent(ledger: Ledger, sport: str, source_day: date, rng: random.Random
             continue
         options, answer = built
         out.append({
+            "_when": previous["date"],
             "kind": "most_recent",
             "sport": sport,
             "setup": f"Nobody managed {feat.label} in {LEAGUE[sport]} yesterday.",
@@ -220,6 +196,23 @@ def most_recent(ledger: Ledger, sport: str, source_day: date, rng: random.Random
                         f"vs {previous['opponent']} on {_pretty(previous['date'])}."),
             "links": [l for l in (_source_link(previous),) if l],
         })
+
+    # Freshest first, then shuffled among the freshest few.
+    #
+    # Ranking by rarity picked the rarest feat every time, and the rarest feat
+    # is by definition the one whose answer is oldest -- so the same question
+    # with the same eight-month-old answer came back every quiet night. Sorting
+    # by how recently the feat last happened does the opposite: the answer is
+    # something from this month, and it rotates on its own as the season runs.
+    # The shuffle over the top few keeps consecutive quiet days from being
+    # identical, and is seeded by the puzzle date so a day still builds twice
+    # the same way.
+    out.sort(key=lambda q: q["_when"], reverse=True)
+    head = out[:4]
+    rng.shuffle(head)
+    out = head + out[4:]
+    for question in out:
+        question.pop("_when", None)
     return out
 
 
@@ -236,11 +229,6 @@ def _playing(ledger: Ledger, sport: str, source_day: date, *, within: int = 21) 
                for o in ledger.occurrences)
 
 
-def _spread(candidates: list[dict], used: set[str]) -> list[dict]:
-    """Stable reorder that puts leagues not yet asked about first."""
-    return sorted(candidates, key=lambda q: q["sport"] in used)
-
-
 # ------------------------------------------------------------------- build
 def build(puzzle_day: date, ledger: Ledger, *, questions: int = QUESTIONS) -> dict:
     """The puzzle that goes live at 07:00 ET on `puzzle_day`.
@@ -252,49 +240,70 @@ def build(puzzle_day: date, ledger: Ledger, *, questions: int = QUESTIONS) -> di
     rng = _rng(puzzle_day)
     chosen: list[dict] = []
     used_sports: set[str] = set()
+    # Two questions with the same right answer is a thin board: get one and
+    # you have the other, and the day is really two questions long.
+    used_answers: set[str] = set()
 
-    # 1. Yesterday's feats, rarest first, at most one per sport so a wild night
-    #    in one league does not take the whole board.
+    def take(question: dict | None) -> bool:
+        if not question:
+            return False
+        answer = question["options"][question["answer"]]
+        if answer in used_answers:
+            return False
+        if any(q["setup"] == question["setup"] and q["prompt"] == question["prompt"]
+               for q in chosen):
+            return False
+        chosen.append(question)
+        used_sports.add(question["sport"])
+        used_answers.add(answer)
+        return True
+
+    # 1. Yesterday's feats, rarest first. One per league on the first pass so
+    #    a wild night in one does not take the whole board -- then a second
+    #    pass over what is left, because three things that actually happened
+    #    last night beat two of them plus a question about a night nothing did.
+    #
+    #    A player is only asked about once. The feat table is tiered, so a
+    #    50-point game is also a 40-point game, and without this the same man
+    #    headlines two questions in a row.
     yesterday = [o for o in ledger.occurrences if o["date"] == source_day.isoformat()]
     yesterday.sort(key=lambda o: (feats.BY_KEY[o["feat"]].rank, -o["value"]))
-    for occurrence in yesterday:
-        if len(chosen) >= questions or occurrence["sport"] in used_sports:
-            continue
-        question = last_before(ledger, occurrence, rng)
-        if question:
-            chosen.append(question)
-            used_sports.add(occurrence["sport"])
-
-    # 2. Same date, earlier years. Rarest first, and a league that has not
-    #    been asked about yet goes ahead of one that has.
-    if len(chosen) < questions:
-        for question in _spread(anniversary(ledger, source_day, rng), used_sports):
+    used_players: set[str] = set()
+    for first_pass in (True, False):
+        for occurrence in yesterday:
             if len(chosen) >= questions:
                 break
-            chosen.append(question)
-            used_sports.add(question["sport"])
+            if occurrence["player"] in used_players:
+                continue
+            if first_pass and occurrence["sport"] in used_sports:
+                continue
+            if take(last_before(ledger, occurrence, rng)):
+                used_players.add(occurrence["player"])
 
-    # 3. Whatever the ledger can still answer. Taken one league at a time so a
+    # 2. Whatever the ledger can still answer. Taken one league at a time so a
     #    September morning -- NBA dark, NFL two games in, MLB the only thing
     #    that played -- does not hand back three NBA questions in a row.
     if len(chosen) < questions:
         pools = {sport: most_recent(ledger, sport, source_day, rng) for sport in SPORTS}
-        order = sorted(SPORTS, key=lambda s: (s in used_sports,
-                                              not _playing(ledger, s, source_day)))
-        while len(chosen) < questions and any(pools.values()):
-            took = False
-            for sport in order:
-                if len(chosen) >= questions or not pools[sport]:
-                    continue
-                question = pools[sport].pop(0)
-                if any(q["setup"] == question["setup"] and q["prompt"] == question["prompt"]
-                       for q in chosen):
-                    continue
-                chosen.append(question)
-                used_sports.add(sport)
-                took = True
-            if not took:
-                break
+        # A league in its offseason is exhausted before it is interesting. In
+        # mid-July the NFL has not played for five months, and "nobody managed
+        # four rushing touchdowns in the NFL yesterday" is true, deadpan and
+        # faintly ridiculous. So the leagues that were playing get asked
+        # about first, and a dark one is only reached for if the board would
+        # otherwise be short.
+        active = [s for s in SPORTS if _playing(ledger, s, source_day)]
+        dark = [s for s in SPORTS if s not in active]
+        for tier in (active, dark):
+            order = sorted(tier, key=lambda s: s in used_sports)
+            while len(chosen) < questions and any(pools[s] for s in order):
+                took = False
+                for sport in order:
+                    if len(chosen) >= questions or not pools[sport]:
+                        continue
+                    if take(pools[sport].pop(0)):
+                        took = True
+                if not took:
+                    break
 
     for i, question in enumerate(chosen, 1):
         question["id"] = f"{puzzle_day.isoformat()}-{i}"
