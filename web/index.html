@@ -12,7 +12,16 @@
     /* Rarity ramp, separated for colour-vision deficiency as well as normal
        vision -- blue and purple collapse under deuteranopia, so Elite is
        magenta. Pips carry the same information without relying on hue. */
-    --common:#69747F; --uncommon:#5CC98D; --rare:#63A8E8; --elite:#EE5C93; --signature:#EDB443;
+    /* Rarity is an ordinal LADDER, so one hue stepped by lightness -- the
+       same ramp the card face and the collection grid use. The five-hue set
+       this replaces collided with three reserved colours at once: Uncommon
+       WAS --good, Rare WAS --accent, Signature WAS --warn. A tactic that hit
+       and an Uncommon card were the same green. */
+    --common:#3A4653; --uncommon:#3F6E93; --rare:#4A8FC7; --elite:#5FB0F0; --signature:#9BD0FF;
+    /* Reserved, and never a rung of that ladder: the floor a rarity buys, and
+       the tactic layer, which sits in the same lists as cards and so must not
+       read as one. */
+    --floor-col:#C2851B; --tactic:#9B7BE0;
     color-scheme: dark;
   }
   *{box-sizing:border-box}
@@ -396,7 +405,11 @@ function add(kind, key){
 }
 
 function pips(rarity){
-  const n = PIP[rarity] || 1, col = `var(${RAR[rarity] || '--common'})`;
+  // Pips are the channel that survives with no colour at all, so they never
+  // take a rung of the ramp too dark to count -- which is Common, exactly
+  // where they are the only signal left.
+  const n = PIP[rarity] || 1;
+  const col = rarity === 'common' ? 'var(--mute)' : `var(${RAR[rarity] || '--common'})`;
   // Parenthesised: `.` binds tighter than `+`, so without these the repeat
   // applies to the last operand only and emits bare `"></i>` fragments.
   return `<span class="pips">${('<i style="background:' + col + '"></i>').repeat(n)}</span>`;
@@ -422,7 +435,7 @@ function render(){
 
   const list = S.pick[S.tab], out = [];
   list.forEach((c,i) => {
-    const col = S.tab === 'tactic' ? 'var(--accent)' : `var(${RAR[c.rarity] || '--common'})`;
+    const col = S.tab === 'tactic' ? 'var(--tactic)' : `var(${RAR[c.rarity] || '--common'})`;
     out.push(`<button class="slot" style="border-left-color:${col}" data-drop="${i}">
       <div style="width:34px" class="stack">
         <span class="sm" style="font-family:Oswald">${S.tab === 'tactic' ? 'TAC' : esc(c.sport)}</span>
@@ -454,7 +467,7 @@ function render(){
   $('poolLabel').textContent = S.tab === 'tactic' ? 'YOUR TACTICS' : 'AVAILABLE';
   if(S.tab === 'tactic'){
     $('pool').innerHTML = DATA.tactics.filter(t => !takenT.has(t.code)).map(t => `
-      <button class="slot" style="border-left-color:var(--accent)" data-add="${t.code}">
+      <button class="slot" style="border-left-color:var(--tactic)" data-add="${t.code}">
         <div><div style="font-size:14px;font-weight:500">${esc(t.name)}</div>
           <div class="sm">${esc(t.text)}</div>
           <div class="sm" style="margin-top:2px">hits ${Math.round(t.base_rate * 100)}% · avg x1.00${
@@ -500,7 +513,7 @@ function drawRecap(r){
   // the absence. Losing to an injury is survivable; not being told is not.
   const slot = s => `<div class="slot" style="min-height:48px;border-left-color:${
       s.was_replacement ? 'var(--bad)' :
-      s.floor_applied ? 'var(--elite)' : (s.tactic_multiplier !== 1
+      s.floor_applied ? 'var(--floor-col)' : (s.tactic_multiplier !== 1
         ? (s.tactic_multiplier > 1 ? 'var(--good)' : 'var(--bad)') : 'var(--common)')}">
       <span class="sm" style="font-family:Oswald;width:26px">${esc(
         (s.sub || s.card).sport)}</span>
