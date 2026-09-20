@@ -118,6 +118,176 @@ Under deuteranopia the five-hue Uncommon, Elite and Signature are one colour.
 Neither palette clears the ΔE 15 bar for *categorical* use, which is the right
 answer: adjacent rungs of a ladder are meant to look adjacent.
 
+## The daily trivia game
+
+`web/trivia.html` is a second standalone build, unrelated to the card game
+except that it reads the same kind of data: three questions about what
+happened in the NBA, NFL and MLB the night before, replaced at 07:00 Eastern
+every morning.
+
+```bash
+python3 -m trivia.build            # scan yesterday, extend the ledger, bake the page
+open web/trivia.html               # or ./db/dev.sh api and visit /trivia
+python3 -m trivia.test_trivia      # the rules that decide whether a question is honest
+```
+
+The question is the one the example asks for — *X did this last night; who did
+it before?* — and the interesting part is not asking it but being sure of the
+answer.
+
+### Nothing is typed in from memory
+
+A trivia game written by hand is only as correct as whoever wrote it, and this
+one has to be right every morning with nobody watching. So no fact in it is
+authored. Every question is assembled out of box scores:
+
+- the **setup** is a line the detector found in last night's box score,
+- the **answer** is another row of the same ledger,
+- the **wrong options** are real players who have done the same thing on other
+  nights,
+- and the **explanation** links the two box scores it came from.
+
+That is what `trivia/feats.py` is for. A feat is a threshold rare enough that
+the last person to clear it is a real recall. "Scored 30" is not a question,
+because the answer is "someone, last night".
+
+The table is in two tiers, and both are needed. The rare tier — a no-hitter,
+six passing touchdowns, a 40-point triple-double — is what makes a good
+morning, but those nights are uncommon enough that most days would have
+nothing from last night to ask about at all. The second tier, a few dozen to a
+hundred-odd times a season, is what makes *somebody did this last night* the
+usual case rather than the exception. `rank` keeps them in their place: when
+both fire on one night, the rarer one is the question.
+
+Adding a feat is a single row in that table — the feed, the ledger, the
+question builder and the page all learn it without being touched.
+
+### The ledger says what it searched, not just what it found
+
+`data/trivia_ledger.json` is the answer key, and its correctness argument is
+one sentence: **"who did it before" is only asked when the whole span between
+the two occurrences was actually scanned.**
+
+So the ledger stores coverage windows per sport alongside the occurrences.
+`Ledger.previous` refuses to answer when no window spans the gap, because an
+unscanned day could hide a more recent holder and a question nobody can vouch
+for is worse than no question. Coverage only widens when it is earned:
+
+- Two adjoining scans merge into one window. Two scans with a day nobody
+  looked at between them do not, and coverage is a *list* of windows for
+  exactly that reason — the daily job will miss a morning eventually, and one
+  window would have to choose between forgetting everything before the gap and
+  lying about it. A missed morning costs one day.
+- A day whose box scores would not load is left out of the claim rather than
+  assumed empty. A box score that never arrived and a quiet night look
+  identical from the outside, and only one of them is safe to build on.
+- Each window names **which feats it was scanned for**. Adding a feat would
+  otherwise be silently retroactive: the old windows would vouch for something
+  the detector could not yet see, and the first question about it would have a
+  wrong answer. A new feat simply has no coverage until someone backfills it.
+
+Four more refusals, each of which produced a wrong answer before it existed:
+
+| what happened | what the build does |
+|---|---|
+| a 50-point **All-Star Game** landed in the ledger next to real ones | exhibitions are filtered at the feed — preseason, spring training, All-Star, the Pro Bowl. The playoffs emphatically count. |
+| **two players** cleared the same feat the same night | the question is dropped. "The last" has two right answers that night and four options have room for one. |
+| one player holds two feats, so the **distractor pool handed back a name already in the question** | options are deduped, and a question that cannot be built with four distinct names is not built |
+| **"nobody managed it last night"** was sayable about a night somebody did — the setup denying the very game the answer came from | the claim is only made about a feat that did not occur, on a night that was scanned |
+
+`python3 -m trivia.backfill --audit` re-checks that every entry still comes
+from a game that counts. A date that will not load drops nothing: *could not
+check* and *does not count* are different answers, and only one of them is
+grounds for deleting evidence.
+
+### Three shapes, so no day is blank
+
+The leagues do not cooperate. Mid-July has no NBA and no NFL; late February
+has no MLB; and some nights nothing rare happens anywhere.
+
+| shape | when | the question |
+|---|---|---|
+| `last_before` | something rare happened last night | who did it before them? |
+| `anniversary` | it happened on this date in an earlier year | who was it? |
+| `most_recent` | a quiet night | who had the most recent one? |
+
+The first is the game. The other two are what keeps an All-Star break and the
+second week of July from being empty. If the ledger cannot honestly support
+even one question, the build **fails rather than publishing a thin day**.
+
+### 07:00 Eastern, and the two mornings a year it moves
+
+GitHub's scheduler is UTC and does not know about daylight saving, so
+`.github/workflows/daily-trivia.yml` fires at both 11:00 and 12:00 UTC and
+`trivia/build.py` decides which one is actually 07:00 in New York. The other
+run finds the day already published and exits without touching a file.
+
+The same function draws the 24-hour window the player gets, which is why it is
+computed in Eastern rather than by adding 86,400 seconds: the day the clocks
+go forward is 23 hours long and the day they go back is 25, and the countdown
+on the page says so.
+
+### One day at a time, on purpose
+
+The page holds exactly one day. There is no archive, no back button to
+yesterday, and nothing server-side that remembers a player.
+
+What the browser keeps is deliberately small — a date and two numbers per day,
+capped at a fortnight. The questions themselves are never written to storage,
+which is what makes "yesterday's questions are gone" true rather than merely
+claimed. A tab left open overnight is not an exception: the countdown is also
+the guard, and at zero the board locks and asks for a reload rather than
+accepting answers to a day that has ended.
+
+Right and wrong are told three ways — border weight, tint and a glyph — for
+the same reason the collection grid puts rarity on a ladder instead of five
+hues: the page has to survive losing colour entirely.
+
+### Coverage, and what deepens it
+
+ESPN's box scores reach back further than the seeded ledger does:
+
+| | box scores available from | seeded here |
+|---|---|---|
+| NBA | 1993 | `2023-10-01` → `2026-09-19` |
+| NFL | 2002 | `2023-09-01` → `2026-09-19` |
+| MLB | 2003 | `2025-01-01` → `2026-09-19` |
+
+1,799 occurrences across 28 feats. Twenty-six of them have happened at least
+once in that window; a six-touchdown game and a complete-game no-hitter have
+not, which is the kind of thing the rare tier is for.
+
+The seed is what one session could scan, not a limit of the design. Deepening
+it is one command, and the questions get better the further back it goes —
+`last_before` answers a year old instead of a month, and anniversaries that
+reach the decade the request asked about:
+
+```bash
+python3 -m trivia.backfill --sport NBA --since 1993-11-01     # the whole archive
+python3 -m trivia.backfill --sport MLB --since 2003-03-30
+python3 -m trivia.backfill --audit                            # then re-check it
+```
+
+Backfill and the daily run share one detector, so a backfilled entry and a
+live one are produced by the same code — the answer key cannot drift from the
+thing it is answering about. It is resumable, checkpoints by month, and
+re-running a range adds nothing.
+
+Two things the detector cannot see, both because it reads a box score one line
+at a time.
+
+A **combined no-hitter** is not in any single pitcher's line, which is why
+that feat and the question it asks both say *complete-game* — the question is
+asked about what was actually searched for, rather than a category it would
+miss nights from.
+
+And **career milestones are the missing feat.** The example that prompted this —
+*"player X hit their 300th home run"* — cannot be read off a box score, which
+knows a player hit two home runs last night but not that they now have 300.
+That needs career totals at the time of each historical game, which is a
+different data problem from the one solved here, not a threshold to add to the
+table.
+
 ## How it works
 
 ```
@@ -329,6 +499,7 @@ api/        FastAPI app, smoke test, and static/index.html — the whole client
 demo/       setup.py builds the fixed pool; play.py plays a match headlessly
 sim/        balance_sim.py — the tuning harness; re-run it whenever a constant moves
 data/       tactic_cards.json (36 cards), scoring_rules.json (Stage 0 + cold start)
+trivia/     the daily trivia build: feed -> feats -> ledger -> puzzle -> page
 ```
 
 ## What's missing

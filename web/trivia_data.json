@@ -1,0 +1,128 @@
+{
+ "version": 1,
+ "date": "2026-09-20",
+ "stamp": "fe2d559c5139",
+ "source_date": "2026-09-19",
+ "opens": "2026-09-20T07:00:00-04:00",
+ "questions": [
+  {
+   "kind": "most_recent",
+   "sport": "NFL",
+   "setup": "Nobody managed a four-rushing-touchdown game in the NFL yesterday.",
+   "prompt": "Who had the most recent one?",
+   "options": [
+    "Jer'Zhan Newton",
+    "Dallas Goedert",
+    "Derrick Henry",
+    "Tyler Shough"
+   ],
+   "answer": 2,
+   "explain": "Derrick Henry \u2014 4 touchdowns for BAL vs GB on December 27, 2025.",
+   "links": [
+    {
+     "label": "December 27, 2025 box score",
+     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401772953"
+    }
+   ],
+   "id": "2026-09-20-1"
+  },
+  {
+   "kind": "most_recent",
+   "sport": "MLB",
+   "setup": "Nobody managed a 15-strikeout game in the majors yesterday.",
+   "prompt": "Who had the most recent one?",
+   "options": [
+    "Grant Holmes",
+    "Dustin May",
+    "Jacob Gonzalez",
+    "Jacob Misiorowski"
+   ],
+   "answer": 3,
+   "explain": "Jacob Misiorowski \u2014 15 strikeouts for MIL vs PHI on June 12, 2026.",
+   "links": [
+    {
+     "label": "June 12, 2026 box score",
+     "url": "https://www.espn.com/mlb/boxscore/_/gameId/401815729"
+    }
+   ],
+   "id": "2026-09-20-2"
+  },
+  {
+   "kind": "most_recent",
+   "sport": "NBA",
+   "setup": "Nobody managed a 40-point triple-double in the NBA yesterday.",
+   "prompt": "Who had the most recent one?",
+   "options": [
+    "Giannis Antetokounmpo",
+    "Cade Cunningham",
+    "Stephon Castle",
+    "James Harden"
+   ],
+   "answer": 2,
+   "explain": "Stephon Castle \u2014 40 points for SA vs DAL on February 7, 2026.",
+   "links": [
+    {
+     "label": "February 7, 2026 box score",
+     "url": "https://www.espn.com/nba/boxscore/_/gameId/401810604"
+    }
+   ],
+   "id": "2026-09-20-3"
+  }
+ ],
+ "coverage": {
+  "MLB": [
+   {
+    "from": "2025-01-01",
+    "through": "2026-09-19",
+    "feats": [
+     "mlb_12_k",
+     "mlb_15_k",
+     "mlb_3_hr",
+     "mlb_5_hits",
+     "mlb_5_rbi",
+     "mlb_7_rbi",
+     "mlb_no_hitter",
+     "mlb_shutout"
+    ]
+   }
+  ],
+  "NBA": [
+   {
+    "from": "2023-10-01",
+    "through": "2026-09-19",
+    "feats": [
+     "nba_10_threes",
+     "nba_20_assists",
+     "nba_25_rebounds",
+     "nba_40_10_10",
+     "nba_40_points",
+     "nba_50_points",
+     "nba_5_blocks",
+     "nba_6_steals"
+    ]
+   }
+  ],
+  "NFL": [
+   {
+    "from": "2023-09-01",
+    "through": "2026-09-19",
+    "feats": [
+     "nfl_150_rec_yards",
+     "nfl_150_rush_yards",
+     "nfl_200_rec_yards",
+     "nfl_200_rush_yards",
+     "nfl_3_picks",
+     "nfl_3_sacks",
+     "nfl_400_pass_yards",
+     "nfl_450_pass_yards",
+     "nfl_4_pass_td",
+     "nfl_4_rush_td",
+     "nfl_4_sacks",
+     "nfl_6_pass_td"
+    ]
+   }
+  ]
+ },
+ "built_at": "2026-09-20T17:36:54Z",
+ "closes": "2026-09-21T07:00:00-04:00"
+}

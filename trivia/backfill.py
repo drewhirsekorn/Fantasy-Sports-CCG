@@ -115,8 +115,9 @@ def backfill(sport: str, start: date, end: date, *, workers: int = 12,
         # Cover as we go, and only what was actually read: a run killed halfway
         # claims the months it finished, and a day the feed would not give up
         # is left out of the claim rather than assumed empty.
+        keys = [f.key for f in feats.BY_SPORT.get(sport, ())]
         for run_start, run_end in runs(read):
-            ledger.cover(sport, run_start, run_end)
+            ledger.cover(sport, run_start, run_end, keys)
         unread += sorted({d.isoformat() for d in _dates(chunk_start, chunk_end)} - read)
         if checkpoint:
             ledger.save(checkpoint if isinstance(checkpoint, pathlib.Path) else None)

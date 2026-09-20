@@ -2,10 +2,19 @@
 
 A feat is a line in a box score rare enough that the last time anyone did it
 is worth asking about. That rarity bound is the whole design: "scored 30" is
-not a question, because the answer is "someone, last night". Every threshold
-here is set so the feat lands somewhere between a handful and a few dozen
-times a season -- often enough that the ledger fills, rare enough that the
-previous holder is a real recall.
+not a question, because the answer is "someone, last night".
+
+The table is in two tiers, and both are needed. The rare tier -- a no-hitter,
+six passing touchdowns, a 40-point triple-double -- is what makes a good
+morning, but those nights are uncommon enough that most days would have
+nothing from last night to ask about at all. The second tier, a few dozen to
+a hundred-odd times a season, is what makes "somebody did this last night"
+the usual case rather than the exception. `rank` keeps them in their place:
+when both fire on one night, the rarer one is the question.
+
+Tiers of the same stat are allowed to overlap -- a 50-point game is also a
+40-point game -- because they are different questions with different answers,
+and the build only ever takes one per league per day.
 
 Each feat carries its own prose. `headline` says what happened yesterday and
 `asks` is the question put to the player, so adding a feat is one entry in
@@ -62,6 +71,18 @@ NBA = [
          "{player} made {value:.0f} threes for {team}",
          "Before {player}, who was the last NBA player to make 10 threes in a game?",
          unit="threes", rank=30),
+    Feat("nba_6_steals", "NBA", "player", "a six-steal game", "steals", 6,
+         "{player} came up with {value:.0f} steals for {team}",
+         "Before {player}, who was the last NBA player with six steals in a game?",
+         unit="steals", rank=25),
+    Feat("nba_5_blocks", "NBA", "player", "a five-block game", "blocks", 5,
+         "{player} blocked {value:.0f} shots for {team}",
+         "Before {player}, who was the last NBA player with five blocks in a game?",
+         unit="blocks", rank=42),
+    Feat("nba_40_points", "NBA", "player", "a 40-point game", "points", 40,
+         "{player} scored {value:.0f} points for {team} against {opponent}",
+         "Before {player}, who was the last NBA player to score 40 in a game?",
+         unit="points", rank=45),
     Feat("nba_40_10_10", "NBA", "player", "a 40-point triple-double", "points", 40,
          "{player} went for {value:.0f} points with a triple-double",
          "Before {player}, who had the last 40-point triple-double in the NBA?",
@@ -76,6 +97,26 @@ NFL = [
          "{player} threw {value:.0f} touchdown passes for {team}",
          "Before {player}, who was the last NFL quarterback to throw six touchdowns in a game?",
          unit="touchdowns", rank=5),
+    Feat("nfl_400_pass_yards", "NFL", "passing", "a 400-yard passing game", "pass_yards", 400,
+         "{player} threw for {value:.0f} yards for {team}",
+         "Before {player}, who was the last NFL quarterback to throw for 400 yards?",
+         unit="yards", rank=22),
+    Feat("nfl_4_pass_td", "NFL", "passing", "a four-touchdown game", "pass_td", 4,
+         "{player} threw {value:.0f} touchdown passes for {team}",
+         "Before {player}, who was the last NFL quarterback to throw four touchdowns in a game?",
+         unit="touchdowns", rank=25),
+    Feat("nfl_150_rush_yards", "NFL", "rushing", "a 150-yard rushing game", "rush_yards", 150,
+         "{player} ran for {value:.0f} yards for {team}",
+         "Before {player}, who was the last NFL player to rush for 150 yards?",
+         unit="yards", rank=30),
+    Feat("nfl_3_sacks", "NFL", "defensive", "a three-sack game", "sacks", 3,
+         "{player} sacked the quarterback {value:.0f} times for {team}",
+         "Before {player}, who was the last NFL player with three sacks in a game?",
+         unit="sacks", rank=30),
+    Feat("nfl_150_rec_yards", "NFL", "receiving", "a 150-yard receiving game", "rec_yards", 150,
+         "{player} caught {receptions:.0f} passes for {value:.0f} yards",
+         "Before {player}, who was the last NFL player with 150 receiving yards?",
+         unit="yards", rank=35),
     Feat("nfl_450_pass_yards", "NFL", "passing", "a 450-yard passing game", "pass_yards", 450,
          "{player} threw for {value:.0f} yards for {team}",
          "Before {player}, who was the last NFL quarterback to throw for 450 yards?",
@@ -102,13 +143,29 @@ NFL = [
          unit="interceptions", rank=10),
 ]
 
-# MLB. A no-hitter is the rarest thing a box score can show on its own, and
-# the innings clause is what keeps a rained-out five-inning shutout out of it.
+# MLB. A complete-game no-hitter is the rarest thing one line of a box score
+# can show, and the innings clause keeps a rained-out five-inning shutout out
+# of it. It says "complete-game" because a combined no-hitter is not in any
+# single line and this detector cannot see one -- so the question is asked
+# about the thing that was actually searched for, rather than a category that
+# includes nights it would have missed.
 MLB = [
-    Feat("mlb_no_hitter", "MLB", "pitching", "a no-hitter", "innings", 9,
-         "{player} threw a no-hitter for {team} against {opponent}",
-         "Before {player}, who threw the last no-hitter in the majors?",
+    Feat("mlb_no_hitter", "MLB", "pitching", "a complete-game no-hitter", "innings", 9,
+         "{player} threw a complete-game no-hitter for {team} against {opponent}",
+         "Before {player}, who threw the last complete-game no-hitter?",
          rank=1, extra=lambda l: l.get("hits_allowed", 99) == 0),
+    Feat("mlb_shutout", "MLB", "pitching", "a complete-game shutout", "innings", 9,
+         "{player} shut {opponent} out over {value:.0f} innings for {team}",
+         "Before {player}, who threw the last complete-game shutout?",
+         unit="innings", rank=12, extra=lambda l: l.get("runs_allowed", 99) == 0),
+    Feat("mlb_12_k", "MLB", "pitching", "a 12-strikeout game", "strikeouts_thrown", 12,
+         "{player} struck out {value:.0f} for {team}",
+         "Before {player}, who was the last pitcher to strike out 12 in a game?",
+         unit="strikeouts", rank=35),
+    Feat("mlb_5_rbi", "MLB", "batting", "a five-RBI game", "rbi", 5,
+         "{player} drove in {value:.0f} runs for {team}",
+         "Before {player}, who was the last player to drive in five in a game?",
+         unit="RBI", rank=40),
     Feat("mlb_15_k", "MLB", "pitching", "a 15-strikeout game", "strikeouts_thrown", 15,
          "{player} struck out {value:.0f} for {team}",
          "Before {player}, who was the last pitcher to strike out 15 in a game?",
