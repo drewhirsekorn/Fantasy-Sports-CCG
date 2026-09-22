@@ -18,7 +18,7 @@
    },
    {
     "from": "2025-01-01",
-    "through": "2026-09-20",
+    "through": "2026-09-21",
     "feats": [
      "mlb_12_k",
      "mlb_15_k",
@@ -62,7 +62,7 @@
    },
    {
     "from": "2023-10-01",
-    "through": "2026-09-20",
+    "through": "2026-09-21",
     "feats": [
      "nba_10_threes",
      "nba_20_assists",
@@ -96,7 +96,7 @@
    },
    {
     "from": "2023-09-01",
-    "through": "2026-09-20",
+    "through": "2026-09-21",
     "feats": [
      "nfl_150_rec_yards",
      "nfl_150_rush_yards",
@@ -70447,6 +70447,40 @@
     "attempts": 31.0
    },
    "source": "espn:401872944"
+  },
+  {
+   "feat": "nfl_150_rec_yards",
+   "sport": "NFL",
+   "date": "2026-09-21",
+   "player": "Davante Adams",
+   "player_id": "16800",
+   "team": "LAR",
+   "opponent": "NYG",
+   "value": 195.0,
+   "line": {
+    "rec_yards": 195.0,
+    "rec_td": 2.0,
+    "receptions": 8.0
+   },
+   "source": "espn:401872947"
+  },
+  {
+   "feat": "nfl_4_pass_td",
+   "sport": "NFL",
+   "date": "2026-09-21",
+   "player": "Matthew Stafford",
+   "player_id": "12483",
+   "team": "LAR",
+   "opponent": "NYG",
+   "value": 4.0,
+   "line": {
+    "pass_yards": 327.0,
+    "pass_td": 4.0,
+    "interceptions": 1.0,
+    "completions": 22.0,
+    "attempts": 31.0
+   },
+   "source": "espn:401872947"
   }
  ]
 }
