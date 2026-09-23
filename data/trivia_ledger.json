@@ -18,7 +18,7 @@
    },
    {
     "from": "2025-01-01",
-    "through": "2026-09-21",
+    "through": "2026-09-22",
     "feats": [
      "mlb_12_k",
      "mlb_15_k",
@@ -62,7 +62,7 @@
    },
    {
     "from": "2023-10-01",
-    "through": "2026-09-21",
+    "through": "2026-09-22",
     "feats": [
      "nba_10_threes",
      "nba_20_assists",
@@ -96,7 +96,7 @@
    },
    {
     "from": "2023-09-01",
-    "through": "2026-09-21",
+    "through": "2026-09-22",
     "feats": [
      "nfl_150_rec_yards",
      "nfl_150_rush_yards",
@@ -70481,6 +70481,44 @@
     "attempts": 31.0
    },
    "source": "espn:401872947"
+  },
+  {
+   "feat": "mlb_5_rbi",
+   "sport": "MLB",
+   "date": "2026-09-22",
+   "player": "Chase Meidroth",
+   "player_id": "5136929",
+   "team": "CHW",
+   "opponent": "KC",
+   "value": 5.0,
+   "line": {
+    "at_bats": 4.0,
+    "runs": 2.0,
+    "hits": 3.0,
+    "rbi": 5.0,
+    "home_runs": 1.0,
+    "walks": 1.0
+   },
+   "source": "espn:401817037"
+  },
+  {
+   "feat": "mlb_5_rbi",
+   "sport": "MLB",
+   "date": "2026-09-22",
+   "player": "Vinnie Pasquantino",
+   "player_id": "4109109",
+   "team": "KC",
+   "opponent": "CHW",
+   "value": 5.0,
+   "line": {
+    "at_bats": 5.0,
+    "runs": 3.0,
+    "hits": 3.0,
+    "rbi": 5.0,
+    "home_runs": 1.0,
+    "walks": 0.0
+   },
+   "source": "espn:401817037"
   }
  ]
 }

@@ -1,98 +1,98 @@
 {
- "date": "2026-09-21",
+ "date": "2026-09-22",
  "boards": {
-  "mlb_strikeouts": {
+  "mlb_innings": {
    "sport": "MLB",
    "rows": [
     {
-     "player": "Zebby Matthews",
-     "team": "MIN",
-     "opponent": "SF",
-     "value": 9.0,
-     "detail": "9 strikeouts over 5.0 innings for MIN against SF",
-     "game_id": "401817029",
-     "field": 24
+     "player": "Carlos Rodon",
+     "team": "NYY",
+     "opponent": "TB",
+     "value": 8.0,
+     "detail": "8.0 innings, 3 hits and 0 runs for NYY against TB",
+     "game_id": "401873648",
+     "field": 133
     },
     {
-     "player": "Keider Montero",
-     "team": "DET",
-     "opponent": "WSH",
-     "value": 5.0,
-     "detail": "5 strikeouts over 4.0 innings for DET against WSH",
-     "game_id": "401817028",
-     "field": 24
+     "player": "Jared Jones",
+     "team": "PIT",
+     "opponent": "STL",
+     "value": 7.0,
+     "detail": "7.0 innings, 1 hits and 0 runs for PIT against STL",
+     "game_id": "401817033",
+     "field": 133
     },
     {
-     "player": "Blade Tidwell",
+     "player": "Michael Soroka",
+     "team": "ARI",
+     "opponent": "COL",
+     "value": 7.0,
+     "detail": "7.0 innings, 2 hits and 2 runs for ARI against COL",
+     "game_id": "401817040",
+     "field": 133
+    },
+    {
+     "player": "Drew Rasmussen",
+     "team": "TB",
+     "opponent": "NYY",
+     "value": 6.2,
+     "detail": "6.2 innings, 1 hits and 1 runs for TB against NYY",
+     "game_id": "401817034",
+     "field": 133
+    },
+    {
+     "player": "Max Fried",
+     "team": "NYY",
+     "opponent": "TB",
+     "value": 6.2,
+     "detail": "6.2 innings, 6 hits and 4 runs for NYY against TB",
+     "game_id": "401817034",
+     "field": 133
+    },
+    {
+     "player": "Andre Pallante",
+     "team": "STL",
+     "opponent": "PIT",
+     "value": 6.0,
+     "detail": "6.0 innings, 3 hits and 1 runs for STL against PIT",
+     "game_id": "401817033",
+     "field": 133
+    },
+    {
+     "player": "Anthony Molina",
      "team": "SF",
      "opponent": "MIN",
-     "value": 4.0,
-     "detail": "4 strikeouts over 3.1 innings for SF against MIN",
-     "game_id": "401817029",
-     "field": 24
+     "value": 6.0,
+     "detail": "6.0 innings, 4 hits and 2 runs for SF against MIN",
+     "game_id": "401817043",
+     "field": 133
     },
     {
-     "player": "Chad Dallas",
-     "team": "TOR",
-     "opponent": "BAL",
-     "value": 4.0,
-     "detail": "4 strikeouts over 2.2 innings for TOR against BAL",
-     "game_id": "401817027",
-     "field": 24
+     "player": "Brandon Williamson",
+     "team": "CIN",
+     "opponent": "ATL",
+     "value": 6.0,
+     "detail": "6.0 innings, 3 hits and 0 runs for CIN against ATL",
+     "game_id": "401817030",
+     "field": 133
     },
     {
-     "player": "DJ Herz",
-     "team": "WSH",
-     "opponent": "DET",
-     "value": 4.0,
-     "detail": "4 strikeouts over 4.0 innings for WSH against DET",
-     "game_id": "401817028",
-     "field": 24
-    },
-    {
-     "player": "Brendan Cellucci",
-     "team": "TOR",
-     "opponent": "BAL",
-     "value": 3.0,
-     "detail": "3 strikeouts over 1.1 innings for TOR against BAL",
-     "game_id": "401817027",
-     "field": 24
-    },
-    {
-     "player": "River Ryan",
+     "player": "Drew Anderson",
      "team": "DET",
      "opponent": "WSH",
-     "value": 3.0,
-     "detail": "3 strikeouts over 3.0 innings for DET against WSH",
-     "game_id": "401817028",
-     "field": 24
+     "value": 6.0,
+     "detail": "6.0 innings, 5 hits and 3 runs for DET against WSH",
+     "game_id": "401817036",
+     "field": 133
     },
     {
-     "player": "Travis Adams",
-     "team": "MIN",
-     "opponent": "SF",
-     "value": 3.0,
-     "detail": "3 strikeouts over 1.2 innings for MIN against SF",
-     "game_id": "401817029",
-     "field": 24
-    },
-    {
-     "player": "Trey Yesavage",
-     "team": "TOR",
-     "opponent": "BAL",
-     "value": 3.0,
-     "detail": "3 strikeouts over 2.0 innings for TOR against BAL",
-     "game_id": "401817027",
-     "field": 24
-    },
-    {
-     "player": "Drew Sommers",
-     "team": "DET",
-     "opponent": "WSH",
-     "value": 2.0,
-     "detail": "2 strikeouts over 1.0 innings for DET against WSH",
-     "game_id": "401817028",
-     "field": 24
+     "player": "Nick Martinez",
+     "team": "TB",
+     "opponent": "NYY",
+     "value": 6.0,
+     "detail": "6.0 innings, 5 hits and 2 runs for TB against NYY",
+     "game_id": "401873648",
+     "field": 133
     }
    ]
   },
@@ -100,189 +100,94 @@
    "sport": "MLB",
    "rows": [
     {
-     "player": "Pete Alonso",
-     "team": "BAL",
-     "opponent": "TOR",
-     "value": 2.0,
-     "detail": "2 home runs and 3 driven in for BAL against TOR",
-     "game_id": "401817027",
-     "field": 67
-    },
-    {
-     "player": "Ben Malgeri",
-     "team": "DET",
-     "opponent": "WSH",
-     "value": 1.0,
-     "detail": "1 home runs and 3 driven in for DET against WSH",
-     "game_id": "401817028",
-     "field": 67
-    },
-    {
-     "player": "Brooks Lee",
-     "team": "MIN",
-     "opponent": "SF",
-     "value": 1.0,
-     "detail": "1 home runs and 1 driven in for MIN against SF",
-     "game_id": "401817029",
-     "field": 67
-    },
-    {
-     "player": "Drew Gilbert",
-     "team": "SF",
-     "opponent": "MIN",
-     "value": 1.0,
-     "detail": "1 home runs and 3 driven in for SF against MIN",
-     "game_id": "401817029",
-     "field": 67
-    },
-    {
-     "player": "Emmanuel Rodriguez",
-     "team": "MIN",
-     "opponent": "SF",
-     "value": 1.0,
-     "detail": "1 home runs and 1 driven in for MIN against SF",
-     "game_id": "401817029",
-     "field": 67
-    },
-    {
-     "player": "Gunnar Henderson",
-     "team": "BAL",
-     "opponent": "TOR",
-     "value": 1.0,
-     "detail": "1 home runs and 1 driven in for BAL against TOR",
-     "game_id": "401817027",
-     "field": 67
-    },
-    {
-     "player": "Javier Baez",
-     "team": "DET",
-     "opponent": "WSH",
-     "value": 1.0,
-     "detail": "1 home runs and 2 driven in for DET against WSH",
-     "game_id": "401817028",
-     "field": 67
-    },
-    {
-     "player": "Spencer Torkelson",
-     "team": "DET",
-     "opponent": "WSH",
-     "value": 1.0,
-     "detail": "1 home runs and 2 driven in for DET against WSH",
-     "game_id": "401817028",
-     "field": 67
-    },
-    {
-     "player": "Yohandy Morales",
+     "player": "CJ Abrams",
      "team": "WSH",
      "opponent": "DET",
+     "value": 2.0,
+     "detail": "2 home runs and 3 driven in for WSH against DET",
+     "game_id": "401817036",
+     "field": 305
+    },
+    {
+     "player": "Brandon Marsh",
+     "team": "PHI",
+     "opponent": "MIL",
      "value": 1.0,
-     "detail": "1 home runs and 2 driven in for WSH against DET",
-     "game_id": "401817028",
-     "field": 67
+     "detail": "1 home runs and 3 driven in for PHI against MIL",
+     "game_id": "401817032",
+     "field": 305
     },
     {
-     "player": "Aaron Sabato",
-     "team": "MIN",
-     "opponent": "SF",
-     "value": 0.0,
-     "detail": "0 home runs and 0 driven in for MIN against SF",
-     "game_id": "401817029",
-     "field": 67
-    }
-   ]
-  },
-  "nfl_rec_yards": {
-   "sport": "NFL",
-   "rows": [
-    {
-     "player": "Davante Adams",
-     "team": "LAR",
-     "opponent": "NYG",
-     "value": 195.0,
-     "detail": "195 yards on 8 catches for LAR against NYG",
-     "game_id": "401872947",
-     "field": 16
+     "player": "Brenton Doyle",
+     "team": "CHW",
+     "opponent": "KC",
+     "value": 1.0,
+     "detail": "1 home runs and 1 driven in for CHW against KC",
+     "game_id": "401817037",
+     "field": 305
     },
     {
-     "player": "Terrance Ferguson",
-     "team": "LAR",
-     "opponent": "NYG",
-     "value": 54.0,
-     "detail": "54 yards on 6 catches for LAR against NYG",
-     "game_id": "401872947",
-     "field": 16
+     "player": "Carlos Cortes",
+     "team": "ATH",
+     "opponent": "LAA",
+     "value": 1.0,
+     "detail": "1 home runs and 3 driven in for ATH against LAA",
+     "game_id": "401817041",
+     "field": 305
     },
     {
-     "player": "Darnell Mooney",
-     "team": "NYG",
-     "opponent": "LAR",
-     "value": 48.0,
-     "detail": "48 yards on 2 catches for NYG against LAR",
-     "game_id": "401872947",
-     "field": 16
+     "player": "Chase Meidroth",
+     "team": "CHW",
+     "opponent": "KC",
+     "value": 1.0,
+     "detail": "1 home runs and 5 driven in for CHW against KC",
+     "game_id": "401817037",
+     "field": 305
     },
     {
-     "player": "Isaiah Likely",
-     "team": "NYG",
-     "opponent": "LAR",
-     "value": 33.0,
-     "detail": "33 yards on 5 catches for NYG against LAR",
-     "game_id": "401872947",
-     "field": 16
+     "player": "Christian Walker",
+     "team": "HOU",
+     "opponent": "SEA",
+     "value": 1.0,
+     "detail": "1 home runs and 3 driven in for HOU against SEA",
+     "game_id": "401817042",
+     "field": 305
     },
     {
-     "player": "Malachi Fields",
-     "team": "NYG",
-     "opponent": "LAR",
-     "value": 30.0,
-     "detail": "30 yards on 2 catches for NYG against LAR",
-     "game_id": "401872947",
-     "field": 16
+     "player": "Cody Bellinger",
+     "team": "NYY",
+     "opponent": "TB",
+     "value": 1.0,
+     "detail": "1 home runs and 2 driven in for NYY against TB",
+     "game_id": "401873648",
+     "field": 305
     },
     {
-     "player": "Cam Skattebo",
-     "team": "NYG",
-     "opponent": "LAR",
-     "value": 19.0,
-     "detail": "19 yards on 4 catches for NYG against LAR",
-     "game_id": "401872947",
-     "field": 16
+     "player": "Dane Myers",
+     "team": "CIN",
+     "opponent": "ATL",
+     "value": 1.0,
+     "detail": "1 home runs and 1 driven in for CIN against ATL",
+     "game_id": "401817030",
+     "field": 305
     },
     {
-     "player": "Tutu Atwell",
-     "team": "LAR",
-     "opponent": "NYG",
-     "value": 19.0,
-     "detail": "19 yards on 1 catches for LAR against NYG",
-     "game_id": "401872947",
-     "field": 16
+     "player": "Denzer Guzman",
+     "team": "LAA",
+     "opponent": "ATH",
+     "value": 1.0,
+     "detail": "1 home runs and 4 driven in for LAA against ATH",
+     "game_id": "401817041",
+     "field": 305
     },
     {
-     "player": "Colby Parkinson",
-     "team": "LAR",
-     "opponent": "NYG",
-     "value": 15.0,
-     "detail": "15 yards on 2 catches for LAR against NYG",
-     "game_id": "401872947",
-     "field": 16
-    },
-    {
-     "player": "Blake Corum",
-     "team": "LAR",
-     "opponent": "NYG",
-     "value": 13.0,
-     "detail": "13 yards on 1 catches for LAR against NYG",
-     "game_id": "401872947",
-     "field": 16
-    },
-    {
-     "player": "Konata Mumpfield",
-     "team": "LAR",
-     "opponent": "NYG",
-     "value": 12.0,
-     "detail": "12 yards on 1 catches for LAR against NYG",
-     "game_id": "401872947",
-     "field": 16
+     "player": "Elly De La Cruz",
+     "team": "CIN",
+     "opponent": "ATL",
+     "value": 1.0,
+     "detail": "1 home runs and 2 driven in for CIN against ATL",
+     "game_id": "401817030",
+     "field": 305
     }
    ]
   }
