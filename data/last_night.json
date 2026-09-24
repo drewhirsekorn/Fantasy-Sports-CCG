@@ -1,98 +1,98 @@
 {
- "date": "2026-09-22",
+ "date": "2026-09-23",
  "boards": {
-  "mlb_innings": {
+  "mlb_strikeouts": {
    "sport": "MLB",
    "rows": [
     {
-     "player": "Carlos Rodon",
+     "player": "Chris Sale",
+     "team": "ATL",
+     "opponent": "CIN",
+     "value": 10.0,
+     "detail": "10 strikeouts over 5.2 innings for ATL against CIN",
+     "game_id": "401817045",
+     "field": 151
+    },
+    {
+     "player": "Aaron Nola",
+     "team": "PHI",
+     "opponent": "MIL",
+     "value": 8.0,
+     "detail": "8 strikeouts over 6.0 innings for PHI against MIL",
+     "game_id": "401817047",
+     "field": 151
+    },
+    {
+     "player": "Gerrit Cole",
      "team": "NYY",
      "opponent": "TB",
      "value": 8.0,
-     "detail": "8.0 innings, 3 hits and 0 runs for NYY against TB",
-     "game_id": "401873648",
-     "field": 133
+     "detail": "8 strikeouts over 5.2 innings for NYY against TB",
+     "game_id": "401817049",
+     "field": 151
     },
     {
-     "player": "Jared Jones",
-     "team": "PIT",
-     "opponent": "STL",
+     "player": "Mason Adams",
+     "team": "COL",
+     "opponent": "ARI",
+     "value": 8.0,
+     "detail": "8 strikeouts over 6.0 innings for COL against ARI",
+     "game_id": "401817055",
+     "field": 151
+    },
+    {
+     "player": "Foster Griffin",
+     "team": "CLE",
+     "opponent": "BOS",
      "value": 7.0,
-     "detail": "7.0 innings, 1 hits and 0 runs for PIT against STL",
-     "game_id": "401817033",
-     "field": 133
+     "detail": "7 strikeouts over 6.0 innings for CLE against BOS",
+     "game_id": "401817046",
+     "field": 151
     },
     {
-     "player": "Michael Soroka",
-     "team": "ARI",
-     "opponent": "COL",
+     "player": "Kevin Gausman",
+     "team": "CHC",
+     "opponent": "MIA",
      "value": 7.0,
-     "detail": "7.0 innings, 2 hits and 2 runs for ARI against COL",
-     "game_id": "401817040",
-     "field": 133
+     "detail": "7 strikeouts over 5.2 innings for CHC against MIA",
+     "game_id": "401817053",
+     "field": 151
     },
     {
-     "player": "Drew Rasmussen",
-     "team": "TB",
-     "opponent": "NYY",
-     "value": 6.2,
-     "detail": "6.2 innings, 1 hits and 1 runs for TB against NYY",
-     "game_id": "401817034",
-     "field": 133
+     "player": "Max Scherzer",
+     "team": "TOR",
+     "opponent": "BAL",
+     "value": 7.0,
+     "detail": "7 strikeouts over 5.0 innings for TOR against BAL",
+     "game_id": "401923610",
+     "field": 151
     },
     {
-     "player": "Max Fried",
-     "team": "NYY",
-     "opponent": "TB",
-     "value": 6.2,
-     "detail": "6.2 innings, 6 hits and 4 runs for NYY against TB",
-     "game_id": "401817034",
-     "field": 133
+     "player": "Trey Gibson",
+     "team": "BAL",
+     "opponent": "TOR",
+     "value": 7.0,
+     "detail": "7 strikeouts over 6.2 innings for BAL against TOR",
+     "game_id": "401817050",
+     "field": 151
     },
     {
-     "player": "Andre Pallante",
-     "team": "STL",
-     "opponent": "PIT",
-     "value": 6.0,
-     "detail": "6.0 innings, 3 hits and 1 runs for STL against PIT",
-     "game_id": "401817033",
-     "field": 133
-    },
-    {
-     "player": "Anthony Molina",
-     "team": "SF",
-     "opponent": "MIN",
-     "value": 6.0,
-     "detail": "6.0 innings, 4 hits and 2 runs for SF against MIN",
-     "game_id": "401817043",
-     "field": 133
-    },
-    {
-     "player": "Brandon Williamson",
+     "player": "Andrew Abbott",
      "team": "CIN",
      "opponent": "ATL",
      "value": 6.0,
-     "detail": "6.0 innings, 3 hits and 0 runs for CIN against ATL",
-     "game_id": "401817030",
-     "field": 133
+     "detail": "6 strikeouts over 7.0 innings for CIN against ATL",
+     "game_id": "401817045",
+     "field": 151
     },
     {
-     "player": "Drew Anderson",
+     "player": "Framber Valdez",
      "team": "DET",
      "opponent": "WSH",
      "value": 6.0,
-     "detail": "6.0 innings, 5 hits and 3 runs for DET against WSH",
-     "game_id": "401817036",
-     "field": 133
-    },
-    {
-     "player": "Nick Martinez",
-     "team": "TB",
-     "opponent": "NYY",
-     "value": 6.0,
-     "detail": "6.0 innings, 5 hits and 2 runs for TB against NYY",
-     "game_id": "401873648",
-     "field": 133
+     "detail": "6 strikeouts over 5.1 innings for DET against WSH",
+     "game_id": "401817051",
+     "field": 151
     }
    ]
   },
@@ -100,94 +100,189 @@
    "sport": "MLB",
    "rows": [
     {
-     "player": "CJ Abrams",
-     "team": "WSH",
-     "opponent": "DET",
-     "value": 2.0,
-     "detail": "2 home runs and 3 driven in for WSH against DET",
-     "game_id": "401817036",
-     "field": 305
-    },
-    {
-     "player": "Brandon Marsh",
-     "team": "PHI",
-     "opponent": "MIL",
-     "value": 1.0,
-     "detail": "1 home runs and 3 driven in for PHI against MIL",
-     "game_id": "401817032",
-     "field": 305
-    },
-    {
-     "player": "Brenton Doyle",
-     "team": "CHW",
-     "opponent": "KC",
-     "value": 1.0,
-     "detail": "1 home runs and 1 driven in for CHW against KC",
-     "game_id": "401817037",
-     "field": 305
-    },
-    {
-     "player": "Carlos Cortes",
-     "team": "ATH",
-     "opponent": "LAA",
-     "value": 1.0,
-     "detail": "1 home runs and 3 driven in for ATH against LAA",
-     "game_id": "401817041",
-     "field": 305
-    },
-    {
-     "player": "Chase Meidroth",
-     "team": "CHW",
-     "opponent": "KC",
-     "value": 1.0,
-     "detail": "1 home runs and 5 driven in for CHW against KC",
-     "game_id": "401817037",
-     "field": 305
-    },
-    {
-     "player": "Christian Walker",
-     "team": "HOU",
-     "opponent": "SEA",
-     "value": 1.0,
-     "detail": "1 home runs and 3 driven in for HOU against SEA",
-     "game_id": "401817042",
-     "field": 305
-    },
-    {
-     "player": "Cody Bellinger",
+     "player": "Ben Rice",
      "team": "NYY",
      "opponent": "TB",
-     "value": 1.0,
-     "detail": "1 home runs and 2 driven in for NYY against TB",
-     "game_id": "401873648",
-     "field": 305
+     "value": 2.0,
+     "detail": "2 home runs and 2 driven in for NYY against TB",
+     "game_id": "401817049",
+     "field": 331
     },
     {
-     "player": "Dane Myers",
-     "team": "CIN",
-     "opponent": "ATL",
+     "player": "Austin Riley",
+     "team": "ATL",
+     "opponent": "CIN",
      "value": 1.0,
-     "detail": "1 home runs and 1 driven in for CIN against ATL",
-     "game_id": "401817030",
-     "field": 305
+     "detail": "1 home runs and 1 driven in for ATL against CIN",
+     "game_id": "401817045",
+     "field": 331
     },
     {
-     "player": "Denzer Guzman",
-     "team": "LAA",
-     "opponent": "ATH",
+     "player": "Ben Malgeri",
+     "team": "DET",
+     "opponent": "WSH",
      "value": 1.0,
-     "detail": "1 home runs and 4 driven in for LAA against ATH",
-     "game_id": "401817041",
-     "field": 305
+     "detail": "1 home runs and 2 driven in for DET against WSH",
+     "game_id": "401817051",
+     "field": 331
     },
     {
-     "player": "Elly De La Cruz",
-     "team": "CIN",
-     "opponent": "ATL",
+     "player": "Brandon Lowe",
+     "team": "PIT",
+     "opponent": "STL",
      "value": 1.0,
-     "detail": "1 home runs and 2 driven in for CIN against ATL",
-     "game_id": "401817030",
-     "field": 305
+     "detail": "1 home runs and 1 driven in for PIT against STL",
+     "game_id": "401817048",
+     "field": 331
+    },
+    {
+     "player": "Brett Baty",
+     "team": "NYM",
+     "opponent": "TEX",
+     "value": 1.0,
+     "detail": "1 home runs and 4 driven in for NYM against TEX",
+     "game_id": "401817054",
+     "field": 331
+    },
+    {
+     "player": "Brice Turang",
+     "team": "MIL",
+     "opponent": "PHI",
+     "value": 1.0,
+     "detail": "1 home runs and 1 driven in for MIL against PHI",
+     "game_id": "401817047",
+     "field": 331
+    },
+    {
+     "player": "Cedric Mullins",
+     "team": "TB",
+     "opponent": "NYY",
+     "value": 1.0,
+     "detail": "1 home runs and 1 driven in for TB against NYY",
+     "game_id": "401817049",
+     "field": 331
+    },
+    {
+     "player": "Christian Encarnacion-Strand",
+     "team": "BAL",
+     "opponent": "TOR",
+     "value": 1.0,
+     "detail": "1 home runs and 3 driven in for BAL against TOR",
+     "game_id": "401817050",
+     "field": 331
+    },
+    {
+     "player": "Christian Yelich",
+     "team": "MIL",
+     "opponent": "PHI",
+     "value": 1.0,
+     "detail": "1 home runs and 1 driven in for MIL against PHI",
+     "game_id": "401817047",
+     "field": 331
+    },
+    {
+     "player": "Davis Schneider",
+     "team": "TOR",
+     "opponent": "BAL",
+     "value": 1.0,
+     "detail": "1 home runs and 2 driven in for TOR against BAL",
+     "game_id": "401817050",
+     "field": 331
+    }
+   ]
+  },
+  "mlb_rbi": {
+   "sport": "MLB",
+   "rows": [
+    {
+     "player": "Ryan McMahon",
+     "team": "NYY",
+     "opponent": "TB",
+     "value": 5.0,
+     "detail": "5 RBI for NYY against TB",
+     "game_id": "401817049",
+     "field": 331
+    },
+    {
+     "player": "Brett Baty",
+     "team": "NYM",
+     "opponent": "TEX",
+     "value": 4.0,
+     "detail": "4 RBI for NYM against TEX",
+     "game_id": "401817054",
+     "field": 331
+    },
+    {
+     "player": "Christian Encarnacion-Strand",
+     "team": "BAL",
+     "opponent": "TOR",
+     "value": 3.0,
+     "detail": "3 RBI for BAL against TOR",
+     "game_id": "401817050",
+     "field": 331
+    },
+    {
+     "player": "Dominic Canzone",
+     "team": "SEA",
+     "opponent": "HOU",
+     "value": 3.0,
+     "detail": "3 RBI for SEA against HOU",
+     "game_id": "401817057",
+     "field": 331
+    },
+    {
+     "player": "Donovan Walton",
+     "team": "ATH",
+     "opponent": "LAA",
+     "value": 3.0,
+     "detail": "3 RBI for ATH against LAA",
+     "game_id": "401817056",
+     "field": 331
+    },
+    {
+     "player": "Maikel Garcia",
+     "team": "KC",
+     "opponent": "CHW",
+     "value": 3.0,
+     "detail": "3 RBI for KC against CHW",
+     "game_id": "401817052",
+     "field": 331
+    },
+    {
+     "player": "Manny Machado",
+     "team": "SD",
+     "opponent": "LAD",
+     "value": 3.0,
+     "detail": "3 RBI for SD against LAD",
+     "game_id": "401817059",
+     "field": 331
+    },
+    {
+     "player": "Yainer Diaz",
+     "team": "HOU",
+     "opponent": "SEA",
+     "value": 3.0,
+     "detail": "3 RBI for HOU against SEA",
+     "game_id": "401817057",
+     "field": 331
+    },
+    {
+     "player": "Ben Malgeri",
+     "team": "DET",
+     "opponent": "WSH",
+     "value": 2.0,
+     "detail": "2 RBI for DET against WSH",
+     "game_id": "401817051",
+     "field": 331
+    },
+    {
+     "player": "Ben Rice",
+     "team": "NYY",
+     "opponent": "TB",
+     "value": 2.0,
+     "detail": "2 RBI for NYY against TB",
+     "game_id": "401817049",
+     "field": 331
     }
    ]
   }

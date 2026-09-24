@@ -1,76 +1,72 @@
 {
  "version": 1,
- "date": "2026-09-23",
- "stamp": "86cd115d0059",
- "source_date": "2026-09-22",
- "opens": "2026-09-23T07:00:00-04:00",
+ "date": "2026-09-24",
+ "stamp": "999f97f26f20",
+ "source_date": "2026-09-23",
+ "opens": "2026-09-24T07:00:00-04:00",
  "questions": [
   {
-   "kind": "last_before",
-   "sport": "MLB",
-   "setup": "Chase Meidroth drove in 5 runs for CHW yesterday.",
-   "prompt": "Before Chase Meidroth, who was the last player to drive in five in a game?",
-   "options": [
-    "Carson Kelly",
-    "Marcus Semien",
-    "Pete Crow-Armstrong",
-    "Jake Cronenworth"
-   ],
-   "answer": 3,
-   "explain": "Jake Cronenworth \u2014 5 RBI for SD on September 20, 2026, 2 days earlier.",
-   "links": [
-    {
-     "label": "September 22, 2026 box score",
-     "url": "https://www.espn.com/mlb/boxscore/_/gameId/401817037"
-    },
-    {
-     "label": "September 20, 2026 box score",
-     "url": "https://www.espn.com/mlb/boxscore/_/gameId/401817023"
-    }
-   ],
-   "id": "2026-09-23-1"
-  },
-  {
    "kind": "led_the_night",
    "sport": "MLB",
-   "setup": "Last night's box scores list 133 pitchers.",
-   "prompt": "Which pitcher went deepest into his game in the majors last night?",
-   "options": [
-    "Michael Soroka",
-    "Max Fried",
-    "Nick Martinez",
-    "Carlos Rodon"
-   ],
-   "answer": 3,
-   "explain": "Carlos Rodon \u2014 8.0 innings, 3 hits and 0 runs for NYY against TB.",
-   "links": [
-    {
-     "label": "September 22, 2026 box score",
-     "url": "https://www.espn.com/mlb/boxscore/_/gameId/401873648"
-    }
-   ],
-   "id": "2026-09-23-2"
-  },
-  {
-   "kind": "led_the_night",
-   "sport": "MLB",
-   "setup": "Last night's box scores list 305 batters.",
+   "setup": "Last night's box scores list 331 batters.",
    "prompt": "Who hit the most home runs in the majors last night?",
    "options": [
-    "CJ Abrams",
-    "Brandon Marsh",
-    "Denzer Guzman",
-    "Brenton Doyle"
+    "Ben Rice",
+    "Brett Baty",
+    "Brice Turang",
+    "Cedric Mullins"
    ],
    "answer": 0,
-   "explain": "CJ Abrams \u2014 2 home runs and 3 driven in for WSH against DET.",
+   "explain": "Ben Rice \u2014 2 home runs and 2 driven in for NYY against TB.",
    "links": [
     {
-     "label": "September 22, 2026 box score",
-     "url": "https://www.espn.com/mlb/boxscore/_/gameId/401817036"
+     "label": "September 23, 2026 box score",
+     "url": "https://www.espn.com/mlb/boxscore/_/gameId/401817049"
     }
    ],
-   "id": "2026-09-23-3"
+   "id": "2026-09-24-1"
+  },
+  {
+   "kind": "led_the_night",
+   "sport": "MLB",
+   "setup": "Last night's box scores list 151 pitchers.",
+   "prompt": "Who struck out the most batters in the majors last night?",
+   "options": [
+    "Andrew Abbott",
+    "Chris Sale",
+    "Trey Gibson",
+    "Max Scherzer"
+   ],
+   "answer": 1,
+   "explain": "Chris Sale \u2014 10 strikeouts over 5.2 innings for ATL against CIN.",
+   "links": [
+    {
+     "label": "September 23, 2026 box score",
+     "url": "https://www.espn.com/mlb/boxscore/_/gameId/401817045"
+    }
+   ],
+   "id": "2026-09-24-2"
+  },
+  {
+   "kind": "led_the_night",
+   "sport": "MLB",
+   "setup": "Last night's box scores list 331 batters.",
+   "prompt": "Who drove in the most runs in the majors last night?",
+   "options": [
+    "Ben Malgeri",
+    "Ryan McMahon",
+    "Manny Machado",
+    "Donovan Walton"
+   ],
+   "answer": 1,
+   "explain": "Ryan McMahon \u2014 5 RBI for NYY against TB.",
+   "links": [
+    {
+     "label": "September 23, 2026 box score",
+     "url": "https://www.espn.com/mlb/boxscore/_/gameId/401817049"
+    }
+   ],
+   "id": "2026-09-24-3"
   }
  ],
  "coverage": {
@@ -91,7 +87,7 @@
    },
    {
     "from": "2025-01-01",
-    "through": "2026-09-22",
+    "through": "2026-09-23",
     "feats": [
      "mlb_12_k",
      "mlb_15_k",
@@ -135,7 +131,7 @@
    },
    {
     "from": "2023-10-01",
-    "through": "2026-09-22",
+    "through": "2026-09-23",
     "feats": [
      "nba_10_threes",
      "nba_20_assists",
@@ -169,7 +165,7 @@
    },
    {
     "from": "2023-09-01",
-    "through": "2026-09-22",
+    "through": "2026-09-23",
     "feats": [
      "nfl_150_rec_yards",
      "nfl_150_rush_yards",
@@ -187,6 +183,6 @@
    }
   ]
  },
- "built_at": "2026-09-23T15:22:19Z",
- "closes": "2026-09-24T07:00:00-04:00"
+ "built_at": "2026-09-24T15:45:27Z",
+ "closes": "2026-09-25T07:00:00-04:00"
 }

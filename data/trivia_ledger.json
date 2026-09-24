@@ -18,7 +18,7 @@
    },
    {
     "from": "2025-01-01",
-    "through": "2026-09-22",
+    "through": "2026-09-23",
     "feats": [
      "mlb_12_k",
      "mlb_15_k",
@@ -62,7 +62,7 @@
    },
    {
     "from": "2023-10-01",
-    "through": "2026-09-22",
+    "through": "2026-09-23",
     "feats": [
      "nba_10_threes",
      "nba_20_assists",
@@ -96,7 +96,7 @@
    },
    {
     "from": "2023-09-01",
-    "through": "2026-09-22",
+    "through": "2026-09-23",
     "feats": [
      "nfl_150_rec_yards",
      "nfl_150_rush_yards",
@@ -70519,6 +70519,25 @@
     "walks": 0.0
    },
    "source": "espn:401817037"
+  },
+  {
+   "feat": "mlb_5_rbi",
+   "sport": "MLB",
+   "date": "2026-09-23",
+   "player": "Ryan McMahon",
+   "player_id": "33247",
+   "team": "NYY",
+   "opponent": "TB",
+   "value": 5.0,
+   "line": {
+    "at_bats": 4.0,
+    "runs": 1.0,
+    "hits": 2.0,
+    "rbi": 5.0,
+    "home_runs": 1.0,
+    "walks": 0.0
+   },
+   "source": "espn:401817049"
   }
  ]
 }
