@@ -1,80 +1,80 @@
 {
  "version": 1,
- "date": "2026-09-25",
- "stamp": "837439164d79",
- "source_date": "2026-09-24",
- "opens": "2026-09-25T07:00:00-04:00",
+ "date": "2026-09-26",
+ "stamp": "74617b8e98dc",
+ "source_date": "2026-09-25",
+ "opens": "2026-09-26T07:00:00-04:00",
  "questions": [
   {
    "kind": "last_before",
    "sport": "MLB",
-   "setup": "Lucas Spence hit 3 home runs for HOU yesterday.",
-   "prompt": "Before Lucas Spence, who was the last player to hit three home runs in a game?",
+   "setup": "Eury Perez shut ATL out over 9 innings for MIA yesterday.",
+   "prompt": "Before Eury Perez, who threw the last complete-game shutout?",
    "options": [
-    "Alec Burleson",
-    "Kyle Stowers",
-    "Alex Bregman",
-    "Ryan O'Hearn"
+    "Nathan Eovaldi",
+    "Bryce Elder",
+    "Jesus Luzardo",
+    "Reid Detmers"
    ],
    "answer": 2,
-   "explain": "Alex Bregman \u2014 3 home runs for CHC on August 31, 2026, 24 days earlier.",
+   "explain": "Jesus Luzardo \u2014 9 innings for PHI on September 7, 2026, 18 days earlier.",
    "links": [
     {
-     "label": "September 24, 2026 box score",
-     "url": "https://www.espn.com/mlb/boxscore/_/gameId/401817070"
+     "label": "September 25, 2026 box score",
+     "url": "https://www.espn.com/mlb/boxscore/_/gameId/401817072"
     },
     {
-     "label": "August 31, 2026 box score",
-     "url": "https://www.espn.com/mlb/boxscore/_/gameId/401816754"
+     "label": "September 7, 2026 box score",
+     "url": "https://www.espn.com/mlb/boxscore/_/gameId/401816843"
     }
    ],
-   "id": "2026-09-25-1"
-  },
-  {
-   "kind": "last_before",
-   "sport": "NFL",
-   "setup": "Bijan Robinson ran for 194 yards for ATL yesterday.",
-   "prompt": "Before Bijan Robinson, who was the last NFL player to rush for 150 yards?",
-   "options": [
-    "Ray Davis",
-    "Kenneth Walker III",
-    "Dameon Pierce",
-    "Priest Holmes"
-   ],
-   "answer": 1,
-   "explain": "Kenneth Walker III \u2014 173 yards for KC on September 14, 2026, 10 days earlier.",
-   "links": [
-    {
-     "label": "September 24, 2026 box score",
-     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401872948"
-    },
-    {
-     "label": "September 14, 2026 box score",
-     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401872931"
-    }
-   ],
-   "id": "2026-09-25-2"
+   "id": "2026-09-26-1"
   },
   {
    "kind": "led_the_night",
-   "sport": "NFL",
-   "setup": "Last night's box scores list 17 pass-catchers.",
-   "prompt": "Who had the most receiving yards in the NFL yesterday?",
+   "sport": "MLB",
+   "setup": "Last night's box scores list 331 batters.",
+   "prompt": "Who drove in the most runs in the majors last night?",
    "options": [
-    "Drake London",
-    "Austin Hooper",
-    "J. Michael Sturdivant",
-    "Bijan Robinson"
+    "Carter Jensen",
+    "Luke Keaschall",
+    "Christian Moore",
+    "Kazuma Okamoto"
    ],
    "answer": 0,
-   "explain": "Drake London \u2014 194 yards on 9 catches for ATL against GB.",
+   "explain": "Carter Jensen \u2014 5 RBI for KC against CLE.",
    "links": [
     {
-     "label": "September 24, 2026 box score",
-     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401872948"
+     "label": "September 25, 2026 box score",
+     "url": "https://www.espn.com/mlb/boxscore/_/gameId/401817079"
     }
    ],
-   "id": "2026-09-25-3"
+   "id": "2026-09-26-2"
+  },
+  {
+   "kind": "last_before",
+   "sport": "MLB",
+   "setup": "Carter Jensen drove in 5 runs for KC yesterday.",
+   "prompt": "Before Carter Jensen, who was the last player to drive in five in a game?",
+   "options": [
+    "Max Muncy",
+    "Jake Meyers",
+    "Kolten Wong",
+    "Lucas Spence"
+   ],
+   "answer": 3,
+   "explain": "Lucas Spence \u2014 5 RBI for HOU on September 24, 2026, 1 days earlier.",
+   "links": [
+    {
+     "label": "September 25, 2026 box score",
+     "url": "https://www.espn.com/mlb/boxscore/_/gameId/401817079"
+    },
+    {
+     "label": "September 24, 2026 box score",
+     "url": "https://www.espn.com/mlb/boxscore/_/gameId/401817070"
+    }
+   ],
+   "id": "2026-09-26-3"
   }
  ],
  "coverage": {
@@ -95,7 +95,7 @@
    },
    {
     "from": "2025-01-01",
-    "through": "2026-09-24",
+    "through": "2026-09-25",
     "feats": [
      "mlb_12_k",
      "mlb_15_k",
@@ -139,7 +139,7 @@
    },
    {
     "from": "2023-10-01",
-    "through": "2026-09-24",
+    "through": "2026-09-25",
     "feats": [
      "nba_10_threes",
      "nba_20_assists",
@@ -173,7 +173,7 @@
    },
    {
     "from": "2023-09-01",
-    "through": "2026-09-24",
+    "through": "2026-09-25",
     "feats": [
      "nfl_150_rec_yards",
      "nfl_150_rush_yards",
@@ -191,6 +191,6 @@
    }
   ]
  },
- "built_at": "2026-09-25T15:46:00Z",
- "closes": "2026-09-26T07:00:00-04:00"
+ "built_at": "2026-09-26T14:55:40Z",
+ "closes": "2026-09-27T07:00:00-04:00"
 }

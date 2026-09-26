@@ -18,7 +18,7 @@
    },
    {
     "from": "2025-01-01",
-    "through": "2026-09-24",
+    "through": "2026-09-25",
     "feats": [
      "mlb_12_k",
      "mlb_15_k",
@@ -62,7 +62,7 @@
    },
    {
     "from": "2023-10-01",
-    "through": "2026-09-24",
+    "through": "2026-09-25",
     "feats": [
      "nba_10_threes",
      "nba_20_assists",
@@ -96,7 +96,7 @@
    },
    {
     "from": "2023-09-01",
-    "through": "2026-09-24",
+    "through": "2026-09-25",
     "feats": [
      "nfl_150_rec_yards",
      "nfl_150_rush_yards",
@@ -70608,6 +70608,45 @@
     "carries": 29.0
    },
    "source": "espn:401872948"
+  },
+  {
+   "feat": "mlb_5_rbi",
+   "sport": "MLB",
+   "date": "2026-09-25",
+   "player": "Carter Jensen",
+   "player_id": "4917812",
+   "team": "KC",
+   "opponent": "CLE",
+   "value": 5.0,
+   "line": {
+    "at_bats": 4.0,
+    "runs": 2.0,
+    "hits": 2.0,
+    "rbi": 5.0,
+    "home_runs": 2.0,
+    "walks": 0.0
+   },
+   "source": "espn:401817079"
+  },
+  {
+   "feat": "mlb_shutout",
+   "sport": "MLB",
+   "date": "2026-09-25",
+   "player": "Eury Perez",
+   "player_id": "4917854",
+   "team": "MIA",
+   "opponent": "ATL",
+   "value": 9.0,
+   "line": {
+    "innings": 9.0,
+    "hits_allowed": 1.0,
+    "runs_allowed": 0.0,
+    "earned_runs": 0.0,
+    "walks_allowed": 1.0,
+    "strikeouts_thrown": 8.0,
+    "pitches": 105.0
+   },
+   "source": "espn:401817072"
   }
  ]
 }
