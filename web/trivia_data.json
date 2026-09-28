@@ -1,72 +1,76 @@
 {
  "version": 1,
- "date": "2026-09-27",
- "stamp": "f7c84d9cf9d8",
- "source_date": "2026-09-26",
- "opens": "2026-09-27T07:00:00-04:00",
+ "date": "2026-09-28",
+ "stamp": "7b3ad7a6188d",
+ "source_date": "2026-09-27",
+ "opens": "2026-09-28T07:00:00-04:00",
  "questions": [
   {
-   "kind": "most_recent",
+   "kind": "last_before",
    "sport": "NFL",
-   "setup": "Nobody managed a 150-yard receiving game in the NFL yesterday.",
-   "prompt": "Who had the most recent one?",
+   "setup": "Brock Purdy threw 4 touchdown passes for SF yesterday.",
+   "prompt": "Before Brock Purdy, who was the last NFL quarterback to throw four touchdowns in a game?",
    "options": [
-    "Brandon Stokley",
-    "Joey Galloway",
-    "Drake London",
-    "Rashid Shaheed"
-   ],
-   "answer": 2,
-   "explain": "Drake London \u2014 194 yards for ATL vs GB on September 24, 2026.",
-   "links": [
-    {
-     "label": "September 24, 2026 box score",
-     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401872948"
-    }
-   ],
-   "id": "2026-09-27-1"
-  },
-  {
-   "kind": "most_recent",
-   "sport": "MLB",
-   "setup": "Nobody managed a five-hit game in the majors yesterday.",
-   "prompt": "Who had the most recent one?",
-   "options": [
-    "Randal Grichuk",
-    "Weston Wilson",
-    "Dominic Canzone",
-    "Drake Baldwin"
+    "Patrick Mahomes",
+    "Matthew Stafford",
+    "Justin Fields",
+    "Aaron Rodgers"
    ],
    "answer": 1,
-   "explain": "Weston Wilson \u2014 5 hits for SEA vs ATH on September 12, 2026.",
+   "explain": "Matthew Stafford \u2014 4 touchdowns for LAR on September 21, 2026, 6 days earlier.",
    "links": [
     {
-     "label": "September 12, 2026 box score",
-     "url": "https://www.espn.com/mlb/boxscore/_/gameId/401816916"
-    }
-   ],
-   "id": "2026-09-27-2"
-  },
-  {
-   "kind": "most_recent",
-   "sport": "NFL",
-   "setup": "Nobody managed a four-touchdown game in the NFL yesterday.",
-   "prompt": "Who had the most recent one?",
-   "options": [
-    "Matthew Stafford",
-    "Aidan O'Connell",
-    "Justin Herbert",
-    "Will Levis"
-   ],
-   "answer": 0,
-   "explain": "Matthew Stafford \u2014 4 touchdowns for LAR vs NYG on September 21, 2026.",
-   "links": [
+     "label": "September 27, 2026 box score",
+     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401872958"
+    },
     {
      "label": "September 21, 2026 box score",
      "url": "https://www.espn.com/nfl/boxscore/_/gameId/401872947"
     }
    ],
-   "id": "2026-09-27-3"
+   "id": "2026-09-28-1"
+  },
+  {
+   "kind": "led_the_night",
+   "sport": "NFL",
+   "setup": "Last night's box scores list 105 ball-carriers.",
+   "prompt": "Who ran for the most yards in the NFL yesterday?",
+   "options": [
+    "James Cook III",
+    "Derrick Henry",
+    "Jeremiyah Love",
+    "Chuba Hubbard"
+   ],
+   "answer": 0,
+   "explain": "James Cook III \u2014 154 yards on 24 carries for BUF against LAC.",
+   "links": [
+    {
+     "label": "September 27, 2026 box score",
+     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401872953"
+    }
+   ],
+   "id": "2026-09-28-2"
+  },
+  {
+   "kind": "led_the_night",
+   "sport": "MLB",
+   "setup": "Last night's box scores list 126 pitchers.",
+   "prompt": "Who struck out the most batters in the majors last night?",
+   "options": [
+    "Patrick Sandoval",
+    "Jacob Misiorowski",
+    "Zack Wheeler",
+    "Logan Gilbert"
+   ],
+   "answer": 3,
+   "explain": "Logan Gilbert \u2014 8 strikeouts over 4.0 innings for SEA against LAA.",
+   "links": [
+    {
+     "label": "September 27, 2026 box score",
+     "url": "https://www.espn.com/mlb/boxscore/_/gameId/401817113"
+    }
+   ],
+   "id": "2026-09-28-3"
   }
  ],
  "coverage": {
@@ -87,7 +91,7 @@
    },
    {
     "from": "2025-01-01",
-    "through": "2026-09-26",
+    "through": "2026-09-27",
     "feats": [
      "mlb_12_k",
      "mlb_15_k",
@@ -131,7 +135,7 @@
    },
    {
     "from": "2023-10-01",
-    "through": "2026-09-26",
+    "through": "2026-09-27",
     "feats": [
      "nba_10_threes",
      "nba_20_assists",
@@ -165,7 +169,7 @@
    },
    {
     "from": "2023-09-01",
-    "through": "2026-09-26",
+    "through": "2026-09-27",
     "feats": [
      "nfl_150_rec_yards",
      "nfl_150_rush_yards",
@@ -183,6 +187,6 @@
    }
   ]
  },
- "built_at": "2026-09-27T15:33:45Z",
- "closes": "2026-09-28T07:00:00-04:00"
+ "built_at": "2026-09-28T18:32:37Z",
+ "closes": "2026-09-29T07:00:00-04:00"
 }
