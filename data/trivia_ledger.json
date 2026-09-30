@@ -18,7 +18,7 @@
    },
    {
     "from": "2025-01-01",
-    "through": "2026-09-28",
+    "through": "2026-09-29",
     "feats": [
      "mlb_12_k",
      "mlb_15_k",
@@ -62,7 +62,7 @@
    },
    {
     "from": "2023-10-01",
-    "through": "2026-09-28",
+    "through": "2026-09-29",
     "feats": [
      "nba_10_threes",
      "nba_20_assists",
@@ -96,7 +96,7 @@
    },
    {
     "from": "2023-09-01",
-    "through": "2026-09-28",
+    "through": "2026-09-29",
     "feats": [
      "nfl_150_rec_yards",
      "nfl_150_rush_yards",
@@ -70717,6 +70717,25 @@
     "attempts": 42.0
    },
    "source": "espn:401872961"
+  },
+  {
+   "feat": "mlb_5_rbi",
+   "sport": "MLB",
+   "date": "2026-09-29",
+   "player": "Ben Rice",
+   "player_id": "5016968",
+   "team": "NYY",
+   "opponent": "BOS",
+   "value": 6.0,
+   "line": {
+    "at_bats": 5.0,
+    "runs": 2.0,
+    "hits": 4.0,
+    "rbi": 6.0,
+    "home_runs": 2.0,
+    "walks": 0.0
+   },
+   "source": "espn:401907924"
   }
  ]
 }
