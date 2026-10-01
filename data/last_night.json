@@ -1,288 +1,98 @@
 {
- "date": "2026-09-29",
+ "date": "2026-09-30",
  "boards": {
   "mlb_strikeouts": {
    "sport": "MLB",
    "rows": [
     {
-     "player": "Cam Schlittler",
-     "team": "NYY",
-     "opponent": "BOS",
-     "value": 10.0,
-     "detail": "10 strikeouts over 6.1 innings for NYY against BOS",
-     "game_id": "401907924",
-     "field": 37
-    },
-    {
-     "player": "Chris Sale",
-     "team": "ATL",
-     "opponent": "PHI",
-     "value": 9.0,
-     "detail": "9 strikeouts over 6.1 innings for ATL against PHI",
-     "game_id": "401907965",
-     "field": 37
-    },
-    {
-     "player": "Michael King",
-     "team": "SD",
-     "opponent": "CHC",
+     "player": "Sean Burke",
+     "team": "CHW",
+     "opponent": "HOU",
      "value": 8.0,
-     "detail": "8 strikeouts over 7.0 innings for SD against CHC",
-     "game_id": "401907974",
-     "field": 37
+     "detail": "8 strikeouts over 4.0 innings for CHW against HOU",
+     "game_id": "401907897",
+     "field": 36
     },
     {
-     "player": "Jesus Luzardo",
+     "player": "Bryan Abreu",
+     "team": "HOU",
+     "opponent": "CHW",
+     "value": 6.0,
+     "detail": "6 strikeouts over 2.2 innings for HOU against CHW",
+     "game_id": "401907897",
+     "field": 36
+    },
+    {
+     "player": "Cristopher Sanchez",
      "team": "PHI",
      "opponent": "ATL",
      "value": 6.0,
-     "detail": "6 strikeouts over 5.0 innings for PHI against ATL",
-     "game_id": "401907965",
-     "field": 37
+     "detail": "6 strikeouts over 6.2 innings for PHI against ATL",
+     "game_id": "401907972",
+     "field": 36
     },
     {
-     "player": "Grant Taylor",
-     "team": "CHW",
-     "opponent": "HOU",
+     "player": "Max Fried",
+     "team": "NYY",
+     "opponent": "BOS",
+     "value": 6.0,
+     "detail": "6 strikeouts over 6.0 innings for NYY against BOS",
+     "game_id": "401907963",
+     "field": 36
+    },
+    {
+     "player": "Tyler Mahle",
+     "team": "ATL",
+     "opponent": "PHI",
+     "value": 6.0,
+     "detail": "6 strikeouts over 7.0 innings for ATL against PHI",
+     "game_id": "401907972",
+     "field": 36
+    },
+    {
+     "player": "Sonny Gray",
+     "team": "BOS",
+     "opponent": "NYY",
      "value": 5.0,
-     "detail": "5 strikeouts over 2.1 innings for CHW against HOU",
-     "game_id": "401907896",
-     "field": 37
+     "detail": "5 strikeouts over 4.2 innings for BOS against NYY",
+     "game_id": "401907963",
+     "field": 36
     },
     {
-     "player": "Matthew Boyd",
-     "team": "CHC",
-     "opponent": "SD",
+     "player": "Nick Pivetta",
+     "team": "SD",
+     "opponent": "CHC",
      "value": 4.0,
-     "detail": "4 strikeouts over 4.0 innings for CHC against SD",
-     "game_id": "401907974",
-     "field": 37
+     "detail": "4 strikeouts over 3.1 innings for SD against CHC",
+     "game_id": "401907975",
+     "field": 36
     },
     {
-     "player": "Miguel Ullola",
-     "team": "HOU",
-     "opponent": "CHW",
-     "value": 4.0,
-     "detail": "4 strikeouts over 3.0 innings for HOU against CHW",
-     "game_id": "401907896",
-     "field": 37
-    },
-    {
-     "player": "Payton Tolle",
-     "team": "BOS",
-     "opponent": "NYY",
-     "value": 4.0,
-     "detail": "4 strikeouts over 4.2 innings for BOS against NYY",
-     "game_id": "401907924",
-     "field": 37
-    },
-    {
-     "player": "Alex McFarlane",
+     "player": "Andrew Painter",
      "team": "PHI",
      "opponent": "ATL",
-     "value": 2.0,
-     "detail": "2 strikeouts over 1.0 innings for PHI against ATL",
-     "game_id": "401907965",
-     "field": 37
-    },
-    {
-     "player": "Joe Musgrove",
-     "team": "SD",
-     "opponent": "CHC",
-     "value": 2.0,
-     "detail": "2 strikeouts over 1.0 innings for SD against CHC",
-     "game_id": "401907974",
-     "field": 37
-    }
-   ]
-  },
-  "mlb_home_runs": {
-   "sport": "MLB",
-   "rows": [
-    {
-     "player": "Ben Rice",
-     "team": "NYY",
-     "opponent": "BOS",
-     "value": 2.0,
-     "detail": "2 home runs and 6 driven in for NYY against BOS",
-     "game_id": "401907924",
-     "field": 88
-    },
-    {
-     "player": "Austin Riley",
-     "team": "ATL",
-     "opponent": "PHI",
-     "value": 1.0,
-     "detail": "1 home runs and 3 driven in for ATL against PHI",
-     "game_id": "401907965",
-     "field": 88
-    },
-    {
-     "player": "Colson Montgomery",
-     "team": "CHW",
-     "opponent": "HOU",
-     "value": 1.0,
-     "detail": "1 home runs and 1 driven in for CHW against HOU",
-     "game_id": "401907896",
-     "field": 88
-    },
-    {
-     "player": "Fernando Tatis Jr.",
-     "team": "SD",
-     "opponent": "CHC",
-     "value": 1.0,
-     "detail": "1 home runs and 1 driven in for SD against CHC",
-     "game_id": "401907974",
-     "field": 88
-    },
-    {
-     "player": "Manny Machado",
-     "team": "SD",
-     "opponent": "CHC",
-     "value": 1.0,
-     "detail": "1 home runs and 2 driven in for SD against CHC",
-     "game_id": "401907974",
-     "field": 88
-    },
-    {
-     "player": "Nelson Velazquez",
-     "team": "HOU",
-     "opponent": "CHW",
-     "value": 1.0,
-     "detail": "1 home runs and 2 driven in for HOU against CHW",
-     "game_id": "401907896",
-     "field": 88
-    },
-    {
-     "player": "Xander Bogaerts",
-     "team": "SD",
-     "opponent": "CHC",
-     "value": 1.0,
-     "detail": "1 home runs and 1 driven in for SD against CHC",
-     "game_id": "401907974",
-     "field": 88
-    },
-    {
-     "player": "Adley Rutschman",
-     "team": "BOS",
-     "opponent": "NYY",
-     "value": 0.0,
-     "detail": "0 home runs and 0 driven in for BOS against NYY",
-     "game_id": "401907924",
-     "field": 88
-    },
-    {
-     "player": "Alec Bohm",
-     "team": "PHI",
-     "opponent": "ATL",
-     "value": 0.0,
-     "detail": "0 home runs and 1 driven in for PHI against ATL",
-     "game_id": "401907965",
-     "field": 88
-    },
-    {
-     "player": "Alex Bregman",
-     "team": "CHC",
-     "opponent": "SD",
-     "value": 0.0,
-     "detail": "0 home runs and 0 driven in for CHC against SD",
-     "game_id": "401907974",
-     "field": 88
-    }
-   ]
-  },
-  "mlb_rbi": {
-   "sport": "MLB",
-   "rows": [
-    {
-     "player": "Ben Rice",
-     "team": "NYY",
-     "opponent": "BOS",
-     "value": 6.0,
-     "detail": "6 RBI for NYY against BOS",
-     "game_id": "401907924",
-     "field": 88
-    },
-    {
-     "player": "Austin Riley",
-     "team": "ATL",
-     "opponent": "PHI",
      "value": 3.0,
-     "detail": "3 RBI for ATL against PHI",
-     "game_id": "401907965",
-     "field": 88
+     "detail": "3 strikeouts over 3.0 innings for PHI against ATL",
+     "game_id": "401907972",
+     "field": 36
     },
     {
-     "player": "Austin Wells",
-     "team": "NYY",
-     "opponent": "BOS",
-     "value": 2.0,
-     "detail": "2 RBI for NYY against BOS",
-     "game_id": "401907924",
-     "field": 88
+     "player": "Aroldis Chapman",
+     "team": "BOS",
+     "opponent": "NYY",
+     "value": 3.0,
+     "detail": "3 strikeouts over 1.0 innings for BOS against NYY",
+     "game_id": "401907963",
+     "field": 36
     },
     {
-     "player": "J.T. Realmuto",
-     "team": "PHI",
-     "opponent": "ATL",
-     "value": 2.0,
-     "detail": "2 RBI for PHI against ATL",
-     "game_id": "401907965",
-     "field": 88
-    },
-    {
-     "player": "Jackson Merrill",
-     "team": "SD",
-     "opponent": "CHC",
-     "value": 2.0,
-     "detail": "2 RBI for SD against CHC",
-     "game_id": "401907974",
-     "field": 88
-    },
-    {
-     "player": "Manny Machado",
-     "team": "SD",
-     "opponent": "CHC",
-     "value": 2.0,
-     "detail": "2 RBI for SD against CHC",
-     "game_id": "401907974",
-     "field": 88
-    },
-    {
-     "player": "Nelson Velazquez",
-     "team": "HOU",
-     "opponent": "CHW",
-     "value": 2.0,
-     "detail": "2 RBI for HOU against CHW",
-     "game_id": "401907896",
-     "field": 88
-    },
-    {
-     "player": "Sam Antonacci",
+     "player": "Erick Fedde",
      "team": "CHW",
      "opponent": "HOU",
-     "value": 2.0,
-     "detail": "2 RBI for CHW against HOU",
-     "game_id": "401907896",
-     "field": 88
-    },
-    {
-     "player": "Alec Bohm",
-     "team": "PHI",
-     "opponent": "ATL",
-     "value": 1.0,
-     "detail": "1 RBI for PHI against ATL",
-     "game_id": "401907965",
-     "field": 88
-    },
-    {
-     "player": "Chase Meidroth",
-     "team": "CHW",
-     "opponent": "HOU",
-     "value": 1.0,
-     "detail": "1 RBI for CHW against HOU",
-     "game_id": "401907896",
-     "field": 88
+     "value": 3.0,
+     "detail": "3 strikeouts over 2.0 innings for CHW against HOU",
+     "game_id": "401907897",
+     "field": 36
     }
    ]
   }
