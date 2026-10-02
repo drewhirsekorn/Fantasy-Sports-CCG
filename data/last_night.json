@@ -1,98 +1,157 @@
 {
- "date": "2026-09-30",
+ "date": "2026-10-01",
  "boards": {
-  "mlb_strikeouts": {
-   "sport": "MLB",
+  "nfl_rush_yards": {
+   "sport": "NFL",
    "rows": [
     {
-     "player": "Sean Burke",
-     "team": "CHW",
-     "opponent": "HOU",
-     "value": 8.0,
-     "detail": "8 strikeouts over 4.0 innings for CHW against HOU",
-     "game_id": "401907897",
-     "field": 36
+     "player": "Jaylen Warren",
+     "team": "PIT",
+     "opponent": "CLE",
+     "value": 93.0,
+     "detail": "93 yards on 17 carries for PIT against CLE",
+     "game_id": "401872964",
+     "field": 6
     },
     {
-     "player": "Bryan Abreu",
-     "team": "HOU",
-     "opponent": "CHW",
-     "value": 6.0,
-     "detail": "6 strikeouts over 2.2 innings for HOU against CHW",
-     "game_id": "401907897",
-     "field": 36
+     "player": "Quinshon Judkins",
+     "team": "CLE",
+     "opponent": "PIT",
+     "value": 53.0,
+     "detail": "53 yards on 17 carries for CLE against PIT",
+     "game_id": "401872964",
+     "field": 6
     },
     {
-     "player": "Cristopher Sanchez",
-     "team": "PHI",
-     "opponent": "ATL",
-     "value": 6.0,
-     "detail": "6 strikeouts over 6.2 innings for PHI against ATL",
-     "game_id": "401907972",
-     "field": 36
+     "player": "Jaleel McLaughlin",
+     "team": "CLE",
+     "opponent": "PIT",
+     "value": 28.0,
+     "detail": "28 yards on 1 carries for CLE against PIT",
+     "game_id": "401872964",
+     "field": 6
     },
     {
-     "player": "Max Fried",
-     "team": "NYY",
-     "opponent": "BOS",
-     "value": 6.0,
-     "detail": "6 strikeouts over 6.0 innings for NYY against BOS",
-     "game_id": "401907963",
-     "field": 36
+     "player": "Deshaun Watson",
+     "team": "CLE",
+     "opponent": "PIT",
+     "value": 22.0,
+     "detail": "22 yards on 7 carries for CLE against PIT",
+     "game_id": "401872964",
+     "field": 6
     },
     {
-     "player": "Tyler Mahle",
-     "team": "ATL",
-     "opponent": "PHI",
-     "value": 6.0,
-     "detail": "6 strikeouts over 7.0 innings for ATL against PHI",
-     "game_id": "401907972",
-     "field": 36
+     "player": "Raheim Sanders",
+     "team": "CLE",
+     "opponent": "PIT",
+     "value": 9.0,
+     "detail": "9 yards on 2 carries for CLE against PIT",
+     "game_id": "401872964",
+     "field": 6
     },
     {
-     "player": "Sonny Gray",
-     "team": "BOS",
-     "opponent": "NYY",
-     "value": 5.0,
-     "detail": "5 strikeouts over 4.2 innings for BOS against NYY",
-     "game_id": "401907963",
-     "field": 36
+     "player": "Travis Homer",
+     "team": "PIT",
+     "opponent": "CLE",
+     "value": -1.0,
+     "detail": "-1 yards on 2 carries for PIT against CLE",
+     "game_id": "401872964",
+     "field": 6
+    }
+   ]
+  },
+  "nfl_rec_yards": {
+   "sport": "NFL",
+   "rows": [
+    {
+     "player": "DK Metcalf",
+     "team": "PIT",
+     "opponent": "CLE",
+     "value": 115.0,
+     "detail": "115 yards on 5 catches for PIT against CLE",
+     "game_id": "401872964",
+     "field": 15
     },
     {
-     "player": "Nick Pivetta",
-     "team": "SD",
-     "opponent": "CHC",
-     "value": 4.0,
-     "detail": "4 strikeouts over 3.1 innings for SD against CHC",
-     "game_id": "401907975",
-     "field": 36
+     "player": "Denzel Boston",
+     "team": "CLE",
+     "opponent": "PIT",
+     "value": 89.0,
+     "detail": "89 yards on 4 catches for CLE against PIT",
+     "game_id": "401872964",
+     "field": 15
     },
     {
-     "player": "Andrew Painter",
-     "team": "PHI",
-     "opponent": "ATL",
-     "value": 3.0,
-     "detail": "3 strikeouts over 3.0 innings for PHI against ATL",
-     "game_id": "401907972",
-     "field": 36
+     "player": "Roman Wilson",
+     "team": "PIT",
+     "opponent": "CLE",
+     "value": 74.0,
+     "detail": "74 yards on 3 catches for PIT against CLE",
+     "game_id": "401872964",
+     "field": 15
     },
     {
-     "player": "Aroldis Chapman",
-     "team": "BOS",
-     "opponent": "NYY",
-     "value": 3.0,
-     "detail": "3 strikeouts over 1.0 innings for BOS against NYY",
-     "game_id": "401907963",
-     "field": 36
+     "player": "KC Concepcion",
+     "team": "CLE",
+     "opponent": "PIT",
+     "value": 64.0,
+     "detail": "64 yards on 5 catches for CLE against PIT",
+     "game_id": "401872964",
+     "field": 15
     },
     {
-     "player": "Erick Fedde",
-     "team": "CHW",
-     "opponent": "HOU",
-     "value": 3.0,
-     "detail": "3 strikeouts over 2.0 innings for CHW against HOU",
-     "game_id": "401907897",
-     "field": 36
+     "player": "Quinshon Judkins",
+     "team": "CLE",
+     "opponent": "PIT",
+     "value": 43.0,
+     "detail": "43 yards on 6 catches for CLE against PIT",
+     "game_id": "401872964",
+     "field": 15
+    },
+    {
+     "player": "Jerry Jeudy",
+     "team": "CLE",
+     "opponent": "PIT",
+     "value": 36.0,
+     "detail": "36 yards on 3 catches for CLE against PIT",
+     "game_id": "401872964",
+     "field": 15
+    },
+    {
+     "player": "Jaylen Warren",
+     "team": "PIT",
+     "opponent": "CLE",
+     "value": 33.0,
+     "detail": "33 yards on 3 catches for PIT against CLE",
+     "game_id": "401872964",
+     "field": 15
+    },
+    {
+     "player": "Darnell Washington",
+     "team": "PIT",
+     "opponent": "CLE",
+     "value": 27.0,
+     "detail": "27 yards on 3 catches for PIT against CLE",
+     "game_id": "401872964",
+     "field": 15
+    },
+    {
+     "player": "Harold Fannin Jr.",
+     "team": "CLE",
+     "opponent": "PIT",
+     "value": 27.0,
+     "detail": "27 yards on 3 catches for CLE against PIT",
+     "game_id": "401872964",
+     "field": 15
+    },
+    {
+     "player": "Pat Freiermuth",
+     "team": "PIT",
+     "opponent": "CLE",
+     "value": 17.0,
+     "detail": "17 yards on 3 catches for PIT against CLE",
+     "game_id": "401872964",
+     "field": 15
     }
    ]
   }
