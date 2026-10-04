@@ -1,4 +1,195 @@
 {
- "date": "2026-10-02",
- "boards": {}
+ "date": "2026-10-03",
+ "boards": {
+  "mlb_strikeouts": {
+   "sport": "MLB",
+   "rows": [
+    {
+     "player": "Drew Rasmussen",
+     "team": "TB",
+     "opponent": "NYY",
+     "value": 10.0,
+     "detail": "10 strikeouts over 8.0 innings for TB against NYY",
+     "game_id": "401907985",
+     "field": 37
+    },
+    {
+     "player": "Tarik Skubal",
+     "team": "LAD",
+     "opponent": "ATL",
+     "value": 7.0,
+     "detail": "7 strikeouts over 6.0 innings for LAD against ATL",
+     "game_id": "401908007",
+     "field": 37
+    },
+    {
+     "player": "Grant Taylor",
+     "team": "CHW",
+     "opponent": "CLE",
+     "value": 6.0,
+     "detail": "6 strikeouts over 4.0 innings for CHW against CLE",
+     "game_id": "401907990",
+     "field": 37
+    },
+    {
+     "player": "Jacob Misiorowski",
+     "team": "MIL",
+     "opponent": "SD",
+     "value": 6.0,
+     "detail": "6 strikeouts over 4.0 innings for MIL against SD",
+     "game_id": "401908002",
+     "field": 37
+    },
+    {
+     "player": "Parker Messick",
+     "team": "CLE",
+     "opponent": "CHW",
+     "value": 6.0,
+     "detail": "6 strikeouts over 4.1 innings for CLE against CHW",
+     "game_id": "401907990",
+     "field": 37
+    },
+    {
+     "player": "Gerrit Cole",
+     "team": "NYY",
+     "opponent": "TB",
+     "value": 5.0,
+     "detail": "5 strikeouts over 5.0 innings for NYY against TB",
+     "game_id": "401907985",
+     "field": 37
+    },
+    {
+     "player": "Dylan Dodd",
+     "team": "ATL",
+     "opponent": "LAD",
+     "value": 4.0,
+     "detail": "4 strikeouts over 3.0 innings for ATL against LAD",
+     "game_id": "401908007",
+     "field": 37
+    },
+    {
+     "player": "Hagen Smith",
+     "team": "CHW",
+     "opponent": "CLE",
+     "value": 4.0,
+     "detail": "4 strikeouts over 2.2 innings for CHW against CLE",
+     "game_id": "401907990",
+     "field": 37
+    },
+    {
+     "player": "Brent Suter",
+     "team": "ATL",
+     "opponent": "LAD",
+     "value": 3.0,
+     "detail": "3 strikeouts over 2.0 innings for ATL against LAD",
+     "game_id": "401908007",
+     "field": 37
+    },
+    {
+     "player": "AJ Smith-Shawver",
+     "team": "ATL",
+     "opponent": "LAD",
+     "value": 2.0,
+     "detail": "2 strikeouts over 2.2 innings for ATL against LAD",
+     "game_id": "401908007",
+     "field": 37
+    }
+   ]
+  },
+  "mlb_innings": {
+   "sport": "MLB",
+   "rows": [
+    {
+     "player": "Drew Rasmussen",
+     "team": "TB",
+     "opponent": "NYY",
+     "value": 8.0,
+     "detail": "8.0 innings, 1 hits and 0 runs for TB against NYY",
+     "game_id": "401907985",
+     "field": 37
+    },
+    {
+     "player": "Tarik Skubal",
+     "team": "LAD",
+     "opponent": "ATL",
+     "value": 6.0,
+     "detail": "6.0 innings, 2 hits and 1 runs for LAD against ATL",
+     "game_id": "401908007",
+     "field": 37
+    },
+    {
+     "player": "Gerrit Cole",
+     "team": "NYY",
+     "opponent": "TB",
+     "value": 5.0,
+     "detail": "5.0 innings, 5 hits and 1 runs for NYY against TB",
+     "game_id": "401907985",
+     "field": 37
+    },
+    {
+     "player": "Parker Messick",
+     "team": "CLE",
+     "opponent": "CHW",
+     "value": 4.1,
+     "detail": "4.1 innings, 4 hits and 2 runs for CLE against CHW",
+     "game_id": "401907990",
+     "field": 37
+    },
+    {
+     "player": "Grant Taylor",
+     "team": "CHW",
+     "opponent": "CLE",
+     "value": 4.0,
+     "detail": "4.0 innings, 2 hits and 0 runs for CHW against CLE",
+     "game_id": "401907990",
+     "field": 37
+    },
+    {
+     "player": "Jacob Misiorowski",
+     "team": "MIL",
+     "opponent": "SD",
+     "value": 4.0,
+     "detail": "4.0 innings, 4 hits and 2 runs for MIL against SD",
+     "game_id": "401908002",
+     "field": 37
+    },
+    {
+     "player": "Dylan Dodd",
+     "team": "ATL",
+     "opponent": "LAD",
+     "value": 3.0,
+     "detail": "3.0 innings, 2 hits and 0 runs for ATL against LAD",
+     "game_id": "401908007",
+     "field": 37
+    },
+    {
+     "player": "AJ Smith-Shawver",
+     "team": "ATL",
+     "opponent": "LAD",
+     "value": 2.2,
+     "detail": "2.2 innings, 3 hits and 3 runs for ATL against LAD",
+     "game_id": "401908007",
+     "field": 37
+    },
+    {
+     "player": "Hagen Smith",
+     "team": "CHW",
+     "opponent": "CLE",
+     "value": 2.2,
+     "detail": "2.2 innings, 0 hits and 0 runs for CHW against CLE",
+     "game_id": "401907990",
+     "field": 37
+    },
+    {
+     "player": "Robbie Ray",
+     "team": "SD",
+     "opponent": "MIL",
+     "value": 2.2,
+     "detail": "2.2 innings, 4 hits and 2 runs for SD against MIL",
+     "game_id": "401908002",
+     "field": 37
+    }
+   ]
+  }
+ }
 }
