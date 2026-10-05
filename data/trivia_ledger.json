@@ -18,7 +18,7 @@
    },
    {
     "from": "2025-01-01",
-    "through": "2026-10-03",
+    "through": "2026-10-04",
     "feats": [
      "mlb_12_k",
      "mlb_15_k",
@@ -62,7 +62,7 @@
    },
    {
     "from": "2023-10-01",
-    "through": "2026-10-03",
+    "through": "2026-10-04",
     "feats": [
      "nba_10_threes",
      "nba_20_assists",
@@ -96,7 +96,7 @@
    },
    {
     "from": "2023-09-01",
-    "through": "2026-10-03",
+    "through": "2026-10-04",
     "feats": [
      "nfl_150_rec_yards",
      "nfl_150_rush_yards",
@@ -70736,6 +70736,106 @@
     "walks": 0.0
    },
    "source": "espn:401907924"
+  },
+  {
+   "feat": "nfl_150_rec_yards",
+   "sport": "NFL",
+   "date": "2026-10-04",
+   "player": "CeeDee Lamb",
+   "player_id": "4241389",
+   "team": "DAL",
+   "opponent": "HOU",
+   "value": 189.0,
+   "line": {
+    "rec_yards": 189.0,
+    "rec_td": 1.0,
+    "receptions": 17.0
+   },
+   "source": "espn:401872967"
+  },
+  {
+   "feat": "nfl_150_rec_yards",
+   "sport": "NFL",
+   "date": "2026-10-04",
+   "player": "Tee Higgins",
+   "player_id": "4239993",
+   "team": "CIN",
+   "opponent": "JAX",
+   "value": 157.0,
+   "line": {
+    "rec_yards": 157.0,
+    "rec_td": 0.0,
+    "receptions": 11.0
+   },
+   "source": "espn:401872969"
+  },
+  {
+   "feat": "nfl_150_rec_yards",
+   "sport": "NFL",
+   "date": "2026-10-04",
+   "player": "Tetairoa McMillan",
+   "player_id": "4685472",
+   "team": "CAR",
+   "opponent": "DET",
+   "value": 192.0,
+   "line": {
+    "rec_yards": 192.0,
+    "rec_td": 2.0,
+    "receptions": 14.0
+   },
+   "source": "espn:401872978"
+  },
+  {
+   "feat": "nfl_150_rush_yards",
+   "sport": "NFL",
+   "date": "2026-10-04",
+   "player": "Kenneth Walker III",
+   "player_id": "4567048",
+   "team": "KC",
+   "opponent": "LV",
+   "value": 177.0,
+   "line": {
+    "rush_yards": 177.0,
+    "rush_td": 2.0,
+    "carries": 22.0
+   },
+   "source": "espn:401872976"
+  },
+  {
+   "feat": "nfl_400_pass_yards",
+   "sport": "NFL",
+   "date": "2026-10-04",
+   "player": "Jared Goff",
+   "player_id": "3046779",
+   "team": "DET",
+   "opponent": "CAR",
+   "value": 412.0,
+   "line": {
+    "pass_yards": 412.0,
+    "pass_td": 1.0,
+    "interceptions": 0.0,
+    "completions": 32.0,
+    "attempts": 52.0
+   },
+   "source": "espn:401872978"
+  },
+  {
+   "feat": "nfl_400_pass_yards",
+   "sport": "NFL",
+   "date": "2026-10-04",
+   "player": "Joe Burrow",
+   "player_id": "3915511",
+   "team": "CIN",
+   "opponent": "JAX",
+   "value": 428.0,
+   "line": {
+    "pass_yards": 428.0,
+    "pass_td": 1.0,
+    "interceptions": 2.0,
+    "completions": 39.0,
+    "attempts": 54.0
+   },
+   "source": "espn:401872969"
   }
  ]
 }

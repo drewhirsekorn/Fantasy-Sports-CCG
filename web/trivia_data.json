@@ -1,72 +1,76 @@
 {
  "version": 1,
- "date": "2026-10-04",
- "stamp": "4ddf7ed5c60f",
- "source_date": "2026-10-03",
- "opens": "2026-10-04T07:00:00-04:00",
+ "date": "2026-10-05",
+ "stamp": "c6fa9a0d6abb",
+ "source_date": "2026-10-04",
+ "opens": "2026-10-05T07:00:00-04:00",
  "questions": [
   {
-   "kind": "led_the_night",
-   "sport": "MLB",
-   "setup": "Last night's box scores list 37 pitchers.",
-   "prompt": "Which pitcher went deepest into his game in the majors last night?",
-   "options": [
-    "Drew Rasmussen",
-    "Tarik Skubal",
-    "Robbie Ray",
-    "Parker Messick"
-   ],
-   "answer": 0,
-   "explain": "Drew Rasmussen \u2014 8.0 innings, 1 hits and 0 runs for TB against NYY.",
-   "links": [
-    {
-     "label": "October 3, 2026 box score",
-     "url": "https://www.espn.com/mlb/boxscore/_/gameId/401907985"
-    }
-   ],
-   "id": "2026-10-04-1"
-  },
-  {
-   "kind": "most_recent",
+   "kind": "last_before",
    "sport": "NFL",
-   "setup": "Nobody managed a 150-yard rushing game in the NFL yesterday.",
-   "prompt": "Who had the most recent one?",
+   "setup": "Joe Burrow threw for 428 yards for CIN yesterday.",
+   "prompt": "Before Joe Burrow, who was the last NFL quarterback to throw for 400 yards?",
    "options": [
-    "Reuben Droughns",
-    "Cadillac Williams",
-    "Rico Dowdle",
-    "James Cook III"
+    "Bryce Young",
+    "Jared Goff",
+    "Jacoby Brissett",
+    "Tyler Shough"
    ],
    "answer": 3,
-   "explain": "James Cook III \u2014 154 yards for BUF vs LAC on September 27, 2026.",
+   "explain": "Tyler Shough \u2014 410 yards for NO on September 13, 2026, 21 days earlier.",
    "links": [
     {
-     "label": "September 27, 2026 box score",
-     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401872953"
+     "label": "October 4, 2026 box score",
+     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401872969"
+    },
+    {
+     "label": "September 13, 2026 box score",
+     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401872923"
     }
    ],
-   "id": "2026-10-04-2"
+   "id": "2026-10-05-1"
   },
   {
-   "kind": "most_recent",
-   "sport": "MLB",
-   "setup": "Nobody managed a five-hit game in the majors yesterday.",
-   "prompt": "Who had the most recent one?",
+   "kind": "led_the_night",
+   "sport": "NFL",
+   "setup": "Last night's box scores list 597 defenders.",
+   "prompt": "Who made the most tackles in the NFL yesterday?",
    "options": [
-    "Manny Machado",
-    "Ty France",
-    "Weston Wilson",
-    "Jac Caglianone"
+    "Minkah Fitzpatrick",
+    "Jeremiah Trotter Jr.",
+    "Alex Singleton",
+    "Jacob Rodriguez"
    ],
-   "answer": 2,
-   "explain": "Weston Wilson \u2014 5 hits for SEA vs ATH on September 12, 2026.",
+   "answer": 3,
+   "explain": "Jacob Rodriguez \u2014 18 tackles for MIA against MIN.",
    "links": [
     {
-     "label": "September 12, 2026 box score",
-     "url": "https://www.espn.com/mlb/boxscore/_/gameId/401816916"
+     "label": "October 4, 2026 box score",
+     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401872974"
     }
    ],
-   "id": "2026-10-04-3"
+   "id": "2026-10-05-2"
+  },
+  {
+   "kind": "led_the_night",
+   "sport": "NFL",
+   "setup": "Last night's box scores list 228 pass-catchers.",
+   "prompt": "Who had the most receiving yards in the NFL yesterday?",
+   "options": [
+    "T.J. Hockenson",
+    "Tetairoa McMillan",
+    "CeeDee Lamb",
+    "Zay Flowers"
+   ],
+   "answer": 1,
+   "explain": "Tetairoa McMillan \u2014 192 yards on 14 catches for CAR against DET.",
+   "links": [
+    {
+     "label": "October 4, 2026 box score",
+     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401872978"
+    }
+   ],
+   "id": "2026-10-05-3"
   }
  ],
  "coverage": {
@@ -87,7 +91,7 @@
    },
    {
     "from": "2025-01-01",
-    "through": "2026-10-03",
+    "through": "2026-10-04",
     "feats": [
      "mlb_12_k",
      "mlb_15_k",
@@ -131,7 +135,7 @@
    },
    {
     "from": "2023-10-01",
-    "through": "2026-10-03",
+    "through": "2026-10-04",
     "feats": [
      "nba_10_threes",
      "nba_20_assists",
@@ -165,7 +169,7 @@
    },
    {
     "from": "2023-09-01",
-    "through": "2026-10-03",
+    "through": "2026-10-04",
     "feats": [
      "nfl_150_rec_yards",
      "nfl_150_rush_yards",
@@ -183,6 +187,6 @@
    }
   ]
  },
- "built_at": "2026-10-04T15:42:18Z",
- "closes": "2026-10-05T07:00:00-04:00"
+ "built_at": "2026-10-05T19:52:32Z",
+ "closes": "2026-10-06T07:00:00-04:00"
 }

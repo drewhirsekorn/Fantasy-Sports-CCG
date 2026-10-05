@@ -1,193 +1,383 @@
 {
- "date": "2026-10-03",
+ "date": "2026-10-04",
  "boards": {
-  "mlb_strikeouts": {
-   "sport": "MLB",
+  "nfl_pass_yards": {
+   "sport": "NFL",
    "rows": [
     {
-     "player": "Drew Rasmussen",
-     "team": "TB",
-     "opponent": "NYY",
-     "value": 10.0,
-     "detail": "10 strikeouts over 8.0 innings for TB against NYY",
-     "game_id": "401907985",
-     "field": 37
+     "player": "Joe Burrow",
+     "team": "CIN",
+     "opponent": "JAX",
+     "value": 428.0,
+     "detail": "428 yards and 1 touchdowns for CIN against JAX",
+     "game_id": "401872969",
+     "field": 31
     },
     {
-     "player": "Tarik Skubal",
-     "team": "LAD",
-     "opponent": "ATL",
-     "value": 7.0,
-     "detail": "7 strikeouts over 6.0 innings for LAD against ATL",
-     "game_id": "401908007",
-     "field": 37
+     "player": "Jared Goff",
+     "team": "DET",
+     "opponent": "CAR",
+     "value": 412.0,
+     "detail": "412 yards and 1 touchdowns for DET against CAR",
+     "game_id": "401872978",
+     "field": 31
     },
     {
-     "player": "Grant Taylor",
-     "team": "CHW",
-     "opponent": "CLE",
-     "value": 6.0,
-     "detail": "6 strikeouts over 4.0 innings for CHW against CLE",
-     "game_id": "401907990",
-     "field": 37
+     "player": "Kirk Cousins",
+     "team": "LV",
+     "opponent": "KC",
+     "value": 365.0,
+     "detail": "365 yards and 2 touchdowns for LV against KC",
+     "game_id": "401872976",
+     "field": 31
     },
     {
-     "player": "Jacob Misiorowski",
-     "team": "MIL",
-     "opponent": "SD",
-     "value": 6.0,
-     "detail": "6 strikeouts over 4.0 innings for MIL against SD",
-     "game_id": "401908002",
-     "field": 37
+     "player": "C.J. Stroud",
+     "team": "HOU",
+     "opponent": "DAL",
+     "value": 347.0,
+     "detail": "347 yards and 2 touchdowns for HOU against DAL",
+     "game_id": "401872967",
+     "field": 31
     },
     {
-     "player": "Parker Messick",
-     "team": "CLE",
-     "opponent": "CHW",
-     "value": 6.0,
-     "detail": "6 strikeouts over 4.1 innings for CLE against CHW",
-     "game_id": "401907990",
-     "field": 37
+     "player": "Dak Prescott",
+     "team": "DAL",
+     "opponent": "HOU",
+     "value": 335.0,
+     "detail": "335 yards and 1 touchdowns for DAL against HOU",
+     "game_id": "401872967",
+     "field": 31
     },
     {
-     "player": "Gerrit Cole",
-     "team": "NYY",
-     "opponent": "TB",
-     "value": 5.0,
-     "detail": "5 strikeouts over 5.0 innings for NYY against TB",
-     "game_id": "401907985",
-     "field": 37
+     "player": "Bryce Young",
+     "team": "CAR",
+     "opponent": "DET",
+     "value": 329.0,
+     "detail": "329 yards and 2 touchdowns for CAR against DET",
+     "game_id": "401872978",
+     "field": 31
     },
     {
-     "player": "Dylan Dodd",
-     "team": "ATL",
-     "opponent": "LAD",
-     "value": 4.0,
-     "detail": "4 strikeouts over 3.0 innings for ATL against LAD",
-     "game_id": "401908007",
-     "field": 37
+     "player": "Matthew Stafford",
+     "team": "LAR",
+     "opponent": "PHI",
+     "value": 317.0,
+     "detail": "317 yards and 0 touchdowns for LAR against PHI",
+     "game_id": "401872970",
+     "field": 31
     },
     {
-     "player": "Hagen Smith",
-     "team": "CHW",
-     "opponent": "CLE",
-     "value": 4.0,
-     "detail": "4 strikeouts over 2.2 innings for CHW against CLE",
-     "game_id": "401907990",
-     "field": 37
+     "player": "Drake Maye",
+     "team": "NE",
+     "opponent": "BUF",
+     "value": 269.0,
+     "detail": "269 yards and 3 touchdowns for NE against BUF",
+     "game_id": "401872971",
+     "field": 31
     },
     {
-     "player": "Brent Suter",
-     "team": "ATL",
-     "opponent": "LAD",
-     "value": 3.0,
-     "detail": "3 strikeouts over 2.0 innings for ATL against LAD",
-     "game_id": "401908007",
-     "field": 37
+     "player": "Tyson Bagent",
+     "team": "CHI",
+     "opponent": "NYJ",
+     "value": 268.0,
+     "detail": "268 yards and 0 touchdowns for CHI against NYJ",
+     "game_id": "401872972",
+     "field": 31
     },
     {
-     "player": "AJ Smith-Shawver",
-     "team": "ATL",
-     "opponent": "LAD",
-     "value": 2.0,
-     "detail": "2 strikeouts over 2.2 innings for ATL against LAD",
-     "game_id": "401908007",
-     "field": 37
+     "player": "Josh Allen",
+     "team": "BUF",
+     "opponent": "NE",
+     "value": 253.0,
+     "detail": "253 yards and 1 touchdowns for BUF against NE",
+     "game_id": "401872971",
+     "field": 31
     }
    ]
   },
-  "mlb_innings": {
-   "sport": "MLB",
+  "nfl_rush_yards": {
+   "sport": "NFL",
    "rows": [
     {
-     "player": "Drew Rasmussen",
-     "team": "TB",
-     "opponent": "NYY",
-     "value": 8.0,
-     "detail": "8.0 innings, 1 hits and 0 runs for TB against NYY",
-     "game_id": "401907985",
-     "field": 37
+     "player": "Kenneth Walker III",
+     "team": "KC",
+     "opponent": "LV",
+     "value": 177.0,
+     "detail": "177 yards on 22 carries for KC against LV",
+     "game_id": "401872976",
+     "field": 111
     },
     {
-     "player": "Tarik Skubal",
-     "team": "LAD",
-     "opponent": "ATL",
-     "value": 6.0,
-     "detail": "6.0 innings, 2 hits and 1 runs for LAD against ATL",
-     "game_id": "401908007",
-     "field": 37
+     "player": "Kyle Monangai",
+     "team": "CHI",
+     "opponent": "NYJ",
+     "value": 146.0,
+     "detail": "146 yards on 30 carries for CHI against NYJ",
+     "game_id": "401872972",
+     "field": 111
     },
     {
-     "player": "Gerrit Cole",
-     "team": "NYY",
-     "opponent": "TB",
-     "value": 5.0,
-     "detail": "5.0 innings, 5 hits and 1 runs for NYY against TB",
-     "game_id": "401907985",
-     "field": 37
+     "player": "Chuba Hubbard",
+     "team": "CAR",
+     "opponent": "DET",
+     "value": 122.0,
+     "detail": "122 yards on 20 carries for CAR against DET",
+     "game_id": "401872978",
+     "field": 111
     },
     {
-     "player": "Parker Messick",
-     "team": "CLE",
-     "opponent": "CHW",
-     "value": 4.1,
-     "detail": "4.1 innings, 4 hits and 2 runs for CLE against CHW",
-     "game_id": "401907990",
-     "field": 37
+     "player": "Ollie Gordon II",
+     "team": "MIA",
+     "opponent": "MIN",
+     "value": 100.0,
+     "detail": "100 yards on 9 carries for MIA against MIN",
+     "game_id": "401872974",
+     "field": 111
     },
     {
-     "player": "Grant Taylor",
-     "team": "CHW",
-     "opponent": "CLE",
-     "value": 4.0,
-     "detail": "4.0 innings, 2 hits and 0 runs for CHW against CLE",
-     "game_id": "401907990",
-     "field": 37
+     "player": "Jonathan Taylor",
+     "team": "IND",
+     "opponent": "WSH",
+     "value": 95.0,
+     "detail": "95 yards on 20 carries for IND against WSH",
+     "game_id": "401872965",
+     "field": 111
     },
     {
-     "player": "Jacob Misiorowski",
-     "team": "MIL",
-     "opponent": "SD",
-     "value": 4.0,
-     "detail": "4.0 innings, 4 hits and 2 runs for MIL against SD",
-     "game_id": "401908002",
-     "field": 37
+     "player": "Aaron Jones Sr.",
+     "team": "MIN",
+     "opponent": "MIA",
+     "value": 94.0,
+     "detail": "94 yards on 20 carries for MIN against MIA",
+     "game_id": "401872974",
+     "field": 111
     },
     {
-     "player": "Dylan Dodd",
-     "team": "ATL",
-     "opponent": "LAD",
-     "value": 3.0,
-     "detail": "3.0 innings, 2 hits and 0 runs for ATL against LAD",
-     "game_id": "401908007",
-     "field": 37
+     "player": "Emanuel Wilson",
+     "team": "SEA",
+     "opponent": "LAC",
+     "value": 81.0,
+     "detail": "81 yards on 21 carries for SEA against LAC",
+     "game_id": "401872977",
+     "field": 111
     },
     {
-     "player": "AJ Smith-Shawver",
-     "team": "ATL",
-     "opponent": "LAD",
-     "value": 2.2,
-     "detail": "2.2 innings, 3 hits and 3 runs for ATL against LAD",
-     "game_id": "401908007",
-     "field": 37
+     "player": "Kyren Williams",
+     "team": "LAR",
+     "opponent": "PHI",
+     "value": 80.0,
+     "detail": "80 yards on 16 carries for LAR against PHI",
+     "game_id": "401872970",
+     "field": 111
     },
     {
-     "player": "Hagen Smith",
-     "team": "CHW",
-     "opponent": "CLE",
-     "value": 2.2,
-     "detail": "2.2 innings, 0 hits and 0 runs for CHW against CLE",
-     "game_id": "401907990",
-     "field": 37
+     "player": "James Cook III",
+     "team": "BUF",
+     "opponent": "NE",
+     "value": 75.0,
+     "detail": "75 yards on 12 carries for BUF against NE",
+     "game_id": "401872971",
+     "field": 111
     },
     {
-     "player": "Robbie Ray",
-     "team": "SD",
-     "opponent": "MIL",
-     "value": 2.2,
-     "detail": "2.2 innings, 4 hits and 2 runs for SD against MIL",
-     "game_id": "401908002",
-     "field": 37
+     "player": "Bhayshul Tuten",
+     "team": "JAX",
+     "opponent": "CIN",
+     "value": 73.0,
+     "detail": "73 yards on 17 carries for JAX against CIN",
+     "game_id": "401872969",
+     "field": 111
+    }
+   ]
+  },
+  "nfl_rec_yards": {
+   "sport": "NFL",
+   "rows": [
+    {
+     "player": "Tetairoa McMillan",
+     "team": "CAR",
+     "opponent": "DET",
+     "value": 192.0,
+     "detail": "192 yards on 14 catches for CAR against DET",
+     "game_id": "401872978",
+     "field": 228
+    },
+    {
+     "player": "CeeDee Lamb",
+     "team": "DAL",
+     "opponent": "HOU",
+     "value": 189.0,
+     "detail": "189 yards on 17 catches for DAL against HOU",
+     "game_id": "401872967",
+     "field": 228
+    },
+    {
+     "player": "Tee Higgins",
+     "team": "CIN",
+     "opponent": "JAX",
+     "value": 157.0,
+     "detail": "157 yards on 11 catches for CIN against JAX",
+     "game_id": "401872969",
+     "field": 228
+    },
+    {
+     "player": "Carnell Tate",
+     "team": "TEN",
+     "opponent": "BAL",
+     "value": 145.0,
+     "detail": "145 yards on 9 catches for TEN against BAL",
+     "game_id": "401872973",
+     "field": 228
+    },
+    {
+     "player": "Puka Nacua",
+     "team": "LAR",
+     "opponent": "PHI",
+     "value": 125.0,
+     "detail": "125 yards on 9 catches for LAR against PHI",
+     "game_id": "401872970",
+     "field": 228
+    },
+    {
+     "player": "T.J. Hockenson",
+     "team": "MIN",
+     "opponent": "MIA",
+     "value": 119.0,
+     "detail": "119 yards on 13 catches for MIN against MIA",
+     "game_id": "401872974",
+     "field": 228
+    },
+    {
+     "player": "Nico Collins",
+     "team": "HOU",
+     "opponent": "DAL",
+     "value": 118.0,
+     "detail": "118 yards on 7 catches for HOU against DAL",
+     "game_id": "401872967",
+     "field": 228
+    },
+    {
+     "player": "Zay Flowers",
+     "team": "BAL",
+     "opponent": "TEN",
+     "value": 118.0,
+     "detail": "118 yards on 8 catches for BAL against TEN",
+     "game_id": "401872973",
+     "field": 228
+    },
+    {
+     "player": "Keon Coleman",
+     "team": "BUF",
+     "opponent": "NE",
+     "value": 116.0,
+     "detail": "116 yards on 6 catches for BUF against NE",
+     "game_id": "401872971",
+     "field": 228
+    },
+    {
+     "player": "Malik Nabers",
+     "team": "NYG",
+     "opponent": "ARI",
+     "value": 112.0,
+     "detail": "112 yards on 6 catches for NYG against ARI",
+     "game_id": "401872966",
+     "field": 228
+    }
+   ]
+  },
+  "nfl_tackles": {
+   "sport": "NFL",
+   "rows": [
+    {
+     "player": "Jacob Rodriguez",
+     "team": "MIA",
+     "opponent": "MIN",
+     "value": 18.0,
+     "detail": "18 tackles for MIA against MIN",
+     "game_id": "401872974",
+     "field": 597
+    },
+    {
+     "player": "Minkah Fitzpatrick",
+     "team": "NYJ",
+     "opponent": "CHI",
+     "value": 16.0,
+     "detail": "16 tackles for NYJ against CHI",
+     "game_id": "401872972",
+     "field": 597
+    },
+    {
+     "player": "Jeremiah Trotter Jr.",
+     "team": "PHI",
+     "opponent": "LAR",
+     "value": 15.0,
+     "detail": "15 tackles for PHI against LAR",
+     "game_id": "401872970",
+     "field": 597
+    },
+    {
+     "player": "Alex Singleton",
+     "team": "DEN",
+     "opponent": "SF",
+     "value": 14.0,
+     "detail": "14 tackles for DEN against SF",
+     "game_id": "401872975",
+     "field": 597
+    },
+    {
+     "player": "Dane Belton",
+     "team": "NYJ",
+     "opponent": "CHI",
+     "value": 14.0,
+     "detail": "14 tackles for NYJ against CHI",
+     "game_id": "401872972",
+     "field": 597
+    },
+    {
+     "player": "Jack Campbell",
+     "team": "DET",
+     "opponent": "CAR",
+     "value": 14.0,
+     "detail": "14 tackles for DET against CAR",
+     "game_id": "401872978",
+     "field": 597
+    },
+    {
+     "player": "Jamien Sherwood",
+     "team": "NYJ",
+     "opponent": "CHI",
+     "value": 13.0,
+     "detail": "13 tackles for NYJ against CHI",
+     "game_id": "401872972",
+     "field": 597
+    },
+    {
+     "player": "Jordyn Brooks",
+     "team": "MIA",
+     "opponent": "MIN",
+     "value": 13.0,
+     "detail": "13 tackles for MIA against MIN",
+     "game_id": "401872974",
+     "field": 597
+    },
+    {
+     "player": "Dre Greenlaw",
+     "team": "SF",
+     "opponent": "DEN",
+     "value": 12.0,
+     "detail": "12 tackles for SF against DEN",
+     "game_id": "401872975",
+     "field": 597
+    },
+    {
+     "player": "Ernest Jones IV",
+     "team": "SEA",
+     "opponent": "LAC",
+     "value": 12.0,
+     "detail": "12 tackles for SEA against LAC",
+     "game_id": "401872977",
+     "field": 597
     }
    ]
   }
