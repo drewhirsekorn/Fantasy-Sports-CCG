@@ -1,365 +1,98 @@
 {
- "date": "2026-10-05",
+ "date": "2026-10-06",
  "boards": {
   "mlb_strikeouts": {
    "sport": "MLB",
    "rows": [
     {
-     "player": "Gavin Williams",
-     "team": "CLE",
-     "opponent": "CHW",
-     "value": 11.0,
-     "detail": "11 strikeouts over 5.0 innings for CLE against CHW",
-     "game_id": "401907991",
-     "field": 19
+     "player": "Yoshinobu Yamamoto",
+     "team": "LAD",
+     "opponent": "ATL",
+     "value": 10.0,
+     "detail": "10 strikeouts over 7.0 innings for LAD against ATL",
+     "game_id": "401908015",
+     "field": 18
     },
     {
-     "player": "Sean Burke",
-     "team": "CHW",
-     "opponent": "CLE",
-     "value": 6.0,
-     "detail": "6 strikeouts over 5.1 innings for CHW against CLE",
-     "game_id": "401907991",
-     "field": 19
+     "player": "Chris Sale",
+     "team": "ATL",
+     "opponent": "LAD",
+     "value": 7.0,
+     "detail": "7 strikeouts over 5.0 innings for ATL against LAD",
+     "game_id": "401908015",
+     "field": 18
     },
     {
-     "player": "Ian Seymour",
-     "team": "TB",
-     "opponent": "NYY",
+     "player": "Nick Pivetta",
+     "team": "SD",
+     "opponent": "MIL",
      "value": 4.0,
-     "detail": "4 strikeouts over 3.0 innings for TB against NYY",
-     "game_id": "401907986",
-     "field": 19
+     "detail": "4 strikeouts over 4.1 innings for SD against MIL",
+     "game_id": "401908004",
+     "field": 18
     },
     {
-     "player": "Freddy Peralta",
-     "team": "TB",
-     "opponent": "NYY",
+     "player": "Bradgley Rodriguez",
+     "team": "SD",
+     "opponent": "MIL",
      "value": 3.0,
-     "detail": "3 strikeouts over 4.2 innings for TB against NYY",
-     "game_id": "401907986",
-     "field": 19
+     "detail": "3 strikeouts over 1.1 innings for SD against MIL",
+     "game_id": "401908004",
+     "field": 18
     },
     {
-     "player": "Sean Newcomb",
-     "team": "CHW",
-     "opponent": "CLE",
+     "player": "Dustin May",
+     "team": "MIL",
+     "opponent": "SD",
      "value": 3.0,
-     "detail": "3 strikeouts over 2.0 innings for CHW against CLE",
-     "game_id": "401907991",
-     "field": 19
+     "detail": "3 strikeouts over 3.0 innings for MIL against SD",
+     "game_id": "401908004",
+     "field": 18
     },
     {
-     "player": "Cam Schlittler",
-     "team": "NYY",
-     "opponent": "TB",
+     "player": "Dylan Dodd",
+     "team": "ATL",
+     "opponent": "LAD",
      "value": 2.0,
-     "detail": "2 strikeouts over 4.1 innings for NYY against TB",
-     "game_id": "401907986",
-     "field": 19
+     "detail": "2 strikeouts over 1.0 innings for ATL against LAD",
+     "game_id": "401908015",
+     "field": 18
     },
     {
-     "player": "Brent Headrick",
-     "team": "NYY",
-     "opponent": "TB",
-     "value": 1.0,
-     "detail": "1 strikeouts over 0.2 innings for NYY against TB",
-     "game_id": "401907986",
-     "field": 19
-    },
-    {
-     "player": "Hunter Gaddis",
-     "team": "CLE",
-     "opponent": "CHW",
-     "value": 1.0,
-     "detail": "1 strikeouts over 1.0 innings for CLE against CHW",
-     "game_id": "401907991",
-     "field": 19
-    },
-    {
-     "player": "John Schreiber",
-     "team": "NYY",
-     "opponent": "TB",
-     "value": 1.0,
-     "detail": "1 strikeouts over 1.0 innings for NYY against TB",
-     "game_id": "401907986",
-     "field": 19
-    },
-    {
-     "player": "Shawn Armstrong",
-     "team": "CLE",
-     "opponent": "CHW",
-     "value": 1.0,
-     "detail": "1 strikeouts over 1.1 innings for CLE against CHW",
-     "game_id": "401907991",
-     "field": 19
-    }
-   ]
-  },
-  "mlb_home_runs": {
-   "sport": "MLB",
-   "rows": [
-    {
-     "player": "Ben Rice",
-     "team": "NYY",
-     "opponent": "TB",
+     "player": "JoJo Romero",
+     "team": "MIL",
+     "opponent": "SD",
      "value": 2.0,
-     "detail": "2 home runs and 2 driven in for NYY against TB",
-     "game_id": "401907986",
-     "field": 42
+     "detail": "2 strikeouts over 1.2 innings for MIL against SD",
+     "game_id": "401908004",
+     "field": 18
     },
     {
-     "player": "Andrew Benintendi",
-     "team": "CHW",
-     "opponent": "CLE",
-     "value": 0.0,
-     "detail": "0 home runs and 0 driven in for CHW against CLE",
-     "game_id": "401907991",
-     "field": 42
-    },
-    {
-     "player": "Angel Martinez",
-     "team": "CLE",
-     "opponent": "CHW",
-     "value": 0.0,
-     "detail": "0 home runs and 0 driven in for CLE against CHW",
-     "game_id": "401907991",
-     "field": 42
-    },
-    {
-     "player": "Austin Wells",
-     "team": "NYY",
-     "opponent": "TB",
-     "value": 0.0,
-     "detail": "0 home runs and 0 driven in for NYY against TB",
-     "game_id": "401907986",
-     "field": 42
-    },
-    {
-     "player": "Braden Montgomery",
-     "team": "CHW",
-     "opponent": "CLE",
-     "value": 0.0,
-     "detail": "0 home runs and 2 driven in for CHW against CLE",
-     "game_id": "401907991",
-     "field": 42
-    },
-    {
-     "player": "Brayan Rocchio",
-     "team": "CLE",
-     "opponent": "CHW",
-     "value": 0.0,
-     "detail": "0 home runs and 0 driven in for CLE against CHW",
-     "game_id": "401907991",
-     "field": 42
-    },
-    {
-     "player": "Brenton Doyle",
-     "team": "CHW",
-     "opponent": "CLE",
-     "value": 0.0,
-     "detail": "0 home runs and 0 driven in for CHW against CLE",
-     "game_id": "401907991",
-     "field": 42
-    },
-    {
-     "player": "Chandler Simpson",
-     "team": "TB",
-     "opponent": "NYY",
-     "value": 0.0,
-     "detail": "0 home runs and 1 driven in for TB against NYY",
-     "game_id": "401907986",
-     "field": 42
-    },
-    {
-     "player": "Chase DeLauter",
-     "team": "CLE",
-     "opponent": "CHW",
-     "value": 0.0,
-     "detail": "0 home runs and 0 driven in for CLE against CHW",
-     "game_id": "401907991",
-     "field": 42
-    },
-    {
-     "player": "Chase Meidroth",
-     "team": "CHW",
-     "opponent": "CLE",
-     "value": 0.0,
-     "detail": "0 home runs and 1 driven in for CHW against CLE",
-     "game_id": "401907991",
-     "field": 42
-    }
-   ]
-  },
-  "nfl_rush_yards": {
-   "sport": "NFL",
-   "rows": [
-    {
-     "player": "Bijan Robinson",
+     "player": "Raisel Iglesias",
      "team": "ATL",
-     "opponent": "NO",
-     "value": 145.0,
-     "detail": "145 yards on 19 carries for ATL against NO",
-     "game_id": "401872979",
-     "field": 8
+     "opponent": "LAD",
+     "value": 2.0,
+     "detail": "2 strikeouts over 1.0 innings for ATL against LAD",
+     "game_id": "401908015",
+     "field": 18
     },
     {
-     "player": "Brian Robinson Jr.",
-     "team": "ATL",
-     "opponent": "NO",
-     "value": 62.0,
-     "detail": "62 yards on 14 carries for ATL against NO",
-     "game_id": "401872979",
-     "field": 8
-    },
-    {
-     "player": "Alvin Kamara",
-     "team": "NO",
+     "player": "Tanner Scott",
+     "team": "LAD",
      "opponent": "ATL",
-     "value": 23.0,
-     "detail": "23 yards on 7 carries for NO against ATL",
-     "game_id": "401872979",
-     "field": 8
+     "value": 2.0,
+     "detail": "2 strikeouts over 1.0 innings for LAD against ATL",
+     "game_id": "401908015",
+     "field": 18
     },
     {
-     "player": "CJ Donaldson",
-     "team": "NO",
-     "opponent": "ATL",
-     "value": 18.0,
-     "detail": "18 yards on 3 carries for NO against ATL",
-     "game_id": "401872979",
-     "field": 8
-    },
-    {
-     "player": "Kendre Miller",
-     "team": "NO",
-     "opponent": "ATL",
-     "value": 9.0,
-     "detail": "9 yards on 6 carries for NO against ATL",
-     "game_id": "401872979",
-     "field": 8
-    },
-    {
-     "player": "Tyler Shough",
-     "team": "NO",
-     "opponent": "ATL",
-     "value": 5.0,
-     "detail": "5 yards on 2 carries for NO against ATL",
-     "game_id": "401872979",
-     "field": 8
-    },
-    {
-     "player": "Michael Penix Jr.",
-     "team": "ATL",
-     "opponent": "NO",
-     "value": -2.0,
-     "detail": "-2 yards on 2 carries for ATL against NO",
-     "game_id": "401872979",
-     "field": 8
-    },
-    {
-     "player": "Barion Brown",
-     "team": "NO",
-     "opponent": "ATL",
-     "value": -5.0,
-     "detail": "-5 yards on 1 carries for NO against ATL",
-     "game_id": "401872979",
-     "field": 8
-    }
-   ]
-  },
-  "nfl_rec_yards": {
-   "sport": "NFL",
-   "rows": [
-    {
-     "player": "Chris Olave",
-     "team": "NO",
-     "opponent": "ATL",
-     "value": 116.0,
-     "detail": "116 yards on 8 catches for NO against ATL",
-     "game_id": "401872979",
-     "field": 17
-    },
-    {
-     "player": "Drake London",
-     "team": "ATL",
-     "opponent": "NO",
-     "value": 96.0,
-     "detail": "96 yards on 5 catches for ATL against NO",
-     "game_id": "401872979",
-     "field": 17
-    },
-    {
-     "player": "Juwan Johnson",
-     "team": "NO",
-     "opponent": "ATL",
-     "value": 59.0,
-     "detail": "59 yards on 6 catches for NO against ATL",
-     "game_id": "401872979",
-     "field": 17
-    },
-    {
-     "player": "Devaughn Vele",
-     "team": "NO",
-     "opponent": "ATL",
-     "value": 54.0,
-     "detail": "54 yards on 6 catches for NO against ATL",
-     "game_id": "401872979",
-     "field": 17
-    },
-    {
-     "player": "Jahan Dotson",
-     "team": "ATL",
-     "opponent": "NO",
-     "value": 54.0,
-     "detail": "54 yards on 2 catches for ATL against NO",
-     "game_id": "401872979",
-     "field": 17
-    },
-    {
-     "player": "Kyle Pitts Sr.",
-     "team": "ATL",
-     "opponent": "NO",
-     "value": 47.0,
-     "detail": "47 yards on 3 catches for ATL against NO",
-     "game_id": "401872979",
-     "field": 17
-    },
-    {
-     "player": "Alvin Kamara",
-     "team": "NO",
-     "opponent": "ATL",
-     "value": 35.0,
-     "detail": "35 yards on 5 catches for NO against ATL",
-     "game_id": "401872979",
-     "field": 17
-    },
-    {
-     "player": "Kendre Miller",
-     "team": "NO",
-     "opponent": "ATL",
-     "value": 10.0,
-     "detail": "10 yards on 2 catches for NO against ATL",
-     "game_id": "401872979",
-     "field": 17
-    },
-    {
-     "player": "Zachariah Branch",
-     "team": "ATL",
-     "opponent": "NO",
-     "value": 10.0,
-     "detail": "10 yards on 2 catches for ATL against NO",
-     "game_id": "401872979",
-     "field": 17
-    },
-    {
-     "player": "Austin Hooper",
-     "team": "ATL",
-     "opponent": "NO",
-     "value": 9.0,
-     "detail": "9 yards on 1 catches for ATL against NO",
-     "game_id": "401872979",
-     "field": 17
+     "player": "Antonio Senzatela",
+     "team": "MIL",
+     "opponent": "SD",
+     "value": 1.0,
+     "detail": "1 strikeouts over 1.0 innings for MIL against SD",
+     "game_id": "401908004",
+     "field": 18
     }
    ]
   }
