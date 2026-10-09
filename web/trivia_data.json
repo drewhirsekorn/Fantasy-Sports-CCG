@@ -1,72 +1,76 @@
 {
  "version": 1,
- "date": "2026-10-08",
- "stamp": "cd5b16e37fb6",
- "source_date": "2026-10-07",
- "opens": "2026-10-08T07:00:00-04:00",
+ "date": "2026-10-09",
+ "stamp": "16bce05a0945",
+ "source_date": "2026-10-08",
+ "opens": "2026-10-09T07:00:00-04:00",
  "questions": [
   {
-   "kind": "most_recent",
+   "kind": "last_before",
    "sport": "NFL",
-   "setup": "Nobody managed a 200-yard rushing game in the NFL yesterday.",
-   "prompt": "Who had the most recent one?",
+   "setup": "Bucky Irving ran for 165 yards for TB yesterday.",
+   "prompt": "Before Bucky Irving, who was the last NFL player to rush for 150 yards?",
    "options": [
-    "Rudi Johnson",
-    "Derrick Henry",
-    "Ahman Green",
-    "Edgerrin James"
-   ],
-   "answer": 1,
-   "explain": "Derrick Henry \u2014 216 yards for BAL vs GB on December 27, 2025.",
-   "links": [
-    {
-     "label": "December 27, 2025 box score",
-     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401772953"
-    }
-   ],
-   "id": "2026-10-08-1"
-  },
-  {
-   "kind": "most_recent",
-   "sport": "MLB",
-   "setup": "Nobody managed a five-hit game in the majors yesterday.",
-   "prompt": "Who had the most recent one?",
-   "options": [
-    "Hunter Renfroe",
-    "Adley Rutschman",
-    "Weston Wilson",
-    "Jesus Sanchez"
+    "Chris Brown",
+    "Zack Moss",
+    "Kenneth Walker III",
+    "Steven Jackson"
    ],
    "answer": 2,
-   "explain": "Weston Wilson \u2014 5 hits for SEA vs ATH on September 12, 2026.",
+   "explain": "Kenneth Walker III \u2014 177 yards for KC on October 4, 2026, 4 days earlier.",
    "links": [
     {
-     "label": "September 12, 2026 box score",
-     "url": "https://www.espn.com/mlb/boxscore/_/gameId/401816916"
+     "label": "October 8, 2026 box score",
+     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401872980"
+    },
+    {
+     "label": "October 4, 2026 box score",
+     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401872976"
     }
    ],
-   "id": "2026-10-08-2"
+   "id": "2026-10-09-1"
   },
   {
-   "kind": "most_recent",
-   "sport": "MLB",
-   "setup": "Nobody managed a five-RBI game in the majors yesterday.",
-   "prompt": "Who had the most recent one?",
+   "kind": "led_the_night",
+   "sport": "NFL",
+   "setup": "Last night's box scores list 16 pass-catchers.",
+   "prompt": "Who had the most receiving yards in the NFL yesterday?",
    "options": [
-    "Isaac Paredes",
-    "Angel Martinez",
-    "Cole Young",
-    "Ben Rice"
+    "George Pickens",
+    "KaVontae Turpin",
+    "Ryan Flournoy",
+    "Chris Godwin Jr."
    ],
-   "answer": 3,
-   "explain": "Ben Rice \u2014 6 RBI for NYY vs BOS on September 29, 2026.",
+   "answer": 0,
+   "explain": "George Pickens \u2014 130 yards on 9 catches for DAL against TB.",
    "links": [
     {
-     "label": "September 29, 2026 box score",
-     "url": "https://www.espn.com/mlb/boxscore/_/gameId/401907924"
+     "label": "October 8, 2026 box score",
+     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401872980"
     }
    ],
-   "id": "2026-10-08-3"
+   "id": "2026-10-09-2"
+  },
+  {
+   "kind": "led_the_night",
+   "sport": "NFL",
+   "setup": "Last night's box scores list 40 defenders.",
+   "prompt": "Who made the most tackles in the NFL yesterday?",
+   "options": [
+    "Keionte Scott",
+    "Jaishawn Barham",
+    "Donovan Ezeiruaku",
+    "Dee Winters"
+   ],
+   "answer": 3,
+   "explain": "Dee Winters \u2014 10 tackles for DAL against TB.",
+   "links": [
+    {
+     "label": "October 8, 2026 box score",
+     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401872980"
+    }
+   ],
+   "id": "2026-10-09-3"
   }
  ],
  "coverage": {
@@ -87,7 +91,7 @@
    },
    {
     "from": "2025-01-01",
-    "through": "2026-10-07",
+    "through": "2026-10-08",
     "feats": [
      "mlb_12_k",
      "mlb_15_k",
@@ -131,7 +135,7 @@
    },
    {
     "from": "2023-10-01",
-    "through": "2026-10-07",
+    "through": "2026-10-08",
     "feats": [
      "nba_10_threes",
      "nba_20_assists",
@@ -165,7 +169,7 @@
    },
    {
     "from": "2023-09-01",
-    "through": "2026-10-07",
+    "through": "2026-10-08",
     "feats": [
      "nfl_150_rec_yards",
      "nfl_150_rush_yards",
@@ -183,6 +187,6 @@
    }
   ]
  },
- "built_at": "2026-10-08T17:47:18Z",
- "closes": "2026-10-09T07:00:00-04:00"
+ "built_at": "2026-10-09T17:22:57Z",
+ "closes": "2026-10-10T07:00:00-04:00"
 }

@@ -18,7 +18,7 @@
    },
    {
     "from": "2025-01-01",
-    "through": "2026-10-07",
+    "through": "2026-10-08",
     "feats": [
      "mlb_12_k",
      "mlb_15_k",
@@ -62,7 +62,7 @@
    },
    {
     "from": "2023-10-01",
-    "through": "2026-10-07",
+    "through": "2026-10-08",
     "feats": [
      "nba_10_threes",
      "nba_20_assists",
@@ -96,7 +96,7 @@
    },
    {
     "from": "2023-09-01",
-    "through": "2026-10-07",
+    "through": "2026-10-08",
     "feats": [
      "nfl_150_rec_yards",
      "nfl_150_rush_yards",
@@ -70836,6 +70836,22 @@
     "attempts": 54.0
    },
    "source": "espn:401872969"
+  },
+  {
+   "feat": "nfl_150_rush_yards",
+   "sport": "NFL",
+   "date": "2026-10-08",
+   "player": "Bucky Irving",
+   "player_id": "4596448",
+   "team": "TB",
+   "opponent": "DAL",
+   "value": 165.0,
+   "line": {
+    "rush_yards": 165.0,
+    "rush_td": 1.0,
+    "carries": 21.0
+   },
+   "source": "espn:401872980"
   }
  ]
 }
