@@ -18,7 +18,7 @@
    },
    {
     "from": "2025-01-01",
-    "through": "2026-10-09",
+    "through": "2026-10-10",
     "feats": [
      "mlb_12_k",
      "mlb_15_k",
@@ -62,7 +62,7 @@
    },
    {
     "from": "2023-10-01",
-    "through": "2026-10-09",
+    "through": "2026-10-10",
     "feats": [
      "nba_10_threes",
      "nba_20_assists",
@@ -96,7 +96,7 @@
    },
    {
     "from": "2023-09-01",
-    "through": "2026-10-09",
+    "through": "2026-10-10",
     "feats": [
      "nfl_150_rec_yards",
      "nfl_150_rush_yards",
@@ -70852,6 +70852,26 @@
     "carries": 21.0
    },
    "source": "espn:401872980"
+  },
+  {
+   "feat": "mlb_12_k",
+   "sport": "MLB",
+   "date": "2026-10-10",
+   "player": "Gavin Williams",
+   "player_id": "4345076",
+   "team": "CLE",
+   "opponent": "CHW",
+   "value": 12.0,
+   "line": {
+    "innings": 5.2,
+    "hits_allowed": 1.0,
+    "runs_allowed": 0.0,
+    "earned_runs": 0.0,
+    "walks_allowed": 2.0,
+    "strikeouts_thrown": 12.0,
+    "pitches": 94.0
+   },
+   "source": "espn:401907994"
   }
  ]
 }
