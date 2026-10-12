@@ -1,71 +1,469 @@
 {
- "date": "2026-10-10",
+ "date": "2026-10-11",
  "boards": {
   "mlb_strikeouts": {
    "sport": "MLB",
    "rows": [
     {
-     "player": "Gavin Williams",
-     "team": "CLE",
-     "opponent": "CHW",
-     "value": 12.0,
-     "detail": "12 strikeouts over 5.2 innings for CLE against CHW",
-     "game_id": "401907994",
-     "field": 7
+     "player": "Tarik Skubal",
+     "team": "LAD",
+     "opponent": "MIL",
+     "value": 7.0,
+     "detail": "7 strikeouts over 5.0 innings for LAD against MIL",
+     "game_id": "401908030",
+     "field": 9
     },
     {
-     "player": "Cade Smith",
-     "team": "CLE",
-     "opponent": "CHW",
-     "value": 4.0,
-     "detail": "4 strikeouts over 1.2 innings for CLE against CHW",
-     "game_id": "401907994",
-     "field": 7
+     "player": "Jacob Misiorowski",
+     "team": "MIL",
+     "opponent": "LAD",
+     "value": 5.0,
+     "detail": "5 strikeouts over 4.1 innings for MIL against LAD",
+     "game_id": "401908030",
+     "field": 9
     },
     {
-     "player": "Hunter Gaddis",
-     "team": "CLE",
-     "opponent": "CHW",
-     "value": 4.0,
-     "detail": "4 strikeouts over 1.1 innings for CLE against CHW",
-     "game_id": "401907994",
-     "field": 7
-    },
-    {
-     "player": "Sean Burke",
-     "team": "CHW",
-     "opponent": "CLE",
-     "value": 4.0,
-     "detail": "4 strikeouts over 5.0 innings for CHW against CLE",
-     "game_id": "401907994",
-     "field": 7
-    },
-    {
-     "player": "Sean Newcomb",
-     "team": "CHW",
-     "opponent": "CLE",
+     "player": "Evan Phillips",
+     "team": "LAD",
+     "opponent": "MIL",
      "value": 3.0,
-     "detail": "3 strikeouts over 2.0 innings for CHW against CLE",
-     "game_id": "401907994",
-     "field": 7
+     "detail": "3 strikeouts over 1.0 innings for LAD against MIL",
+     "game_id": "401908030",
+     "field": 9
     },
     {
-     "player": "Erik Sabrowski",
-     "team": "CLE",
-     "opponent": "CHW",
+     "player": "Abner Uribe",
+     "team": "MIL",
+     "opponent": "LAD",
+     "value": 2.0,
+     "detail": "2 strikeouts over 1.0 innings for MIL against LAD",
+     "game_id": "401908030",
+     "field": 9
+    },
+    {
+     "player": "Alex Vesia",
+     "team": "LAD",
+     "opponent": "MIL",
+     "value": 2.0,
+     "detail": "2 strikeouts over 1.0 innings for LAD against MIL",
+     "game_id": "401908030",
+     "field": 9
+    },
+    {
+     "player": "Aaron Ashby",
+     "team": "MIL",
+     "opponent": "LAD",
      "value": 1.0,
-     "detail": "1 strikeouts over 0.1 innings for CLE against CHW",
-     "game_id": "401907994",
-     "field": 7
+     "detail": "1 strikeouts over 2.0 innings for MIL against LAD",
+     "game_id": "401908030",
+     "field": 9
     },
     {
-     "player": "Grant Taylor",
-     "team": "CHW",
-     "opponent": "CLE",
+     "player": "Tanner Scott",
+     "team": "LAD",
+     "opponent": "MIL",
+     "value": 1.0,
+     "detail": "1 strikeouts over 1.0 innings for LAD against MIL",
+     "game_id": "401908030",
+     "field": 9
+    },
+    {
+     "player": "DL Hall",
+     "team": "MIL",
+     "opponent": "LAD",
      "value": 0.0,
-     "detail": "0 strikeouts over 1.0 innings for CHW against CLE",
-     "game_id": "401907994",
-     "field": 7
+     "detail": "0 strikeouts over 0.2 innings for MIL against LAD",
+     "game_id": "401908030",
+     "field": 9
+    },
+    {
+     "player": "Trevor Megill",
+     "team": "MIL",
+     "opponent": "LAD",
+     "value": 0.0,
+     "detail": "0 strikeouts over 1.0 innings for MIL against LAD",
+     "game_id": "401908030",
+     "field": 9
+    }
+   ]
+  },
+  "nfl_pass_yards": {
+   "sport": "NFL",
+   "rows": [
+    {
+     "player": "Drake Maye",
+     "team": "NE",
+     "opponent": "LV",
+     "value": 374.0,
+     "detail": "374 yards and 4 touchdowns for NE against LV",
+     "game_id": "401872986",
+     "field": 31
+    },
+    {
+     "player": "Jordan Love",
+     "team": "GB",
+     "opponent": "CHI",
+     "value": 367.0,
+     "detail": "367 yards and 2 touchdowns for GB against CHI",
+     "game_id": "401872990",
+     "field": 31
+    },
+    {
+     "player": "Trevor Lawrence",
+     "team": "JAX",
+     "opponent": "PHI",
+     "value": 331.0,
+     "detail": "331 yards and 2 touchdowns for JAX against PHI",
+     "game_id": "401872981",
+     "field": 31
+    },
+    {
+     "player": "Jameis Winston",
+     "team": "NYG",
+     "opponent": "WSH",
+     "value": 326.0,
+     "detail": "326 yards and 3 touchdowns for NYG against WSH",
+     "game_id": "401872988",
+     "field": 31
+    },
+    {
+     "player": "Jacoby Brissett",
+     "team": "ARI",
+     "opponent": "DET",
+     "value": 292.0,
+     "detail": "292 yards and 3 touchdowns for ARI against DET",
+     "game_id": "401872991",
+     "field": 31
+    },
+    {
+     "player": "Jared Goff",
+     "team": "DET",
+     "opponent": "ARI",
+     "value": 271.0,
+     "detail": "271 yards and 3 touchdowns for DET against ARI",
+     "game_id": "401872991",
+     "field": 31
+    },
+    {
+     "player": "Daniel Jones",
+     "team": "IND",
+     "opponent": "PIT",
+     "value": 267.0,
+     "detail": "267 yards and 0 touchdowns for IND against PIT",
+     "game_id": "401872985",
+     "field": 31
+    },
+    {
+     "player": "C.J. Stroud",
+     "team": "HOU",
+     "opponent": "TEN",
+     "value": 261.0,
+     "detail": "261 yards and 1 touchdowns for HOU against TEN",
+     "game_id": "401872984",
+     "field": 31
+    },
+    {
+     "player": "Kirk Cousins",
+     "team": "LV",
+     "opponent": "NE",
+     "value": 243.0,
+     "detail": "243 yards and 1 touchdowns for LV against NE",
+     "game_id": "401872986",
+     "field": 31
+    },
+    {
+     "player": "Michael Penix Jr.",
+     "team": "ATL",
+     "opponent": "BAL",
+     "value": 240.0,
+     "detail": "240 yards and 1 touchdowns for ATL against BAL",
+     "game_id": "401872993",
+     "field": 31
+    }
+   ]
+  },
+  "nfl_rush_yards": {
+   "sport": "NFL",
+   "rows": [
+    {
+     "player": "Jahmyr Gibbs",
+     "team": "DET",
+     "opponent": "ARI",
+     "value": 151.0,
+     "detail": "151 yards on 25 carries for DET against ARI",
+     "game_id": "401872991",
+     "field": 112
+    },
+    {
+     "player": "Braelon Allen",
+     "team": "NYJ",
+     "opponent": "CLE",
+     "value": 116.0,
+     "detail": "116 yards on 24 carries for NYJ against CLE",
+     "game_id": "401872983",
+     "field": 112
+    },
+    {
+     "player": "Aaron Jones Sr.",
+     "team": "MIN",
+     "opponent": "NO",
+     "value": 113.0,
+     "detail": "113 yards on 25 carries for MIN against NO",
+     "game_id": "401872987",
+     "field": 112
+    },
+    {
+     "player": "Jayden Daniels",
+     "team": "WSH",
+     "opponent": "NYG",
+     "value": 103.0,
+     "detail": "103 yards on 9 carries for WSH against NYG",
+     "game_id": "401872988",
+     "field": 112
+    },
+    {
+     "player": "Derrick Henry",
+     "team": "BAL",
+     "opponent": "ATL",
+     "value": 102.0,
+     "detail": "102 yards on 24 carries for BAL against ATL",
+     "game_id": "401872993",
+     "field": 112
+    },
+    {
+     "player": "Jaylen Warren",
+     "team": "PIT",
+     "opponent": "IND",
+     "value": 101.0,
+     "detail": "101 yards on 15 carries for PIT against IND",
+     "game_id": "401872985",
+     "field": 112
+    },
+    {
+     "player": "Ollie Gordon II",
+     "team": "MIA",
+     "opponent": "CIN",
+     "value": 88.0,
+     "detail": "88 yards on 18 carries for MIA against CIN",
+     "game_id": "401872982",
+     "field": 112
+    },
+    {
+     "player": "Bijan Robinson",
+     "team": "ATL",
+     "opponent": "BAL",
+     "value": 86.0,
+     "detail": "86 yards on 17 carries for ATL against BAL",
+     "game_id": "401872993",
+     "field": 112
+    },
+    {
+     "player": "Jacory Croskey-Merritt",
+     "team": "WSH",
+     "opponent": "NYG",
+     "value": 82.0,
+     "detail": "82 yards on 11 carries for WSH against NYG",
+     "game_id": "401872988",
+     "field": 112
+    },
+    {
+     "player": "Malik Willis",
+     "team": "MIA",
+     "opponent": "CIN",
+     "value": 74.0,
+     "detail": "74 yards on 8 carries for MIA against CIN",
+     "game_id": "401872982",
+     "field": 112
+    }
+   ]
+  },
+  "nfl_rec_yards": {
+   "sport": "NFL",
+   "rows": [
+    {
+     "player": "Christian Watson",
+     "team": "GB",
+     "opponent": "CHI",
+     "value": 143.0,
+     "detail": "143 yards on 6 catches for GB against CHI",
+     "game_id": "401872990",
+     "field": 214
+    },
+    {
+     "player": "Parker Washington",
+     "team": "JAX",
+     "opponent": "PHI",
+     "value": 124.0,
+     "detail": "124 yards on 6 catches for JAX against PHI",
+     "game_id": "401872981",
+     "field": 214
+    },
+    {
+     "player": "Matthew Golden",
+     "team": "GB",
+     "opponent": "CHI",
+     "value": 123.0,
+     "detail": "123 yards on 6 catches for GB against CHI",
+     "game_id": "401872990",
+     "field": 214
+    },
+    {
+     "player": "Malik Nabers",
+     "team": "NYG",
+     "opponent": "WSH",
+     "value": 121.0,
+     "detail": "121 yards on 11 catches for NYG against WSH",
+     "game_id": "401872988",
+     "field": 214
+    },
+    {
+     "player": "Drake London",
+     "team": "ATL",
+     "opponent": "BAL",
+     "value": 118.0,
+     "detail": "118 yards on 7 catches for ATL against BAL",
+     "game_id": "401872993",
+     "field": 214
+    },
+    {
+     "player": "Mike Evans",
+     "team": "SF",
+     "opponent": "SEA",
+     "value": 113.0,
+     "detail": "113 yards on 7 catches for SF against SEA",
+     "game_id": "401872992",
+     "field": 214
+    },
+    {
+     "player": "Brock Bowers",
+     "team": "LV",
+     "opponent": "NE",
+     "value": 110.0,
+     "detail": "110 yards on 8 catches for LV against NE",
+     "game_id": "401872986",
+     "field": 214
+    },
+    {
+     "player": "Garrett Wilson",
+     "team": "NYJ",
+     "opponent": "CLE",
+     "value": 104.0,
+     "detail": "104 yards on 7 catches for NYJ against CLE",
+     "game_id": "401872983",
+     "field": 214
+    },
+    {
+     "player": "Jaxon Smith-Njigba",
+     "team": "SEA",
+     "opponent": "SF",
+     "value": 102.0,
+     "detail": "102 yards on 5 catches for SEA against SF",
+     "game_id": "401872992",
+     "field": 214
+    },
+    {
+     "player": "Isaiah Likely",
+     "team": "NYG",
+     "opponent": "WSH",
+     "value": 94.0,
+     "detail": "94 yards on 11 catches for NYG against WSH",
+     "game_id": "401872988",
+     "field": 214
+    }
+   ]
+  },
+  "nfl_tackles": {
+   "sport": "NFL",
+   "rows": [
+    {
+     "player": "Sonny Styles",
+     "team": "WSH",
+     "opponent": "NYG",
+     "value": 13.0,
+     "detail": "13 tackles for WSH against NYG",
+     "game_id": "401872988",
+     "field": 564
+    },
+    {
+     "player": "Divine Deablo",
+     "team": "ATL",
+     "opponent": "BAL",
+     "value": 12.0,
+     "detail": "12 tackles for ATL against BAL",
+     "game_id": "401872993",
+     "field": 564
+    },
+    {
+     "player": "Evan Williams",
+     "team": "GB",
+     "opponent": "CHI",
+     "value": 12.0,
+     "detail": "12 tackles for GB against CHI",
+     "game_id": "401872990",
+     "field": 564
+    },
+    {
+     "player": "Nakobe Dean",
+     "team": "LV",
+     "opponent": "NE",
+     "value": 12.0,
+     "detail": "12 tackles for LV against NE",
+     "game_id": "401872986",
+     "field": 564
+    },
+    {
+     "player": "Azeez Al-Shaair",
+     "team": "HOU",
+     "opponent": "TEN",
+     "value": 11.0,
+     "detail": "11 tackles for HOU against TEN",
+     "game_id": "401872984",
+     "field": 564
+    },
+    {
+     "player": "Barrett Carter",
+     "team": "CIN",
+     "opponent": "MIA",
+     "value": 11.0,
+     "detail": "11 tackles for CIN against MIA",
+     "game_id": "401872982",
+     "field": 564
+    },
+    {
+     "player": "Budda Baker",
+     "team": "ARI",
+     "opponent": "DET",
+     "value": 11.0,
+     "detail": "11 tackles for ARI against DET",
+     "game_id": "401872991",
+     "field": 564
+    },
+    {
+     "player": "Jack Campbell",
+     "team": "DET",
+     "opponent": "ARI",
+     "value": 11.0,
+     "detail": "11 tackles for DET against ARI",
+     "game_id": "401872991",
+     "field": 564
+    },
+    {
+     "player": "Jacob Rodriguez",
+     "team": "MIA",
+     "opponent": "CIN",
+     "value": 11.0,
+     "detail": "11 tackles for MIA against CIN",
+     "game_id": "401872982",
+     "field": 564
+    },
+    {
+     "player": "Quincy Williams",
+     "team": "CLE",
+     "opponent": "NYJ",
+     "value": 11.0,
+     "detail": "11 tackles for CLE against NYJ",
+     "game_id": "401872983",
+     "field": 564
     }
    ]
   }
