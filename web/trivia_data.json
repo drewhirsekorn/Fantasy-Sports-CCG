@@ -1,76 +1,72 @@
 {
  "version": 1,
- "date": "2026-10-12",
- "stamp": "efb1f93a2e25",
- "source_date": "2026-10-11",
- "opens": "2026-10-12T07:00:00-04:00",
+ "date": "2026-10-13",
+ "stamp": "111f1a796a5b",
+ "source_date": "2026-10-12",
+ "opens": "2026-10-13T07:00:00-04:00",
  "questions": [
   {
-   "kind": "last_before",
-   "sport": "NFL",
-   "setup": "Jahmyr Gibbs ran for 151 yards for DET yesterday.",
-   "prompt": "Before Jahmyr Gibbs, who was the last NFL player to rush for 150 yards?",
-   "options": [
-    "Jonathan Taylor",
-    "Bucky Irving",
-    "Lee Suggs",
-    "Derrick Henry"
-   ],
-   "answer": 1,
-   "explain": "Bucky Irving \u2014 165 yards for TB on October 8, 2026, 3 days earlier.",
-   "links": [
-    {
-     "label": "October 11, 2026 box score",
-     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401872991"
-    },
-    {
-     "label": "October 8, 2026 box score",
-     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401872980"
-    }
-   ],
-   "id": "2026-10-12-1"
-  },
-  {
    "kind": "led_the_night",
    "sport": "NFL",
-   "setup": "Last night's box scores list 214 pass-catchers.",
+   "setup": "Last night's box scores list 16 pass-catchers.",
    "prompt": "Who had the most receiving yards in the NFL yesterday?",
    "options": [
-    "Jaxon Smith-Njigba",
-    "Mike Evans",
-    "Isaiah Likely",
-    "Christian Watson"
+    "Puka Nacua",
+    "Blake Corum",
+    "Davante Adams",
+    "Ty Johnson"
    ],
-   "answer": 3,
-   "explain": "Christian Watson \u2014 143 yards on 6 catches for GB against CHI.",
+   "answer": 0,
+   "explain": "Puka Nacua \u2014 138 yards on 17 catches for LAR against BUF.",
    "links": [
     {
-     "label": "October 11, 2026 box score",
-     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401872990"
+     "label": "October 12, 2026 box score",
+     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401872994"
     }
    ],
-   "id": "2026-10-12-2"
+   "id": "2026-10-13-1"
   },
   {
    "kind": "led_the_night",
    "sport": "NFL",
-   "setup": "Last night's box scores list 31 quarterbacks.",
-   "prompt": "Who threw for the most yards in the NFL yesterday?",
+   "setup": "Last night's box scores list 6 ball-carriers.",
+   "prompt": "Who ran for the most yards in the NFL yesterday?",
    "options": [
-    "Daniel Jones",
-    "Drake Maye",
-    "C.J. Stroud",
-    "Trevor Lawrence"
+    "Blake Corum",
+    "Josh Allen",
+    "James Cook III",
+    "Ray Davis"
    ],
    "answer": 1,
-   "explain": "Drake Maye \u2014 374 yards and 4 touchdowns for NE against LV.",
+   "explain": "Josh Allen \u2014 121 yards on 10 carries for BUF against LAR.",
    "links": [
     {
-     "label": "October 11, 2026 box score",
-     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401872986"
+     "label": "October 12, 2026 box score",
+     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401872994"
     }
    ],
-   "id": "2026-10-12-3"
+   "id": "2026-10-13-2"
+  },
+  {
+   "kind": "led_the_night",
+   "sport": "NFL",
+   "setup": "Last night's box scores list 46 defenders.",
+   "prompt": "Who made the most tackles in the NFL yesterday?",
+   "options": [
+    "Kam Curl",
+    "Nate Landman",
+    "Cole Bishop",
+    "Kamren Kinchens"
+   ],
+   "answer": 1,
+   "explain": "Nate Landman \u2014 13 tackles for LAR against BUF.",
+   "links": [
+    {
+     "label": "October 12, 2026 box score",
+     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401872994"
+    }
+   ],
+   "id": "2026-10-13-3"
   }
  ],
  "coverage": {
@@ -91,7 +87,7 @@
    },
    {
     "from": "2025-01-01",
-    "through": "2026-10-11",
+    "through": "2026-10-12",
     "feats": [
      "mlb_12_k",
      "mlb_15_k",
@@ -135,7 +131,7 @@
    },
    {
     "from": "2023-10-01",
-    "through": "2026-10-11",
+    "through": "2026-10-12",
     "feats": [
      "nba_10_threes",
      "nba_20_assists",
@@ -169,7 +165,7 @@
    },
    {
     "from": "2023-09-01",
-    "through": "2026-10-11",
+    "through": "2026-10-12",
     "feats": [
      "nfl_150_rec_yards",
      "nfl_150_rush_yards",
@@ -187,6 +183,6 @@
    }
   ]
  },
- "built_at": "2026-10-12T20:11:03Z",
- "closes": "2026-10-13T07:00:00-04:00"
+ "built_at": "2026-10-13T18:03:33Z",
+ "closes": "2026-10-14T07:00:00-04:00"
 }
