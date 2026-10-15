@@ -1,4 +1,82 @@
 {
- "date": "2026-10-13",
- "boards": {}
+ "date": "2026-10-14",
+ "boards": {
+  "mlb_strikeouts": {
+   "sport": "MLB",
+   "rows": [
+    {
+     "player": "Blake Snell",
+     "team": "LAD",
+     "opponent": "MIL",
+     "value": 9.0,
+     "detail": "9 strikeouts over 6.0 innings for LAD against MIL",
+     "game_id": "401908032",
+     "field": 8
+    },
+    {
+     "player": "Justin Wrobleski",
+     "team": "LAD",
+     "opponent": "MIL",
+     "value": 3.0,
+     "detail": "3 strikeouts over 1.2 innings for LAD against MIL",
+     "game_id": "401908032",
+     "field": 8
+    },
+    {
+     "player": "Robert Gasser",
+     "team": "MIL",
+     "opponent": "LAD",
+     "value": 3.0,
+     "detail": "3 strikeouts over 5.0 innings for MIL against LAD",
+     "game_id": "401908032",
+     "field": 8
+    },
+    {
+     "player": "DL Hall",
+     "team": "MIL",
+     "opponent": "LAD",
+     "value": 2.0,
+     "detail": "2 strikeouts over 2.1 innings for MIL against LAD",
+     "game_id": "401908032",
+     "field": 8
+    },
+    {
+     "player": "Trevor Megill",
+     "team": "MIL",
+     "opponent": "LAD",
+     "value": 2.0,
+     "detail": "2 strikeouts over 1.1 innings for MIL against LAD",
+     "game_id": "401908032",
+     "field": 8
+    },
+    {
+     "player": "Abner Uribe",
+     "team": "MIL",
+     "opponent": "LAD",
+     "value": 1.0,
+     "detail": "1 strikeouts over 0.1 innings for MIL against LAD",
+     "game_id": "401908032",
+     "field": 8
+    },
+    {
+     "player": "Evan Phillips",
+     "team": "LAD",
+     "opponent": "MIL",
+     "value": 0.0,
+     "detail": "0 strikeouts over 1.0 innings for LAD against MIL",
+     "game_id": "401908032",
+     "field": 8
+    },
+    {
+     "player": "Roki Sasaki",
+     "team": "LAD",
+     "opponent": "MIL",
+     "value": 0.0,
+     "detail": "0 strikeouts over 0.1 innings for LAD against MIL",
+     "game_id": "401908032",
+     "field": 8
+    }
+   ]
+  }
+ }
 }
