@@ -1,80 +1,288 @@
 {
- "date": "2026-10-14",
+ "date": "2026-10-15",
  "boards": {
   "mlb_strikeouts": {
    "sport": "MLB",
    "rows": [
     {
-     "player": "Blake Snell",
-     "team": "LAD",
-     "opponent": "MIL",
+     "player": "Gavin Williams",
+     "team": "CLE",
+     "opponent": "TB",
      "value": 9.0,
-     "detail": "9 strikeouts over 6.0 innings for LAD against MIL",
-     "game_id": "401908032",
-     "field": 8
+     "detail": "9 strikeouts over 5.0 innings for CLE against TB",
+     "game_id": "401908025",
+     "field": 17
     },
     {
-     "player": "Justin Wrobleski",
+     "player": "Tyler Glasnow",
      "team": "LAD",
      "opponent": "MIL",
+     "value": 6.0,
+     "detail": "6 strikeouts over 4.1 innings for LAD against MIL",
+     "game_id": "401908033",
+     "field": 17
+    },
+    {
+     "player": "Tyler Wells",
+     "team": "TB",
+     "opponent": "CLE",
+     "value": 4.0,
+     "detail": "4 strikeouts over 2.0 innings for TB against CLE",
+     "game_id": "401908025",
+     "field": 17
+    },
+    {
+     "player": "Aaron Ashby",
+     "team": "MIL",
+     "opponent": "LAD",
      "value": 3.0,
-     "detail": "3 strikeouts over 1.2 innings for LAD against MIL",
-     "game_id": "401908032",
-     "field": 8
+     "detail": "3 strikeouts over 3.0 innings for MIL against LAD",
+     "game_id": "401908033",
+     "field": 17
     },
     {
-     "player": "Robert Gasser",
+     "player": "JoJo Romero",
      "team": "MIL",
      "opponent": "LAD",
      "value": 3.0,
-     "detail": "3 strikeouts over 5.0 innings for MIL against LAD",
-     "game_id": "401908032",
-     "field": 8
+     "detail": "3 strikeouts over 2.0 innings for MIL against LAD",
+     "game_id": "401908033",
+     "field": 17
     },
     {
-     "player": "DL Hall",
-     "team": "MIL",
-     "opponent": "LAD",
+     "player": "Cade Smith",
+     "team": "CLE",
+     "opponent": "TB",
      "value": 2.0,
-     "detail": "2 strikeouts over 2.1 innings for MIL against LAD",
-     "game_id": "401908032",
-     "field": 8
+     "detail": "2 strikeouts over 1.1 innings for CLE against TB",
+     "game_id": "401908025",
+     "field": 17
     },
     {
-     "player": "Trevor Megill",
-     "team": "MIL",
-     "opponent": "LAD",
-     "value": 2.0,
-     "detail": "2 strikeouts over 1.1 innings for MIL against LAD",
-     "game_id": "401908032",
-     "field": 8
-    },
-    {
-     "player": "Abner Uribe",
-     "team": "MIL",
-     "opponent": "LAD",
-     "value": 1.0,
-     "detail": "1 strikeouts over 0.1 innings for MIL against LAD",
-     "game_id": "401908032",
-     "field": 8
-    },
-    {
-     "player": "Evan Phillips",
+     "player": "Edwin Diaz",
      "team": "LAD",
      "opponent": "MIL",
-     "value": 0.0,
-     "detail": "0 strikeouts over 1.0 innings for LAD against MIL",
-     "game_id": "401908032",
-     "field": 8
+     "value": 2.0,
+     "detail": "2 strikeouts over 3.0 innings for LAD against MIL",
+     "game_id": "401908033",
+     "field": 17
     },
     {
-     "player": "Roki Sasaki",
+     "player": "Griffin Jax",
+     "team": "TB",
+     "opponent": "CLE",
+     "value": 2.0,
+     "detail": "2 strikeouts over 4.0 innings for TB against CLE",
+     "game_id": "401908025",
+     "field": 17
+    },
+    {
+     "player": "Steven Matz",
+     "team": "TB",
+     "opponent": "CLE",
+     "value": 2.0,
+     "detail": "2 strikeouts over 2.0 innings for TB against CLE",
+     "game_id": "401908025",
+     "field": 17
+    },
+    {
+     "player": "Tanner Scott",
      "team": "LAD",
      "opponent": "MIL",
-     "value": 0.0,
-     "detail": "0 strikeouts over 0.1 innings for LAD against MIL",
-     "game_id": "401908032",
-     "field": 8
+     "value": 2.0,
+     "detail": "2 strikeouts over 1.0 innings for LAD against MIL",
+     "game_id": "401908033",
+     "field": 17
+    }
+   ]
+  },
+  "nfl_rec_yards": {
+   "sport": "NFL",
+   "rows": [
+    {
+     "player": "Jaxon Smith-Njigba",
+     "team": "SEA",
+     "opponent": "DEN",
+     "value": 134.0,
+     "detail": "134 yards on 12 catches for SEA against DEN",
+     "game_id": "401872995",
+     "field": 15
+    },
+    {
+     "player": "Rashid Shaheed",
+     "team": "SEA",
+     "opponent": "DEN",
+     "value": 66.0,
+     "detail": "66 yards on 5 catches for SEA against DEN",
+     "game_id": "401872995",
+     "field": 15
+    },
+    {
+     "player": "Cooper Kupp",
+     "team": "SEA",
+     "opponent": "DEN",
+     "value": 50.0,
+     "detail": "50 yards on 5 catches for SEA against DEN",
+     "game_id": "401872995",
+     "field": 15
+    },
+    {
+     "player": "RJ Harvey",
+     "team": "DEN",
+     "opponent": "SEA",
+     "value": 31.0,
+     "detail": "31 yards on 3 catches for DEN against SEA",
+     "game_id": "401872995",
+     "field": 15
+    },
+    {
+     "player": "Jaylen Waddle",
+     "team": "DEN",
+     "opponent": "SEA",
+     "value": 24.0,
+     "detail": "24 yards on 4 catches for DEN against SEA",
+     "game_id": "401872995",
+     "field": 15
+    },
+    {
+     "player": "Courtland Sutton",
+     "team": "DEN",
+     "opponent": "SEA",
+     "value": 19.0,
+     "detail": "19 yards on 2 catches for DEN against SEA",
+     "game_id": "401872995",
+     "field": 15
+    },
+    {
+     "player": "AJ Barner",
+     "team": "SEA",
+     "opponent": "DEN",
+     "value": 16.0,
+     "detail": "16 yards on 3 catches for SEA against DEN",
+     "game_id": "401872995",
+     "field": 15
+    },
+    {
+     "player": "Evan Engram",
+     "team": "DEN",
+     "opponent": "SEA",
+     "value": 13.0,
+     "detail": "13 yards on 2 catches for DEN against SEA",
+     "game_id": "401872995",
+     "field": 15
+    },
+    {
+     "player": "Marvin Mims Jr.",
+     "team": "DEN",
+     "opponent": "SEA",
+     "value": 13.0,
+     "detail": "13 yards on 2 catches for DEN against SEA",
+     "game_id": "401872995",
+     "field": 15
+    },
+    {
+     "player": "Tory Horton",
+     "team": "SEA",
+     "opponent": "DEN",
+     "value": 13.0,
+     "detail": "13 yards on 1 catches for SEA against DEN",
+     "game_id": "401872995",
+     "field": 15
+    }
+   ]
+  },
+  "nfl_tackles": {
+   "sport": "NFL",
+   "rows": [
+    {
+     "player": "Alex Singleton",
+     "team": "DEN",
+     "opponent": "SEA",
+     "value": 13.0,
+     "detail": "13 tackles for DEN against SEA",
+     "game_id": "401872995",
+     "field": 42
+    },
+    {
+     "player": "Ernest Jones IV",
+     "team": "SEA",
+     "opponent": "DEN",
+     "value": 9.0,
+     "detail": "9 tackles for SEA against DEN",
+     "game_id": "401872995",
+     "field": 42
+    },
+    {
+     "player": "Brandon Jones",
+     "team": "DEN",
+     "opponent": "SEA",
+     "value": 8.0,
+     "detail": "8 tackles for DEN against SEA",
+     "game_id": "401872995",
+     "field": 42
+    },
+    {
+     "player": "Tyrice Knight",
+     "team": "SEA",
+     "opponent": "DEN",
+     "value": 8.0,
+     "detail": "8 tackles for SEA against DEN",
+     "game_id": "401872995",
+     "field": 42
+    },
+    {
+     "player": "Jahdae Barron",
+     "team": "DEN",
+     "opponent": "SEA",
+     "value": 7.0,
+     "detail": "7 tackles for DEN against SEA",
+     "game_id": "401872995",
+     "field": 42
+    },
+    {
+     "player": "Nick Emmanwori",
+     "team": "SEA",
+     "opponent": "DEN",
+     "value": 7.0,
+     "detail": "7 tackles for SEA against DEN",
+     "game_id": "401872995",
+     "field": 42
+    },
+    {
+     "player": "Kris Abrams-Draine",
+     "team": "DEN",
+     "opponent": "SEA",
+     "value": 6.0,
+     "detail": "6 tackles for DEN against SEA",
+     "game_id": "401872995",
+     "field": 42
+    },
+    {
+     "player": "Taylor Rapp",
+     "team": "DEN",
+     "opponent": "SEA",
+     "value": 6.0,
+     "detail": "6 tackles for DEN against SEA",
+     "game_id": "401872995",
+     "field": 42
+    },
+    {
+     "player": "Devon Key",
+     "team": "DEN",
+     "opponent": "SEA",
+     "value": 5.0,
+     "detail": "5 tackles for DEN against SEA",
+     "game_id": "401872995",
+     "field": 42
+    },
+    {
+     "player": "Devon Witherspoon",
+     "team": "SEA",
+     "opponent": "DEN",
+     "value": 5.0,
+     "detail": "5 tackles for SEA against DEN",
+     "game_id": "401872995",
+     "field": 42
     }
    ]
   }
