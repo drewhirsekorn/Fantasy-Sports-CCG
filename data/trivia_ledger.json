@@ -18,7 +18,7 @@
    },
    {
     "from": "2025-01-01",
-    "through": "2026-10-17",
+    "through": "2026-10-18",
     "feats": [
      "mlb_12_k",
      "mlb_15_k",
@@ -62,7 +62,7 @@
    },
    {
     "from": "2023-10-01",
-    "through": "2026-10-17",
+    "through": "2026-10-18",
     "feats": [
      "nba_10_threes",
      "nba_20_assists",
@@ -96,7 +96,7 @@
    },
    {
     "from": "2023-09-01",
-    "through": "2026-10-17",
+    "through": "2026-10-18",
     "feats": [
      "nfl_150_rec_yards",
      "nfl_150_rush_yards",
@@ -70954,6 +70954,55 @@
     "attempts": 32.0
    },
    "source": "espn:401872982"
+  },
+  {
+   "feat": "nfl_150_rec_yards",
+   "sport": "NFL",
+   "date": "2026-10-18",
+   "player": "Malik Nabers",
+   "player_id": "4595348",
+   "team": "NYG",
+   "opponent": "NO",
+   "value": 165.0,
+   "line": {
+    "rec_yards": 165.0,
+    "rec_td": 0.0,
+    "receptions": 12.0
+   },
+   "source": "espn:401873000"
+  },
+  {
+   "feat": "nfl_3_sacks",
+   "sport": "NFL",
+   "date": "2026-10-18",
+   "player": "Kyler Gordon",
+   "player_id": "4361093",
+   "team": "CHI",
+   "opponent": "ATL",
+   "value": 3.0,
+   "line": {
+    "sacks": 3.0,
+    "tackles": 4.0
+   },
+   "source": "espn:401872999"
+  },
+  {
+   "feat": "nfl_4_pass_td",
+   "sport": "NFL",
+   "date": "2026-10-18",
+   "player": "Trevor Lawrence",
+   "player_id": "4360310",
+   "team": "JAX",
+   "opponent": "HOU",
+   "value": 4.0,
+   "line": {
+    "pass_yards": 306.0,
+    "pass_td": 4.0,
+    "interceptions": 1.0,
+    "completions": 24.0,
+    "attempts": 41.0
+   },
+   "source": "espn:401872996"
   }
  ]
 }
