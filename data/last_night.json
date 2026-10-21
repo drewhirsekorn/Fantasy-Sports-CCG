@@ -1,193 +1,478 @@
 {
- "date": "2026-10-19",
+ "date": "2026-10-20",
  "boards": {
-  "nfl_rec_yards": {
-   "sport": "NFL",
+  "nba_points": {
+   "sport": "NBA",
    "rows": [
     {
-     "player": "Mike Evans",
-     "team": "SF",
-     "opponent": "WSH",
-     "value": 94.0,
-     "detail": "94 yards on 3 catches for SF against WSH",
-     "game_id": "401873008",
-     "field": 17
+     "player": "Paul George",
+     "team": "BOS",
+     "opponent": "DET",
+     "value": 38.0,
+     "detail": "38 points in 31 minutes for BOS against DET",
+     "game_id": "401909088",
+     "field": 68
     },
     {
-     "player": "Chig Okonkwo",
-     "team": "WSH",
-     "opponent": "SF",
-     "value": 69.0,
-     "detail": "69 yards on 7 catches for WSH against SF",
-     "game_id": "401873008",
-     "field": 17
+     "player": "Shai Gilgeous-Alexander",
+     "team": "OKC",
+     "opponent": "SA",
+     "value": 32.0,
+     "detail": "32 points in 36 minutes for OKC against SA",
+     "game_id": "401909090",
+     "field": 68
     },
     {
-     "player": "George Kittle",
-     "team": "SF",
-     "opponent": "WSH",
-     "value": 69.0,
-     "detail": "69 yards on 5 catches for SF against WSH",
-     "game_id": "401873008",
-     "field": 17
+     "player": "Tyrese Maxey",
+     "team": "PHI",
+     "opponent": "NY",
+     "value": 28.0,
+     "detail": "28 points in 40 minutes for PHI against NY",
+     "game_id": "401909089",
+     "field": 68
     },
     {
-     "player": "Treylon Burks",
-     "team": "WSH",
-     "opponent": "SF",
-     "value": 66.0,
-     "detail": "66 yards on 4 catches for WSH against SF",
-     "game_id": "401873008",
-     "field": 17
+     "player": "Stephon Castle",
+     "team": "SA",
+     "opponent": "OKC",
+     "value": 24.0,
+     "detail": "24 points in 28 minutes for SA against OKC",
+     "game_id": "401909090",
+     "field": 68
     },
     {
-     "player": "Christian McCaffrey",
-     "team": "SF",
-     "opponent": "WSH",
-     "value": 53.0,
-     "detail": "53 yards on 9 catches for SF against WSH",
-     "game_id": "401873008",
-     "field": 17
-    },
-    {
-     "player": "Antonio Williams",
-     "team": "WSH",
-     "opponent": "SF",
-     "value": 50.0,
-     "detail": "50 yards on 3 catches for WSH against SF",
-     "game_id": "401873008",
-     "field": 17
-    },
-    {
-     "player": "Stefon Diggs",
-     "team": "WSH",
-     "opponent": "SF",
-     "value": 44.0,
-     "detail": "44 yards on 6 catches for WSH against SF",
-     "game_id": "401873008",
-     "field": 17
-    },
-    {
-     "player": "Rachaad White",
-     "team": "WSH",
-     "opponent": "SF",
-     "value": 30.0,
-     "detail": "30 yards on 4 catches for WSH against SF",
-     "game_id": "401873008",
-     "field": 17
-    },
-    {
-     "player": "Terry McLaurin",
-     "team": "WSH",
-     "opponent": "SF",
-     "value": 27.0,
-     "detail": "27 yards on 1 catches for WSH against SF",
-     "game_id": "401873008",
-     "field": 17
-    },
-    {
-     "player": "Jordan Watkins",
-     "team": "SF",
-     "opponent": "WSH",
+     "player": "Cade Cunningham",
+     "team": "DET",
+     "opponent": "BOS",
      "value": 22.0,
-     "detail": "22 yards on 1 catches for SF against WSH",
-     "game_id": "401873008",
-     "field": 17
+     "detail": "22 points in 35 minutes for DET against BOS",
+     "game_id": "401909088",
+     "field": 68
+    },
+    {
+     "player": "Jalen Duren",
+     "team": "DET",
+     "opponent": "BOS",
+     "value": 22.0,
+     "detail": "22 points in 28 minutes for DET against BOS",
+     "game_id": "401909088",
+     "field": 68
+    },
+    {
+     "player": "Duncan Robinson",
+     "team": "DET",
+     "opponent": "BOS",
+     "value": 21.0,
+     "detail": "21 points in 28 minutes for DET against BOS",
+     "game_id": "401909088",
+     "field": 68
+    },
+    {
+     "player": "Jalen Brunson",
+     "team": "NY",
+     "opponent": "PHI",
+     "value": 21.0,
+     "detail": "21 points in 34 minutes for NY against PHI",
+     "game_id": "401909089",
+     "field": 68
+    },
+    {
+     "player": "Jared McCain",
+     "team": "OKC",
+     "opponent": "SA",
+     "value": 20.0,
+     "detail": "20 points in 22 minutes for OKC against SA",
+     "game_id": "401909090",
+     "field": 68
+    },
+    {
+     "player": "Javonte Green",
+     "team": "DET",
+     "opponent": "BOS",
+     "value": 19.0,
+     "detail": "19 points in 18 minutes for DET against BOS",
+     "game_id": "401909088",
+     "field": 68
     }
    ]
   },
-  "nfl_tackles": {
-   "sport": "NFL",
+  "nba_rebounds": {
+   "sport": "NBA",
    "rows": [
     {
-     "player": "Sonny Styles",
-     "team": "WSH",
-     "opponent": "SF",
+     "player": "Andre Drummond",
+     "team": "NY",
+     "opponent": "PHI",
+     "value": 14.0,
+     "detail": "14 rebounds for NY against PHI",
+     "game_id": "401909089",
+     "field": 68
+    },
+    {
+     "player": "Victor Wembanyama",
+     "team": "SA",
+     "opponent": "OKC",
      "value": 13.0,
-     "detail": "13 tackles for WSH against SF",
-     "game_id": "401873008",
-     "field": 38
+     "detail": "13 rebounds for SA against OKC",
+     "game_id": "401909090",
+     "field": 68
     },
     {
-     "player": "Jaden Dugger",
-     "team": "SF",
-     "opponent": "WSH",
+     "player": "Karl-Anthony Towns",
+     "team": "NY",
+     "opponent": "PHI",
+     "value": 12.0,
+     "detail": "12 rebounds for NY against PHI",
+     "game_id": "401909089",
+     "field": 68
+    },
+    {
+     "player": "Ausar Thompson",
+     "team": "DET",
+     "opponent": "BOS",
      "value": 11.0,
-     "detail": "11 tackles for SF against WSH",
-     "game_id": "401873008",
-     "field": 38
+     "detail": "11 rebounds for DET against BOS",
+     "game_id": "401909088",
+     "field": 68
     },
     {
-     "player": "Frankie Luvu",
-     "team": "WSH",
-     "opponent": "SF",
+     "player": "Joel Embiid",
+     "team": "PHI",
+     "opponent": "NY",
+     "value": 11.0,
+     "detail": "11 rebounds for PHI against NY",
+     "game_id": "401909089",
+     "field": 68
+    },
+    {
+     "player": "Jalen Duren",
+     "team": "DET",
+     "opponent": "BOS",
+     "value": 9.0,
+     "detail": "9 rebounds for DET against BOS",
+     "game_id": "401909088",
+     "field": 68
+    },
+    {
+     "player": "LeBron James",
+     "team": "PHI",
+     "opponent": "NY",
+     "value": 9.0,
+     "detail": "9 rebounds for PHI against NY",
+     "game_id": "401909089",
+     "field": 68
+    },
+    {
+     "player": "Jaylen Brown",
+     "team": "PHI",
+     "opponent": "NY",
      "value": 8.0,
-     "detail": "8 tackles for WSH against SF",
-     "game_id": "401873008",
-     "field": 38
+     "detail": "8 rebounds for PHI against NY",
+     "game_id": "401909089",
+     "field": 68
     },
     {
-     "player": "Fred Warner",
-     "team": "SF",
-     "opponent": "WSH",
-     "value": 8.0,
-     "detail": "8 tackles for SF against WSH",
-     "game_id": "401873008",
-     "field": 38
-    },
-    {
-     "player": "Amik Robertson",
-     "team": "WSH",
-     "opponent": "SF",
+     "player": "Chet Holmgren",
+     "team": "OKC",
+     "opponent": "SA",
      "value": 7.0,
-     "detail": "7 tackles for WSH against SF",
-     "game_id": "401873008",
-     "field": 38
+     "detail": "7 rebounds for OKC against SA",
+     "game_id": "401909090",
+     "field": 68
     },
     {
-     "player": "Jeremy Reaves",
-     "team": "WSH",
-     "opponent": "SF",
+     "player": "De'Aaron Fox",
+     "team": "SA",
+     "opponent": "OKC",
+     "value": 7.0,
+     "detail": "7 rebounds for SA against OKC",
+     "game_id": "401909090",
+     "field": 68
+    }
+   ]
+  },
+  "nba_assists": {
+   "sport": "NBA",
+   "rows": [
+    {
+     "player": "Jayson Tatum",
+     "team": "BOS",
+     "opponent": "DET",
+     "value": 11.0,
+     "detail": "11 assists for BOS against DET",
+     "game_id": "401909088",
+     "field": 68
+    },
+    {
+     "player": "Cade Cunningham",
+     "team": "DET",
+     "opponent": "BOS",
+     "value": 8.0,
+     "detail": "8 assists for DET against BOS",
+     "game_id": "401909088",
+     "field": 68
+    },
+    {
+     "player": "Derrick White",
+     "team": "BOS",
+     "opponent": "DET",
+     "value": 8.0,
+     "detail": "8 assists for BOS against DET",
+     "game_id": "401909088",
+     "field": 68
+    },
+    {
+     "player": "De'Aaron Fox",
+     "team": "SA",
+     "opponent": "OKC",
+     "value": 7.0,
+     "detail": "7 assists for SA against OKC",
+     "game_id": "401909090",
+     "field": 68
+    },
+    {
+     "player": "LeBron James",
+     "team": "PHI",
+     "opponent": "NY",
+     "value": 7.0,
+     "detail": "7 assists for PHI against NY",
+     "game_id": "401909089",
+     "field": 68
+    },
+    {
+     "player": "Ajay Mitchell",
+     "team": "OKC",
+     "opponent": "SA",
      "value": 6.0,
-     "detail": "6 tackles for WSH against SF",
-     "game_id": "401873008",
-     "field": 38
+     "detail": "6 assists for OKC against SA",
+     "game_id": "401909090",
+     "field": 68
     },
     {
-     "player": "Ji'Ayir Brown",
-     "team": "SF",
-     "opponent": "WSH",
+     "player": "Jaylen Brown",
+     "team": "PHI",
+     "opponent": "NY",
+     "value": 6.0,
+     "detail": "6 assists for PHI against NY",
+     "game_id": "401909089",
+     "field": 68
+    },
+    {
+     "player": "Joel Embiid",
+     "team": "PHI",
+     "opponent": "NY",
+     "value": 6.0,
+     "detail": "6 assists for PHI against NY",
+     "game_id": "401909089",
+     "field": 68
+    },
+    {
+     "player": "Ausar Thompson",
+     "team": "DET",
+     "opponent": "BOS",
      "value": 5.0,
-     "detail": "5 tackles for SF against WSH",
-     "game_id": "401873008",
-     "field": 38
+     "detail": "5 assists for DET against BOS",
+     "game_id": "401909088",
+     "field": 68
     },
     {
-     "player": "K'Lavon Chaisson",
-     "team": "WSH",
-     "opponent": "SF",
-     "value": 4.0,
-     "detail": "4 tackles for WSH against SF",
-     "game_id": "401873008",
-     "field": 38
+     "player": "Dylan Harper",
+     "team": "SA",
+     "opponent": "OKC",
+     "value": 5.0,
+     "detail": "5 assists for SA against OKC",
+     "game_id": "401909090",
+     "field": 68
+    }
+   ]
+  },
+  "nba_threes": {
+   "sport": "NBA",
+   "rows": [
+    {
+     "player": "Paul George",
+     "team": "BOS",
+     "opponent": "DET",
+     "value": 7.0,
+     "detail": "7 threes and 38 points for BOS against DET",
+     "game_id": "401909088",
+     "field": 68
     },
     {
-     "player": "Keion White",
-     "team": "SF",
-     "opponent": "WSH",
-     "value": 4.0,
-     "detail": "4 tackles for SF against WSH",
-     "game_id": "401873008",
-     "field": 38
+     "player": "Jared McCain",
+     "team": "OKC",
+     "opponent": "SA",
+     "value": 6.0,
+     "detail": "6 threes and 20 points for OKC against SA",
+     "game_id": "401909090",
+     "field": 68
     },
     {
-     "player": "Malik Mustapha",
-     "team": "SF",
-     "opponent": "WSH",
+     "player": "Duncan Robinson",
+     "team": "DET",
+     "opponent": "BOS",
+     "value": 5.0,
+     "detail": "5 threes and 21 points for DET against BOS",
+     "game_id": "401909088",
+     "field": 68
+    },
+    {
+     "player": "Javonte Green",
+     "team": "DET",
+     "opponent": "BOS",
+     "value": 5.0,
+     "detail": "5 threes and 19 points for DET against BOS",
+     "game_id": "401909088",
+     "field": 68
+    },
+    {
+     "player": "Stephon Castle",
+     "team": "SA",
+     "opponent": "OKC",
+     "value": 5.0,
+     "detail": "5 threes and 24 points for SA against OKC",
+     "game_id": "401909090",
+     "field": 68
+    },
+    {
+     "player": "Anfernee Simons",
+     "team": "PHI",
+     "opponent": "NY",
+     "value": 3.0,
+     "detail": "3 threes and 13 points for PHI against NY",
+     "game_id": "401909089",
+     "field": 68
+    },
+    {
+     "player": "Derrick White",
+     "team": "BOS",
+     "opponent": "DET",
+     "value": 3.0,
+     "detail": "3 threes and 17 points for BOS against DET",
+     "game_id": "401909088",
+     "field": 68
+    },
+    {
+     "player": "Karl-Anthony Towns",
+     "team": "NY",
+     "opponent": "PHI",
+     "value": 3.0,
+     "detail": "3 threes and 19 points for NY against PHI",
+     "game_id": "401909089",
+     "field": 68
+    },
+    {
+     "player": "Sam Hauser",
+     "team": "BOS",
+     "opponent": "DET",
+     "value": 3.0,
+     "detail": "3 threes and 11 points for BOS against DET",
+     "game_id": "401909088",
+     "field": 68
+    },
+    {
+     "player": "Shai Gilgeous-Alexander",
+     "team": "OKC",
+     "opponent": "SA",
+     "value": 3.0,
+     "detail": "3 threes and 32 points for OKC against SA",
+     "game_id": "401909090",
+     "field": 68
+    }
+   ]
+  },
+  "nba_blocks": {
+   "sport": "NBA",
+   "rows": [
+    {
+     "player": "Victor Wembanyama",
+     "team": "SA",
+     "opponent": "OKC",
+     "value": 6.0,
+     "detail": "6 blocks for SA against OKC",
+     "game_id": "401909090",
+     "field": 68
+    },
+    {
+     "player": "Chet Holmgren",
+     "team": "OKC",
+     "opponent": "SA",
      "value": 4.0,
-     "detail": "4 tackles for SF against WSH",
-     "game_id": "401873008",
-     "field": 38
+     "detail": "4 blocks for OKC against SA",
+     "game_id": "401909090",
+     "field": 68
+    },
+    {
+     "player": "Joel Embiid",
+     "team": "PHI",
+     "opponent": "NY",
+     "value": 3.0,
+     "detail": "3 blocks for PHI against NY",
+     "game_id": "401909089",
+     "field": 68
+    },
+    {
+     "player": "Julian Champagnie",
+     "team": "SA",
+     "opponent": "OKC",
+     "value": 3.0,
+     "detail": "3 blocks for SA against OKC",
+     "game_id": "401909090",
+     "field": 68
+    },
+    {
+     "player": "Shai Gilgeous-Alexander",
+     "team": "OKC",
+     "opponent": "SA",
+     "value": 3.0,
+     "detail": "3 blocks for OKC against SA",
+     "game_id": "401909090",
+     "field": 68
+    },
+    {
+     "player": "Tyrese Maxey",
+     "team": "PHI",
+     "opponent": "NY",
+     "value": 3.0,
+     "detail": "3 blocks for PHI against NY",
+     "game_id": "401909089",
+     "field": 68
+    },
+    {
+     "player": "Andre Drummond",
+     "team": "NY",
+     "opponent": "PHI",
+     "value": 2.0,
+     "detail": "2 blocks for NY against PHI",
+     "game_id": "401909089",
+     "field": 68
+    },
+    {
+     "player": "Karl-Anthony Towns",
+     "team": "NY",
+     "opponent": "PHI",
+     "value": 2.0,
+     "detail": "2 blocks for NY against PHI",
+     "game_id": "401909089",
+     "field": 68
+    },
+    {
+     "player": "Mitchell Robinson",
+     "team": "BOS",
+     "opponent": "DET",
+     "value": 2.0,
+     "detail": "2 blocks for BOS against DET",
+     "game_id": "401909088",
+     "field": 68
+    },
+    {
+     "player": "Neemias Queta",
+     "team": "BOS",
+     "opponent": "DET",
+     "value": 2.0,
+     "detail": "2 blocks for BOS against DET",
+     "game_id": "401909088",
+     "field": 68
     }
    ]
   }
