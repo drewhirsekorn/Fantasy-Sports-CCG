@@ -1,193 +1,98 @@
 {
- "date": "2026-10-20",
+ "date": "2026-10-21",
  "boards": {
-  "nba_points": {
-   "sport": "NBA",
-   "rows": [
-    {
-     "player": "Paul George",
-     "team": "BOS",
-     "opponent": "DET",
-     "value": 38.0,
-     "detail": "38 points in 31 minutes for BOS against DET",
-     "game_id": "401909088",
-     "field": 68
-    },
-    {
-     "player": "Shai Gilgeous-Alexander",
-     "team": "OKC",
-     "opponent": "SA",
-     "value": 32.0,
-     "detail": "32 points in 36 minutes for OKC against SA",
-     "game_id": "401909090",
-     "field": 68
-    },
-    {
-     "player": "Tyrese Maxey",
-     "team": "PHI",
-     "opponent": "NY",
-     "value": 28.0,
-     "detail": "28 points in 40 minutes for PHI against NY",
-     "game_id": "401909089",
-     "field": 68
-    },
-    {
-     "player": "Stephon Castle",
-     "team": "SA",
-     "opponent": "OKC",
-     "value": 24.0,
-     "detail": "24 points in 28 minutes for SA against OKC",
-     "game_id": "401909090",
-     "field": 68
-    },
-    {
-     "player": "Cade Cunningham",
-     "team": "DET",
-     "opponent": "BOS",
-     "value": 22.0,
-     "detail": "22 points in 35 minutes for DET against BOS",
-     "game_id": "401909088",
-     "field": 68
-    },
-    {
-     "player": "Jalen Duren",
-     "team": "DET",
-     "opponent": "BOS",
-     "value": 22.0,
-     "detail": "22 points in 28 minutes for DET against BOS",
-     "game_id": "401909088",
-     "field": 68
-    },
-    {
-     "player": "Duncan Robinson",
-     "team": "DET",
-     "opponent": "BOS",
-     "value": 21.0,
-     "detail": "21 points in 28 minutes for DET against BOS",
-     "game_id": "401909088",
-     "field": 68
-    },
-    {
-     "player": "Jalen Brunson",
-     "team": "NY",
-     "opponent": "PHI",
-     "value": 21.0,
-     "detail": "21 points in 34 minutes for NY against PHI",
-     "game_id": "401909089",
-     "field": 68
-    },
-    {
-     "player": "Jared McCain",
-     "team": "OKC",
-     "opponent": "SA",
-     "value": 20.0,
-     "detail": "20 points in 22 minutes for OKC against SA",
-     "game_id": "401909090",
-     "field": 68
-    },
-    {
-     "player": "Javonte Green",
-     "team": "DET",
-     "opponent": "BOS",
-     "value": 19.0,
-     "detail": "19 points in 18 minutes for DET against BOS",
-     "game_id": "401909088",
-     "field": 68
-    }
-   ]
-  },
   "nba_rebounds": {
    "sport": "NBA",
    "rows": [
     {
-     "player": "Andre Drummond",
-     "team": "NY",
-     "opponent": "PHI",
+     "player": "Domantas Sabonis",
+     "team": "SAC",
+     "opponent": "LAC",
+     "value": 18.0,
+     "detail": "18 rebounds for SAC against LAC",
+     "game_id": "401909842",
+     "field": 254
+    },
+    {
+     "player": "Ivica Zubac",
+     "team": "IND",
+     "opponent": "NO",
+     "value": 15.0,
+     "detail": "15 rebounds for IND against NO",
+     "game_id": "401909839",
+     "field": 254
+    },
+    {
+     "player": "Rudy Gobert",
+     "team": "MIN",
+     "opponent": "MIA",
+     "value": 15.0,
+     "detail": "15 rebounds for MIN against MIA",
+     "game_id": "401909091",
+     "field": 254
+    },
+    {
+     "player": "Jalen Johnson",
+     "team": "ATL",
+     "opponent": "ORL",
      "value": 14.0,
-     "detail": "14 rebounds for NY against PHI",
-     "game_id": "401909089",
-     "field": 68
+     "detail": "14 rebounds for ATL against ORL",
+     "game_id": "401909834",
+     "field": 254
     },
     {
-     "player": "Victor Wembanyama",
-     "team": "SA",
-     "opponent": "OKC",
-     "value": 13.0,
-     "detail": "13 rebounds for SA against OKC",
-     "game_id": "401909090",
-     "field": 68
+     "player": "Yves Missi",
+     "team": "NO",
+     "opponent": "IND",
+     "value": 14.0,
+     "detail": "14 rebounds for NO against IND",
+     "game_id": "401909839",
+     "field": 254
     },
     {
-     "player": "Karl-Anthony Towns",
-     "team": "NY",
-     "opponent": "PHI",
+     "player": "Anthony Davis",
+     "team": "WSH",
+     "opponent": "MIL",
      "value": 12.0,
-     "detail": "12 rebounds for NY against PHI",
-     "game_id": "401909089",
-     "field": 68
+     "detail": "12 rebounds for WSH against MIL",
+     "game_id": "401909835",
+     "field": 254
     },
     {
-     "player": "Ausar Thompson",
-     "team": "DET",
-     "opponent": "BOS",
+     "player": "Brook Lopez",
+     "team": "LAC",
+     "opponent": "SAC",
      "value": 11.0,
-     "detail": "11 rebounds for DET against BOS",
-     "game_id": "401909088",
-     "field": 68
+     "detail": "11 rebounds for LAC against SAC",
+     "game_id": "401909842",
+     "field": 254
     },
     {
-     "player": "Joel Embiid",
-     "team": "PHI",
-     "opponent": "NY",
+     "player": "Cameron Boozer",
+     "team": "MEM",
+     "opponent": "UTAH",
      "value": 11.0,
-     "detail": "11 rebounds for PHI against NY",
-     "game_id": "401909089",
-     "field": 68
+     "detail": "11 rebounds for MEM against UTAH",
+     "game_id": "401909838",
+     "field": 254
     },
     {
-     "player": "Jalen Duren",
-     "team": "DET",
-     "opponent": "BOS",
-     "value": 9.0,
-     "detail": "9 rebounds for DET against BOS",
-     "game_id": "401909088",
-     "field": 68
+     "player": "Naz Reid",
+     "team": "CHA",
+     "opponent": "BKN",
+     "value": 11.0,
+     "detail": "11 rebounds for CHA against BKN",
+     "game_id": "401909836",
+     "field": 254
     },
     {
-     "player": "LeBron James",
-     "team": "PHI",
-     "opponent": "NY",
-     "value": 9.0,
-     "detail": "9 rebounds for PHI against NY",
-     "game_id": "401909089",
-     "field": 68
-    },
-    {
-     "player": "Jaylen Brown",
-     "team": "PHI",
-     "opponent": "NY",
-     "value": 8.0,
-     "detail": "8 rebounds for PHI against NY",
-     "game_id": "401909089",
-     "field": 68
-    },
-    {
-     "player": "Chet Holmgren",
-     "team": "OKC",
-     "opponent": "SA",
-     "value": 7.0,
-     "detail": "7 rebounds for OKC against SA",
-     "game_id": "401909090",
-     "field": 68
-    },
-    {
-     "player": "De'Aaron Fox",
-     "team": "SA",
-     "opponent": "OKC",
-     "value": 7.0,
-     "detail": "7 rebounds for SA against OKC",
-     "game_id": "401909090",
-     "field": 68
+     "player": "Alperen Sengun",
+     "team": "HOU",
+     "opponent": "DAL",
+     "value": 10.0,
+     "detail": "10 rebounds for HOU against DAL",
+     "game_id": "401909840",
+     "field": 254
     }
    ]
   },
@@ -195,94 +100,94 @@
    "sport": "NBA",
    "rows": [
     {
-     "player": "Jayson Tatum",
-     "team": "BOS",
-     "opponent": "DET",
+     "player": "Trae Young",
+     "team": "WSH",
+     "opponent": "MIL",
+     "value": 13.0,
+     "detail": "13 assists for WSH against MIL",
+     "game_id": "401909835",
+     "field": 254
+    },
+    {
+     "player": "Tyrese Haliburton",
+     "team": "IND",
+     "opponent": "NO",
+     "value": 12.0,
+     "detail": "12 assists for IND against NO",
+     "game_id": "401909839",
+     "field": 254
+    },
+    {
+     "player": "Davion Mitchell",
+     "team": "MIA",
+     "opponent": "MIN",
      "value": 11.0,
-     "detail": "11 assists for BOS against DET",
-     "game_id": "401909088",
-     "field": 68
+     "detail": "11 assists for MIA against MIN",
+     "game_id": "401909091",
+     "field": 254
     },
     {
-     "player": "Cade Cunningham",
-     "team": "DET",
-     "opponent": "BOS",
+     "player": "Fred VanVleet",
+     "team": "HOU",
+     "opponent": "DAL",
+     "value": 11.0,
+     "detail": "11 assists for HOU against DAL",
+     "game_id": "401909840",
+     "field": 254
+    },
+    {
+     "player": "Paolo Banchero",
+     "team": "ORL",
+     "opponent": "ATL",
+     "value": 10.0,
+     "detail": "10 assists for ORL against ATL",
+     "game_id": "401909834",
+     "field": 254
+    },
+    {
+     "player": "Andrew Nembhard",
+     "team": "IND",
+     "opponent": "NO",
+     "value": 9.0,
+     "detail": "9 assists for IND against NO",
+     "game_id": "401909839",
+     "field": 254
+    },
+    {
+     "player": "Tyler Herro",
+     "team": "MIL",
+     "opponent": "WSH",
+     "value": 9.0,
+     "detail": "9 assists for MIL against WSH",
+     "game_id": "401909835",
+     "field": 254
+    },
+    {
+     "player": "Domantas Sabonis",
+     "team": "SAC",
+     "opponent": "LAC",
      "value": 8.0,
-     "detail": "8 assists for DET against BOS",
-     "game_id": "401909088",
-     "field": 68
+     "detail": "8 assists for SAC against LAC",
+     "game_id": "401909842",
+     "field": 254
     },
     {
-     "player": "Derrick White",
-     "team": "BOS",
-     "opponent": "DET",
+     "player": "Draymond Green",
+     "team": "GS",
+     "opponent": "LAL",
      "value": 8.0,
-     "detail": "8 assists for BOS against DET",
-     "game_id": "401909088",
-     "field": 68
+     "detail": "8 assists for GS against LAL",
+     "game_id": "401909092",
+     "field": 254
     },
     {
-     "player": "De'Aaron Fox",
-     "team": "SA",
-     "opponent": "OKC",
-     "value": 7.0,
-     "detail": "7 assists for SA against OKC",
-     "game_id": "401909090",
-     "field": 68
-    },
-    {
-     "player": "LeBron James",
-     "team": "PHI",
-     "opponent": "NY",
-     "value": 7.0,
-     "detail": "7 assists for PHI against NY",
-     "game_id": "401909089",
-     "field": 68
-    },
-    {
-     "player": "Ajay Mitchell",
-     "team": "OKC",
-     "opponent": "SA",
-     "value": 6.0,
-     "detail": "6 assists for OKC against SA",
-     "game_id": "401909090",
-     "field": 68
-    },
-    {
-     "player": "Jaylen Brown",
-     "team": "PHI",
-     "opponent": "NY",
-     "value": 6.0,
-     "detail": "6 assists for PHI against NY",
-     "game_id": "401909089",
-     "field": 68
-    },
-    {
-     "player": "Joel Embiid",
-     "team": "PHI",
-     "opponent": "NY",
-     "value": 6.0,
-     "detail": "6 assists for PHI against NY",
-     "game_id": "401909089",
-     "field": 68
-    },
-    {
-     "player": "Ausar Thompson",
-     "team": "DET",
-     "opponent": "BOS",
-     "value": 5.0,
-     "detail": "5 assists for DET against BOS",
-     "game_id": "401909088",
-     "field": 68
-    },
-    {
-     "player": "Dylan Harper",
-     "team": "SA",
-     "opponent": "OKC",
-     "value": 5.0,
-     "detail": "5 assists for SA against OKC",
-     "game_id": "401909090",
-     "field": 68
+     "player": "Ja Morant",
+     "team": "POR",
+     "opponent": "PHX",
+     "value": 8.0,
+     "detail": "8 assists for POR against PHX",
+     "game_id": "401909841",
+     "field": 254
     }
    ]
   },
@@ -290,94 +195,94 @@
    "sport": "NBA",
    "rows": [
     {
-     "player": "Paul George",
-     "team": "BOS",
-     "opponent": "DET",
-     "value": 7.0,
-     "detail": "7 threes and 38 points for BOS against DET",
-     "game_id": "401909088",
-     "field": 68
+     "player": "Anthony Edwards",
+     "team": "MIN",
+     "opponent": "MIA",
+     "value": 9.0,
+     "detail": "9 threes and 45 points for MIN against MIA",
+     "game_id": "401909091",
+     "field": 254
     },
     {
-     "player": "Jared McCain",
-     "team": "OKC",
-     "opponent": "SA",
+     "player": "Damian Lillard",
+     "team": "POR",
+     "opponent": "PHX",
      "value": 6.0,
-     "detail": "6 threes and 20 points for OKC against SA",
-     "game_id": "401909090",
-     "field": 68
+     "detail": "6 threes and 25 points for POR against PHX",
+     "game_id": "401909841",
+     "field": 254
     },
     {
-     "player": "Duncan Robinson",
-     "team": "DET",
-     "opponent": "BOS",
+     "player": "Grayson Allen",
+     "team": "CHA",
+     "opponent": "BKN",
      "value": 5.0,
-     "detail": "5 threes and 21 points for DET against BOS",
-     "game_id": "401909088",
-     "field": 68
+     "detail": "5 threes and 21 points for CHA against BKN",
+     "game_id": "401909836",
+     "field": 254
     },
     {
-     "player": "Javonte Green",
-     "team": "DET",
-     "opponent": "BOS",
+     "player": "LaMelo Ball",
+     "team": "MIN",
+     "opponent": "MIA",
      "value": 5.0,
-     "detail": "5 threes and 19 points for DET against BOS",
-     "game_id": "401909088",
-     "field": 68
+     "detail": "5 threes and 21 points for MIN against MIA",
+     "game_id": "401909091",
+     "field": 254
     },
     {
-     "player": "Stephon Castle",
-     "team": "SA",
-     "opponent": "OKC",
+     "player": "Luka Doncic",
+     "team": "LAL",
+     "opponent": "GS",
      "value": 5.0,
-     "detail": "5 threes and 24 points for SA against OKC",
-     "game_id": "401909090",
-     "field": 68
+     "detail": "5 threes and 28 points for LAL against GS",
+     "game_id": "401909092",
+     "field": 254
     },
     {
-     "player": "Anfernee Simons",
-     "team": "PHI",
-     "opponent": "NY",
-     "value": 3.0,
-     "detail": "3 threes and 13 points for PHI against NY",
-     "game_id": "401909089",
-     "field": 68
+     "player": "Michael Porter Jr.",
+     "team": "BKN",
+     "opponent": "CHA",
+     "value": 5.0,
+     "detail": "5 threes and 26 points for BKN against CHA",
+     "game_id": "401909836",
+     "field": 254
     },
     {
-     "player": "Derrick White",
-     "team": "BOS",
-     "opponent": "DET",
-     "value": 3.0,
-     "detail": "3 threes and 17 points for BOS against DET",
-     "game_id": "401909088",
-     "field": 68
+     "player": "Nickeil Alexander-Walker",
+     "team": "ATL",
+     "opponent": "ORL",
+     "value": 5.0,
+     "detail": "5 threes and 31 points for ATL against ORL",
+     "game_id": "401909834",
+     "field": 254
     },
     {
-     "player": "Karl-Anthony Towns",
-     "team": "NY",
-     "opponent": "PHI",
-     "value": 3.0,
-     "detail": "3 threes and 19 points for NY against PHI",
-     "game_id": "401909089",
-     "field": 68
+     "player": "Ty Jerome",
+     "team": "MEM",
+     "opponent": "UTAH",
+     "value": 5.0,
+     "detail": "5 threes and 45 points for MEM against UTAH",
+     "game_id": "401909838",
+     "field": 254
     },
     {
-     "player": "Sam Hauser",
-     "team": "BOS",
-     "opponent": "DET",
-     "value": 3.0,
-     "detail": "3 threes and 11 points for BOS against DET",
-     "game_id": "401909088",
-     "field": 68
+     "player": "CJ McCollum",
+     "team": "ATL",
+     "opponent": "ORL",
+     "value": 4.0,
+     "detail": "4 threes and 19 points for ATL against ORL",
+     "game_id": "401909834",
+     "field": 254
     },
     {
-     "player": "Shai Gilgeous-Alexander",
-     "team": "OKC",
-     "opponent": "SA",
-     "value": 3.0,
-     "detail": "3 threes and 32 points for OKC against SA",
-     "game_id": "401909090",
-     "field": 68
+     "player": "Immanuel Quickley",
+     "team": "TOR",
+     "opponent": "CHI",
+     "value": 4.0,
+     "detail": "4 threes and 23 points for TOR against CHI",
+     "game_id": "401909837",
+     "field": 254
     }
    ]
   },
@@ -385,94 +290,94 @@
    "sport": "NBA",
    "rows": [
     {
-     "player": "Victor Wembanyama",
-     "team": "SA",
-     "opponent": "OKC",
+     "player": "Jaxson Hayes",
+     "team": "UTAH",
+     "opponent": "MEM",
      "value": 6.0,
-     "detail": "6 blocks for SA against OKC",
-     "game_id": "401909090",
-     "field": 68
+     "detail": "6 blocks for UTAH against MEM",
+     "game_id": "401909838",
+     "field": 254
     },
     {
-     "player": "Chet Holmgren",
-     "team": "OKC",
-     "opponent": "SA",
-     "value": 4.0,
-     "detail": "4 blocks for OKC against SA",
-     "game_id": "401909090",
-     "field": 68
-    },
-    {
-     "player": "Joel Embiid",
-     "team": "PHI",
-     "opponent": "NY",
+     "player": "Ace Bailey",
+     "team": "UTAH",
+     "opponent": "MEM",
      "value": 3.0,
-     "detail": "3 blocks for PHI against NY",
-     "game_id": "401909089",
-     "field": 68
+     "detail": "3 blocks for UTAH against MEM",
+     "game_id": "401909838",
+     "field": 254
     },
     {
-     "player": "Julian Champagnie",
-     "team": "SA",
-     "opponent": "OKC",
+     "player": "Allen Graves",
+     "team": "TOR",
+     "opponent": "CHI",
      "value": 3.0,
-     "detail": "3 blocks for SA against OKC",
-     "game_id": "401909090",
-     "field": 68
+     "detail": "3 blocks for TOR against CHI",
+     "game_id": "401909837",
+     "field": 254
     },
     {
-     "player": "Shai Gilgeous-Alexander",
-     "team": "OKC",
-     "opponent": "SA",
+     "player": "Day'Ron Sharpe",
+     "team": "BKN",
+     "opponent": "CHA",
      "value": 3.0,
-     "detail": "3 blocks for OKC against SA",
-     "game_id": "401909090",
-     "field": 68
+     "detail": "3 blocks for BKN against CHA",
+     "game_id": "401909836",
+     "field": 254
     },
     {
-     "player": "Tyrese Maxey",
-     "team": "PHI",
-     "opponent": "NY",
+     "player": "Dejounte Murray",
+     "team": "NO",
+     "opponent": "IND",
      "value": 3.0,
-     "detail": "3 blocks for PHI against NY",
-     "game_id": "401909089",
-     "field": 68
+     "detail": "3 blocks for NO against IND",
+     "game_id": "401909839",
+     "field": 254
     },
     {
-     "player": "Andre Drummond",
-     "team": "NY",
-     "opponent": "PHI",
-     "value": 2.0,
-     "detail": "2 blocks for NY against PHI",
-     "game_id": "401909089",
-     "field": 68
+     "player": "Yves Missi",
+     "team": "NO",
+     "opponent": "IND",
+     "value": 3.0,
+     "detail": "3 blocks for NO against IND",
+     "game_id": "401909839",
+     "field": 254
     },
     {
-     "player": "Karl-Anthony Towns",
-     "team": "NY",
-     "opponent": "PHI",
+     "player": "Bilal Coulibaly",
+     "team": "WSH",
+     "opponent": "MIL",
      "value": 2.0,
-     "detail": "2 blocks for NY against PHI",
-     "game_id": "401909089",
-     "field": 68
+     "detail": "2 blocks for WSH against MIL",
+     "game_id": "401909835",
+     "field": 254
     },
     {
-     "player": "Mitchell Robinson",
-     "team": "BOS",
-     "opponent": "DET",
+     "player": "Daniel Gafford",
+     "team": "DAL",
+     "opponent": "HOU",
      "value": 2.0,
-     "detail": "2 blocks for BOS against DET",
-     "game_id": "401909088",
-     "field": 68
+     "detail": "2 blocks for DAL against HOU",
+     "game_id": "401909840",
+     "field": 254
     },
     {
-     "player": "Neemias Queta",
-     "team": "BOS",
-     "opponent": "DET",
+     "player": "Deandre Ayton",
+     "team": "WSH",
+     "opponent": "MIL",
      "value": 2.0,
-     "detail": "2 blocks for BOS against DET",
-     "game_id": "401909088",
-     "field": 68
+     "detail": "2 blocks for WSH against MIL",
+     "game_id": "401909835",
+     "field": 254
+    },
+    {
+     "player": "GG Jackson",
+     "team": "MEM",
+     "opponent": "UTAH",
+     "value": 2.0,
+     "detail": "2 blocks for MEM against UTAH",
+     "game_id": "401909838",
+     "field": 254
     }
    ]
   }

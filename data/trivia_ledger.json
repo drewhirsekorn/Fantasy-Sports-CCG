@@ -18,7 +18,7 @@
    },
    {
     "from": "2025-01-01",
-    "through": "2026-10-20",
+    "through": "2026-10-21",
     "feats": [
      "mlb_12_k",
      "mlb_15_k",
@@ -62,7 +62,7 @@
    },
    {
     "from": "2023-10-01",
-    "through": "2026-10-20",
+    "through": "2026-10-21",
     "feats": [
      "nba_10_threes",
      "nba_20_assists",
@@ -96,7 +96,7 @@
    },
    {
     "from": "2023-09-01",
-    "through": "2026-10-20",
+    "through": "2026-10-21",
     "feats": [
      "nfl_150_rec_yards",
      "nfl_150_rush_yards",
@@ -71024,6 +71024,69 @@
     "fgm": 1.0
    },
    "source": "espn:401909090"
+  },
+  {
+   "feat": "nba_40_points",
+   "sport": "NBA",
+   "date": "2026-10-21",
+   "player": "Anthony Edwards",
+   "player_id": "4594268",
+   "team": "MIN",
+   "opponent": "MIA",
+   "value": 45.0,
+   "line": {
+    "minutes": 33.0,
+    "points": 45.0,
+    "rebounds": 10.0,
+    "assists": 3.0,
+    "steals": 2.0,
+    "blocks": 1.0,
+    "threes": 9.0,
+    "fgm": 16.0
+   },
+   "source": "espn:401909091"
+  },
+  {
+   "feat": "nba_40_points",
+   "sport": "NBA",
+   "date": "2026-10-21",
+   "player": "Ty Jerome",
+   "player_id": "4065733",
+   "team": "MEM",
+   "opponent": "UTAH",
+   "value": 45.0,
+   "line": {
+    "minutes": 32.0,
+    "points": 45.0,
+    "rebounds": 7.0,
+    "assists": 6.0,
+    "steals": 0.0,
+    "blocks": 1.0,
+    "threes": 5.0,
+    "fgm": 17.0
+   },
+   "source": "espn:401909838"
+  },
+  {
+   "feat": "nba_5_blocks",
+   "sport": "NBA",
+   "date": "2026-10-21",
+   "player": "Jaxson Hayes",
+   "player_id": "4397077",
+   "team": "UTAH",
+   "opponent": "MEM",
+   "value": 6.0,
+   "line": {
+    "minutes": 26.0,
+    "points": 5.0,
+    "rebounds": 5.0,
+    "assists": 3.0,
+    "steals": 2.0,
+    "blocks": 6.0,
+    "threes": 0.0,
+    "fgm": 2.0
+   },
+   "source": "espn:401909838"
   }
  ]
 }

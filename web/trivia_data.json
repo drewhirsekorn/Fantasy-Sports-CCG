@@ -1,76 +1,76 @@
 {
  "version": 1,
- "date": "2026-10-21",
- "stamp": "cab002ae2216",
- "source_date": "2026-10-20",
- "opens": "2026-10-21T07:00:00-04:00",
+ "date": "2026-10-22",
+ "stamp": "5b6539f63bb6",
+ "source_date": "2026-10-21",
+ "opens": "2026-10-22T07:00:00-04:00",
  "questions": [
   {
    "kind": "last_before",
    "sport": "NBA",
-   "setup": "Victor Wembanyama blocked 6 shots for SA yesterday.",
-   "prompt": "Before Victor Wembanyama, who was the last NBA player with five blocks in a game?",
+   "setup": "Jaxson Hayes blocked 6 shots for UTAH yesterday.",
+   "prompt": "Before Jaxson Hayes, who was the last NBA player with five blocks in a game?",
    "options": [
-    "John Hotrod Williams",
-    "Bismack Biyombo",
     "Victor Wembanyama",
-    "Kyshawn George"
+    "Oliver Miller",
+    "Luke Kornet",
+    "Mike Gminski"
    ],
-   "answer": 2,
-   "explain": "Victor Wembanyama \u2014 5 blocks for SA on June 13, 2026, 129 days earlier.",
+   "answer": 0,
+   "explain": "Victor Wembanyama \u2014 6 blocks for SA on October 20, 2026, 1 days earlier.",
    "links": [
+    {
+     "label": "October 21, 2026 box score",
+     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909838"
+    },
     {
      "label": "October 20, 2026 box score",
      "url": "https://www.espn.com/nba/boxscore/_/gameId/401909090"
-    },
-    {
-     "label": "June 13, 2026 box score",
-     "url": "https://www.espn.com/nba/boxscore/_/gameId/401859967"
     }
    ],
-   "id": "2026-10-21-1"
+   "id": "2026-10-22-1"
   },
   {
    "kind": "led_the_night",
    "sport": "NBA",
-   "setup": "Last night's box scores list 68 players.",
-   "prompt": "Who scored the most in the NBA last night?",
+   "setup": "Last night's box scores list 254 players.",
+   "prompt": "Who made the most three-pointers in the NBA last night?",
    "options": [
-    "Javonte Green",
-    "Paul George",
-    "Cade Cunningham",
-    "Jalen Duren"
+    "Ty Jerome",
+    "Michael Porter Jr.",
+    "CJ McCollum",
+    "Anthony Edwards"
+   ],
+   "answer": 3,
+   "explain": "Anthony Edwards \u2014 9 threes and 45 points for MIN against MIA.",
+   "links": [
+    {
+     "label": "October 21, 2026 box score",
+     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909091"
+    }
+   ],
+   "id": "2026-10-22-2"
+  },
+  {
+   "kind": "led_the_night",
+   "sport": "NBA",
+   "setup": "Last night's box scores list 254 players.",
+   "prompt": "Who grabbed the most rebounds in the NBA last night?",
+   "options": [
+    "Naz Reid",
+    "Domantas Sabonis",
+    "Ivica Zubac",
+    "Cameron Boozer"
    ],
    "answer": 1,
-   "explain": "Paul George \u2014 38 points in 31 minutes for BOS against DET.",
+   "explain": "Domantas Sabonis \u2014 18 rebounds for SAC against LAC.",
    "links": [
     {
-     "label": "October 20, 2026 box score",
-     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909088"
+     "label": "October 21, 2026 box score",
+     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909842"
     }
    ],
-   "id": "2026-10-21-2"
-  },
-  {
-   "kind": "led_the_night",
-   "sport": "NBA",
-   "setup": "Last night's box scores list 68 players.",
-   "prompt": "Who had the most assists in the NBA last night?",
-   "options": [
-    "Jayson Tatum",
-    "Derrick White",
-    "Dylan Harper",
-    "LeBron James"
-   ],
-   "answer": 0,
-   "explain": "Jayson Tatum \u2014 11 assists for BOS against DET.",
-   "links": [
-    {
-     "label": "October 20, 2026 box score",
-     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909088"
-    }
-   ],
-   "id": "2026-10-21-3"
+   "id": "2026-10-22-3"
   }
  ],
  "coverage": {
@@ -91,7 +91,7 @@
    },
    {
     "from": "2025-01-01",
-    "through": "2026-10-20",
+    "through": "2026-10-21",
     "feats": [
      "mlb_12_k",
      "mlb_15_k",
@@ -135,7 +135,7 @@
    },
    {
     "from": "2023-10-01",
-    "through": "2026-10-20",
+    "through": "2026-10-21",
     "feats": [
      "nba_10_threes",
      "nba_20_assists",
@@ -169,7 +169,7 @@
    },
    {
     "from": "2023-09-01",
-    "through": "2026-10-20",
+    "through": "2026-10-21",
     "feats": [
      "nfl_150_rec_yards",
      "nfl_150_rush_yards",
@@ -187,6 +187,6 @@
    }
   ]
  },
- "built_at": "2026-10-21T15:52:52Z",
- "closes": "2026-10-22T07:00:00-04:00"
+ "built_at": "2026-10-22T15:49:22Z",
+ "closes": "2026-10-23T07:00:00-04:00"
 }
