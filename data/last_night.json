@@ -1,288 +1,98 @@
 {
- "date": "2026-10-21",
+ "date": "2026-10-22",
  "boards": {
   "nba_rebounds": {
    "sport": "NBA",
    "rows": [
     {
-     "player": "Domantas Sabonis",
-     "team": "SAC",
-     "opponent": "LAC",
-     "value": 18.0,
-     "detail": "18 rebounds for SAC against LAC",
-     "game_id": "401909842",
-     "field": 254
+     "player": "Chet Holmgren",
+     "team": "OKC",
+     "opponent": "DEN",
+     "value": 17.0,
+     "detail": "17 rebounds for OKC against DEN",
+     "game_id": "401909094",
+     "field": 45
     },
     {
-     "player": "Ivica Zubac",
-     "team": "IND",
-     "opponent": "NO",
-     "value": 15.0,
-     "detail": "15 rebounds for IND against NO",
-     "game_id": "401909839",
-     "field": 254
-    },
-    {
-     "player": "Rudy Gobert",
-     "team": "MIN",
-     "opponent": "MIA",
-     "value": 15.0,
-     "detail": "15 rebounds for MIN against MIA",
-     "game_id": "401909091",
-     "field": 254
-    },
-    {
-     "player": "Jalen Johnson",
-     "team": "ATL",
-     "opponent": "ORL",
-     "value": 14.0,
-     "detail": "14 rebounds for ATL against ORL",
-     "game_id": "401909834",
-     "field": 254
-    },
-    {
-     "player": "Yves Missi",
-     "team": "NO",
-     "opponent": "IND",
-     "value": 14.0,
-     "detail": "14 rebounds for NO against IND",
-     "game_id": "401909839",
-     "field": 254
-    },
-    {
-     "player": "Anthony Davis",
-     "team": "WSH",
-     "opponent": "MIL",
+     "player": "Trevon Brazile",
+     "team": "DEN",
+     "opponent": "OKC",
      "value": 12.0,
-     "detail": "12 rebounds for WSH against MIL",
-     "game_id": "401909835",
-     "field": 254
+     "detail": "12 rebounds for DEN against OKC",
+     "game_id": "401909094",
+     "field": 45
     },
     {
-     "player": "Brook Lopez",
-     "team": "LAC",
-     "opponent": "SAC",
-     "value": 11.0,
-     "detail": "11 rebounds for LAC against SAC",
-     "game_id": "401909842",
-     "field": 254
-    },
-    {
-     "player": "Cameron Boozer",
-     "team": "MEM",
-     "opponent": "UTAH",
-     "value": 11.0,
-     "detail": "11 rebounds for MEM against UTAH",
-     "game_id": "401909838",
-     "field": 254
-    },
-    {
-     "player": "Naz Reid",
-     "team": "CHA",
-     "opponent": "BKN",
-     "value": 11.0,
-     "detail": "11 rebounds for CHA against BKN",
-     "game_id": "401909836",
-     "field": 254
-    },
-    {
-     "player": "Alperen Sengun",
-     "team": "HOU",
-     "opponent": "DAL",
+     "player": "Donovan Mitchell",
+     "team": "CLE",
+     "opponent": "PHI",
      "value": 10.0,
-     "detail": "10 rebounds for HOU against DAL",
-     "game_id": "401909840",
-     "field": 254
-    }
-   ]
-  },
-  "nba_assists": {
-   "sport": "NBA",
-   "rows": [
-    {
-     "player": "Trae Young",
-     "team": "WSH",
-     "opponent": "MIL",
-     "value": 13.0,
-     "detail": "13 assists for WSH against MIL",
-     "game_id": "401909835",
-     "field": 254
+     "detail": "10 rebounds for CLE against PHI",
+     "game_id": "401909093",
+     "field": 45
     },
     {
-     "player": "Tyrese Haliburton",
-     "team": "IND",
-     "opponent": "NO",
-     "value": 12.0,
-     "detail": "12 assists for IND against NO",
-     "game_id": "401909839",
-     "field": 254
-    },
-    {
-     "player": "Davion Mitchell",
-     "team": "MIA",
-     "opponent": "MIN",
-     "value": 11.0,
-     "detail": "11 assists for MIA against MIN",
-     "game_id": "401909091",
-     "field": 254
-    },
-    {
-     "player": "Fred VanVleet",
-     "team": "HOU",
-     "opponent": "DAL",
-     "value": 11.0,
-     "detail": "11 assists for HOU against DAL",
-     "game_id": "401909840",
-     "field": 254
-    },
-    {
-     "player": "Paolo Banchero",
-     "team": "ORL",
-     "opponent": "ATL",
+     "player": "Jamal Murray",
+     "team": "DEN",
+     "opponent": "OKC",
      "value": 10.0,
-     "detail": "10 assists for ORL against ATL",
-     "game_id": "401909834",
-     "field": 254
+     "detail": "10 rebounds for DEN against OKC",
+     "game_id": "401909094",
+     "field": 45
     },
     {
-     "player": "Andrew Nembhard",
-     "team": "IND",
-     "opponent": "NO",
-     "value": 9.0,
-     "detail": "9 assists for IND against NO",
-     "game_id": "401909839",
-     "field": 254
+     "player": "LeBron James",
+     "team": "PHI",
+     "opponent": "CLE",
+     "value": 10.0,
+     "detail": "10 rebounds for PHI against CLE",
+     "game_id": "401909093",
+     "field": 45
     },
     {
-     "player": "Tyler Herro",
-     "team": "MIL",
-     "opponent": "WSH",
-     "value": 9.0,
-     "detail": "9 assists for MIL against WSH",
-     "game_id": "401909835",
-     "field": 254
-    },
-    {
-     "player": "Domantas Sabonis",
-     "team": "SAC",
-     "opponent": "LAC",
+     "player": "Evan Mobley",
+     "team": "CLE",
+     "opponent": "PHI",
      "value": 8.0,
-     "detail": "8 assists for SAC against LAC",
-     "game_id": "401909842",
-     "field": 254
+     "detail": "8 rebounds for CLE against PHI",
+     "game_id": "401909093",
+     "field": 45
     },
     {
-     "player": "Draymond Green",
-     "team": "GS",
-     "opponent": "LAL",
+     "player": "Jaylen Brown",
+     "team": "PHI",
+     "opponent": "CLE",
      "value": 8.0,
-     "detail": "8 assists for GS against LAL",
-     "game_id": "401909092",
-     "field": 254
+     "detail": "8 rebounds for PHI against CLE",
+     "game_id": "401909093",
+     "field": 45
     },
     {
-     "player": "Ja Morant",
-     "team": "POR",
-     "opponent": "PHX",
-     "value": 8.0,
-     "detail": "8 assists for POR against PHX",
-     "game_id": "401909841",
-     "field": 254
-    }
-   ]
-  },
-  "nba_threes": {
-   "sport": "NBA",
-   "rows": [
-    {
-     "player": "Anthony Edwards",
-     "team": "MIN",
-     "opponent": "MIA",
-     "value": 9.0,
-     "detail": "9 threes and 45 points for MIN against MIA",
-     "game_id": "401909091",
-     "field": 254
+     "player": "Jarrett Allen",
+     "team": "CLE",
+     "opponent": "PHI",
+     "value": 7.0,
+     "detail": "7 rebounds for CLE against PHI",
+     "game_id": "401909093",
+     "field": 45
     },
     {
-     "player": "Damian Lillard",
-     "team": "POR",
-     "opponent": "PHX",
-     "value": 6.0,
-     "detail": "6 threes and 25 points for POR against PHX",
-     "game_id": "401909841",
-     "field": 254
+     "player": "Jaylin Williams",
+     "team": "OKC",
+     "opponent": "DEN",
+     "value": 7.0,
+     "detail": "7 rebounds for OKC against DEN",
+     "game_id": "401909094",
+     "field": 45
     },
     {
-     "player": "Grayson Allen",
-     "team": "CHA",
-     "opponent": "BKN",
-     "value": 5.0,
-     "detail": "5 threes and 21 points for CHA against BKN",
-     "game_id": "401909836",
-     "field": 254
-    },
-    {
-     "player": "LaMelo Ball",
-     "team": "MIN",
-     "opponent": "MIA",
-     "value": 5.0,
-     "detail": "5 threes and 21 points for MIN against MIA",
-     "game_id": "401909091",
-     "field": 254
-    },
-    {
-     "player": "Luka Doncic",
-     "team": "LAL",
-     "opponent": "GS",
-     "value": 5.0,
-     "detail": "5 threes and 28 points for LAL against GS",
-     "game_id": "401909092",
-     "field": 254
-    },
-    {
-     "player": "Michael Porter Jr.",
-     "team": "BKN",
-     "opponent": "CHA",
-     "value": 5.0,
-     "detail": "5 threes and 26 points for BKN against CHA",
-     "game_id": "401909836",
-     "field": 254
-    },
-    {
-     "player": "Nickeil Alexander-Walker",
-     "team": "ATL",
-     "opponent": "ORL",
-     "value": 5.0,
-     "detail": "5 threes and 31 points for ATL against ORL",
-     "game_id": "401909834",
-     "field": 254
-    },
-    {
-     "player": "Ty Jerome",
-     "team": "MEM",
-     "opponent": "UTAH",
-     "value": 5.0,
-     "detail": "5 threes and 45 points for MEM against UTAH",
-     "game_id": "401909838",
-     "field": 254
-    },
-    {
-     "player": "CJ McCollum",
-     "team": "ATL",
-     "opponent": "ORL",
-     "value": 4.0,
-     "detail": "4 threes and 19 points for ATL against ORL",
-     "game_id": "401909834",
-     "field": 254
-    },
-    {
-     "player": "Immanuel Quickley",
-     "team": "TOR",
-     "opponent": "CHI",
-     "value": 4.0,
-     "detail": "4 threes and 23 points for TOR against CHI",
-     "game_id": "401909837",
-     "field": 254
+     "player": "Joel Embiid",
+     "team": "PHI",
+     "opponent": "CLE",
+     "value": 7.0,
+     "detail": "7 rebounds for PHI against CLE",
+     "game_id": "401909093",
+     "field": 45
     }
    ]
   },
@@ -290,94 +100,284 @@
    "sport": "NBA",
    "rows": [
     {
-     "player": "Jaxson Hayes",
-     "team": "UTAH",
-     "opponent": "MEM",
-     "value": 6.0,
-     "detail": "6 blocks for UTAH against MEM",
-     "game_id": "401909838",
-     "field": 254
+     "player": "Chet Holmgren",
+     "team": "OKC",
+     "opponent": "DEN",
+     "value": 4.0,
+     "detail": "4 blocks for OKC against DEN",
+     "game_id": "401909094",
+     "field": 45
     },
     {
-     "player": "Ace Bailey",
-     "team": "UTAH",
-     "opponent": "MEM",
-     "value": 3.0,
-     "detail": "3 blocks for UTAH against MEM",
-     "game_id": "401909838",
-     "field": 254
+     "player": "Jarrett Allen",
+     "team": "CLE",
+     "opponent": "PHI",
+     "value": 2.0,
+     "detail": "2 blocks for CLE against PHI",
+     "game_id": "401909093",
+     "field": 45
     },
     {
-     "player": "Allen Graves",
-     "team": "TOR",
+     "player": "Jaylon Tyson",
+     "team": "CLE",
+     "opponent": "PHI",
+     "value": 2.0,
+     "detail": "2 blocks for CLE against PHI",
+     "game_id": "401909093",
+     "field": 45
+    },
+    {
+     "player": "Aaron Gordon",
+     "team": "DEN",
+     "opponent": "OKC",
+     "value": 1.0,
+     "detail": "1 blocks for DEN against OKC",
+     "game_id": "401909094",
+     "field": 45
+    },
+    {
+     "player": "Aday Mara",
+     "team": "OKC",
+     "opponent": "DEN",
+     "value": 1.0,
+     "detail": "1 blocks for OKC against DEN",
+     "game_id": "401909094",
+     "field": 45
+    },
+    {
+     "player": "Adem Bona",
+     "team": "PHI",
+     "opponent": "CLE",
+     "value": 1.0,
+     "detail": "1 blocks for PHI against CLE",
+     "game_id": "401909093",
+     "field": 45
+    },
+    {
+     "player": "Ajay Mitchell",
+     "team": "OKC",
+     "opponent": "DEN",
+     "value": 1.0,
+     "detail": "1 blocks for OKC against DEN",
+     "game_id": "401909094",
+     "field": 45
+    },
+    {
+     "player": "Alex Caruso",
+     "team": "OKC",
+     "opponent": "DEN",
+     "value": 1.0,
+     "detail": "1 blocks for OKC against DEN",
+     "game_id": "401909094",
+     "field": 45
+    },
+    {
+     "player": "Donovan Mitchell",
+     "team": "CLE",
+     "opponent": "PHI",
+     "value": 1.0,
+     "detail": "1 blocks for CLE against PHI",
+     "game_id": "401909093",
+     "field": 45
+    },
+    {
+     "player": "Isaiah Hartenstein",
+     "team": "OKC",
+     "opponent": "DEN",
+     "value": 1.0,
+     "detail": "1 blocks for OKC against DEN",
+     "game_id": "401909094",
+     "field": 45
+    }
+   ]
+  },
+  "nfl_rec_yards": {
+   "sport": "NFL",
+   "rows": [
+    {
+     "player": "Luther Burden III",
+     "team": "CHI",
+     "opponent": "NE",
+     "value": 130.0,
+     "detail": "130 yards on 4 catches for CHI against NE",
+     "game_id": "401873010",
+     "field": 14
+    },
+    {
+     "player": "Rhamondre Stevenson",
+     "team": "NE",
      "opponent": "CHI",
-     "value": 3.0,
-     "detail": "3 blocks for TOR against CHI",
-     "game_id": "401909837",
-     "field": 254
+     "value": 93.0,
+     "detail": "93 yards on 5 catches for NE against CHI",
+     "game_id": "401873010",
+     "field": 14
     },
     {
-     "player": "Day'Ron Sharpe",
-     "team": "BKN",
-     "opponent": "CHA",
-     "value": 3.0,
-     "detail": "3 blocks for BKN against CHA",
-     "game_id": "401909836",
-     "field": 254
+     "player": "Hunter Henry",
+     "team": "NE",
+     "opponent": "CHI",
+     "value": 71.0,
+     "detail": "71 yards on 7 catches for NE against CHI",
+     "game_id": "401873010",
+     "field": 14
     },
     {
-     "player": "Dejounte Murray",
-     "team": "NO",
-     "opponent": "IND",
-     "value": 3.0,
-     "detail": "3 blocks for NO against IND",
-     "game_id": "401909839",
-     "field": 254
+     "player": "Colston Loveland",
+     "team": "CHI",
+     "opponent": "NE",
+     "value": 69.0,
+     "detail": "69 yards on 7 catches for CHI against NE",
+     "game_id": "401873010",
+     "field": 14
     },
     {
-     "player": "Yves Missi",
-     "team": "NO",
-     "opponent": "IND",
-     "value": 3.0,
-     "detail": "3 blocks for NO against IND",
-     "game_id": "401909839",
-     "field": 254
+     "player": "Rome Odunze",
+     "team": "CHI",
+     "opponent": "NE",
+     "value": 69.0,
+     "detail": "69 yards on 4 catches for CHI against NE",
+     "game_id": "401873010",
+     "field": 14
     },
     {
-     "player": "Bilal Coulibaly",
-     "team": "WSH",
-     "opponent": "MIL",
-     "value": 2.0,
-     "detail": "2 blocks for WSH against MIL",
-     "game_id": "401909835",
-     "field": 254
+     "player": "Eli Raridon",
+     "team": "NE",
+     "opponent": "CHI",
+     "value": 56.0,
+     "detail": "56 yards on 3 catches for NE against CHI",
+     "game_id": "401873010",
+     "field": 14
     },
     {
-     "player": "Daniel Gafford",
-     "team": "DAL",
-     "opponent": "HOU",
-     "value": 2.0,
-     "detail": "2 blocks for DAL against HOU",
-     "game_id": "401909840",
-     "field": 254
+     "player": "A.J. Brown",
+     "team": "NE",
+     "opponent": "CHI",
+     "value": 48.0,
+     "detail": "48 yards on 3 catches for NE against CHI",
+     "game_id": "401873010",
+     "field": 14
     },
     {
-     "player": "Deandre Ayton",
-     "team": "WSH",
-     "opponent": "MIL",
-     "value": 2.0,
-     "detail": "2 blocks for WSH against MIL",
-     "game_id": "401909835",
-     "field": 254
+     "player": "Cole Kmet",
+     "team": "CHI",
+     "opponent": "NE",
+     "value": 28.0,
+     "detail": "28 yards on 3 catches for CHI against NE",
+     "game_id": "401873010",
+     "field": 14
     },
     {
-     "player": "GG Jackson",
-     "team": "MEM",
-     "opponent": "UTAH",
-     "value": 2.0,
-     "detail": "2 blocks for MEM against UTAH",
-     "game_id": "401909838",
-     "field": 254
+     "player": "DeMario Douglas",
+     "team": "NE",
+     "opponent": "CHI",
+     "value": 23.0,
+     "detail": "23 yards on 3 catches for NE against CHI",
+     "game_id": "401873010",
+     "field": 14
+    },
+    {
+     "player": "Efton Chism III",
+     "team": "NE",
+     "opponent": "CHI",
+     "value": 16.0,
+     "detail": "16 yards on 1 catches for NE against CHI",
+     "game_id": "401873010",
+     "field": 14
+    }
+   ]
+  },
+  "nfl_tackles": {
+   "sport": "NFL",
+   "rows": [
+    {
+     "player": "Christian Elliss",
+     "team": "NE",
+     "opponent": "CHI",
+     "value": 13.0,
+     "detail": "13 tackles for NE against CHI",
+     "game_id": "401873010",
+     "field": 40
+    },
+    {
+     "player": "Marcus Jones",
+     "team": "NE",
+     "opponent": "CHI",
+     "value": 9.0,
+     "detail": "9 tackles for NE against CHI",
+     "game_id": "401873010",
+     "field": 40
+    },
+    {
+     "player": "Craig Woodson",
+     "team": "NE",
+     "opponent": "CHI",
+     "value": 8.0,
+     "detail": "8 tackles for NE against CHI",
+     "game_id": "401873010",
+     "field": 40
+    },
+    {
+     "player": "Dillon Thieneman",
+     "team": "CHI",
+     "opponent": "NE",
+     "value": 8.0,
+     "detail": "8 tackles for CHI against NE",
+     "game_id": "401873010",
+     "field": 40
+    },
+    {
+     "player": "Kevin Byard",
+     "team": "NE",
+     "opponent": "CHI",
+     "value": 7.0,
+     "detail": "7 tackles for NE against CHI",
+     "game_id": "401873010",
+     "field": 40
+    },
+    {
+     "player": "D'Marco Jackson",
+     "team": "CHI",
+     "opponent": "NE",
+     "value": 6.0,
+     "detail": "6 tackles for CHI against NE",
+     "game_id": "401873010",
+     "field": 40
+    },
+    {
+     "player": "Cam Lewis",
+     "team": "CHI",
+     "opponent": "NE",
+     "value": 5.0,
+     "detail": "5 tackles for CHI against NE",
+     "game_id": "401873010",
+     "field": 40
+    },
+    {
+     "player": "Charles Woods",
+     "team": "NE",
+     "opponent": "CHI",
+     "value": 5.0,
+     "detail": "5 tackles for NE against CHI",
+     "game_id": "401873010",
+     "field": 40
+    },
+    {
+     "player": "Kyler Gordon",
+     "team": "CHI",
+     "opponent": "NE",
+     "value": 5.0,
+     "detail": "5 tackles for CHI against NE",
+     "game_id": "401873010",
+     "field": 40
+    },
+    {
+     "player": "Robert Spillane",
+     "team": "NE",
+     "opponent": "CHI",
+     "value": 5.0,
+     "detail": "5 tackles for NE against CHI",
+     "game_id": "401873010",
+     "field": 40
     }
    ]
   }
