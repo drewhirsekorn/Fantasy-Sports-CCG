@@ -1,76 +1,72 @@
 {
  "version": 1,
- "date": "2026-10-24",
- "stamp": "3a581c21c4e7",
- "source_date": "2026-10-23",
- "opens": "2026-10-24T07:00:00-04:00",
+ "date": "2026-10-25",
+ "stamp": "0ea96673aca3",
+ "source_date": "2026-10-24",
+ "opens": "2026-10-25T07:00:00-04:00",
  "questions": [
   {
-   "kind": "last_before",
-   "sport": "NBA",
-   "setup": "Dyson Daniels came up with 7 steals for ATL yesterday.",
-   "prompt": "Before Dyson Daniels, who was the last NBA player with six steals in a game?",
-   "options": [
-    "John Starks",
-    "Donovan Mitchell",
-    "Dru Smith",
-    "Mookie Blaylock"
-   ],
-   "answer": 1,
-   "explain": "Donovan Mitchell \u2014 6 steals for CLE on May 19, 2026, 157 days earlier.",
-   "links": [
-    {
-     "label": "October 23, 2026 box score",
-     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909843"
-    },
-    {
-     "label": "May 19, 2026 box score",
-     "url": "https://www.espn.com/nba/boxscore/_/gameId/401873341"
-    }
-   ],
-   "id": "2026-10-24-1"
-  },
-  {
    "kind": "led_the_night",
    "sport": "NBA",
-   "setup": "Last night's box scores list 275 players.",
+   "setup": "Last night's box scores list 170 players.",
    "prompt": "Who had the most assists in the NBA last night?",
    "options": [
-    "Cade Cunningham",
+    "Jalen Johnson",
     "Trae Young",
-    "Domantas Sabonis",
-    "Ayo Dosunmu"
+    "Collin Gillespie",
+    "Nikola Jokic"
    ],
-   "answer": 1,
-   "explain": "Trae Young \u2014 12 assists for WSH against TOR.",
+   "answer": 0,
+   "explain": "Jalen Johnson \u2014 16 assists for ATL against HOU.",
    "links": [
     {
-     "label": "October 23, 2026 box score",
-     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909846"
+     "label": "October 24, 2026 box score",
+     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909856"
     }
    ],
-   "id": "2026-10-24-2"
+   "id": "2026-10-25-1"
   },
   {
    "kind": "led_the_night",
    "sport": "NBA",
-   "setup": "Last night's box scores list 275 players.",
-   "prompt": "Who blocked the most shots in the NBA last night?",
+   "setup": "Last night's box scores list 170 players.",
+   "prompt": "Who scored the most in the NBA last night?",
    "options": [
-    "Cade Cunningham",
-    "Walker Kessler",
-    "Zaccharie Risacher",
-    "Neemias Queta"
+    "Jamal Murray",
+    "Jaylen Brown",
+    "Devin Booker",
+    "Caleb Wilson"
    ],
-   "answer": 1,
-   "explain": "Walker Kessler \u2014 6 blocks for LAL against LAC.",
+   "answer": 2,
+   "explain": "Devin Booker \u2014 43 points in 36 minutes for PHX against GS.",
    "links": [
     {
-     "label": "October 23, 2026 box score",
-     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909851"
+     "label": "October 24, 2026 box score",
+     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909860"
     }
    ],
-   "id": "2026-10-24-3"
+   "id": "2026-10-25-2"
+  },
+  {
+   "kind": "most_recent",
+   "sport": "NFL",
+   "setup": "Nobody managed a three-sack game in the NFL yesterday.",
+   "prompt": "Who had the most recent one?",
+   "options": [
+    "Rashan Gary",
+    "Will Anderson Jr.",
+    "Kyler Gordon",
+    "Travon Walker"
+   ],
+   "answer": 2,
+   "explain": "Kyler Gordon \u2014 3 sacks for CHI vs ATL on October 18, 2026.",
+   "links": [
+    {
+     "label": "October 18, 2026 box score",
+     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401872999"
+    }
+   ],
+   "id": "2026-10-25-3"
   }
  ],
  "coverage": {
@@ -91,7 +87,7 @@
    },
    {
     "from": "2025-01-01",
-    "through": "2026-10-23",
+    "through": "2026-10-24",
     "feats": [
      "mlb_12_k",
      "mlb_15_k",
@@ -135,7 +131,7 @@
    },
    {
     "from": "2023-10-01",
-    "through": "2026-10-23",
+    "through": "2026-10-24",
     "feats": [
      "nba_10_threes",
      "nba_20_assists",
@@ -169,7 +165,7 @@
    },
    {
     "from": "2023-09-01",
-    "through": "2026-10-23",
+    "through": "2026-10-24",
     "feats": [
      "nfl_150_rec_yards",
      "nfl_150_rush_yards",
@@ -187,6 +183,6 @@
    }
   ]
  },
- "built_at": "2026-10-24T14:22:18Z",
- "closes": "2026-10-25T07:00:00-04:00"
+ "built_at": "2026-10-25T14:54:20Z",
+ "closes": "2026-10-26T07:00:00-04:00"
 }
