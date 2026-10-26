@@ -18,7 +18,7 @@
    },
    {
     "from": "2025-01-01",
-    "through": "2026-10-24",
+    "through": "2026-10-25",
     "feats": [
      "mlb_12_k",
      "mlb_15_k",
@@ -62,7 +62,7 @@
    },
    {
     "from": "2023-10-01",
-    "through": "2026-10-24",
+    "through": "2026-10-25",
     "feats": [
      "nba_10_threes",
      "nba_20_assists",
@@ -96,7 +96,7 @@
    },
    {
     "from": "2023-09-01",
-    "through": "2026-10-24",
+    "through": "2026-10-25",
     "feats": [
      "nfl_150_rec_yards",
      "nfl_150_rush_yards",
@@ -71192,6 +71192,113 @@
     "fgm": 12.0
    },
    "source": "espn:401909859"
+  },
+  {
+   "feat": "nba_40_points",
+   "sport": "NBA",
+   "date": "2026-10-25",
+   "player": "Luka Doncic",
+   "player_id": "3945274",
+   "team": "LAL",
+   "opponent": "UTAH",
+   "value": 52.0,
+   "line": {
+    "minutes": 38.0,
+    "points": 52.0,
+    "rebounds": 8.0,
+    "assists": 10.0,
+    "steals": 2.0,
+    "blocks": 0.0,
+    "threes": 8.0,
+    "fgm": 17.0
+   },
+   "source": "espn:401909861"
+  },
+  {
+   "feat": "nba_50_points",
+   "sport": "NBA",
+   "date": "2026-10-25",
+   "player": "Luka Doncic",
+   "player_id": "3945274",
+   "team": "LAL",
+   "opponent": "UTAH",
+   "value": 52.0,
+   "line": {
+    "minutes": 38.0,
+    "points": 52.0,
+    "rebounds": 8.0,
+    "assists": 10.0,
+    "steals": 2.0,
+    "blocks": 0.0,
+    "threes": 8.0,
+    "fgm": 17.0
+   },
+   "source": "espn:401909861"
+  },
+  {
+   "feat": "nfl_150_rec_yards",
+   "sport": "NFL",
+   "date": "2026-10-25",
+   "player": "Amon-Ra St. Brown",
+   "player_id": "4374302",
+   "team": "DET",
+   "opponent": "GB",
+   "value": 153.0,
+   "line": {
+    "rec_yards": 153.0,
+    "rec_td": 0.0,
+    "receptions": 9.0
+   },
+   "source": "espn:401873020"
+  },
+  {
+   "feat": "nfl_150_rec_yards",
+   "sport": "NFL",
+   "date": "2026-10-25",
+   "player": "Jaxon Smith-Njigba",
+   "player_id": "4430878",
+   "team": "SEA",
+   "opponent": "KC",
+   "value": 150.0,
+   "line": {
+    "rec_yards": 150.0,
+    "rec_td": 1.0,
+    "receptions": 9.0
+   },
+   "source": "espn:401873022"
+  },
+  {
+   "feat": "nfl_3_sacks",
+   "sport": "NFL",
+   "date": "2026-10-25",
+   "player": "Yaya Diaby",
+   "player_id": "4686334",
+   "team": "TB",
+   "opponent": "CAR",
+   "value": 3.0,
+   "line": {
+    "sacks": 3.0,
+    "tackles": 3.0
+   },
+   "source": "espn:401873018"
+  },
+  {
+   "feat": "nfl_4_pass_td",
+   "sport": "NFL",
+   "date": "2026-10-25",
+   "player": "Joe Burrow",
+   "player_id": "3915511",
+   "team": "CIN",
+   "opponent": "BAL",
+   "value": 4.0,
+   "line": {
+    "pass_yards": 292.0,
+    "pass_td": 4.0,
+    "interceptions": 0.0,
+    "completions": 22.0,
+    "attempts": 30.0
+   },
+   "source": "espn:401873012"
   }
  ]
 }
