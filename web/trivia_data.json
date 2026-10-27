@@ -1,80 +1,80 @@
 {
  "version": 1,
- "date": "2026-10-26",
- "stamp": "9d2968af32b6",
- "source_date": "2026-10-25",
- "opens": "2026-10-26T07:00:00-04:00",
+ "date": "2026-10-27",
+ "stamp": "28cc1d439501",
+ "source_date": "2026-10-26",
+ "opens": "2026-10-27T07:00:00-04:00",
  "questions": [
   {
    "kind": "last_before",
    "sport": "NBA",
-   "setup": "Luka Doncic scored 52 points for LAL against UTAH yesterday.",
-   "prompt": "Before Luka Doncic, who was the last NBA player to score 50 in a game?",
+   "setup": "Alperen Sengun came up with 6 steals for HOU yesterday.",
+   "prompt": "Before Alperen Sengun, who was the last NBA player with six steals in a game?",
    "options": [
-    "Aaron Gordon",
-    "Cooper Flagg",
-    "James Harden",
-    "Donovan Mitchell"
+    "Ron Harper",
+    "Terrell Brandon",
+    "Avery Johnson",
+    "Dyson Daniels"
    ],
-   "answer": 1,
-   "explain": "Cooper Flagg \u2014 51 points for DAL on April 3, 2026, 205 days earlier.",
+   "answer": 3,
+   "explain": "Dyson Daniels \u2014 7 steals for ATL on October 23, 2026, 3 days earlier.",
    "links": [
     {
-     "label": "October 25, 2026 box score",
-     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909861"
+     "label": "October 26, 2026 box score",
+     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909874"
     },
     {
-     "label": "April 3, 2026 box score",
-     "url": "https://www.espn.com/nba/boxscore/_/gameId/401810982"
+     "label": "October 23, 2026 box score",
+     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909843"
     }
    ],
-   "id": "2026-10-26-1"
+   "id": "2026-10-27-1"
   },
   {
    "kind": "last_before",
    "sport": "NFL",
-   "setup": "Joe Burrow threw 4 touchdown passes for CIN yesterday.",
-   "prompt": "Before Joe Burrow, who was the last NFL quarterback to throw four touchdowns in a game?",
+   "setup": "Javonte Williams ran for 155 yards for DAL yesterday.",
+   "prompt": "Before Javonte Williams, who was the last NFL player to rush for 150 yards?",
    "options": [
-    "Jordan Love",
-    "Mitchell Trubisky",
-    "Trevor Lawrence",
-    "Justin Herbert"
+    "Jahmyr Gibbs",
+    "De'Von Achane",
+    "Zack Moss",
+    "Najeh Davenport"
    ],
-   "answer": 2,
-   "explain": "Trevor Lawrence \u2014 4 touchdowns for JAX on October 18, 2026, 7 days earlier.",
+   "answer": 0,
+   "explain": "Jahmyr Gibbs \u2014 151 yards for DET on October 11, 2026, 15 days earlier.",
    "links": [
     {
-     "label": "October 25, 2026 box score",
-     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401873012"
+     "label": "October 26, 2026 box score",
+     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401873009"
     },
     {
-     "label": "October 18, 2026 box score",
-     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401872996"
+     "label": "October 11, 2026 box score",
+     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401872991"
     }
    ],
-   "id": "2026-10-26-2"
+   "id": "2026-10-27-2"
   },
   {
    "kind": "led_the_night",
    "sport": "NBA",
-   "setup": "Last night's box scores list 157 players.",
-   "prompt": "Who grabbed the most rebounds in the NBA last night?",
+   "setup": "Last night's box scores list 212 players.",
+   "prompt": "Who made the most three-pointers in the NBA last night?",
    "options": [
-    "Domantas Sabonis",
-    "Ace Bailey",
+    "Payton Pritchard",
     "Cedric Coward",
-    "Rudy Gobert"
+    "Evan Mobley",
+    "Brandon Miller"
    ],
    "answer": 0,
-   "explain": "Domantas Sabonis \u2014 15 rebounds for SAC against MEM.",
+   "explain": "Payton Pritchard \u2014 7 threes and 28 points for BOS against CHI.",
    "links": [
     {
-     "label": "October 25, 2026 box score",
-     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909867"
+     "label": "October 26, 2026 box score",
+     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909870"
     }
    ],
-   "id": "2026-10-26-3"
+   "id": "2026-10-27-3"
   }
  ],
  "coverage": {
@@ -95,7 +95,7 @@
    },
    {
     "from": "2025-01-01",
-    "through": "2026-10-25",
+    "through": "2026-10-26",
     "feats": [
      "mlb_12_k",
      "mlb_15_k",
@@ -139,7 +139,7 @@
    },
    {
     "from": "2023-10-01",
-    "through": "2026-10-25",
+    "through": "2026-10-26",
     "feats": [
      "nba_10_threes",
      "nba_20_assists",
@@ -173,7 +173,7 @@
    },
    {
     "from": "2023-09-01",
-    "through": "2026-10-25",
+    "through": "2026-10-26",
     "feats": [
      "nfl_150_rec_yards",
      "nfl_150_rush_yards",
@@ -191,6 +191,6 @@
    }
   ]
  },
- "built_at": "2026-10-26T17:11:26Z",
- "closes": "2026-10-27T07:00:00-04:00"
+ "built_at": "2026-10-27T16:17:19Z",
+ "closes": "2026-10-28T07:00:00-04:00"
 }
