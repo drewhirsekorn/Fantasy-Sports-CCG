@@ -1,76 +1,72 @@
 {
  "version": 1,
- "date": "2026-10-28",
- "stamp": "14e509cfa1bc",
- "source_date": "2026-10-27",
- "opens": "2026-10-28T07:00:00-04:00",
+ "date": "2026-10-29",
+ "stamp": "57907cc4da8c",
+ "source_date": "2026-10-28",
+ "opens": "2026-10-29T07:00:00-04:00",
  "questions": [
   {
-   "kind": "last_before",
+   "kind": "led_the_night",
    "sport": "NBA",
-   "setup": "Luka Doncic scored 41 points for LAL against POR yesterday.",
-   "prompt": "Before Luka Doncic, who was the last NBA player to score 40 in a game?",
+   "setup": "Last night's box scores list 256 players.",
+   "prompt": "Who scored the most in the NBA last night?",
    "options": [
-    "Nikola Vucevic",
-    "Desmond Bane",
-    "Austin Reaves",
-    "Anthony Edwards"
+    "Stephen Curry",
+    "Keyonte George",
+    "Scottie Barnes",
+    "Cade Cunningham"
    ],
-   "answer": 3,
-   "explain": "Anthony Edwards \u2014 47 points for MIN on October 26, 2026, 1 days earlier.",
+   "answer": 0,
+   "explain": "Stephen Curry \u2014 44 points in 32 minutes for GS against MIN.",
    "links": [
     {
-     "label": "October 27, 2026 box score",
-     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909880"
-    },
-    {
-     "label": "October 26, 2026 box score",
-     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909869"
+     "label": "October 28, 2026 box score",
+     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909888"
     }
    ],
-   "id": "2026-10-28-1"
+   "id": "2026-10-29-1"
   },
   {
    "kind": "led_the_night",
    "sport": "NBA",
-   "setup": "Last night's box scores list 94 players.",
-   "prompt": "Who made the most three-pointers in the NBA last night?",
+   "setup": "Last night's box scores list 256 players.",
+   "prompt": "Who had the most assists in the NBA last night?",
    "options": [
-    "Luka Doncic",
-    "Damian Lillard",
-    "Julian Champagnie",
-    "Austin Reaves"
+    "Tyler Kolek",
+    "Andrew Nembhard",
+    "Cooper Flagg",
+    "Jalen Johnson"
    ],
-   "answer": 2,
-   "explain": "Julian Champagnie \u2014 8 threes and 26 points for SA against SAC.",
+   "answer": 1,
+   "explain": "Andrew Nembhard \u2014 14 assists for IND against PHI.",
    "links": [
     {
-     "label": "October 27, 2026 box score",
-     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909879"
+     "label": "October 28, 2026 box score",
+     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909884"
     }
    ],
-   "id": "2026-10-28-2"
+   "id": "2026-10-29-2"
   },
   {
    "kind": "led_the_night",
    "sport": "NBA",
-   "setup": "Last night's box scores list 94 players.",
+   "setup": "Last night's box scores list 256 players.",
    "prompt": "Who grabbed the most rebounds in the NBA last night?",
    "options": [
-    "John Collins",
-    "Victor Wembanyama",
-    "Karl-Anthony Towns",
-    "Paul Reed"
+    "Jarrett Allen",
+    "Giannis Antetokounmpo",
+    "Derik Queen",
+    "Nikola Jokic"
    ],
-   "answer": 2,
-   "explain": "Karl-Anthony Towns \u2014 20 rebounds for NY against DET.",
+   "answer": 1,
+   "explain": "Giannis Antetokounmpo \u2014 18 rebounds for MIA against ATL.",
    "links": [
     {
-     "label": "October 27, 2026 box score",
-     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909878"
+     "label": "October 28, 2026 box score",
+     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909881"
     }
    ],
-   "id": "2026-10-28-3"
+   "id": "2026-10-29-3"
   }
  ],
  "coverage": {
@@ -91,7 +87,7 @@
    },
    {
     "from": "2025-01-01",
-    "through": "2026-10-27",
+    "through": "2026-10-28",
     "feats": [
      "mlb_12_k",
      "mlb_15_k",
@@ -135,7 +131,7 @@
    },
    {
     "from": "2023-10-01",
-    "through": "2026-10-27",
+    "through": "2026-10-28",
     "feats": [
      "nba_10_threes",
      "nba_20_assists",
@@ -169,7 +165,7 @@
    },
    {
     "from": "2023-09-01",
-    "through": "2026-10-27",
+    "through": "2026-10-28",
     "feats": [
      "nfl_150_rec_yards",
      "nfl_150_rush_yards",
@@ -187,6 +183,6 @@
    }
   ]
  },
- "built_at": "2026-10-28T17:02:59Z",
- "closes": "2026-10-29T07:00:00-04:00"
+ "built_at": "2026-10-29T17:21:15Z",
+ "closes": "2026-10-30T07:00:00-04:00"
 }

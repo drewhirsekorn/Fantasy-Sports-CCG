@@ -1,98 +1,98 @@
 {
- "date": "2026-10-27",
+ "date": "2026-10-28",
  "boards": {
   "nba_points": {
    "sport": "NBA",
    "rows": [
     {
-     "player": "Luka Doncic",
-     "team": "LAL",
-     "opponent": "POR",
-     "value": 41.0,
-     "detail": "41 points in 37 minutes for LAL against POR",
-     "game_id": "401909880",
-     "field": 94
+     "player": "Stephen Curry",
+     "team": "GS",
+     "opponent": "MIN",
+     "value": 44.0,
+     "detail": "44 points in 32 minutes for GS against MIN",
+     "game_id": "401909888",
+     "field": 256
     },
     {
-     "player": "Jayson Tatum",
-     "team": "BOS",
-     "opponent": "BKN",
-     "value": 40.0,
-     "detail": "40 points in 42 minutes for BOS against BKN",
-     "game_id": "401909877",
-     "field": 94
+     "player": "Jalen Brunson",
+     "team": "NY",
+     "opponent": "CHI",
+     "value": 38.0,
+     "detail": "38 points in 35 minutes for NY against CHI",
+     "game_id": "401909886",
+     "field": 256
     },
     {
      "player": "Victor Wembanyama",
      "team": "SA",
-     "opponent": "SAC",
-     "value": 29.0,
-     "detail": "29 points in 27 minutes for SA against SAC",
-     "game_id": "401909879",
-     "field": 94
+     "opponent": "UTAH",
+     "value": 36.0,
+     "detail": "36 points in 39 minutes for SA against UTAH",
+     "game_id": "401909890",
+     "field": 256
     },
     {
-     "player": "Karl-Anthony Towns",
-     "team": "NY",
+     "player": "Brandon Miller",
+     "team": "CHA",
      "opponent": "DET",
-     "value": 27.0,
-     "detail": "27 points in 33 minutes for NY against DET",
-     "game_id": "401909878",
-     "field": 94
+     "value": 31.0,
+     "detail": "31 points in 38 minutes for CHA against DET",
+     "game_id": "401909883",
+     "field": 256
     },
     {
-     "player": "Michael Porter Jr.",
-     "team": "BKN",
-     "opponent": "BOS",
-     "value": 27.0,
-     "detail": "27 points in 40 minutes for BKN against BOS",
-     "game_id": "401909877",
-     "field": 94
-    },
-    {
-     "player": "Austin Reaves",
-     "team": "LAL",
-     "opponent": "POR",
-     "value": 26.0,
-     "detail": "26 points in 39 minutes for LAL against POR",
-     "game_id": "401909880",
-     "field": 94
-    },
-    {
-     "player": "Julian Champagnie",
-     "team": "SA",
-     "opponent": "SAC",
-     "value": 26.0,
-     "detail": "26 points in 25 minutes for SA against SAC",
-     "game_id": "401909879",
-     "field": 94
-    },
-    {
-     "player": "De'Andre Hunter",
-     "team": "SAC",
+     "player": "Keyonte George",
+     "team": "UTAH",
      "opponent": "SA",
-     "value": 24.0,
-     "detail": "24 points in 33 minutes for SAC against SA",
-     "game_id": "401909879",
-     "field": 94
+     "value": 31.0,
+     "detail": "31 points in 37 minutes for UTAH against SA",
+     "game_id": "401909890",
+     "field": 256
     },
     {
-     "player": "Julius Randle",
-     "team": "BKN",
-     "opponent": "BOS",
-     "value": 24.0,
-     "detail": "24 points in 44 minutes for BKN against BOS",
-     "game_id": "401909877",
-     "field": 94
+     "player": "Cade Cunningham",
+     "team": "DET",
+     "opponent": "CHA",
+     "value": 30.0,
+     "detail": "30 points in 39 minutes for DET against CHA",
+     "game_id": "401909883",
+     "field": 256
     },
     {
-     "player": "Deni Avdija",
-     "team": "POR",
-     "opponent": "LAL",
-     "value": 23.0,
-     "detail": "23 points in 33 minutes for POR against LAL",
-     "game_id": "401909880",
-     "field": 94
+     "player": "Norman Powell",
+     "team": "CHI",
+     "opponent": "NY",
+     "value": 30.0,
+     "detail": "30 points in 37 minutes for CHI against NY",
+     "game_id": "401909886",
+     "field": 256
+    },
+    {
+     "player": "Ajay Mitchell",
+     "team": "OKC",
+     "opponent": "DAL",
+     "value": 29.0,
+     "detail": "29 points in 28 minutes for OKC against DAL",
+     "game_id": "401909891",
+     "field": 256
+    },
+    {
+     "player": "Scottie Barnes",
+     "team": "TOR",
+     "opponent": "ORL",
+     "value": 28.0,
+     "detail": "28 points in 31 minutes for TOR against ORL",
+     "game_id": "401909885",
+     "field": 256
+    },
+    {
+     "player": "Tyrese Maxey",
+     "team": "PHI",
+     "opponent": "IND",
+     "value": 27.0,
+     "detail": "27 points in 36 minutes for PHI against IND",
+     "game_id": "401909884",
+     "field": 256
     }
    ]
   },
@@ -100,284 +100,189 @@
    "sport": "NBA",
    "rows": [
     {
+     "player": "Giannis Antetokounmpo",
+     "team": "MIA",
+     "opponent": "ATL",
+     "value": 18.0,
+     "detail": "18 rebounds for MIA against ATL",
+     "game_id": "401909881",
+     "field": 256
+    },
+    {
+     "player": "Isaiah Hartenstein",
+     "team": "OKC",
+     "opponent": "DAL",
+     "value": 14.0,
+     "detail": "14 rebounds for OKC against DAL",
+     "game_id": "401909891",
+     "field": 256
+    },
+    {
+     "player": "Victor Wembanyama",
+     "team": "SA",
+     "opponent": "UTAH",
+     "value": 14.0,
+     "detail": "14 rebounds for SA against UTAH",
+     "game_id": "401909890",
+     "field": 256
+    },
+    {
      "player": "Karl-Anthony Towns",
      "team": "NY",
+     "opponent": "CHI",
+     "value": 13.0,
+     "detail": "13 rebounds for NY against CHI",
+     "game_id": "401909886",
+     "field": 256
+    },
+    {
+     "player": "Nikola Jokic",
+     "team": "DEN",
+     "opponent": "NO",
+     "value": 13.0,
+     "detail": "13 rebounds for DEN against NO",
+     "game_id": "401909889",
+     "field": 256
+    },
+    {
+     "player": "Brandon Miller",
+     "team": "CHA",
      "opponent": "DET",
-     "value": 20.0,
-     "detail": "20 rebounds for NY against DET",
-     "game_id": "401909878",
-     "field": 94
-    },
-    {
-     "player": "Domantas Sabonis",
-     "team": "SAC",
-     "opponent": "SA",
-     "value": 14.0,
-     "detail": "14 rebounds for SAC against SA",
-     "game_id": "401909879",
-     "field": 94
-    },
-    {
-     "player": "Michael Porter Jr.",
-     "team": "BKN",
-     "opponent": "BOS",
      "value": 12.0,
-     "detail": "12 rebounds for BKN against BOS",
-     "game_id": "401909877",
-     "field": 94
+     "detail": "12 rebounds for CHA against DET",
+     "game_id": "401909883",
+     "field": 256
     },
     {
-     "player": "Donovan Clingan",
-     "team": "POR",
-     "opponent": "LAL",
-     "value": 10.0,
-     "detail": "10 rebounds for POR against LAL",
-     "game_id": "401909880",
-     "field": 94
+     "player": "Derik Queen",
+     "team": "NO",
+     "opponent": "DEN",
+     "value": 12.0,
+     "detail": "12 rebounds for NO against DEN",
+     "game_id": "401909889",
+     "field": 256
     },
     {
-     "player": "Robert Williams III",
-     "team": "POR",
-     "opponent": "LAL",
-     "value": 10.0,
-     "detail": "10 rebounds for POR against LAL",
-     "game_id": "401909880",
-     "field": 94
+     "player": "Evan Mobley",
+     "team": "CLE",
+     "opponent": "WSH",
+     "value": 12.0,
+     "detail": "12 rebounds for CLE against WSH",
+     "game_id": "401909882",
+     "field": 256
     },
     {
-     "player": "Victor Wembanyama",
-     "team": "SA",
-     "opponent": "SAC",
-     "value": 10.0,
-     "detail": "10 rebounds for SA against SAC",
-     "game_id": "401909879",
-     "field": 94
+     "player": "Jarrett Allen",
+     "team": "CLE",
+     "opponent": "WSH",
+     "value": 12.0,
+     "detail": "12 rebounds for CLE against WSH",
+     "game_id": "401909882",
+     "field": 256
     },
     {
-     "player": "Cade Cunningham",
-     "team": "DET",
-     "opponent": "NY",
-     "value": 9.0,
-     "detail": "9 rebounds for DET against NY",
-     "game_id": "401909878",
-     "field": 94
-    },
-    {
-     "player": "John Collins",
-     "team": "DET",
-     "opponent": "NY",
-     "value": 9.0,
-     "detail": "9 rebounds for DET against NY",
-     "game_id": "401909878",
-     "field": 94
-    },
-    {
-     "player": "Julius Randle",
-     "team": "BKN",
-     "opponent": "BOS",
-     "value": 9.0,
-     "detail": "9 rebounds for BKN against BOS",
-     "game_id": "401909877",
-     "field": 94
-    },
-    {
-     "player": "Paul Reed",
-     "team": "DET",
-     "opponent": "NY",
-     "value": 9.0,
-     "detail": "9 rebounds for DET against NY",
-     "game_id": "401909878",
-     "field": 94
+     "player": "Aaron Gordon",
+     "team": "DEN",
+     "opponent": "NO",
+     "value": 11.0,
+     "detail": "11 rebounds for DEN against NO",
+     "game_id": "401909889",
+     "field": 256
     }
    ]
   },
-  "nba_threes": {
+  "nba_assists": {
    "sport": "NBA",
    "rows": [
     {
-     "player": "Julian Champagnie",
-     "team": "SA",
-     "opponent": "SAC",
-     "value": 8.0,
-     "detail": "8 threes and 26 points for SA against SAC",
-     "game_id": "401909879",
-     "field": 94
+     "player": "Andrew Nembhard",
+     "team": "IND",
+     "opponent": "PHI",
+     "value": 14.0,
+     "detail": "14 assists for IND against PHI",
+     "game_id": "401909884",
+     "field": 256
     },
     {
-     "player": "Luka Doncic",
-     "team": "LAL",
-     "opponent": "POR",
-     "value": 6.0,
-     "detail": "6 threes and 41 points for LAL against POR",
-     "game_id": "401909880",
-     "field": 94
+     "player": "Jalen Johnson",
+     "team": "ATL",
+     "opponent": "MIA",
+     "value": 11.0,
+     "detail": "11 assists for ATL against MIA",
+     "game_id": "401909881",
+     "field": 256
     },
     {
-     "player": "Michael Porter Jr.",
-     "team": "BKN",
-     "opponent": "BOS",
-     "value": 6.0,
-     "detail": "6 threes and 27 points for BKN against BOS",
-     "game_id": "401909877",
-     "field": 94
-    },
-    {
-     "player": "De'Andre Hunter",
-     "team": "SAC",
-     "opponent": "SA",
-     "value": 5.0,
-     "detail": "5 threes and 24 points for SAC against SA",
-     "game_id": "401909879",
-     "field": 94
-    },
-    {
-     "player": "Austin Reaves",
-     "team": "LAL",
-     "opponent": "POR",
-     "value": 4.0,
-     "detail": "4 threes and 26 points for LAL against POR",
-     "game_id": "401909880",
-     "field": 94
-    },
-    {
-     "player": "Damian Lillard",
-     "team": "POR",
-     "opponent": "LAL",
-     "value": 4.0,
-     "detail": "4 threes and 21 points for POR against LAL",
-     "game_id": "401909880",
-     "field": 94
-    },
-    {
-     "player": "Deni Avdija",
-     "team": "POR",
-     "opponent": "LAL",
-     "value": 4.0,
-     "detail": "4 threes and 23 points for POR against LAL",
-     "game_id": "401909880",
-     "field": 94
-    },
-    {
-     "player": "Devin Vassell",
-     "team": "SA",
-     "opponent": "SAC",
-     "value": 4.0,
-     "detail": "4 threes and 14 points for SA against SAC",
-     "game_id": "401909879",
-     "field": 94
-    },
-    {
-     "player": "Mikal Bridges",
-     "team": "NY",
-     "opponent": "DET",
-     "value": 4.0,
-     "detail": "4 threes and 12 points for NY against DET",
-     "game_id": "401909878",
-     "field": 94
-    },
-    {
-     "player": "Mikel Brown Jr.",
-     "team": "BKN",
-     "opponent": "BOS",
-     "value": 4.0,
-     "detail": "4 threes and 17 points for BKN against BOS",
-     "game_id": "401909877",
-     "field": 94
-    }
-   ]
-  },
-  "nba_blocks": {
-   "sport": "NBA",
-   "rows": [
-    {
-     "player": "Victor Wembanyama",
-     "team": "SA",
-     "opponent": "SAC",
-     "value": 5.0,
-     "detail": "5 blocks for SA against SAC",
-     "game_id": "401909879",
-     "field": 94
-    },
-    {
-     "player": "John Collins",
-     "team": "DET",
+     "player": "Josh Giddey",
+     "team": "CHI",
      "opponent": "NY",
-     "value": 3.0,
-     "detail": "3 blocks for DET against NY",
-     "game_id": "401909878",
-     "field": 94
+     "value": 11.0,
+     "detail": "11 assists for CHI against NY",
+     "game_id": "401909886",
+     "field": 256
     },
     {
-     "player": "Keon Ellis",
-     "team": "BKN",
-     "opponent": "BOS",
-     "value": 2.0,
-     "detail": "2 blocks for BKN against BOS",
-     "game_id": "401909877",
-     "field": 94
+     "player": "Kyshawn George",
+     "team": "WSH",
+     "opponent": "CLE",
+     "value": 11.0,
+     "detail": "11 assists for WSH against CLE",
+     "game_id": "401909882",
+     "field": 256
     },
     {
-     "player": "Michael Porter Jr.",
-     "team": "BKN",
-     "opponent": "BOS",
-     "value": 2.0,
-     "detail": "2 blocks for BKN against BOS",
-     "game_id": "401909877",
-     "field": 94
+     "player": "Davion Mitchell",
+     "team": "MIA",
+     "opponent": "ATL",
+     "value": 10.0,
+     "detail": "10 assists for MIA against ATL",
+     "game_id": "401909881",
+     "field": 256
     },
     {
-     "player": "Noah Clowney",
-     "team": "BKN",
-     "opponent": "BOS",
-     "value": 2.0,
-     "detail": "2 blocks for BKN against BOS",
-     "game_id": "401909877",
-     "field": 94
+     "player": "LeBron James",
+     "team": "PHI",
+     "opponent": "IND",
+     "value": 10.0,
+     "detail": "10 assists for PHI against IND",
+     "game_id": "401909884",
+     "field": 256
     },
     {
-     "player": "OG Anunoby",
+     "player": "Nikola Jokic",
+     "team": "DEN",
+     "opponent": "NO",
+     "value": 10.0,
+     "detail": "10 assists for DEN against NO",
+     "game_id": "401909889",
+     "field": 256
+    },
+    {
+     "player": "Tyler Kolek",
      "team": "NY",
-     "opponent": "DET",
-     "value": 2.0,
-     "detail": "2 blocks for NY against DET",
-     "game_id": "401909878",
-     "field": 94
-    },
-    {
-     "player": "Ronald Holland II",
-     "team": "DET",
-     "opponent": "NY",
-     "value": 2.0,
-     "detail": "2 blocks for DET against NY",
-     "game_id": "401909878",
-     "field": 94
-    },
-    {
-     "player": "Walker Kessler",
-     "team": "LAL",
-     "opponent": "POR",
-     "value": 2.0,
-     "detail": "2 blocks for LAL against POR",
-     "game_id": "401909880",
-     "field": 94
+     "opponent": "CHI",
+     "value": 9.0,
+     "detail": "9 assists for NY against CHI",
+     "game_id": "401909886",
+     "field": 256
     },
     {
      "player": "Ausar Thompson",
      "team": "DET",
-     "opponent": "NY",
-     "value": 1.0,
-     "detail": "1 blocks for DET against NY",
-     "game_id": "401909878",
-     "field": 94
+     "opponent": "CHA",
+     "value": 8.0,
+     "detail": "8 assists for DET against CHA",
+     "game_id": "401909883",
+     "field": 256
     },
     {
-     "player": "Cade Cunningham",
-     "team": "DET",
-     "opponent": "NY",
-     "value": 1.0,
-     "detail": "1 blocks for DET against NY",
-     "game_id": "401909878",
-     "field": 94
+     "player": "Cooper Flagg",
+     "team": "DAL",
+     "opponent": "OKC",
+     "value": 8.0,
+     "detail": "8 assists for DAL against OKC",
+     "game_id": "401909891",
+     "field": 256
     }
    ]
   }
