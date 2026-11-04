@@ -1,76 +1,72 @@
 {
  "version": 1,
- "date": "2026-11-03",
- "stamp": "9c2cf586b14d",
- "source_date": "2026-11-02",
- "opens": "2026-11-03T07:00:00-05:00",
+ "date": "2026-11-04",
+ "stamp": "7c2bc6009d77",
+ "source_date": "2026-11-03",
+ "opens": "2026-11-04T07:00:00-05:00",
  "questions": [
   {
-   "kind": "last_before",
+   "kind": "most_recent",
    "sport": "NBA",
-   "setup": "Myles Turner blocked 5 shots for MIL yesterday.",
-   "prompt": "Before Myles Turner, who was the last NBA player with five blocks in a game?",
+   "setup": "Nobody managed a 20-assist game in the NBA yesterday.",
+   "prompt": "Who had the most recent one?",
    "options": [
-    "Nikola Jokic",
-    "Alonzo Mourning",
-    "Gheorghe Muresan",
-    "Victor Wembanyama"
-   ],
-   "answer": 3,
-   "explain": "Victor Wembanyama \u2014 6 blocks for SA on October 31, 2026, 2 days earlier.",
-   "links": [
-    {
-     "label": "November 2, 2026 box score",
-     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909915"
-    },
-    {
-     "label": "October 31, 2026 box score",
-     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909901"
-    }
-   ],
-   "id": "2026-11-03-1"
-  },
-  {
-   "kind": "led_the_night",
-   "sport": "NBA",
-   "setup": "Last night's box scores list 334 players.",
-   "prompt": "Who scored the most in the NBA last night?",
-   "options": [
-    "Ty Jerome",
-    "LaMelo Ball",
-    "Shai Gilgeous-Alexander",
-    "Stephen Curry"
+    "Scott Skiles",
+    "Trae Young",
+    "Ryan Nembhard",
+    "Isaiah Collier"
    ],
    "answer": 2,
-   "explain": "Shai Gilgeous-Alexander \u2014 43 points in 39 minutes for OKC against CLE.",
+   "explain": "Ryan Nembhard \u2014 23 assists for DAL vs CHI on April 12, 2026.",
    "links": [
     {
-     "label": "November 2, 2026 box score",
-     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909907"
+     "label": "April 12, 2026 box score",
+     "url": "https://www.espn.com/nba/boxscore/_/gameId/401811048"
     }
    ],
-   "id": "2026-11-03-2"
+   "id": "2026-11-04-1"
   },
   {
-   "kind": "led_the_night",
-   "sport": "NBA",
-   "setup": "Last night's box scores list 334 players.",
-   "prompt": "Who made the most three-pointers in the NBA last night?",
+   "kind": "most_recent",
+   "sport": "NFL",
+   "setup": "Nobody managed a 450-yard passing game in the NFL yesterday.",
+   "prompt": "Who had the most recent one?",
    "options": [
-    "Malik Monk",
-    "Duncan Robinson",
-    "LaMelo Ball",
-    "Nickeil Alexander-Walker"
+    "Jared Goff",
+    "Jacoby Brissett",
+    "Joe Burrow",
+    "Joe Flacco"
    ],
-   "answer": 3,
-   "explain": "Nickeil Alexander-Walker \u2014 9 threes and 34 points for ATL against IND.",
+   "answer": 2,
+   "explain": "Joe Burrow \u2014 462 yards for CIN vs TEN on November 1, 2026.",
    "links": [
     {
-     "label": "November 2, 2026 box score",
-     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909909"
+     "label": "November 1, 2026 box score",
+     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401873031"
     }
    ],
-   "id": "2026-11-03-3"
+   "id": "2026-11-04-2"
+  },
+  {
+   "kind": "most_recent",
+   "sport": "NBA",
+   "setup": "Nobody managed a six-steal game in the NBA yesterday.",
+   "prompt": "Who had the most recent one?",
+   "options": [
+    "Kris Dunn",
+    "Kendall Gill",
+    "Ty Jerome",
+    "Jordan Poole"
+   ],
+   "answer": 0,
+   "explain": "Kris Dunn \u2014 7 steals for LAC vs GS on November 1, 2026.",
+   "links": [
+    {
+     "label": "November 1, 2026 box score",
+     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909905"
+    }
+   ],
+   "id": "2026-11-04-3"
   }
  ],
  "coverage": {
@@ -91,7 +87,7 @@
    },
    {
     "from": "2025-01-01",
-    "through": "2026-11-02",
+    "through": "2026-11-03",
     "feats": [
      "mlb_12_k",
      "mlb_15_k",
@@ -135,7 +131,7 @@
    },
    {
     "from": "2023-10-01",
-    "through": "2026-11-02",
+    "through": "2026-11-03",
     "feats": [
      "nba_10_threes",
      "nba_20_assists",
@@ -169,7 +165,7 @@
    },
    {
     "from": "2023-09-01",
-    "through": "2026-11-02",
+    "through": "2026-11-03",
     "feats": [
      "nfl_150_rec_yards",
      "nfl_150_rush_yards",
@@ -187,6 +183,6 @@
    }
   ]
  },
- "built_at": "2026-11-03T18:17:49Z",
- "closes": "2026-11-04T07:00:00-05:00"
+ "built_at": "2026-11-04T18:30:42Z",
+ "closes": "2026-11-05T07:00:00-05:00"
 }
