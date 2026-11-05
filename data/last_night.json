@@ -1,4 +1,385 @@
 {
- "date": "2026-11-03",
- "boards": {}
+ "date": "2026-11-04",
+ "boards": {
+  "nba_points": {
+   "sport": "NBA",
+   "rows": [
+    {
+     "player": "Victor Wembanyama",
+     "team": "SA",
+     "opponent": "DAL",
+     "value": 52.0,
+     "detail": "52 points in 34 minutes for SA against DAL",
+     "game_id": "401909933",
+     "field": 316
+    },
+    {
+     "player": "Shai Gilgeous-Alexander",
+     "team": "OKC",
+     "opponent": "CLE",
+     "value": 42.0,
+     "detail": "42 points in 35 minutes for OKC against CLE",
+     "game_id": "401909929",
+     "field": 316
+    },
+    {
+     "player": "Luka Doncic",
+     "team": "LAL",
+     "opponent": "SAC",
+     "value": 40.0,
+     "detail": "40 points in 35 minutes for LAL against SAC",
+     "game_id": "401909934",
+     "field": 316
+    },
+    {
+     "player": "Keyonte George",
+     "team": "UTAH",
+     "opponent": "NO",
+     "value": 39.0,
+     "detail": "39 points in 44 minutes for UTAH against NO",
+     "game_id": "401909928",
+     "field": 316
+    },
+    {
+     "player": "Bam Adebayo",
+     "team": "MIA",
+     "opponent": "LAC",
+     "value": 35.0,
+     "detail": "35 points in 41 minutes for MIA against LAC",
+     "game_id": "401909935",
+     "field": 316
+    },
+    {
+     "player": "Devin Booker",
+     "team": "PHX",
+     "opponent": "POR",
+     "value": 33.0,
+     "detail": "33 points in 34 minutes for PHX against POR",
+     "game_id": "401909932",
+     "field": 316
+    },
+    {
+     "player": "Jalen Brunson",
+     "team": "NY",
+     "opponent": "CHI",
+     "value": 33.0,
+     "detail": "33 points in 28 minutes for NY against CHI",
+     "game_id": "401909926",
+     "field": 316
+    },
+    {
+     "player": "Nikola Jokic",
+     "team": "DEN",
+     "opponent": "TOR",
+     "value": 32.0,
+     "detail": "32 points in 30 minutes for DEN against TOR",
+     "game_id": "401909931",
+     "field": 316
+    },
+    {
+     "player": "Jaylen Brown",
+     "team": "PHI",
+     "opponent": "DET",
+     "value": 30.0,
+     "detail": "30 points in 37 minutes for PHI against DET",
+     "game_id": "401909922",
+     "field": 316
+    },
+    {
+     "player": "Klay Thompson",
+     "team": "MIA",
+     "opponent": "LAC",
+     "value": 30.0,
+     "detail": "30 points in 35 minutes for MIA against LAC",
+     "game_id": "401909935",
+     "field": 316
+    }
+   ]
+  },
+  "nba_rebounds": {
+   "sport": "NBA",
+   "rows": [
+    {
+     "player": "Victor Wembanyama",
+     "team": "SA",
+     "opponent": "DAL",
+     "value": 24.0,
+     "detail": "24 rebounds for SA against DAL",
+     "game_id": "401909933",
+     "field": 316
+    },
+    {
+     "player": "Ausar Thompson",
+     "team": "DET",
+     "opponent": "PHI",
+     "value": 17.0,
+     "detail": "17 rebounds for DET against PHI",
+     "game_id": "401909922",
+     "field": 316
+    },
+    {
+     "player": "Domantas Sabonis",
+     "team": "SAC",
+     "opponent": "LAL",
+     "value": 17.0,
+     "detail": "17 rebounds for SAC against LAL",
+     "game_id": "401909934",
+     "field": 316
+    },
+    {
+     "player": "Dyson Daniels",
+     "team": "ATL",
+     "opponent": "WSH",
+     "value": 16.0,
+     "detail": "16 rebounds for ATL against WSH",
+     "game_id": "401909923",
+     "field": 316
+    },
+    {
+     "player": "Onyeka Okongwu",
+     "team": "ATL",
+     "opponent": "WSH",
+     "value": 16.0,
+     "detail": "16 rebounds for ATL against WSH",
+     "game_id": "401909923",
+     "field": 316
+    },
+    {
+     "player": "Joel Embiid",
+     "team": "PHI",
+     "opponent": "DET",
+     "value": 15.0,
+     "detail": "15 rebounds for PHI against DET",
+     "game_id": "401909922",
+     "field": 316
+    },
+    {
+     "player": "Giannis Antetokounmpo",
+     "team": "MIA",
+     "opponent": "LAC",
+     "value": 14.0,
+     "detail": "14 rebounds for MIA against LAC",
+     "game_id": "401909935",
+     "field": 316
+    },
+    {
+     "player": "Zach Edey",
+     "team": "MEM",
+     "opponent": "IND",
+     "value": 13.0,
+     "detail": "13 rebounds for MEM against IND",
+     "game_id": "401909927",
+     "field": 316
+    },
+    {
+     "player": "Alperen Sengun",
+     "team": "HOU",
+     "opponent": "MIN",
+     "value": 12.0,
+     "detail": "12 rebounds for HOU against MIN",
+     "game_id": "401909930",
+     "field": 316
+    },
+    {
+     "player": "Isaiah Hartenstein",
+     "team": "OKC",
+     "opponent": "CLE",
+     "value": 12.0,
+     "detail": "12 rebounds for OKC against CLE",
+     "game_id": "401909929",
+     "field": 316
+    }
+   ]
+  },
+  "nba_threes": {
+   "sport": "NBA",
+   "rows": [
+    {
+     "player": "Klay Thompson",
+     "team": "MIA",
+     "opponent": "LAC",
+     "value": 8.0,
+     "detail": "8 threes and 30 points for MIA against LAC",
+     "game_id": "401909935",
+     "field": 316
+    },
+    {
+     "player": "Duncan Robinson",
+     "team": "DET",
+     "opponent": "PHI",
+     "value": 7.0,
+     "detail": "7 threes and 27 points for DET against PHI",
+     "game_id": "401909922",
+     "field": 316
+    },
+    {
+     "player": "Luka Doncic",
+     "team": "LAL",
+     "opponent": "SAC",
+     "value": 6.0,
+     "detail": "6 threes and 40 points for LAL against SAC",
+     "game_id": "401909934",
+     "field": 316
+    },
+    {
+     "player": "Nickeil Alexander-Walker",
+     "team": "ATL",
+     "opponent": "WSH",
+     "value": 6.0,
+     "detail": "6 threes and 26 points for ATL against WSH",
+     "game_id": "401909923",
+     "field": 316
+    },
+    {
+     "player": "Donovan Mitchell",
+     "team": "CLE",
+     "opponent": "OKC",
+     "value": 5.0,
+     "detail": "5 threes and 27 points for CLE against OKC",
+     "game_id": "401909929",
+     "field": 316
+    },
+    {
+     "player": "Grayson Allen",
+     "team": "CHA",
+     "opponent": "BKN",
+     "value": 5.0,
+     "detail": "5 threes and 22 points for CHA against BKN",
+     "game_id": "401909925",
+     "field": 316
+    },
+    {
+     "player": "Jalen Brunson",
+     "team": "NY",
+     "opponent": "CHI",
+     "value": 5.0,
+     "detail": "5 threes and 33 points for NY against CHI",
+     "game_id": "401909926",
+     "field": 316
+    },
+    {
+     "player": "Jrue Holiday",
+     "team": "POR",
+     "opponent": "PHX",
+     "value": 5.0,
+     "detail": "5 threes and 15 points for POR against PHX",
+     "game_id": "401909932",
+     "field": 316
+    },
+    {
+     "player": "Kyrie Irving",
+     "team": "DAL",
+     "opponent": "SA",
+     "value": 5.0,
+     "detail": "5 threes and 29 points for DAL against SA",
+     "game_id": "401909933",
+     "field": 316
+    },
+    {
+     "player": "Lauri Markkanen",
+     "team": "UTAH",
+     "opponent": "NO",
+     "value": 5.0,
+     "detail": "5 threes and 21 points for UTAH against NO",
+     "game_id": "401909928",
+     "field": 316
+    }
+   ]
+  },
+  "nba_blocks": {
+   "sport": "NBA",
+   "rows": [
+    {
+     "player": "Victor Wembanyama",
+     "team": "SA",
+     "opponent": "DAL",
+     "value": 8.0,
+     "detail": "8 blocks for SA against DAL",
+     "game_id": "401909933",
+     "field": 316
+    },
+    {
+     "player": "Rudy Gobert",
+     "team": "MIN",
+     "opponent": "HOU",
+     "value": 4.0,
+     "detail": "4 blocks for MIN against HOU",
+     "game_id": "401909930",
+     "field": 316
+    },
+    {
+     "player": "Walker Kessler",
+     "team": "LAL",
+     "opponent": "SAC",
+     "value": 4.0,
+     "detail": "4 blocks for LAL against SAC",
+     "game_id": "401909934",
+     "field": 316
+    },
+    {
+     "player": "Aday Mara",
+     "team": "OKC",
+     "opponent": "CLE",
+     "value": 3.0,
+     "detail": "3 blocks for OKC against CLE",
+     "game_id": "401909929",
+     "field": 316
+    },
+    {
+     "player": "Alperen Sengun",
+     "team": "HOU",
+     "opponent": "MIN",
+     "value": 3.0,
+     "detail": "3 blocks for HOU against MIN",
+     "game_id": "401909930",
+     "field": 316
+    },
+    {
+     "player": "Anthony Davis",
+     "team": "WSH",
+     "opponent": "ATL",
+     "value": 3.0,
+     "detail": "3 blocks for WSH against ATL",
+     "game_id": "401909923",
+     "field": 316
+    },
+    {
+     "player": "Derrick Jones Jr.",
+     "team": "LAC",
+     "opponent": "MIA",
+     "value": 3.0,
+     "detail": "3 blocks for LAC against MIA",
+     "game_id": "401909935",
+     "field": 316
+    },
+    {
+     "player": "Donovan Clingan",
+     "team": "POR",
+     "opponent": "PHX",
+     "value": 3.0,
+     "detail": "3 blocks for POR against PHX",
+     "game_id": "401909932",
+     "field": 316
+    },
+    {
+     "player": "Evan Mobley",
+     "team": "CLE",
+     "opponent": "OKC",
+     "value": 3.0,
+     "detail": "3 blocks for CLE against OKC",
+     "game_id": "401909929",
+     "field": 316
+    },
+    {
+     "player": "Giannis Antetokounmpo",
+     "team": "MIA",
+     "opponent": "LAC",
+     "value": 3.0,
+     "detail": "3 blocks for MIA against LAC",
+     "game_id": "401909935",
+     "field": 316
+    }
+   ]
+  }
+ }
 }
