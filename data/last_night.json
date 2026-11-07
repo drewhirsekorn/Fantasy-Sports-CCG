@@ -1,98 +1,98 @@
 {
- "date": "2026-11-05",
+ "date": "2026-11-06",
  "boards": {
   "nba_points": {
    "sport": "NBA",
    "rows": [
     {
-     "player": "Devin Booker",
-     "team": "PHX",
-     "opponent": "ORL",
+     "player": "Luka Doncic",
+     "team": "LAL",
+     "opponent": "POR",
+     "value": 53.0,
+     "detail": "53 points in 38 minutes for LAL against POR",
+     "game_id": "401909294",
+     "field": 200
+    },
+    {
+     "player": "Ajay Mitchell",
+     "team": "OKC",
+     "opponent": "MEM",
+     "value": 35.0,
+     "detail": "35 points in 30 minutes for OKC against MEM",
+     "game_id": "401909291",
+     "field": 200
+    },
+    {
+     "player": "Jayson Tatum",
+     "team": "BOS",
+     "opponent": "CHA",
+     "value": 34.0,
+     "detail": "34 points in 29 minutes for BOS against CHA",
+     "game_id": "401909288",
+     "field": 200
+    },
+    {
+     "player": "Kyshawn George",
+     "team": "WSH",
+     "opponent": "ATL",
+     "value": 33.0,
+     "detail": "33 points in 39 minutes for WSH against ATL",
+     "game_id": "401909287",
+     "field": 200
+    },
+    {
+     "player": "Victor Wembanyama",
+     "team": "SA",
+     "opponent": "SAC",
      "value": 30.0,
-     "detail": "30 points in 34 minutes for PHX against ORL",
-     "game_id": "401909936",
-     "field": 52
+     "detail": "30 points in 26 minutes for SA against SAC",
+     "game_id": "401909295",
+     "field": 200
     },
     {
-     "player": "Stephen Curry",
-     "team": "GS",
-     "opponent": "MIA",
-     "value": 29.0,
-     "detail": "29 points in 28 minutes for GS against MIA",
-     "game_id": "401909937",
-     "field": 52
+     "player": "Nickeil Alexander-Walker",
+     "team": "ATL",
+     "opponent": "WSH",
+     "value": 28.0,
+     "detail": "28 points in 33 minutes for ATL against WSH",
+     "game_id": "401909287",
+     "field": 200
     },
     {
-     "player": "Wendell Carter Jr.",
-     "team": "ORL",
-     "opponent": "PHX",
+     "player": "Shai Gilgeous-Alexander",
+     "team": "OKC",
+     "opponent": "MEM",
+     "value": 28.0,
+     "detail": "28 points in 30 minutes for OKC against MEM",
+     "game_id": "401909291",
+     "field": 200
+    },
+    {
+     "player": "Alijah Martin",
+     "team": "TOR",
+     "opponent": "MIL",
      "value": 27.0,
-     "detail": "27 points in 34 minutes for ORL against PHX",
-     "game_id": "401909936",
-     "field": 52
+     "detail": "27 points in 31 minutes for TOR against MIL",
+     "game_id": "401909292",
+     "field": 200
     },
     {
-     "player": "Dillon Brooks",
-     "team": "PHX",
-     "opponent": "ORL",
-     "value": 24.0,
-     "detail": "24 points in 29 minutes for PHX against ORL",
-     "game_id": "401909936",
-     "field": 52
+     "player": "RJ Barrett",
+     "team": "TOR",
+     "opponent": "MIL",
+     "value": 27.0,
+     "detail": "27 points in 37 minutes for TOR against MIL",
+     "game_id": "401909292",
+     "field": 200
     },
     {
-     "player": "Davion Mitchell",
-     "team": "MIA",
-     "opponent": "GS",
-     "value": 22.0,
-     "detail": "22 points in 38 minutes for MIA against GS",
-     "game_id": "401909937",
-     "field": 52
-    },
-    {
-     "player": "Giannis Antetokounmpo",
-     "team": "MIA",
-     "opponent": "GS",
-     "value": 20.0,
-     "detail": "20 points in 31 minutes for MIA against GS",
-     "game_id": "401909937",
-     "field": 52
-    },
-    {
-     "player": "Bam Adebayo",
-     "team": "MIA",
-     "opponent": "GS",
-     "value": 18.0,
-     "detail": "18 points in 33 minutes for MIA against GS",
-     "game_id": "401909937",
-     "field": 52
-    },
-    {
-     "player": "Miles Bridges",
-     "team": "PHX",
-     "opponent": "ORL",
-     "value": 18.0,
-     "detail": "18 points in 31 minutes for PHX against ORL",
-     "game_id": "401909936",
-     "field": 52
-    },
-    {
-     "player": "Tristan da Silva",
-     "team": "ORL",
-     "opponent": "PHX",
-     "value": 18.0,
-     "detail": "18 points in 30 minutes for ORL against PHX",
-     "game_id": "401909936",
-     "field": 52
-    },
-    {
-     "player": "Yaxel Lendeborg",
-     "team": "GS",
-     "opponent": "MIA",
-     "value": 17.0,
-     "detail": "17 points in 30 minutes for GS against MIA",
-     "game_id": "401909937",
-     "field": 52
+     "player": "Ayo Dosunmu",
+     "team": "MIN",
+     "opponent": "NO",
+     "value": 26.0,
+     "detail": "26 points in 39 minutes for MIN against NO",
+     "game_id": "401909293",
+     "field": 200
     }
    ]
   },
@@ -100,94 +100,94 @@
    "sport": "NBA",
    "rows": [
     {
-     "player": "Giannis Antetokounmpo",
-     "team": "MIA",
-     "opponent": "GS",
+     "player": "Morez Johnson Jr.",
+     "team": "DAL",
+     "opponent": "UTAH",
+     "value": 17.0,
+     "detail": "17 rebounds for DAL against UTAH",
+     "game_id": "401909290",
+     "field": 200
+    },
+    {
+     "player": "Victor Wembanyama",
+     "team": "SA",
+     "opponent": "SAC",
      "value": 14.0,
-     "detail": "14 rebounds for MIA against GS",
-     "game_id": "401909937",
-     "field": 52
+     "detail": "14 rebounds for SA against SAC",
+     "game_id": "401909295",
+     "field": 200
     },
     {
-     "player": "Miles Bridges",
-     "team": "PHX",
-     "opponent": "ORL",
+     "player": "Trey Lyles",
+     "team": "MIN",
+     "opponent": "NO",
      "value": 13.0,
-     "detail": "13 rebounds for PHX against ORL",
-     "game_id": "401909936",
-     "field": 52
+     "detail": "13 rebounds for MIN against NO",
+     "game_id": "401909293",
+     "field": 200
     },
     {
-     "player": "Wendell Carter Jr.",
-     "team": "ORL",
-     "opponent": "PHX",
-     "value": 13.0,
-     "detail": "13 rebounds for ORL against PHX",
-     "game_id": "401909936",
-     "field": 52
+     "player": "Cameron Boozer",
+     "team": "MEM",
+     "opponent": "OKC",
+     "value": 12.0,
+     "detail": "12 rebounds for MEM against OKC",
+     "game_id": "401909291",
+     "field": 200
     },
     {
-     "player": "Bam Adebayo",
-     "team": "MIA",
-     "opponent": "GS",
-     "value": 10.0,
-     "detail": "10 rebounds for MIA against GS",
-     "game_id": "401909937",
-     "field": 52
+     "player": "Domantas Sabonis",
+     "team": "SAC",
+     "opponent": "SA",
+     "value": 12.0,
+     "detail": "12 rebounds for SAC against SA",
+     "game_id": "401909295",
+     "field": 200
     },
     {
-     "player": "Franz Wagner",
-     "team": "ORL",
-     "opponent": "PHX",
-     "value": 8.0,
-     "detail": "8 rebounds for ORL against PHX",
-     "game_id": "401909936",
-     "field": 52
+     "player": "Walker Kessler",
+     "team": "LAL",
+     "opponent": "POR",
+     "value": 12.0,
+     "detail": "12 rebounds for LAL against POR",
+     "game_id": "401909294",
+     "field": 200
     },
     {
-     "player": "Yaxel Lendeborg",
-     "team": "GS",
-     "opponent": "MIA",
-     "value": 8.0,
-     "detail": "8 rebounds for GS against MIA",
-     "game_id": "401909937",
-     "field": 52
+     "player": "Brayden Burries",
+     "team": "MIL",
+     "opponent": "TOR",
+     "value": 11.0,
+     "detail": "11 rebounds for MIL against TOR",
+     "game_id": "401909292",
+     "field": 200
     },
     {
-     "player": "Anthony Black",
-     "team": "ORL",
-     "opponent": "PHX",
-     "value": 7.0,
-     "detail": "7 rebounds for ORL against PHX",
-     "game_id": "401909936",
-     "field": 52
+     "player": "Deandre Ayton",
+     "team": "WSH",
+     "opponent": "ATL",
+     "value": 11.0,
+     "detail": "11 rebounds for WSH against ATL",
+     "game_id": "401909287",
+     "field": 200
     },
     {
-     "player": "Charles Bassey",
-     "team": "GS",
-     "opponent": "MIA",
-     "value": 7.0,
-     "detail": "7 rebounds for GS against MIA",
-     "game_id": "401909937",
-     "field": 52
+     "player": "Donovan Clingan",
+     "team": "POR",
+     "opponent": "LAL",
+     "value": 11.0,
+     "detail": "11 rebounds for POR against LAL",
+     "game_id": "401909294",
+     "field": 200
     },
     {
-     "player": "Andrew Wiggins",
-     "team": "MIA",
-     "opponent": "GS",
-     "value": 6.0,
-     "detail": "6 rebounds for MIA against GS",
-     "game_id": "401909937",
-     "field": 52
-    },
-    {
-     "player": "Brandin Podziemski",
-     "team": "GS",
-     "opponent": "MIA",
-     "value": 6.0,
-     "detail": "6 rebounds for GS against MIA",
-     "game_id": "401909937",
-     "field": 52
+     "player": "Hannes Steinbach",
+     "team": "CHA",
+     "opponent": "BOS",
+     "value": 11.0,
+     "detail": "11 rebounds for CHA against BOS",
+     "game_id": "401909288",
+     "field": 200
     }
    ]
   },
@@ -195,94 +195,94 @@
    "sport": "NBA",
    "rows": [
     {
-     "player": "Franz Wagner",
-     "team": "ORL",
-     "opponent": "PHX",
-     "value": 15.0,
-     "detail": "15 assists for ORL against PHX",
-     "game_id": "401909936",
-     "field": 52
+     "player": "Jamal Shead",
+     "team": "TOR",
+     "opponent": "MIL",
+     "value": 16.0,
+     "detail": "16 assists for TOR against MIL",
+     "game_id": "401909292",
+     "field": 200
     },
     {
-     "player": "Draymond Green",
-     "team": "GS",
-     "opponent": "MIA",
+     "player": "Dyson Daniels",
+     "team": "ATL",
+     "opponent": "WSH",
+     "value": 12.0,
+     "detail": "12 assists for ATL against WSH",
+     "game_id": "401909287",
+     "field": 200
+    },
+    {
+     "player": "Deni Avdija",
+     "team": "POR",
+     "opponent": "LAL",
      "value": 11.0,
-     "detail": "11 assists for GS against MIA",
-     "game_id": "401909937",
-     "field": 52
+     "detail": "11 assists for POR against LAL",
+     "game_id": "401909294",
+     "field": 200
     },
     {
-     "player": "Davion Mitchell",
-     "team": "MIA",
-     "opponent": "GS",
+     "player": "Trae Young",
+     "team": "WSH",
+     "opponent": "ATL",
+     "value": 10.0,
+     "detail": "10 assists for WSH against ATL",
+     "game_id": "401909287",
+     "field": 200
+    },
+    {
+     "player": "Tyler Herro",
+     "team": "MIL",
+     "opponent": "TOR",
+     "value": 10.0,
+     "detail": "10 assists for MIL against TOR",
+     "game_id": "401909292",
+     "field": 200
+    },
+    {
+     "player": "Jayson Tatum",
+     "team": "BOS",
+     "opponent": "CHA",
+     "value": 9.0,
+     "detail": "9 assists for BOS against CHA",
+     "game_id": "401909288",
+     "field": 200
+    },
+    {
+     "player": "Keyonte George",
+     "team": "UTAH",
+     "opponent": "DAL",
+     "value": 9.0,
+     "detail": "9 assists for UTAH against DAL",
+     "game_id": "401909290",
+     "field": 200
+    },
+    {
+     "player": "Darius Acuff Jr.",
+     "team": "SAC",
+     "opponent": "SA",
      "value": 8.0,
-     "detail": "8 assists for MIA against GS",
-     "game_id": "401909937",
-     "field": 52
+     "detail": "8 assists for SAC against SA",
+     "game_id": "401909295",
+     "field": 200
     },
     {
-     "player": "Devin Booker",
-     "team": "PHX",
-     "opponent": "ORL",
+     "player": "Donovan Mitchell",
+     "team": "CLE",
+     "opponent": "PHI",
      "value": 8.0,
-     "detail": "8 assists for PHX against ORL",
-     "game_id": "401909936",
-     "field": 52
+     "detail": "8 assists for CLE against PHI",
+     "game_id": "401909289",
+     "field": 200
     },
     {
-     "player": "Anthony Black",
-     "team": "ORL",
-     "opponent": "PHX",
-     "value": 6.0,
-     "detail": "6 assists for ORL against PHX",
-     "game_id": "401909936",
-     "field": 52
-    },
-    {
-     "player": "Yaxel Lendeborg",
-     "team": "GS",
-     "opponent": "MIA",
-     "value": 6.0,
-     "detail": "6 assists for GS against MIA",
-     "game_id": "401909937",
-     "field": 52
-    },
-    {
-     "player": "Luke Kennard",
-     "team": "PHX",
-     "opponent": "ORL",
-     "value": 5.0,
-     "detail": "5 assists for PHX against ORL",
-     "game_id": "401909936",
-     "field": 52
-    },
-    {
-     "player": "Miles Bridges",
-     "team": "PHX",
-     "opponent": "ORL",
-     "value": 5.0,
-     "detail": "5 assists for PHX against ORL",
-     "game_id": "401909936",
-     "field": 52
-    },
-    {
-     "player": "Andrew Wiggins",
-     "team": "MIA",
-     "opponent": "GS",
-     "value": 4.0,
-     "detail": "4 assists for MIA against GS",
-     "game_id": "401909937",
-     "field": 52
-    },
-    {
-     "player": "Brandon Williams",
-     "team": "GS",
-     "opponent": "MIA",
-     "value": 4.0,
-     "detail": "4 assists for GS against MIA",
-     "game_id": "401909937",
-     "field": 52
+     "player": "Kyshawn George",
+     "team": "WSH",
+     "opponent": "ATL",
+     "value": 8.0,
+     "detail": "8 assists for WSH against ATL",
+     "game_id": "401909287",
+     "field": 200
     }
    ]
   },
@@ -290,94 +290,94 @@
    "sport": "NBA",
    "rows": [
     {
-     "player": "Stephen Curry",
-     "team": "GS",
-     "opponent": "MIA",
+     "player": "Lauri Markkanen",
+     "team": "UTAH",
+     "opponent": "DAL",
+     "value": 8.0,
+     "detail": "8 threes and 24 points for UTAH against DAL",
+     "game_id": "401909290",
+     "field": 200
+    },
+    {
+     "player": "Alijah Martin",
+     "team": "TOR",
+     "opponent": "MIL",
      "value": 6.0,
-     "detail": "6 threes and 29 points for GS against MIA",
-     "game_id": "401909937",
-     "field": 52
+     "detail": "6 threes and 27 points for TOR against MIL",
+     "game_id": "401909292",
+     "field": 200
     },
     {
-     "player": "Davion Mitchell",
-     "team": "MIA",
-     "opponent": "GS",
+     "player": "P.J. Washington",
+     "team": "DAL",
+     "opponent": "UTAH",
+     "value": 6.0,
+     "detail": "6 threes and 26 points for DAL against UTAH",
+     "game_id": "401909290",
+     "field": 200
+    },
+    {
+     "player": "Devin Vassell",
+     "team": "SA",
+     "opponent": "SAC",
+     "value": 5.0,
+     "detail": "5 threes and 19 points for SA against SAC",
+     "game_id": "401909295",
+     "field": 200
+    },
+    {
+     "player": "Jayson Tatum",
+     "team": "BOS",
+     "opponent": "CHA",
+     "value": 5.0,
+     "detail": "5 threes and 34 points for BOS against CHA",
+     "game_id": "401909288",
+     "field": 200
+    },
+    {
+     "player": "Kyshawn George",
+     "team": "WSH",
+     "opponent": "ATL",
+     "value": 5.0,
+     "detail": "5 threes and 33 points for WSH against ATL",
+     "game_id": "401909287",
+     "field": 200
+    },
+    {
+     "player": "Luguentz Dort",
+     "team": "ATL",
+     "opponent": "WSH",
+     "value": 5.0,
+     "detail": "5 threes and 25 points for ATL against WSH",
+     "game_id": "401909287",
+     "field": 200
+    },
+    {
+     "player": "Luka Doncic",
+     "team": "LAL",
+     "opponent": "POR",
+     "value": 5.0,
+     "detail": "5 threes and 53 points for LAL against POR",
+     "game_id": "401909294",
+     "field": 200
+    },
+    {
+     "player": "Tre Johnson",
+     "team": "WSH",
+     "opponent": "ATL",
+     "value": 5.0,
+     "detail": "5 threes and 23 points for WSH against ATL",
+     "game_id": "401909287",
+     "field": 200
+    },
+    {
+     "player": "AJ Green",
+     "team": "MIL",
+     "opponent": "TOR",
      "value": 4.0,
-     "detail": "4 threes and 22 points for MIA against GS",
-     "game_id": "401909937",
-     "field": 52
-    },
-    {
-     "player": "Devin Booker",
-     "team": "PHX",
-     "opponent": "ORL",
-     "value": 4.0,
-     "detail": "4 threes and 30 points for PHX against ORL",
-     "game_id": "401909936",
-     "field": 52
-    },
-    {
-     "player": "Dillon Brooks",
-     "team": "PHX",
-     "opponent": "ORL",
-     "value": 4.0,
-     "detail": "4 threes and 24 points for PHX against ORL",
-     "game_id": "401909936",
-     "field": 52
-    },
-    {
-     "player": "Tristan da Silva",
-     "team": "ORL",
-     "opponent": "PHX",
-     "value": 4.0,
-     "detail": "4 threes and 18 points for ORL against PHX",
-     "game_id": "401909936",
-     "field": 52
-    },
-    {
-     "player": "Desmond Bane",
-     "team": "ORL",
-     "opponent": "PHX",
-     "value": 3.0,
-     "detail": "3 threes and 15 points for ORL against PHX",
-     "game_id": "401909936",
-     "field": 52
-    },
-    {
-     "player": "Luke Kennard",
-     "team": "PHX",
-     "opponent": "ORL",
-     "value": 3.0,
-     "detail": "3 threes and 12 points for PHX against ORL",
-     "game_id": "401909936",
-     "field": 52
-    },
-    {
-     "player": "Miles Bridges",
-     "team": "PHX",
-     "opponent": "ORL",
-     "value": 3.0,
-     "detail": "3 threes and 18 points for PHX against ORL",
-     "game_id": "401909936",
-     "field": 52
-    },
-    {
-     "player": "Pelle Larsson",
-     "team": "MIA",
-     "opponent": "GS",
-     "value": 3.0,
-     "detail": "3 threes and 13 points for MIA against GS",
-     "game_id": "401909937",
-     "field": 52
-    },
-    {
-     "player": "Ryan Conwell",
-     "team": "MIA",
-     "opponent": "GS",
-     "value": 3.0,
-     "detail": "3 threes and 13 points for MIA against GS",
-     "game_id": "401909937",
-     "field": 52
+     "detail": "4 threes and 12 points for MIL against TOR",
+     "game_id": "401909292",
+     "field": 200
     }
    ]
   }
