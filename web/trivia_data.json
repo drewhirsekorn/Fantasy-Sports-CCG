@@ -1,76 +1,80 @@
 {
  "version": 1,
- "date": "2026-11-07",
- "stamp": "9155b1c6eadf",
- "source_date": "2026-11-06",
- "opens": "2026-11-07T07:00:00-05:00",
+ "date": "2026-11-08",
+ "stamp": "13ca7fac97dc",
+ "source_date": "2026-11-07",
+ "opens": "2026-11-08T07:00:00-05:00",
  "questions": [
   {
    "kind": "last_before",
    "sport": "NBA",
-   "setup": "Luka Doncic scored 53 points for LAL against POR yesterday.",
-   "prompt": "Before Luka Doncic, who was the last NBA player to score 50 in a game?",
+   "setup": "Dyson Daniels came up with 6 steals for ATL yesterday.",
+   "prompt": "Before Dyson Daniels, who was the last NBA player with six steals in a game?",
    "options": [
-    "Bam Adebayo",
-    "David Robinson",
-    "Jamal Murray",
-    "Victor Wembanyama"
+    "Jabari Walker",
+    "Jalen Suggs",
+    "Reggie Williams",
+    "Kris Dunn"
    ],
    "answer": 3,
-   "explain": "Victor Wembanyama \u2014 52 points for SA on November 4, 2026, 2 days earlier.",
+   "explain": "Kris Dunn \u2014 7 steals for LAC on November 1, 2026, 6 days earlier.",
    "links": [
+    {
+     "label": "November 7, 2026 box score",
+     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909939"
+    },
+    {
+     "label": "November 1, 2026 box score",
+     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909905"
+    }
+   ],
+   "id": "2026-11-08-1"
+  },
+  {
+   "kind": "led_the_night",
+   "sport": "NBA",
+   "setup": "Last night's box scores list 152 players.",
+   "prompt": "Who scored the most in the NBA last night?",
+   "options": [
+    "Victor Wembanyama",
+    "Stephen Curry",
+    "Devin Booker",
+    "Jalen Johnson"
+   ],
+   "answer": 1,
+   "explain": "Stephen Curry \u2014 41 points in 36 minutes for GS against ORL.",
+   "links": [
+    {
+     "label": "November 7, 2026 box score",
+     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909942"
+    }
+   ],
+   "id": "2026-11-08-2"
+  },
+  {
+   "kind": "last_before",
+   "sport": "NBA",
+   "setup": "Stephen Curry scored 41 points for GS against ORL yesterday.",
+   "prompt": "Before Stephen Curry, who was the last NBA player to score 40 in a game?",
+   "options": [
+    "Jamal Murray",
+    "Luka Doncic",
+    "Jalen Green",
+    "Deni Avdija"
+   ],
+   "answer": 1,
+   "explain": "Luka Doncic \u2014 53 points for LAL on November 6, 2026, 1 days earlier.",
+   "links": [
+    {
+     "label": "November 7, 2026 box score",
+     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909942"
+    },
     {
      "label": "November 6, 2026 box score",
      "url": "https://www.espn.com/nba/boxscore/_/gameId/401909294"
-    },
-    {
-     "label": "November 4, 2026 box score",
-     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909933"
     }
    ],
-   "id": "2026-11-07-1"
-  },
-  {
-   "kind": "led_the_night",
-   "sport": "NBA",
-   "setup": "Last night's box scores list 200 players.",
-   "prompt": "Who grabbed the most rebounds in the NBA last night?",
-   "options": [
-    "Victor Wembanyama",
-    "Morez Johnson Jr.",
-    "Domantas Sabonis",
-    "Brayden Burries"
-   ],
-   "answer": 1,
-   "explain": "Morez Johnson Jr. \u2014 17 rebounds for DAL against UTAH.",
-   "links": [
-    {
-     "label": "November 6, 2026 box score",
-     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909290"
-    }
-   ],
-   "id": "2026-11-07-2"
-  },
-  {
-   "kind": "led_the_night",
-   "sport": "NBA",
-   "setup": "Last night's box scores list 200 players.",
-   "prompt": "Who made the most three-pointers in the NBA last night?",
-   "options": [
-    "P.J. Washington",
-    "Tre Johnson",
-    "Kyshawn George",
-    "Lauri Markkanen"
-   ],
-   "answer": 3,
-   "explain": "Lauri Markkanen \u2014 8 threes and 24 points for UTAH against DAL.",
-   "links": [
-    {
-     "label": "November 6, 2026 box score",
-     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909290"
-    }
-   ],
-   "id": "2026-11-07-3"
+   "id": "2026-11-08-3"
   }
  ],
  "coverage": {
@@ -91,7 +95,7 @@
    },
    {
     "from": "2025-01-01",
-    "through": "2026-11-06",
+    "through": "2026-11-07",
     "feats": [
      "mlb_12_k",
      "mlb_15_k",
@@ -135,7 +139,7 @@
    },
    {
     "from": "2023-10-01",
-    "through": "2026-11-06",
+    "through": "2026-11-07",
     "feats": [
      "nba_10_threes",
      "nba_20_assists",
@@ -169,7 +173,7 @@
    },
    {
     "from": "2023-09-01",
-    "through": "2026-11-06",
+    "through": "2026-11-07",
     "feats": [
      "nfl_150_rec_yards",
      "nfl_150_rush_yards",
@@ -187,6 +191,6 @@
    }
   ]
  },
- "built_at": "2026-11-07T16:46:25Z",
- "closes": "2026-11-08T07:00:00-05:00"
+ "built_at": "2026-11-08T16:57:12Z",
+ "closes": "2026-11-09T07:00:00-05:00"
 }
