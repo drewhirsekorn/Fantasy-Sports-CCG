@@ -18,7 +18,7 @@
    },
    {
     "from": "2025-01-01",
-    "through": "2026-11-07",
+    "through": "2026-11-08",
     "feats": [
      "mlb_12_k",
      "mlb_15_k",
@@ -62,7 +62,7 @@
    },
    {
     "from": "2023-10-01",
-    "through": "2026-11-07",
+    "through": "2026-11-08",
     "feats": [
      "nba_10_threes",
      "nba_20_assists",
@@ -96,7 +96,7 @@
    },
    {
     "from": "2023-09-01",
-    "through": "2026-11-07",
+    "through": "2026-11-08",
     "feats": [
      "nfl_150_rec_yards",
      "nfl_150_rush_yards",
@@ -72009,6 +72009,176 @@
     "fgm": 4.0
    },
    "source": "espn:401909939"
+  },
+  {
+   "feat": "nba_40_points",
+   "sport": "NBA",
+   "date": "2026-11-08",
+   "player": "Austin Reaves",
+   "player_id": "4066457",
+   "team": "LAL",
+   "opponent": "DET",
+   "value": 43.0,
+   "line": {
+    "minutes": 37.0,
+    "points": 43.0,
+    "rebounds": 5.0,
+    "assists": 4.0,
+    "steals": 0.0,
+    "blocks": 0.0,
+    "threes": 4.0,
+    "fgm": 14.0
+   },
+   "source": "espn:401909946"
+  },
+  {
+   "feat": "nba_5_blocks",
+   "sport": "NBA",
+   "date": "2026-11-08",
+   "player": "Kevin Huerter",
+   "player_id": "4066372",
+   "team": "DET",
+   "opponent": "LAL",
+   "value": 5.0,
+   "line": {
+    "minutes": 35.0,
+    "points": 24.0,
+    "rebounds": 5.0,
+    "assists": 5.0,
+    "steals": 2.0,
+    "blocks": 5.0,
+    "threes": 4.0,
+    "fgm": 9.0
+   },
+   "source": "espn:401909946"
+  },
+  {
+   "feat": "nfl_150_rec_yards",
+   "sport": "NFL",
+   "date": "2026-11-08",
+   "player": "CeeDee Lamb",
+   "player_id": "4241389",
+   "team": "DAL",
+   "opponent": "IND",
+   "value": 195.0,
+   "line": {
+    "rec_yards": 195.0,
+    "rec_td": 1.0,
+    "receptions": 10.0
+   },
+   "source": "espn:401873040"
+  },
+  {
+   "feat": "nfl_150_rec_yards",
+   "sport": "NFL",
+   "date": "2026-11-08",
+   "player": "Christian Watson",
+   "player_id": "4248528",
+   "team": "GB",
+   "opponent": "NE",
+   "value": 171.0,
+   "line": {
+    "rec_yards": 171.0,
+    "rec_td": 1.0,
+    "receptions": 7.0
+   },
+   "source": "espn:401873049"
+  },
+  {
+   "feat": "nfl_150_rec_yards",
+   "sport": "NFL",
+   "date": "2026-11-08",
+   "player": "Ja'Marr Chase",
+   "player_id": "4362628",
+   "team": "CIN",
+   "opponent": "ATL",
+   "value": 155.0,
+   "line": {
+    "rec_yards": 155.0,
+    "rec_td": 1.0,
+    "receptions": 10.0
+   },
+   "source": "espn:401873038"
+  },
+  {
+   "feat": "nfl_150_rec_yards",
+   "sport": "NFL",
+   "date": "2026-11-08",
+   "player": "Matthew Golden",
+   "player_id": "4701936",
+   "team": "GB",
+   "opponent": "NE",
+   "value": 164.0,
+   "line": {
+    "rec_yards": 164.0,
+    "rec_td": 1.0,
+    "receptions": 10.0
+   },
+   "source": "espn:401873049"
+  },
+  {
+   "feat": "nfl_150_rec_yards",
+   "sport": "NFL",
+   "date": "2026-11-08",
+   "player": "Puka Nacua",
+   "player_id": "4426515",
+   "team": "LAR",
+   "opponent": "WSH",
+   "value": 150.0,
+   "line": {
+    "rec_yards": 150.0,
+    "rec_td": 1.0,
+    "receptions": 14.0
+   },
+   "source": "espn:401873043"
+  },
+  {
+   "feat": "nfl_3_sacks",
+   "sport": "NFL",
+   "date": "2026-11-08",
+   "player": "Arvell Reese",
+   "player_id": "4950400",
+   "team": "NYG",
+   "opponent": "PHI",
+   "value": 3.0,
+   "line": {
+    "sacks": 3.0,
+    "tackles": 12.0
+   },
+   "source": "espn:401873044"
+  },
+  {
+   "feat": "nfl_3_sacks",
+   "sport": "NFL",
+   "date": "2026-11-08",
+   "player": "Myles Garrett",
+   "player_id": "3122132",
+   "team": "LAR",
+   "opponent": "WSH",
+   "value": 3.0,
+   "line": {
+    "sacks": 3.0,
+    "tackles": 3.0
+   },
+   "source": "espn:401873043"
+  },
+  {
+   "feat": "nfl_4_pass_td",
+   "sport": "NFL",
+   "date": "2026-11-08",
+   "player": "C.J. Stroud",
+   "player_id": "4432577",
+   "team": "HOU",
+   "opponent": "LAC",
+   "value": 5.0,
+   "line": {
+    "pass_yards": 384.0,
+    "pass_td": 5.0,
+    "interceptions": 1.0,
+    "completions": 21.0,
+    "attempts": 35.0
+   },
+   "source": "espn:401873046"
   }
  ]
 }

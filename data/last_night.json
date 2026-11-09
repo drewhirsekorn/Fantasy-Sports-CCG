@@ -1,98 +1,953 @@
 {
- "date": "2026-11-07",
+ "date": "2026-11-08",
  "boards": {
   "nba_points": {
    "sport": "NBA",
    "rows": [
     {
-     "player": "Stephen Curry",
-     "team": "GS",
-     "opponent": "ORL",
-     "value": 41.0,
-     "detail": "41 points in 36 minutes for GS against ORL",
-     "game_id": "401909942",
-     "field": 152
+     "player": "Austin Reaves",
+     "team": "LAL",
+     "opponent": "DET",
+     "value": 43.0,
+     "detail": "43 points in 37 minutes for LAL against DET",
+     "game_id": "401909946",
+     "field": 161
     },
     {
-     "player": "Donovan Mitchell",
-     "team": "CLE",
-     "opponent": "NY",
-     "value": 37.0,
-     "detail": "37 points in 37 minutes for CLE against NY",
-     "game_id": "401909940",
-     "field": 152
+     "player": "Darius Acuff Jr.",
+     "team": "SAC",
+     "opponent": "MIA",
+     "value": 32.0,
+     "detail": "32 points in 39 minutes for SAC against MIA",
+     "game_id": "401909951",
+     "field": 161
     },
     {
-     "player": "Jalen Brunson",
-     "team": "NY",
-     "opponent": "CLE",
+     "player": "Daniss Jenkins",
+     "team": "DET",
+     "opponent": "LAL",
      "value": 31.0,
-     "detail": "31 points in 34 minutes for NY against CLE",
-     "game_id": "401909940",
-     "field": 152
+     "detail": "31 points in 32 minutes for DET against LAL",
+     "game_id": "401909946",
+     "field": 161
     },
     {
-     "player": "Franz Wagner",
-     "team": "ORL",
-     "opponent": "GS",
-     "value": 30.0,
-     "detail": "30 points in 40 minutes for ORL against GS",
-     "game_id": "401909942",
-     "field": 152
+     "player": "Giannis Antetokounmpo",
+     "team": "MIA",
+     "opponent": "SAC",
+     "value": 29.0,
+     "detail": "29 points in 34 minutes for MIA against SAC",
+     "game_id": "401909951",
+     "field": 161
     },
     {
-     "player": "Jalen Johnson",
-     "team": "ATL",
+     "player": "Jaylen Brown",
+     "team": "PHI",
+     "opponent": "CHI",
+     "value": 29.0,
+     "detail": "29 points in 35 minutes for PHI against CHI",
+     "game_id": "401909945",
+     "field": 161
+    },
+    {
+     "player": "Kyle Kuzma",
+     "team": "MIL",
+     "opponent": "BOS",
+     "value": 27.0,
+     "detail": "27 points in 31 minutes for MIL against BOS",
+     "game_id": "401909949",
+     "field": 161
+    },
+    {
+     "player": "Paul George",
+     "team": "BOS",
+     "opponent": "MIL",
+     "value": 27.0,
+     "detail": "27 points in 28 minutes for BOS against MIL",
+     "game_id": "401909949",
+     "field": 161
+    },
+    {
+     "player": "Tyrese Maxey",
+     "team": "PHI",
+     "opponent": "CHI",
+     "value": 27.0,
+     "detail": "27 points in 36 minutes for PHI against CHI",
+     "game_id": "401909945",
+     "field": 161
+    },
+    {
+     "player": "Ayo Dosunmu",
+     "team": "MIN",
+     "opponent": "UTAH",
+     "value": 26.0,
+     "detail": "26 points in 30 minutes for MIN against UTAH",
+     "game_id": "401909947",
+     "field": 161
+    },
+    {
+     "player": "Darryn Peterson",
+     "team": "UTAH",
+     "opponent": "MIN",
+     "value": 26.0,
+     "detail": "26 points in 35 minutes for UTAH against MIN",
+     "game_id": "401909947",
+     "field": 161
+    }
+   ]
+  },
+  "nba_rebounds": {
+   "sport": "NBA",
+   "rows": [
+    {
+     "player": "Walker Kessler",
+     "team": "LAL",
+     "opponent": "DET",
+     "value": 16.0,
+     "detail": "16 rebounds for LAL against DET",
+     "game_id": "401909946",
+     "field": 161
+    },
+    {
+     "player": "Rudy Gobert",
+     "team": "MIN",
+     "opponent": "UTAH",
+     "value": 15.0,
+     "detail": "15 rebounds for MIN against UTAH",
+     "game_id": "401909947",
+     "field": 161
+    },
+    {
+     "player": "Giannis Antetokounmpo",
+     "team": "MIA",
+     "opponent": "SAC",
+     "value": 14.0,
+     "detail": "14 rebounds for MIA against SAC",
+     "game_id": "401909951",
+     "field": 161
+    },
+    {
+     "player": "Precious Achiuwa",
+     "team": "SAC",
+     "opponent": "MIA",
+     "value": 14.0,
+     "detail": "14 rebounds for SAC against MIA",
+     "game_id": "401909951",
+     "field": 161
+    },
+    {
+     "player": "Ausar Thompson",
+     "team": "DET",
+     "opponent": "LAL",
+     "value": 11.0,
+     "detail": "11 rebounds for DET against LAL",
+     "game_id": "401909946",
+     "field": 161
+    },
+    {
+     "player": "Jabari Walker",
+     "team": "PHI",
+     "opponent": "CHI",
+     "value": 11.0,
+     "detail": "11 rebounds for PHI against CHI",
+     "game_id": "401909945",
+     "field": 161
+    },
+    {
+     "player": "Jarred Vanderbilt",
+     "team": "LAL",
+     "opponent": "DET",
+     "value": 10.0,
+     "detail": "10 rebounds for LAL against DET",
+     "game_id": "401909946",
+     "field": 161
+    },
+    {
+     "player": "Joel Embiid",
+     "team": "PHI",
+     "opponent": "CHI",
+     "value": 10.0,
+     "detail": "10 rebounds for PHI against CHI",
+     "game_id": "401909945",
+     "field": 161
+    },
+    {
+     "player": "Paul Reed",
+     "team": "DET",
+     "opponent": "LAL",
+     "value": 10.0,
+     "detail": "10 rebounds for DET against LAL",
+     "game_id": "401909946",
+     "field": 161
+    },
+    {
+     "player": "Dylan Cardwell",
+     "team": "SAC",
+     "opponent": "MIA",
+     "value": 9.0,
+     "detail": "9 rebounds for SAC against MIA",
+     "game_id": "401909951",
+     "field": 161
+    }
+   ]
+  },
+  "nba_assists": {
+   "sport": "NBA",
+   "rows": [
+    {
+     "player": "Josh Giddey",
+     "team": "CHI",
+     "opponent": "PHI",
+     "value": 15.0,
+     "detail": "15 assists for CHI against PHI",
+     "game_id": "401909945",
+     "field": 161
+    },
+    {
+     "player": "Cooper Flagg",
+     "team": "DAL",
      "opponent": "BKN",
-     "value": 30.0,
-     "detail": "30 points in 36 minutes for ATL against BKN",
-     "game_id": "401909939",
-     "field": 152
+     "value": 12.0,
+     "detail": "12 assists for DAL against BKN",
+     "game_id": "401909948",
+     "field": 161
     },
     {
-     "player": "Shai Gilgeous-Alexander",
-     "team": "OKC",
-     "opponent": "WSH",
-     "value": 30.0,
-     "detail": "30 points in 29 minutes for OKC against WSH",
-     "game_id": "401909941",
-     "field": 152
+     "player": "Davion Mitchell",
+     "team": "MIA",
+     "opponent": "SAC",
+     "value": 11.0,
+     "detail": "11 assists for MIA against SAC",
+     "game_id": "401909951",
+     "field": 161
     },
     {
-     "player": "Karl-Anthony Towns",
-     "team": "NY",
-     "opponent": "CLE",
-     "value": 29.0,
-     "detail": "29 points in 34 minutes for NY against CLE",
-     "game_id": "401909940",
-     "field": 152
+     "player": "Darius Acuff Jr.",
+     "team": "SAC",
+     "opponent": "MIA",
+     "value": 10.0,
+     "detail": "10 assists for SAC against MIA",
+     "game_id": "401909951",
+     "field": 161
     },
     {
-     "player": "Victor Wembanyama",
-     "team": "SA",
-     "opponent": "POR",
-     "value": 29.0,
-     "detail": "29 points in 24 minutes for SA against POR",
-     "game_id": "401909944",
-     "field": 152
+     "player": "Darius Garland",
+     "team": "LAC",
+     "opponent": "NO",
+     "value": 10.0,
+     "detail": "10 assists for LAC against NO",
+     "game_id": "401909950",
+     "field": 161
     },
     {
-     "player": "Michael Porter Jr.",
+     "player": "Cade Cunningham",
+     "team": "DET",
+     "opponent": "LAL",
+     "value": 8.0,
+     "detail": "8 assists for DET against LAL",
+     "game_id": "401909946",
+     "field": 161
+    },
+    {
+     "player": "Keyonte George",
+     "team": "UTAH",
+     "opponent": "MIN",
+     "value": 8.0,
+     "detail": "8 assists for UTAH against MIN",
+     "game_id": "401909947",
+     "field": 161
+    },
+    {
+     "player": "Derrick White",
+     "team": "BOS",
+     "opponent": "MIL",
+     "value": 7.0,
+     "detail": "7 assists for BOS against MIL",
+     "game_id": "401909949",
+     "field": 161
+    },
+    {
+     "player": "Myles Turner",
+     "team": "MIL",
+     "opponent": "BOS",
+     "value": 7.0,
+     "detail": "7 assists for MIL against BOS",
+     "game_id": "401909949",
+     "field": 161
+    },
+    {
+     "player": "Tyrese Maxey",
+     "team": "PHI",
+     "opponent": "CHI",
+     "value": 7.0,
+     "detail": "7 assists for PHI against CHI",
+     "game_id": "401909945",
+     "field": 161
+    }
+   ]
+  },
+  "nba_threes": {
+   "sport": "NBA",
+   "rows": [
+    {
+     "player": "Daniss Jenkins",
+     "team": "DET",
+     "opponent": "LAL",
+     "value": 8.0,
+     "detail": "8 threes and 31 points for DET against LAL",
+     "game_id": "401909946",
+     "field": 161
+    },
+    {
+     "player": "Klay Thompson",
+     "team": "MIA",
+     "opponent": "SAC",
+     "value": 7.0,
+     "detail": "7 threes and 23 points for MIA against SAC",
+     "game_id": "401909951",
+     "field": 161
+    },
+    {
+     "player": "Kyle Kuzma",
+     "team": "MIL",
+     "opponent": "BOS",
+     "value": 6.0,
+     "detail": "6 threes and 27 points for MIL against BOS",
+     "game_id": "401909949",
+     "field": 161
+    },
+    {
+     "player": "Jayson Tatum",
+     "team": "BOS",
+     "opponent": "MIL",
+     "value": 5.0,
+     "detail": "5 threes and 21 points for BOS against MIL",
+     "game_id": "401909949",
+     "field": 161
+    },
+    {
+     "player": "Paul George",
+     "team": "BOS",
+     "opponent": "MIL",
+     "value": 5.0,
+     "detail": "5 threes and 27 points for BOS against MIL",
+     "game_id": "401909949",
+     "field": 161
+    },
+    {
+     "player": "Austin Reaves",
+     "team": "LAL",
+     "opponent": "DET",
+     "value": 4.0,
+     "detail": "4 threes and 43 points for LAL against DET",
+     "game_id": "401909946",
+     "field": 161
+    },
+    {
+     "player": "Ayo Dosunmu",
+     "team": "MIN",
+     "opponent": "UTAH",
+     "value": 4.0,
+     "detail": "4 threes and 26 points for MIN against UTAH",
+     "game_id": "401909947",
+     "field": 161
+    },
+    {
+     "player": "Darryn Peterson",
+     "team": "UTAH",
+     "opponent": "MIN",
+     "value": 4.0,
+     "detail": "4 threes and 26 points for UTAH against MIN",
+     "game_id": "401909947",
+     "field": 161
+    },
+    {
+     "player": "Kevin Huerter",
+     "team": "DET",
+     "opponent": "LAL",
+     "value": 4.0,
+     "detail": "4 threes and 24 points for DET against LAL",
+     "game_id": "401909946",
+     "field": 161
+    },
+    {
+     "player": "LaMelo Ball",
+     "team": "MIN",
+     "opponent": "UTAH",
+     "value": 4.0,
+     "detail": "4 threes and 24 points for MIN against UTAH",
+     "game_id": "401909947",
+     "field": 161
+    }
+   ]
+  },
+  "nba_blocks": {
+   "sport": "NBA",
+   "rows": [
+    {
+     "player": "Kevin Huerter",
+     "team": "DET",
+     "opponent": "LAL",
+     "value": 5.0,
+     "detail": "5 blocks for DET against LAL",
+     "game_id": "401909946",
+     "field": 161
+    },
+    {
+     "player": "Jalen Smith",
+     "team": "CHI",
+     "opponent": "PHI",
+     "value": 4.0,
+     "detail": "4 blocks for CHI against PHI",
+     "game_id": "401909945",
+     "field": 161
+    },
+    {
+     "player": "Daniel Gafford",
+     "team": "DAL",
+     "opponent": "BKN",
+     "value": 3.0,
+     "detail": "3 blocks for DAL against BKN",
+     "game_id": "401909948",
+     "field": 161
+    },
+    {
+     "player": "Walker Kessler",
+     "team": "LAL",
+     "opponent": "DET",
+     "value": 3.0,
+     "detail": "3 blocks for LAL against DET",
+     "game_id": "401909946",
+     "field": 161
+    },
+    {
+     "player": "Baba Miller",
+     "team": "LAC",
+     "opponent": "NO",
+     "value": 2.0,
+     "detail": "2 blocks for LAC against NO",
+     "game_id": "401909950",
+     "field": 161
+    },
+    {
+     "player": "Day'Ron Sharpe",
      "team": "BKN",
-     "opponent": "ATL",
-     "value": 25.0,
-     "detail": "25 points in 36 minutes for BKN against ATL",
-     "game_id": "401909939",
-     "field": 152
+     "opponent": "DAL",
+     "value": 2.0,
+     "detail": "2 blocks for BKN against DAL",
+     "game_id": "401909948",
+     "field": 161
     },
     {
-     "player": "Devin Booker",
-     "team": "PHX",
-     "opponent": "HOU",
-     "value": 24.0,
-     "detail": "24 points in 39 minutes for PHX against HOU",
-     "game_id": "401909943",
-     "field": 152
+     "player": "Derrick White",
+     "team": "BOS",
+     "opponent": "MIL",
+     "value": 2.0,
+     "detail": "2 blocks for BOS against MIL",
+     "game_id": "401909949",
+     "field": 161
+    },
+    {
+     "player": "Giannis Antetokounmpo",
+     "team": "MIA",
+     "opponent": "SAC",
+     "value": 2.0,
+     "detail": "2 blocks for MIA against SAC",
+     "game_id": "401909951",
+     "field": 161
+    },
+    {
+     "player": "John Collins",
+     "team": "DET",
+     "opponent": "LAL",
+     "value": 2.0,
+     "detail": "2 blocks for DET against LAL",
+     "game_id": "401909946",
+     "field": 161
+    },
+    {
+     "player": "Kentavious Caldwell-Pope",
+     "team": "PHI",
+     "opponent": "CHI",
+     "value": 2.0,
+     "detail": "2 blocks for PHI against CHI",
+     "game_id": "401909945",
+     "field": 161
+    }
+   ]
+  },
+  "nfl_pass_yards": {
+   "sport": "NFL",
+   "rows": [
+    {
+     "player": "C.J. Stroud",
+     "team": "HOU",
+     "opponent": "LAC",
+     "value": 384.0,
+     "detail": "384 yards and 5 touchdowns for HOU against LAC",
+     "game_id": "401873046",
+     "field": 32
+    },
+    {
+     "player": "Jordan Love",
+     "team": "GB",
+     "opponent": "NE",
+     "value": 372.0,
+     "detail": "372 yards and 3 touchdowns for GB against NE",
+     "game_id": "401873049",
+     "field": 32
+    },
+    {
+     "player": "Dak Prescott",
+     "team": "DAL",
+     "opponent": "IND",
+     "value": 335.0,
+     "detail": "335 yards and 2 touchdowns for DAL against IND",
+     "game_id": "401873040",
+     "field": 32
+    },
+    {
+     "player": "Drake Maye",
+     "team": "NE",
+     "opponent": "GB",
+     "value": 299.0,
+     "detail": "299 yards and 3 touchdowns for NE against GB",
+     "game_id": "401873049",
+     "field": 32
+    },
+    {
+     "player": "Shedeur Sanders",
+     "team": "CLE",
+     "opponent": "NO",
+     "value": 297.0,
+     "detail": "297 yards and 2 touchdowns for CLE against NO",
+     "game_id": "401873039",
+     "field": 32
+    },
+    {
+     "player": "Caleb Williams",
+     "team": "CHI",
+     "opponent": "TB",
+     "value": 279.0,
+     "detail": "279 yards and 2 touchdowns for CHI against TB",
+     "game_id": "401873050",
+     "field": 32
+    },
+    {
+     "player": "Bryce Young",
+     "team": "CAR",
+     "opponent": "DEN",
+     "value": 276.0,
+     "detail": "276 yards and 3 touchdowns for CAR against DEN",
+     "game_id": "401873041",
+     "field": 32
+    },
+    {
+     "player": "Jayden Daniels",
+     "team": "WSH",
+     "opponent": "LAR",
+     "value": 274.0,
+     "detail": "274 yards and 1 touchdowns for WSH against LAR",
+     "game_id": "401873043",
+     "field": 32
+    },
+    {
+     "player": "Joe Burrow",
+     "team": "CIN",
+     "opponent": "ATL",
+     "value": 271.0,
+     "detail": "271 yards and 3 touchdowns for CIN against ATL",
+     "game_id": "401873038",
+     "field": 32
+    },
+    {
+     "player": "Tyler Shough",
+     "team": "NO",
+     "opponent": "CLE",
+     "value": 265.0,
+     "detail": "265 yards and 1 touchdowns for NO against CLE",
+     "game_id": "401873039",
+     "field": 32
+    }
+   ]
+  },
+  "nfl_rush_yards": {
+   "sport": "NFL",
+   "rows": [
+    {
+     "player": "Kenneth Walker III",
+     "team": "KC",
+     "opponent": "NYJ",
+     "value": 102.0,
+     "detail": "102 yards on 18 carries for KC against NYJ",
+     "game_id": "401873045",
+     "field": 109
+    },
+    {
+     "player": "Javonte Williams",
+     "team": "DAL",
+     "opponent": "IND",
+     "value": 101.0,
+     "detail": "101 yards on 20 carries for DAL against IND",
+     "game_id": "401873040",
+     "field": 109
+    },
+    {
+     "player": "Bijan Robinson",
+     "team": "ATL",
+     "opponent": "CIN",
+     "value": 100.0,
+     "detail": "100 yards on 19 carries for ATL against CIN",
+     "game_id": "401873038",
+     "field": 109
+    },
+    {
+     "player": "Bucky Irving",
+     "team": "TB",
+     "opponent": "CHI",
+     "value": 97.0,
+     "detail": "97 yards on 20 carries for TB against CHI",
+     "game_id": "401873050",
+     "field": 109
+    },
+    {
+     "player": "Chuba Hubbard",
+     "team": "CAR",
+     "opponent": "DEN",
+     "value": 79.0,
+     "detail": "79 yards on 16 carries for CAR against DEN",
+     "game_id": "401873041",
+     "field": 109
+    },
+    {
+     "player": "Tyler Goodson",
+     "team": "DAL",
+     "opponent": "IND",
+     "value": 77.0,
+     "detail": "77 yards on 12 carries for DAL against IND",
+     "game_id": "401873040",
+     "field": 109
+    },
+    {
+     "player": "Zach Charbonnet",
+     "team": "SEA",
+     "opponent": "ARI",
+     "value": 77.0,
+     "detail": "77 yards on 16 carries for SEA against ARI",
+     "game_id": "401873048",
+     "field": 109
+    },
+    {
+     "player": "Jahmyr Gibbs",
+     "team": "DET",
+     "opponent": "MIA",
+     "value": 74.0,
+     "detail": "74 yards on 20 carries for DET against MIA",
+     "game_id": "401873042",
+     "field": 109
+    },
+    {
+     "player": "Audric Estime",
+     "team": "NO",
+     "opponent": "CLE",
+     "value": 72.0,
+     "detail": "72 yards on 15 carries for NO against CLE",
+     "game_id": "401873039",
+     "field": 109
+    },
+    {
+     "player": "Kaelon Black",
+     "team": "SF",
+     "opponent": "LV",
+     "value": 70.0,
+     "detail": "70 yards on 11 carries for SF against LV",
+     "game_id": "401873047",
+     "field": 109
+    }
+   ]
+  },
+  "nfl_rec_yards": {
+   "sport": "NFL",
+   "rows": [
+    {
+     "player": "CeeDee Lamb",
+     "team": "DAL",
+     "opponent": "IND",
+     "value": 195.0,
+     "detail": "195 yards on 10 catches for DAL against IND",
+     "game_id": "401873040",
+     "field": 203
+    },
+    {
+     "player": "Christian Watson",
+     "team": "GB",
+     "opponent": "NE",
+     "value": 171.0,
+     "detail": "171 yards on 7 catches for GB against NE",
+     "game_id": "401873049",
+     "field": 203
+    },
+    {
+     "player": "Matthew Golden",
+     "team": "GB",
+     "opponent": "NE",
+     "value": 164.0,
+     "detail": "164 yards on 10 catches for GB against NE",
+     "game_id": "401873049",
+     "field": 203
+    },
+    {
+     "player": "Ja'Marr Chase",
+     "team": "CIN",
+     "opponent": "ATL",
+     "value": 155.0,
+     "detail": "155 yards on 10 catches for CIN against ATL",
+     "game_id": "401873038",
+     "field": 203
+    },
+    {
+     "player": "Puka Nacua",
+     "team": "LAR",
+     "opponent": "WSH",
+     "value": 150.0,
+     "detail": "150 yards on 14 catches for LAR against WSH",
+     "game_id": "401873043",
+     "field": 203
+    },
+    {
+     "player": "Kayshon Boutte",
+     "team": "HOU",
+     "opponent": "LAC",
+     "value": 125.0,
+     "detail": "125 yards on 4 catches for HOU against LAC",
+     "game_id": "401873046",
+     "field": 203
+    },
+    {
+     "player": "Brock Bowers",
+     "team": "LV",
+     "opponent": "SF",
+     "value": 111.0,
+     "detail": "111 yards on 7 catches for LV against SF",
+     "game_id": "401873047",
+     "field": 203
+    },
+    {
+     "player": "Tank Dell",
+     "team": "HOU",
+     "opponent": "LAC",
+     "value": 105.0,
+     "detail": "105 yards on 4 catches for HOU against LAC",
+     "game_id": "401873046",
+     "field": 203
+    },
+    {
+     "player": "DeMario Douglas",
+     "team": "NE",
+     "opponent": "GB",
+     "value": 102.0,
+     "detail": "102 yards on 5 catches for NE against GB",
+     "game_id": "401873049",
+     "field": 203
+    },
+    {
+     "player": "Chris Olave",
+     "team": "NO",
+     "opponent": "CLE",
+     "value": 98.0,
+     "detail": "98 yards on 7 catches for NO against CLE",
+     "game_id": "401873039",
+     "field": 203
+    }
+   ]
+  },
+  "nfl_pass_td": {
+   "sport": "NFL",
+   "rows": [
+    {
+     "player": "C.J. Stroud",
+     "team": "HOU",
+     "opponent": "LAC",
+     "value": 5.0,
+     "detail": "5 touchdowns and 384 yards for HOU against LAC",
+     "game_id": "401873046",
+     "field": 32
+    },
+    {
+     "player": "Bryce Young",
+     "team": "CAR",
+     "opponent": "DEN",
+     "value": 3.0,
+     "detail": "3 touchdowns and 276 yards for CAR against DEN",
+     "game_id": "401873041",
+     "field": 32
+    },
+    {
+     "player": "Drake Maye",
+     "team": "NE",
+     "opponent": "GB",
+     "value": 3.0,
+     "detail": "3 touchdowns and 299 yards for NE against GB",
+     "game_id": "401873049",
+     "field": 32
+    },
+    {
+     "player": "Joe Burrow",
+     "team": "CIN",
+     "opponent": "ATL",
+     "value": 3.0,
+     "detail": "3 touchdowns and 271 yards for CIN against ATL",
+     "game_id": "401873038",
+     "field": 32
+    },
+    {
+     "player": "Jordan Love",
+     "team": "GB",
+     "opponent": "NE",
+     "value": 3.0,
+     "detail": "3 touchdowns and 372 yards for GB against NE",
+     "game_id": "401873049",
+     "field": 32
+    },
+    {
+     "player": "Bo Nix",
+     "team": "DEN",
+     "opponent": "CAR",
+     "value": 2.0,
+     "detail": "2 touchdowns and 237 yards for DEN against CAR",
+     "game_id": "401873041",
+     "field": 32
+    },
+    {
+     "player": "Brock Purdy",
+     "team": "SF",
+     "opponent": "LV",
+     "value": 2.0,
+     "detail": "2 touchdowns and 232 yards for SF against LV",
+     "game_id": "401873047",
+     "field": 32
+    },
+    {
+     "player": "Caleb Williams",
+     "team": "CHI",
+     "opponent": "TB",
+     "value": 2.0,
+     "detail": "2 touchdowns and 279 yards for CHI against TB",
+     "game_id": "401873050",
+     "field": 32
+    },
+    {
+     "player": "Dak Prescott",
+     "team": "DAL",
+     "opponent": "IND",
+     "value": 2.0,
+     "detail": "2 touchdowns and 335 yards for DAL against IND",
+     "game_id": "401873040",
+     "field": 32
+    },
+    {
+     "player": "Patrick Mahomes",
+     "team": "KC",
+     "opponent": "NYJ",
+     "value": 2.0,
+     "detail": "2 touchdowns and 242 yards for KC against NYJ",
+     "game_id": "401873045",
+     "field": 32
+    }
+   ]
+  },
+  "nfl_tackles": {
+   "sport": "NFL",
+   "rows": [
+    {
+     "player": "Nakobe Dean",
+     "team": "LV",
+     "opponent": "SF",
+     "value": 18.0,
+     "detail": "18 tackles for LV against SF",
+     "game_id": "401873047",
+     "field": 549
+    },
+    {
+     "player": "Hunter Wohler",
+     "team": "IND",
+     "opponent": "DAL",
+     "value": 16.0,
+     "detail": "16 tackles for IND against DAL",
+     "game_id": "401873040",
+     "field": 549
+    },
+    {
+     "player": "Carson Schwesinger",
+     "team": "CLE",
+     "opponent": "NO",
+     "value": 15.0,
+     "detail": "15 tackles for CLE against NO",
+     "game_id": "401873039",
+     "field": 549
+    },
+    {
+     "player": "Frankie Luvu",
+     "team": "WSH",
+     "opponent": "LAR",
+     "value": 15.0,
+     "detail": "15 tackles for WSH against LAR",
+     "game_id": "401873043",
+     "field": 549
+    },
+    {
+     "player": "Jessie Bates III",
+     "team": "ATL",
+     "opponent": "CIN",
+     "value": 14.0,
+     "detail": "14 tackles for ATL against CIN",
+     "game_id": "401873038",
+     "field": 549
+    },
+    {
+     "player": "Drue Tranquill",
+     "team": "KC",
+     "opponent": "NYJ",
+     "value": 13.0,
+     "detail": "13 tackles for KC against NYJ",
+     "game_id": "401873045",
+     "field": 549
+    },
+    {
+     "player": "Sonny Styles",
+     "team": "WSH",
+     "opponent": "LAR",
+     "value": 13.0,
+     "detail": "13 tackles for WSH against LAR",
+     "game_id": "401873043",
+     "field": 549
+    },
+    {
+     "player": "Andrew Wingard",
+     "team": "ARI",
+     "opponent": "SEA",
+     "value": 12.0,
+     "detail": "12 tackles for ARI against SEA",
+     "game_id": "401873048",
+     "field": 549
+    },
+    {
+     "player": "Arvell Reese",
+     "team": "NYG",
+     "opponent": "PHI",
+     "value": 12.0,
+     "detail": "12 tackles for NYG against PHI",
+     "game_id": "401873044",
+     "field": 549
+    },
+    {
+     "player": "Bryce Boettcher",
+     "team": "IND",
+     "opponent": "DAL",
+     "value": 12.0,
+     "detail": "12 tackles for IND against DAL",
+     "game_id": "401873040",
+     "field": 549
     }
    ]
   }
