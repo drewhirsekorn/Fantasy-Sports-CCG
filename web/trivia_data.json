@@ -1,76 +1,72 @@
 {
  "version": 1,
- "date": "2026-11-10",
- "stamp": "45942b57666f",
- "source_date": "2026-11-09",
- "opens": "2026-11-10T07:00:00-05:00",
+ "date": "2026-11-11",
+ "stamp": "76425f88c284",
+ "source_date": "2026-11-10",
+ "opens": "2026-11-11T07:00:00-05:00",
  "questions": [
   {
-   "kind": "last_before",
+   "kind": "led_the_night",
    "sport": "NBA",
-   "setup": "Victor Wembanyama blocked 9 shots for SA yesterday.",
-   "prompt": "Before Victor Wembanyama, who was the last NBA player with five blocks in a game?",
+   "setup": "Last night's box scores list 141 players.",
+   "prompt": "Who blocked the most shots in the NBA last night?",
    "options": [
-    "Sam Bowie",
-    "Kevin Huerter",
-    "Shawn Bradley",
-    "Marlon Maxey"
+    "Bam Adebayo",
+    "Klay Thompson",
+    "Keegan Murray",
+    "Donovan Clingan"
    ],
-   "answer": 1,
-   "explain": "Kevin Huerter \u2014 5 blocks for DET on November 8, 2026, 1 days earlier.",
+   "answer": 2,
+   "explain": "Keegan Murray \u2014 4 blocks for SAC against ORL.",
    "links": [
     {
-     "label": "November 9, 2026 box score",
-     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909958"
-    },
-    {
-     "label": "November 8, 2026 box score",
-     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909946"
+     "label": "November 10, 2026 box score",
+     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909964"
     }
    ],
-   "id": "2026-11-10-1"
+   "id": "2026-11-11-1"
   },
   {
    "kind": "led_the_night",
    "sport": "NBA",
-   "setup": "Last night's box scores list 185 players.",
+   "setup": "Last night's box scores list 141 players.",
    "prompt": "Who grabbed the most rebounds in the NBA last night?",
    "options": [
-    "Victor Wembanyama",
-    "Naz Reid",
-    "Alperen Sengun",
-    "Nikola Jokic"
+    "Isaiah Hartenstein",
+    "Karl-Anthony Towns",
+    "Wendell Carter Jr.",
+    "Andre Drummond"
    ],
-   "answer": 3,
-   "explain": "Nikola Jokic \u2014 16 rebounds for DEN against HOU.",
+   "answer": 1,
+   "explain": "Karl-Anthony Towns \u2014 16 rebounds for NY against MIL.",
    "links": [
     {
-     "label": "November 9, 2026 box score",
-     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909957"
+     "label": "November 10, 2026 box score",
+     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909960"
     }
    ],
-   "id": "2026-11-10-2"
+   "id": "2026-11-11-2"
   },
   {
    "kind": "led_the_night",
-   "sport": "NFL",
-   "setup": "Last night's box scores list 45 defenders.",
-   "prompt": "Who made the most tackles in the NFL yesterday?",
+   "sport": "NBA",
+   "setup": "Last night's box scores list 141 players.",
+   "prompt": "Who scored the most in the NBA last night?",
    "options": [
-    "Dallas Turner",
-    "Blake Cashman",
-    "Eric Wilson",
-    "Terrel Bernard"
+    "Darius Acuff Jr.",
+    "Paul George",
+    "Giannis Antetokounmpo",
+    "Shai Gilgeous-Alexander"
    ],
    "answer": 1,
-   "explain": "Blake Cashman \u2014 12 tackles for MIN against BUF.",
+   "explain": "Paul George \u2014 36 points in 30 minutes for BOS against PHI.",
    "links": [
     {
-     "label": "November 9, 2026 box score",
-     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401873051"
+     "label": "November 10, 2026 box score",
+     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909961"
     }
    ],
-   "id": "2026-11-10-3"
+   "id": "2026-11-11-3"
   }
  ],
  "coverage": {
@@ -91,7 +87,7 @@
    },
    {
     "from": "2025-01-01",
-    "through": "2026-11-09",
+    "through": "2026-11-10",
     "feats": [
      "mlb_12_k",
      "mlb_15_k",
@@ -135,7 +131,7 @@
    },
    {
     "from": "2023-10-01",
-    "through": "2026-11-09",
+    "through": "2026-11-10",
     "feats": [
      "nba_10_threes",
      "nba_20_assists",
@@ -169,7 +165,7 @@
    },
    {
     "from": "2023-09-01",
-    "through": "2026-11-09",
+    "through": "2026-11-10",
     "feats": [
      "nfl_150_rec_yards",
      "nfl_150_rush_yards",
@@ -187,6 +183,6 @@
    }
   ]
  },
- "built_at": "2026-11-10T18:31:19Z",
- "closes": "2026-11-11T07:00:00-05:00"
+ "built_at": "2026-11-11T18:29:36Z",
+ "closes": "2026-11-12T07:00:00-05:00"
 }
