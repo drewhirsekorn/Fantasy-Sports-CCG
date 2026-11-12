@@ -1,98 +1,98 @@
 {
- "date": "2026-11-10",
+ "date": "2026-11-11",
  "boards": {
   "nba_points": {
    "sport": "NBA",
    "rows": [
     {
-     "player": "Paul George",
-     "team": "BOS",
-     "opponent": "PHI",
-     "value": 36.0,
-     "detail": "36 points in 30 minutes for BOS against PHI",
-     "game_id": "401909961",
-     "field": 141
-    },
-    {
      "player": "Franz Wagner",
      "team": "ORL",
-     "opponent": "SAC",
-     "value": 33.0,
-     "detail": "33 points in 38 minutes for ORL against SAC",
-     "game_id": "401909964",
-     "field": 141
-    },
-    {
-     "player": "Zach LaVine",
-     "team": "SAC",
-     "opponent": "ORL",
-     "value": 31.0,
-     "detail": "31 points in 33 minutes for SAC against ORL",
-     "game_id": "401909964",
-     "field": 141
-    },
-    {
-     "player": "Giannis Antetokounmpo",
-     "team": "MIA",
      "opponent": "UTAH",
-     "value": 30.0,
-     "detail": "30 points in 31 minutes for MIA against UTAH",
-     "game_id": "401909963",
-     "field": 141
+     "value": 38.0,
+     "detail": "38 points in 39 minutes for ORL against UTAH",
+     "game_id": "401909973",
+     "field": 223
     },
     {
-     "player": "Darius Acuff Jr.",
-     "team": "SAC",
-     "opponent": "ORL",
-     "value": 29.0,
-     "detail": "29 points in 40 minutes for SAC against ORL",
-     "game_id": "401909964",
-     "field": 141
+     "player": "James Harden",
+     "team": "CLE",
+     "opponent": "NY",
+     "value": 32.0,
+     "detail": "32 points in 33 minutes for CLE against NY",
+     "game_id": "401909967",
+     "field": 223
     },
     {
-     "player": "Anthony Black",
-     "team": "ORL",
-     "opponent": "SAC",
-     "value": 26.0,
-     "detail": "26 points in 33 minutes for ORL against SAC",
-     "game_id": "401909964",
-     "field": 141
+     "player": "Luka Doncic",
+     "team": "LAL",
+     "opponent": "MIL",
+     "value": 32.0,
+     "detail": "32 points in 32 minutes for LAL against MIL",
+     "game_id": "401909971",
+     "field": 223
+    },
+    {
+     "player": "Victor Wembanyama",
+     "team": "SA",
+     "opponent": "CHI",
+     "value": 32.0,
+     "detail": "32 points in 32 minutes for SA against CHI",
+     "game_id": "401909969",
+     "field": 223
     },
     {
      "player": "Shai Gilgeous-Alexander",
      "team": "OKC",
      "opponent": "POR",
-     "value": 26.0,
-     "detail": "26 points in 29 minutes for OKC against POR",
-     "game_id": "401909965",
-     "field": 141
+     "value": 31.0,
+     "detail": "31 points in 36 minutes for OKC against POR",
+     "game_id": "401909975",
+     "field": 223
     },
     {
-     "player": "Damian Lillard",
-     "team": "POR",
-     "opponent": "OKC",
-     "value": 25.0,
-     "detail": "25 points in 24 minutes for POR against OKC",
-     "game_id": "401909965",
-     "field": 141
+     "player": "Jamal Murray",
+     "team": "DEN",
+     "opponent": "MEM",
+     "value": 30.0,
+     "detail": "30 points in 32 minutes for DEN against MEM",
+     "game_id": "401909970",
+     "field": 223
     },
     {
-     "player": "Darryn Peterson",
-     "team": "UTAH",
-     "opponent": "MIA",
-     "value": 25.0,
-     "detail": "25 points in 31 minutes for UTAH against MIA",
-     "game_id": "401909963",
-     "field": 141
+     "player": "Zion Williamson",
+     "team": "NO",
+     "opponent": "BKN",
+     "value": 29.0,
+     "detail": "29 points in 30 minutes for NO against BKN",
+     "game_id": "401909972",
+     "field": 223
     },
     {
      "player": "Deni Avdija",
      "team": "POR",
      "opponent": "OKC",
-     "value": 24.0,
-     "detail": "24 points in 34 minutes for POR against OKC",
-     "game_id": "401909965",
-     "field": 141
+     "value": 28.0,
+     "detail": "28 points in 35 minutes for POR against OKC",
+     "game_id": "401909975",
+     "field": 223
+    },
+    {
+     "player": "Pascal Siakam",
+     "team": "IND",
+     "opponent": "WSH",
+     "value": 28.0,
+     "detail": "28 points in 32 minutes for IND against WSH",
+     "game_id": "401909966",
+     "field": 223
+    },
+    {
+     "player": "Jalen Brunson",
+     "team": "NY",
+     "opponent": "CLE",
+     "value": 27.0,
+     "detail": "27 points in 35 minutes for NY against CLE",
+     "game_id": "401909967",
+     "field": 223
     }
    ]
   },
@@ -100,94 +100,189 @@
    "sport": "NBA",
    "rows": [
     {
-     "player": "Karl-Anthony Towns",
-     "team": "NY",
-     "opponent": "MIL",
-     "value": 16.0,
-     "detail": "16 rebounds for NY against MIL",
-     "game_id": "401909960",
-     "field": 141
+     "player": "Jarrett Allen",
+     "team": "CLE",
+     "opponent": "NY",
+     "value": 14.0,
+     "detail": "14 rebounds for CLE against NY",
+     "game_id": "401909967",
+     "field": 223
     },
     {
-     "player": "Andre Drummond",
-     "team": "NY",
-     "opponent": "MIL",
-     "value": 14.0,
-     "detail": "14 rebounds for NY against MIL",
-     "game_id": "401909960",
-     "field": 141
+     "player": "Alperen Sengun",
+     "team": "HOU",
+     "opponent": "GS",
+     "value": 13.0,
+     "detail": "13 rebounds for HOU against GS",
+     "game_id": "401909974",
+     "field": 223
+    },
+    {
+     "player": "Anthony Davis",
+     "team": "WSH",
+     "opponent": "IND",
+     "value": 13.0,
+     "detail": "13 rebounds for WSH against IND",
+     "game_id": "401909966",
+     "field": 223
+    },
+    {
+     "player": "Neemias Queta",
+     "team": "BOS",
+     "opponent": "TOR",
+     "value": 13.0,
+     "detail": "13 rebounds for BOS against TOR",
+     "game_id": "401909968",
+     "field": 223
     },
     {
      "player": "Donovan Clingan",
      "team": "POR",
      "opponent": "OKC",
-     "value": 13.0,
-     "detail": "13 rebounds for POR against OKC",
-     "game_id": "401909965",
-     "field": 141
+     "value": 12.0,
+     "detail": "12 rebounds for POR against OKC",
+     "game_id": "401909975",
+     "field": 223
     },
     {
-     "player": "Dylan Cardwell",
-     "team": "SAC",
-     "opponent": "ORL",
+     "player": "Ivica Zubac",
+     "team": "IND",
+     "opponent": "WSH",
+     "value": 12.0,
+     "detail": "12 rebounds for IND against WSH",
+     "game_id": "401909966",
+     "field": 223
+    },
+    {
+     "player": "Cameron Boozer",
+     "team": "MEM",
+     "opponent": "DEN",
      "value": 11.0,
-     "detail": "11 rebounds for SAC against ORL",
-     "game_id": "401909964",
-     "field": 141
+     "detail": "11 rebounds for MEM against DEN",
+     "game_id": "401909970",
+     "field": 223
     },
     {
-     "player": "Giannis Antetokounmpo",
-     "team": "MIA",
-     "opponent": "UTAH",
+     "player": "Cedric Coward",
+     "team": "MEM",
+     "opponent": "DEN",
      "value": 11.0,
-     "detail": "11 rebounds for MIA against UTAH",
-     "game_id": "401909963",
-     "field": 141
+     "detail": "11 rebounds for MEM against DEN",
+     "game_id": "401909970",
+     "field": 223
     },
     {
-     "player": "Wendell Carter Jr.",
-     "team": "ORL",
-     "opponent": "SAC",
+     "player": "Danny Wolf",
+     "team": "BKN",
+     "opponent": "NO",
      "value": 11.0,
-     "detail": "11 rebounds for ORL against SAC",
-     "game_id": "401909964",
-     "field": 141
-    },
-    {
-     "player": "Aday Mara",
-     "team": "OKC",
-     "opponent": "POR",
-     "value": 10.0,
-     "detail": "10 rebounds for OKC against POR",
-     "game_id": "401909965",
-     "field": 141
-    },
-    {
-     "player": "Dean Wade",
-     "team": "PHI",
-     "opponent": "BOS",
-     "value": 9.0,
-     "detail": "9 rebounds for PHI against BOS",
-     "game_id": "401909961",
-     "field": 141
+     "detail": "11 rebounds for BKN against NO",
+     "game_id": "401909972",
+     "field": 223
     },
     {
      "player": "Isaiah Hartenstein",
      "team": "OKC",
      "opponent": "POR",
-     "value": 9.0,
-     "detail": "9 rebounds for OKC against POR",
-     "game_id": "401909965",
-     "field": 141
+     "value": 11.0,
+     "detail": "11 rebounds for OKC against POR",
+     "game_id": "401909975",
+     "field": 223
+    }
+   ]
+  },
+  "nba_threes": {
+   "sport": "NBA",
+   "rows": [
+    {
+     "player": "Desmond Bane",
+     "team": "ORL",
+     "opponent": "UTAH",
+     "value": 7.0,
+     "detail": "7 threes and 25 points for ORL against UTAH",
+     "game_id": "401909973",
+     "field": 223
     },
     {
-     "player": "Bam Adebayo",
-     "team": "MIA",
-     "opponent": "UTAH",
-     "value": 8.0,
-     "detail": "8 rebounds for MIA against UTAH",
-     "game_id": "401909963",
-     "field": 141
+     "player": "Ja'Kobe Walter",
+     "team": "TOR",
+     "opponent": "BOS",
+     "value": 5.0,
+     "detail": "5 threes and 17 points for TOR against BOS",
+     "game_id": "401909968",
+     "field": 223
+    },
+    {
+     "player": "Jalen Smith",
+     "team": "CHI",
+     "opponent": "SA",
+     "value": 5.0,
+     "detail": "5 threes and 23 points for CHI against SA",
+     "game_id": "401909969",
+     "field": 223
+    },
+    {
+     "player": "James Harden",
+     "team": "CLE",
+     "opponent": "NY",
+     "value": 5.0,
+     "detail": "5 threes and 32 points for CLE against NY",
+     "game_id": "401909967",
+     "field": 223
+    },
+    {
+     "player": "Jaylen Wells",
+     "team": "MEM",
+     "opponent": "DEN",
+     "value": 5.0,
+     "detail": "5 threes and 22 points for MEM against DEN",
+     "game_id": "401909970",
+     "field": 223
+    },
+    {
+     "player": "Jrue Holiday",
+     "team": "POR",
+     "opponent": "OKC",
+     "value": 5.0,
+     "detail": "5 threes and 19 points for POR against OKC",
+     "game_id": "401909975",
+     "field": 223
+    },
+    {
+     "player": "Kyshawn George",
+     "team": "WSH",
+     "opponent": "IND",
+     "value": 5.0,
+     "detail": "5 threes and 25 points for WSH against IND",
+     "game_id": "401909966",
+     "field": 223
+    },
+    {
+     "player": "Luka Doncic",
+     "team": "LAL",
+     "opponent": "MIL",
+     "value": 5.0,
+     "detail": "5 threes and 32 points for LAL against MIL",
+     "game_id": "401909971",
+     "field": 223
+    },
+    {
+     "player": "Miles McBride",
+     "team": "NY",
+     "opponent": "CLE",
+     "value": 5.0,
+     "detail": "5 threes and 19 points for NY against CLE",
+     "game_id": "401909967",
+     "field": 223
+    },
+    {
+     "player": "Sandro Mamukelashvili",
+     "team": "LAL",
+     "opponent": "MIL",
+     "value": 5.0,
+     "detail": "5 threes and 23 points for LAL against MIL",
+     "game_id": "401909971",
+     "field": 223
     }
    ]
   },
@@ -195,94 +290,94 @@
    "sport": "NBA",
    "rows": [
     {
-     "player": "Keegan Murray",
-     "team": "SAC",
+     "player": "Victor Wembanyama",
+     "team": "SA",
+     "opponent": "CHI",
+     "value": 5.0,
+     "detail": "5 blocks for SA against CHI",
+     "game_id": "401909969",
+     "field": 223
+    },
+    {
+     "player": "Ace Bailey",
+     "team": "UTAH",
      "opponent": "ORL",
      "value": 4.0,
-     "detail": "4 blocks for SAC against ORL",
-     "game_id": "401909964",
-     "field": 141
+     "detail": "4 blocks for UTAH against ORL",
+     "game_id": "401909973",
+     "field": 223
     },
     {
-     "player": "Mo Bamba",
-     "team": "UTAH",
-     "opponent": "MIA",
-     "value": 3.0,
-     "detail": "3 blocks for UTAH against MIA",
-     "game_id": "401909963",
-     "field": 141
+     "player": "Day'Ron Sharpe",
+     "team": "BKN",
+     "opponent": "NO",
+     "value": 4.0,
+     "detail": "4 blocks for BKN against NO",
+     "game_id": "401909972",
+     "field": 223
     },
     {
-     "player": "Wendell Carter Jr.",
-     "team": "ORL",
-     "opponent": "SAC",
-     "value": 3.0,
-     "detail": "3 blocks for ORL against SAC",
-     "game_id": "401909964",
-     "field": 141
+     "player": "Derrick White",
+     "team": "BOS",
+     "opponent": "TOR",
+     "value": 4.0,
+     "detail": "4 blocks for BOS against TOR",
+     "game_id": "401909968",
+     "field": 223
     },
     {
-     "player": "Bam Adebayo",
-     "team": "MIA",
-     "opponent": "UTAH",
-     "value": 2.0,
-     "detail": "2 blocks for MIA against UTAH",
-     "game_id": "401909963",
-     "field": 141
-    },
-    {
-     "player": "Branden Carlson",
-     "team": "POR",
-     "opponent": "OKC",
-     "value": 2.0,
-     "detail": "2 blocks for POR against OKC",
-     "game_id": "401909965",
-     "field": 141
+     "player": "Peyton Watson",
+     "team": "CLE",
+     "opponent": "NY",
+     "value": 4.0,
+     "detail": "4 blocks for CLE against NY",
+     "game_id": "401909967",
+     "field": 223
     },
     {
      "player": "Donovan Clingan",
      "team": "POR",
      "opponent": "OKC",
-     "value": 2.0,
-     "detail": "2 blocks for POR against OKC",
-     "game_id": "401909965",
-     "field": 141
+     "value": 3.0,
+     "detail": "3 blocks for POR against OKC",
+     "game_id": "401909975",
+     "field": 223
     },
     {
-     "player": "Dylan Cardwell",
-     "team": "SAC",
-     "opponent": "ORL",
-     "value": 2.0,
-     "detail": "2 blocks for SAC against ORL",
-     "game_id": "401909964",
-     "field": 141
-    },
-    {
-     "player": "Jayson Tatum",
-     "team": "BOS",
-     "opponent": "PHI",
-     "value": 2.0,
-     "detail": "2 blocks for BOS against PHI",
-     "game_id": "401909961",
-     "field": 141
+     "player": "Jabari Smith Jr.",
+     "team": "HOU",
+     "opponent": "GS",
+     "value": 3.0,
+     "detail": "3 blocks for HOU against GS",
+     "game_id": "401909974",
+     "field": 223
     },
     {
      "player": "Kel'el Ware",
      "team": "MIL",
-     "opponent": "NY",
-     "value": 2.0,
-     "detail": "2 blocks for MIL against NY",
-     "game_id": "401909960",
-     "field": 141
+     "opponent": "LAL",
+     "value": 3.0,
+     "detail": "3 blocks for MIL against LAL",
+     "game_id": "401909971",
+     "field": 223
     },
     {
-     "player": "Klay Thompson",
-     "team": "MIA",
-     "opponent": "UTAH",
+     "player": "Neemias Queta",
+     "team": "BOS",
+     "opponent": "TOR",
+     "value": 3.0,
+     "detail": "3 blocks for BOS against TOR",
+     "game_id": "401909968",
+     "field": 223
+    },
+    {
+     "player": "Aaron Gordon",
+     "team": "DEN",
+     "opponent": "MEM",
      "value": 2.0,
-     "detail": "2 blocks for MIA against UTAH",
-     "game_id": "401909963",
-     "field": 141
+     "detail": "2 blocks for DEN against MEM",
+     "game_id": "401909970",
+     "field": 223
     }
    ]
   }
