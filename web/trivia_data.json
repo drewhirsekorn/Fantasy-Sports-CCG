@@ -1,76 +1,76 @@
 {
  "version": 1,
- "date": "2026-11-12",
- "stamp": "aa13049045b2",
- "source_date": "2026-11-11",
- "opens": "2026-11-12T07:00:00-05:00",
+ "date": "2026-11-13",
+ "stamp": "4563c87d6ecc",
+ "source_date": "2026-11-12",
+ "opens": "2026-11-13T07:00:00-05:00",
  "questions": [
   {
    "kind": "last_before",
    "sport": "NBA",
-   "setup": "Victor Wembanyama blocked 5 shots for SA yesterday.",
-   "prompt": "Before Victor Wembanyama, who was the last NBA player with five blocks in a game?",
+   "setup": "Cade Cunningham scored 52 points for DET against WSH yesterday.",
+   "prompt": "Before Cade Cunningham, who was the last NBA player to score 50 in a game?",
    "options": [
-    "Kenny Walker",
-    "Precious Achiuwa",
-    "Jarrett Allen",
-    "Victor Wembanyama"
-   ],
-   "answer": 3,
-   "explain": "Victor Wembanyama \u2014 9 blocks for SA on November 9, 2026, 2 days earlier.",
-   "links": [
-    {
-     "label": "November 11, 2026 box score",
-     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909969"
-    },
-    {
-     "label": "November 9, 2026 box score",
-     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909958"
-    }
-   ],
-   "id": "2026-11-12-1"
-  },
-  {
-   "kind": "led_the_night",
-   "sport": "NBA",
-   "setup": "Last night's box scores list 223 players.",
-   "prompt": "Who made the most three-pointers in the NBA last night?",
-   "options": [
-    "Jalen Smith",
-    "Miles McBride",
-    "Desmond Bane",
-    "Jaylen Wells"
-   ],
-   "answer": 2,
-   "explain": "Desmond Bane \u2014 7 threes and 25 points for ORL against UTAH.",
-   "links": [
-    {
-     "label": "November 11, 2026 box score",
-     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909973"
-    }
-   ],
-   "id": "2026-11-12-2"
-  },
-  {
-   "kind": "led_the_night",
-   "sport": "NBA",
-   "setup": "Last night's box scores list 223 players.",
-   "prompt": "Who scored the most in the NBA last night?",
-   "options": [
-    "Jamal Murray",
-    "Deni Avdija",
-    "Franz Wagner",
+    "Charles Barkley",
+    "LaMelo Ball",
+    "Blake Griffin",
     "Luka Doncic"
    ],
-   "answer": 2,
-   "explain": "Franz Wagner \u2014 38 points in 39 minutes for ORL against UTAH.",
+   "answer": 3,
+   "explain": "Luka Doncic \u2014 53 points for LAL on November 6, 2026, 6 days earlier.",
    "links": [
     {
-     "label": "November 11, 2026 box score",
-     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909973"
+     "label": "November 12, 2026 box score",
+     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909977"
+    },
+    {
+     "label": "November 6, 2026 box score",
+     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909294"
     }
    ],
-   "id": "2026-11-12-3"
+   "id": "2026-11-13-1"
+  },
+  {
+   "kind": "led_the_night",
+   "sport": "NBA",
+   "setup": "Last night's box scores list 90 players.",
+   "prompt": "Who had the most assists in the NBA last night?",
+   "options": [
+    "Tyrese Maxey",
+    "Grayson Allen",
+    "Trae Young",
+    "LaMelo Ball"
+   ],
+   "answer": 2,
+   "explain": "Trae Young \u2014 14 assists for WSH against DET.",
+   "links": [
+    {
+     "label": "November 12, 2026 box score",
+     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909977"
+    }
+   ],
+   "id": "2026-11-13-2"
+  },
+  {
+   "kind": "led_the_night",
+   "sport": "NBA",
+   "setup": "Last night's box scores list 90 players.",
+   "prompt": "Who grabbed the most rebounds in the NBA last night?",
+   "options": [
+    "Jaden McDaniels",
+    "Anthony Davis",
+    "RJ Barrett",
+    "Alex Sarr"
+   ],
+   "answer": 1,
+   "explain": "Anthony Davis \u2014 15 rebounds for WSH against DET.",
+   "links": [
+    {
+     "label": "November 12, 2026 box score",
+     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909977"
+    }
+   ],
+   "id": "2026-11-13-3"
   }
  ],
  "coverage": {
@@ -91,7 +91,7 @@
    },
    {
     "from": "2025-01-01",
-    "through": "2026-11-11",
+    "through": "2026-11-12",
     "feats": [
      "mlb_12_k",
      "mlb_15_k",
@@ -135,7 +135,7 @@
    },
    {
     "from": "2023-10-01",
-    "through": "2026-11-11",
+    "through": "2026-11-12",
     "feats": [
      "nba_10_threes",
      "nba_20_assists",
@@ -169,7 +169,7 @@
    },
    {
     "from": "2023-09-01",
-    "through": "2026-11-11",
+    "through": "2026-11-12",
     "feats": [
      "nfl_150_rec_yards",
      "nfl_150_rush_yards",
@@ -187,6 +187,6 @@
    }
   ]
  },
- "built_at": "2026-11-12T18:44:53Z",
- "closes": "2026-11-13T07:00:00-05:00"
+ "built_at": "2026-11-13T18:26:54Z",
+ "closes": "2026-11-14T07:00:00-05:00"
 }
