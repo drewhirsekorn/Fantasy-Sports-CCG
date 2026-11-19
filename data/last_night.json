@@ -1,98 +1,98 @@
 {
- "date": "2026-11-17",
+ "date": "2026-11-18",
  "boards": {
   "nba_points": {
    "sport": "NBA",
    "rows": [
     {
-     "player": "Quentin Grimes",
-     "team": "LAL",
-     "opponent": "CHA",
-     "value": 47.0,
-     "detail": "47 points in 42 minutes for LAL against CHA",
-     "game_id": "401910005",
-     "field": 103
-    },
-    {
-     "player": "Brice Sensabaugh",
-     "team": "UTAH",
-     "opponent": "LAC",
-     "value": 40.0,
-     "detail": "40 points in 35 minutes for UTAH against LAC",
-     "game_id": "401910006",
-     "field": 103
-    },
-    {
-     "player": "Luka Doncic",
-     "team": "LAL",
-     "opponent": "CHA",
+     "player": "Darius Acuff Jr.",
+     "team": "SAC",
+     "opponent": "PHX",
      "value": 36.0,
-     "detail": "36 points in 42 minutes for LAL against CHA",
-     "game_id": "401910005",
-     "field": 103
+     "detail": "36 points in 35 minutes for SAC against PHX",
+     "game_id": "401910018",
+     "field": 279
     },
     {
-     "player": "Jalen Brunson",
-     "team": "NY",
-     "opponent": "TOR",
-     "value": 31.0,
-     "detail": "31 points in 34 minutes for NY against TOR",
-     "game_id": "401910002",
-     "field": 103
+     "player": "Donovan Mitchell",
+     "team": "CLE",
+     "opponent": "MEM",
+     "value": 34.0,
+     "detail": "34 points in 35 minutes for CLE against MEM",
+     "game_id": "401910007",
+     "field": 279
     },
     {
-     "player": "Ayo Dosunmu",
-     "team": "MIN",
-     "opponent": "POR",
-     "value": 30.0,
-     "detail": "30 points in 39 minutes for MIN against POR",
-     "game_id": "401910003",
-     "field": 103
+     "player": "Shai Gilgeous-Alexander",
+     "team": "OKC",
+     "opponent": "ATL",
+     "value": 34.0,
+     "detail": "34 points in 36 minutes for OKC against ATL",
+     "game_id": "401910014",
+     "field": 279
+    },
+    {
+     "player": "Cooper Flagg",
+     "team": "DAL",
+     "opponent": "GS",
+     "value": 33.0,
+     "detail": "33 points in 34 minutes for DAL against GS",
+     "game_id": "401910016",
+     "field": 279
     },
     {
      "player": "Keyonte George",
      "team": "UTAH",
-     "opponent": "LAC",
-     "value": 30.0,
-     "detail": "30 points in 35 minutes for UTAH against LAC",
-     "game_id": "401910006",
-     "field": 103
-    },
-    {
-     "player": "Brandon Miller",
-     "team": "CHA",
      "opponent": "LAL",
+     "value": 30.0,
+     "detail": "30 points in 39 minutes for UTAH against LAL",
+     "game_id": "401910017",
+     "field": 279
+    },
+    {
+     "player": "Devin Booker",
+     "team": "PHX",
+     "opponent": "SAC",
+     "value": 29.0,
+     "detail": "29 points in 33 minutes for PHX against SAC",
+     "game_id": "401910018",
+     "field": 279
+    },
+    {
+     "player": "Dillon Brooks",
+     "team": "PHX",
+     "opponent": "SAC",
+     "value": 29.0,
+     "detail": "29 points in 31 minutes for PHX against SAC",
+     "game_id": "401910018",
+     "field": 279
+    },
+    {
+     "player": "Luka Doncic",
+     "team": "LAL",
+     "opponent": "UTAH",
+     "value": 29.0,
+     "detail": "29 points in 37 minutes for LAL against UTAH",
+     "game_id": "401910017",
+     "field": 279
+    },
+    {
+     "player": "Onyeka Okongwu",
+     "team": "ATL",
+     "opponent": "OKC",
      "value": 28.0,
-     "detail": "28 points in 32 minutes for CHA against LAL",
-     "game_id": "401910005",
-     "field": 103
+     "detail": "28 points in 36 minutes for ATL against OKC",
+     "game_id": "401910014",
+     "field": 279
     },
     {
-     "player": "Cade Cunningham",
-     "team": "DET",
-     "opponent": "SA",
+     "player": "Franz Wagner",
+     "team": "ORL",
+     "opponent": "PHI",
      "value": 27.0,
-     "detail": "27 points in 38 minutes for DET against SA",
-     "game_id": "401910004",
-     "field": 103
-    },
-    {
-     "player": "Damian Lillard",
-     "team": "POR",
-     "opponent": "MIN",
-     "value": 25.0,
-     "detail": "25 points in 31 minutes for POR against MIN",
-     "game_id": "401910003",
-     "field": 103
-    },
-    {
-     "player": "Daniss Jenkins",
-     "team": "DET",
-     "opponent": "SA",
-     "value": 25.0,
-     "detail": "25 points in 38 minutes for DET against SA",
-     "game_id": "401910004",
-     "field": 103
+     "detail": "27 points in 36 minutes for ORL against PHI",
+     "game_id": "401910010",
+     "field": 279
     }
    ]
   },
@@ -100,379 +100,94 @@
    "sport": "NBA",
    "rows": [
     {
-     "player": "Victor Wembanyama",
-     "team": "SA",
-     "opponent": "DET",
-     "value": 18.0,
-     "detail": "18 rebounds for SA against DET",
-     "game_id": "401910004",
-     "field": 103
-    },
-    {
-     "player": "Karl-Anthony Towns",
-     "team": "NY",
-     "opponent": "TOR",
-     "value": 16.0,
-     "detail": "16 rebounds for NY against TOR",
-     "game_id": "401910002",
-     "field": 103
-    },
-    {
-     "player": "Moussa Diabate",
-     "team": "CHA",
-     "opponent": "LAL",
-     "value": 16.0,
-     "detail": "16 rebounds for CHA against LAL",
-     "game_id": "401910005",
-     "field": 103
-    },
-    {
-     "player": "Joan Beringer",
-     "team": "MIN",
-     "opponent": "POR",
-     "value": 13.0,
-     "detail": "13 rebounds for MIN against POR",
-     "game_id": "401910003",
-     "field": 103
-    },
-    {
-     "player": "Donovan Clingan",
-     "team": "POR",
-     "opponent": "MIN",
-     "value": 12.0,
-     "detail": "12 rebounds for POR against MIN",
-     "game_id": "401910003",
-     "field": 103
-    },
-    {
-     "player": "Brice Sensabaugh",
-     "team": "UTAH",
-     "opponent": "LAC",
-     "value": 11.0,
-     "detail": "11 rebounds for UTAH against LAC",
-     "game_id": "401910006",
-     "field": 103
-    },
-    {
-     "player": "Naz Reid",
-     "team": "CHA",
-     "opponent": "LAL",
-     "value": 11.0,
-     "detail": "11 rebounds for CHA against LAL",
-     "game_id": "401910005",
-     "field": 103
+     "player": "Isaiah Hartenstein",
+     "team": "OKC",
+     "opponent": "ATL",
+     "value": 17.0,
+     "detail": "17 rebounds for OKC against ATL",
+     "game_id": "401910014",
+     "field": 279
     },
     {
      "player": "Mo Bamba",
      "team": "UTAH",
-     "opponent": "LAC",
-     "value": 10.0,
-     "detail": "10 rebounds for UTAH against LAC",
-     "game_id": "401910006",
-     "field": 103
+     "opponent": "LAL",
+     "value": 16.0,
+     "detail": "16 rebounds for UTAH against LAL",
+     "game_id": "401910017",
+     "field": 279
     },
     {
-     "player": "Ausar Thompson",
-     "team": "DET",
-     "opponent": "SA",
-     "value": 9.0,
-     "detail": "9 rebounds for DET against SA",
-     "game_id": "401910004",
-     "field": 103
+     "player": "Anthony Davis",
+     "team": "WSH",
+     "opponent": "TOR",
+     "value": 14.0,
+     "detail": "14 rebounds for WSH against TOR",
+     "game_id": "401910012",
+     "field": 279
     },
     {
-     "player": "LaMelo Ball",
-     "team": "MIN",
-     "opponent": "POR",
-     "value": 9.0,
-     "detail": "9 rebounds for MIN against POR",
-     "game_id": "401910003",
-     "field": 103
-    }
-   ]
-  },
-  "nba_assists": {
-   "sport": "NBA",
-   "rows": [
+     "player": "Giannis Antetokounmpo",
+     "team": "MIA",
+     "opponent": "MIL",
+     "value": 14.0,
+     "detail": "14 rebounds for MIA against MIL",
+     "game_id": "401910009",
+     "field": 279
+    },
     {
-     "player": "Ausar Thompson",
-     "team": "DET",
-     "opponent": "SA",
+     "player": "Josh Giddey",
+     "team": "CHI",
+     "opponent": "BKN",
+     "value": 14.0,
+     "detail": "14 rebounds for CHI against BKN",
+     "game_id": "401910011",
+     "field": 279
+    },
+    {
+     "player": "Domantas Sabonis",
+     "team": "SAC",
+     "opponent": "PHX",
+     "value": 13.0,
+     "detail": "13 rebounds for SAC against PHX",
+     "game_id": "401910018",
+     "field": 279
+    },
+    {
+     "player": "AJ Dybantsa",
+     "team": "WSH",
+     "opponent": "TOR",
      "value": 12.0,
-     "detail": "12 assists for DET against SA",
-     "game_id": "401910004",
-     "field": 103
+     "detail": "12 rebounds for WSH against TOR",
+     "game_id": "401910012",
+     "field": 279
     },
     {
-     "player": "Keyonte George",
-     "team": "UTAH",
-     "opponent": "LAC",
+     "player": "Jalen Johnson",
+     "team": "ATL",
+     "opponent": "OKC",
+     "value": 12.0,
+     "detail": "12 rebounds for ATL against OKC",
+     "game_id": "401910014",
+     "field": 279
+    },
+    {
+     "player": "Walker Kessler",
+     "team": "LAL",
+     "opponent": "UTAH",
      "value": 11.0,
-     "detail": "11 assists for UTAH against LAC",
-     "game_id": "401910006",
-     "field": 103
+     "detail": "11 rebounds for LAL against UTAH",
+     "game_id": "401910017",
+     "field": 279
     },
     {
-     "player": "Karl-Anthony Towns",
-     "team": "NY",
-     "opponent": "TOR",
-     "value": 8.0,
-     "detail": "8 assists for NY against TOR",
-     "game_id": "401910002",
-     "field": 103
-    },
-    {
-     "player": "Darius Garland",
-     "team": "LAC",
-     "opponent": "UTAH",
-     "value": 7.0,
-     "detail": "7 assists for LAC against UTAH",
-     "game_id": "401910006",
-     "field": 103
-    },
-    {
-     "player": "Immanuel Quickley",
-     "team": "TOR",
-     "opponent": "NY",
-     "value": 7.0,
-     "detail": "7 assists for TOR against NY",
-     "game_id": "401910002",
-     "field": 103
-    },
-    {
-     "player": "Luka Doncic",
-     "team": "LAL",
-     "opponent": "CHA",
-     "value": 7.0,
-     "detail": "7 assists for LAL against CHA",
-     "game_id": "401910005",
-     "field": 103
-    },
-    {
-     "player": "Stephon Castle",
-     "team": "SA",
-     "opponent": "DET",
-     "value": 7.0,
-     "detail": "7 assists for SA against DET",
-     "game_id": "401910004",
-     "field": 103
-    },
-    {
-     "player": "Cade Cunningham",
-     "team": "DET",
-     "opponent": "SA",
-     "value": 6.0,
-     "detail": "6 assists for DET against SA",
-     "game_id": "401910004",
-     "field": 103
-    },
-    {
-     "player": "Jamal Shead",
-     "team": "TOR",
-     "opponent": "NY",
-     "value": 6.0,
-     "detail": "6 assists for TOR against NY",
-     "game_id": "401910002",
-     "field": 103
-    },
-    {
-     "player": "Jrue Holiday",
-     "team": "POR",
-     "opponent": "MIN",
-     "value": 6.0,
-     "detail": "6 assists for POR against MIN",
-     "game_id": "401910003",
-     "field": 103
-    }
-   ]
-  },
-  "nba_threes": {
-   "sport": "NBA",
-   "rows": [
-    {
-     "player": "Quentin Grimes",
-     "team": "LAL",
-     "opponent": "CHA",
+     "player": "Dyson Daniels",
+     "team": "ATL",
+     "opponent": "OKC",
      "value": 10.0,
-     "detail": "10 threes and 47 points for LAL against CHA",
-     "game_id": "401910005",
-     "field": 103
-    },
-    {
-     "player": "Brice Sensabaugh",
-     "team": "UTAH",
-     "opponent": "LAC",
-     "value": 8.0,
-     "detail": "8 threes and 40 points for UTAH against LAC",
-     "game_id": "401910006",
-     "field": 103
-    },
-    {
-     "player": "Ayo Dosunmu",
-     "team": "MIN",
-     "opponent": "POR",
-     "value": 7.0,
-     "detail": "7 threes and 30 points for MIN against POR",
-     "game_id": "401910003",
-     "field": 103
-    },
-    {
-     "player": "Ja'Kobe Walter",
-     "team": "TOR",
-     "opponent": "NY",
-     "value": 7.0,
-     "detail": "7 threes and 25 points for TOR against NY",
-     "game_id": "401910002",
-     "field": 103
-    },
-    {
-     "player": "Brandon Miller",
-     "team": "CHA",
-     "opponent": "LAL",
-     "value": 5.0,
-     "detail": "5 threes and 28 points for CHA against LAL",
-     "game_id": "401910005",
-     "field": 103
-    },
-    {
-     "player": "Damian Lillard",
-     "team": "POR",
-     "opponent": "MIN",
-     "value": 5.0,
-     "detail": "5 threes and 25 points for POR against MIN",
-     "game_id": "401910003",
-     "field": 103
-    },
-    {
-     "player": "Jrue Holiday",
-     "team": "POR",
-     "opponent": "MIN",
-     "value": 5.0,
-     "detail": "5 threes and 23 points for POR against MIN",
-     "game_id": "401910003",
-     "field": 103
-    },
-    {
-     "player": "Luka Doncic",
-     "team": "LAL",
-     "opponent": "CHA",
-     "value": 5.0,
-     "detail": "5 threes and 36 points for LAL against CHA",
-     "game_id": "401910005",
-     "field": 103
-    },
-    {
-     "player": "Brook Lopez",
-     "team": "LAC",
-     "opponent": "UTAH",
-     "value": 4.0,
-     "detail": "4 threes and 23 points for LAC against UTAH",
-     "game_id": "401910006",
-     "field": 103
-    },
-    {
-     "player": "Jalen Brunson",
-     "team": "NY",
-     "opponent": "TOR",
-     "value": 4.0,
-     "detail": "4 threes and 31 points for NY against TOR",
-     "game_id": "401910002",
-     "field": 103
-    }
-   ]
-  },
-  "nba_blocks": {
-   "sport": "NBA",
-   "rows": [
-    {
-     "player": "Joan Beringer",
-     "team": "MIN",
-     "opponent": "POR",
-     "value": 4.0,
-     "detail": "4 blocks for MIN against POR",
-     "game_id": "401910003",
-     "field": 103
-    },
-    {
-     "player": "Collin Murray-Boyles",
-     "team": "TOR",
-     "opponent": "NY",
-     "value": 3.0,
-     "detail": "3 blocks for TOR against NY",
-     "game_id": "401910002",
-     "field": 103
-    },
-    {
-     "player": "Isaiah Jackson",
-     "team": "LAC",
-     "opponent": "UTAH",
-     "value": 2.0,
-     "detail": "2 blocks for LAC against UTAH",
-     "game_id": "401910006",
-     "field": 103
-    },
-    {
-     "player": "Keyonte George",
-     "team": "UTAH",
-     "opponent": "LAC",
-     "value": 2.0,
-     "detail": "2 blocks for UTAH against LAC",
-     "game_id": "401910006",
-     "field": 103
-    },
-    {
-     "player": "Luke Kornet",
-     "team": "SA",
-     "opponent": "DET",
-     "value": 2.0,
-     "detail": "2 blocks for SA against DET",
-     "game_id": "401910004",
-     "field": 103
-    },
-    {
-     "player": "Naz Reid",
-     "team": "CHA",
-     "opponent": "LAL",
-     "value": 2.0,
-     "detail": "2 blocks for CHA against LAL",
-     "game_id": "401910005",
-     "field": 103
-    },
-    {
-     "player": "OG Anunoby",
-     "team": "NY",
-     "opponent": "TOR",
-     "value": 2.0,
-     "detail": "2 blocks for NY against TOR",
-     "game_id": "401910002",
-     "field": 103
-    },
-    {
-     "player": "Scottie Barnes",
-     "team": "TOR",
-     "opponent": "NY",
-     "value": 2.0,
-     "detail": "2 blocks for TOR against NY",
-     "game_id": "401910002",
-     "field": 103
-    },
-    {
-     "player": "Brandon Miller",
-     "team": "CHA",
-     "opponent": "LAL",
-     "value": 1.0,
-     "detail": "1 blocks for CHA against LAL",
-     "game_id": "401910005",
-     "field": 103
-    },
-    {
-     "player": "Brice Sensabaugh",
-     "team": "UTAH",
-     "opponent": "LAC",
-     "value": 1.0,
-     "detail": "1 blocks for UTAH against LAC",
-     "game_id": "401910006",
-     "field": 103
+     "detail": "10 rebounds for ATL against OKC",
+     "game_id": "401910014",
+     "field": 279
     }
    ]
   }
