@@ -1,193 +1,365 @@
 {
- "date": "2026-11-18",
+ "date": "2026-11-19",
  "boards": {
   "nba_points": {
    "sport": "NBA",
    "rows": [
     {
-     "player": "Darius Acuff Jr.",
-     "team": "SAC",
-     "opponent": "PHX",
-     "value": 36.0,
-     "detail": "36 points in 35 minutes for SAC against PHX",
-     "game_id": "401910018",
-     "field": 279
-    },
-    {
-     "player": "Donovan Mitchell",
-     "team": "CLE",
-     "opponent": "MEM",
-     "value": 34.0,
-     "detail": "34 points in 35 minutes for CLE against MEM",
-     "game_id": "401910007",
-     "field": 279
-    },
-    {
-     "player": "Shai Gilgeous-Alexander",
-     "team": "OKC",
-     "opponent": "ATL",
-     "value": 34.0,
-     "detail": "34 points in 36 minutes for OKC against ATL",
-     "game_id": "401910014",
-     "field": 279
-    },
-    {
-     "player": "Cooper Flagg",
-     "team": "DAL",
-     "opponent": "GS",
+     "player": "Damian Lillard",
+     "team": "POR",
+     "opponent": "MIL",
      "value": 33.0,
-     "detail": "33 points in 34 minutes for DAL against GS",
-     "game_id": "401910016",
-     "field": 279
+     "detail": "33 points in 35 minutes for POR against MIL",
+     "game_id": "401910020",
+     "field": 89
     },
     {
-     "player": "Keyonte George",
-     "team": "UTAH",
-     "opponent": "LAL",
-     "value": 30.0,
-     "detail": "30 points in 39 minutes for UTAH against LAL",
-     "game_id": "401910017",
-     "field": 279
+     "player": "Victor Wembanyama",
+     "team": "SA",
+     "opponent": "LAC",
+     "value": 32.0,
+     "detail": "32 points in 33 minutes for SA against LAC",
+     "game_id": "401910022",
+     "field": 89
     },
     {
-     "player": "Devin Booker",
-     "team": "PHX",
-     "opponent": "SAC",
-     "value": 29.0,
-     "detail": "29 points in 33 minutes for PHX against SAC",
-     "game_id": "401910018",
-     "field": 279
-    },
-    {
-     "player": "Dillon Brooks",
-     "team": "PHX",
-     "opponent": "SAC",
-     "value": 29.0,
-     "detail": "29 points in 31 minutes for PHX against SAC",
-     "game_id": "401910018",
-     "field": 279
-    },
-    {
-     "player": "Luka Doncic",
-     "team": "LAL",
-     "opponent": "UTAH",
-     "value": 29.0,
-     "detail": "29 points in 37 minutes for LAL against UTAH",
-     "game_id": "401910017",
-     "field": 279
-    },
-    {
-     "player": "Onyeka Okongwu",
-     "team": "ATL",
-     "opponent": "OKC",
-     "value": 28.0,
-     "detail": "28 points in 36 minutes for ATL against OKC",
-     "game_id": "401910014",
-     "field": 279
-    },
-    {
-     "player": "Franz Wagner",
-     "team": "ORL",
-     "opponent": "PHI",
+     "player": "Scoot Henderson",
+     "team": "POR",
+     "opponent": "MIL",
      "value": 27.0,
-     "detail": "27 points in 36 minutes for ORL against PHI",
-     "game_id": "401910010",
-     "field": 279
+     "detail": "27 points in 35 minutes for POR against MIL",
+     "game_id": "401910020",
+     "field": 89
+    },
+    {
+     "player": "Brook Lopez",
+     "team": "LAC",
+     "opponent": "SA",
+     "value": 23.0,
+     "detail": "23 points in 27 minutes for LAC against SA",
+     "game_id": "401910022",
+     "field": 89
+    },
+    {
+     "player": "Darius Garland",
+     "team": "LAC",
+     "opponent": "SA",
+     "value": 23.0,
+     "detail": "23 points in 35 minutes for LAC against SA",
+     "game_id": "401910022",
+     "field": 89
+    },
+    {
+     "player": "Jonathan Kuminga",
+     "team": "MIN",
+     "opponent": "NY",
+     "value": 23.0,
+     "detail": "23 points in 35 minutes for MIN against NY",
+     "game_id": "401910021",
+     "field": 89
+    },
+    {
+     "player": "Jaylen Wells",
+     "team": "MEM",
+     "opponent": "GS",
+     "value": 22.0,
+     "detail": "22 points in 24 minutes for MEM against GS",
+     "game_id": "401910019",
+     "field": 89
+    },
+    {
+     "player": "Jrue Holiday",
+     "team": "POR",
+     "opponent": "MIL",
+     "value": 22.0,
+     "detail": "22 points in 31 minutes for POR against MIL",
+     "game_id": "401910020",
+     "field": 89
+    },
+    {
+     "player": "Karl-Anthony Towns",
+     "team": "NY",
+     "opponent": "MIN",
+     "value": 22.0,
+     "detail": "22 points in 33 minutes for NY against MIN",
+     "game_id": "401910021",
+     "field": 89
+    },
+    {
+     "player": "Jalen Brunson",
+     "team": "NY",
+     "opponent": "MIN",
+     "value": 21.0,
+     "detail": "21 points in 35 minutes for NY against MIN",
+     "game_id": "401910021",
+     "field": 89
     }
    ]
   },
-  "nba_rebounds": {
+  "nba_assists": {
    "sport": "NBA",
    "rows": [
     {
-     "player": "Isaiah Hartenstein",
-     "team": "OKC",
-     "opponent": "ATL",
-     "value": 17.0,
-     "detail": "17 rebounds for OKC against ATL",
-     "game_id": "401910014",
-     "field": 279
-    },
-    {
-     "player": "Mo Bamba",
-     "team": "UTAH",
-     "opponent": "LAL",
-     "value": 16.0,
-     "detail": "16 rebounds for UTAH against LAL",
-     "game_id": "401910017",
-     "field": 279
-    },
-    {
-     "player": "Anthony Davis",
-     "team": "WSH",
-     "opponent": "TOR",
-     "value": 14.0,
-     "detail": "14 rebounds for WSH against TOR",
-     "game_id": "401910012",
-     "field": 279
-    },
-    {
-     "player": "Giannis Antetokounmpo",
-     "team": "MIA",
-     "opponent": "MIL",
-     "value": 14.0,
-     "detail": "14 rebounds for MIA against MIL",
-     "game_id": "401910009",
-     "field": 279
-    },
-    {
-     "player": "Josh Giddey",
-     "team": "CHI",
-     "opponent": "BKN",
-     "value": 14.0,
-     "detail": "14 rebounds for CHI against BKN",
-     "game_id": "401910011",
-     "field": 279
-    },
-    {
-     "player": "Domantas Sabonis",
-     "team": "SAC",
-     "opponent": "PHX",
-     "value": 13.0,
-     "detail": "13 rebounds for SAC against PHX",
-     "game_id": "401910018",
-     "field": 279
-    },
-    {
-     "player": "AJ Dybantsa",
-     "team": "WSH",
-     "opponent": "TOR",
+     "player": "Stephon Castle",
+     "team": "SA",
+     "opponent": "LAC",
      "value": 12.0,
-     "detail": "12 rebounds for WSH against TOR",
-     "game_id": "401910012",
-     "field": 279
+     "detail": "12 assists for SA against LAC",
+     "game_id": "401910022",
+     "field": 89
     },
     {
-     "player": "Jalen Johnson",
-     "team": "ATL",
-     "opponent": "OKC",
-     "value": 12.0,
-     "detail": "12 rebounds for ATL against OKC",
-     "game_id": "401910014",
-     "field": 279
-    },
-    {
-     "player": "Walker Kessler",
-     "team": "LAL",
-     "opponent": "UTAH",
+     "player": "Cam Spencer",
+     "team": "MEM",
+     "opponent": "GS",
      "value": 11.0,
-     "detail": "11 rebounds for LAL against UTAH",
-     "game_id": "401910017",
-     "field": 279
+     "detail": "11 assists for MEM against GS",
+     "game_id": "401910019",
+     "field": 89
     },
     {
-     "player": "Dyson Daniels",
-     "team": "ATL",
-     "opponent": "OKC",
-     "value": 10.0,
-     "detail": "10 rebounds for ATL against OKC",
-     "game_id": "401910014",
-     "field": 279
+     "player": "LaMelo Ball",
+     "team": "MIN",
+     "opponent": "NY",
+     "value": 8.0,
+     "detail": "8 assists for MIN against NY",
+     "game_id": "401910021",
+     "field": 89
+    },
+    {
+     "player": "Jalen Brunson",
+     "team": "NY",
+     "opponent": "MIN",
+     "value": 7.0,
+     "detail": "7 assists for NY against MIN",
+     "game_id": "401910021",
+     "field": 89
+    },
+    {
+     "player": "Javon Small",
+     "team": "MEM",
+     "opponent": "GS",
+     "value": 7.0,
+     "detail": "7 assists for MEM against GS",
+     "game_id": "401910019",
+     "field": 89
+    },
+    {
+     "player": "Jrue Holiday",
+     "team": "POR",
+     "opponent": "MIL",
+     "value": 7.0,
+     "detail": "7 assists for POR against MIL",
+     "game_id": "401910020",
+     "field": 89
+    },
+    {
+     "player": "Yaxel Lendeborg",
+     "team": "GS",
+     "opponent": "MEM",
+     "value": 7.0,
+     "detail": "7 assists for GS against MEM",
+     "game_id": "401910019",
+     "field": 89
+    },
+    {
+     "player": "Ryan Rollins",
+     "team": "MIL",
+     "opponent": "POR",
+     "value": 6.0,
+     "detail": "6 assists for MIL against POR",
+     "game_id": "401910020",
+     "field": 89
+    },
+    {
+     "player": "Cameron Boozer",
+     "team": "MEM",
+     "opponent": "GS",
+     "value": 5.0,
+     "detail": "5 assists for MEM against GS",
+     "game_id": "401910019",
+     "field": 89
+    },
+    {
+     "player": "Darius Garland",
+     "team": "LAC",
+     "opponent": "SA",
+     "value": 5.0,
+     "detail": "5 assists for LAC against SA",
+     "game_id": "401910022",
+     "field": 89
+    }
+   ]
+  },
+  "nfl_rush_yards": {
+   "sport": "NFL",
+   "rows": [
+    {
+     "player": "David Montgomery",
+     "team": "HOU",
+     "opponent": "IND",
+     "value": 107.0,
+     "detail": "107 yards on 26 carries for HOU against IND",
+     "game_id": "401873066",
+     "field": 8
+    },
+    {
+     "player": "Emari Demercado",
+     "team": "HOU",
+     "opponent": "IND",
+     "value": 33.0,
+     "detail": "33 yards on 5 carries for HOU against IND",
+     "game_id": "401873066",
+     "field": 8
+    },
+    {
+     "player": "C.J. Stroud",
+     "team": "HOU",
+     "opponent": "IND",
+     "value": 27.0,
+     "detail": "27 yards on 6 carries for HOU against IND",
+     "game_id": "401873066",
+     "field": 8
+    },
+    {
+     "player": "Jonathan Taylor",
+     "team": "IND",
+     "opponent": "HOU",
+     "value": 21.0,
+     "detail": "21 yards on 11 carries for IND against HOU",
+     "game_id": "401873066",
+     "field": 8
+    },
+    {
+     "player": "Seth McGowan",
+     "team": "IND",
+     "opponent": "HOU",
+     "value": 7.0,
+     "detail": "7 yards on 3 carries for IND against HOU",
+     "game_id": "401873066",
+     "field": 8
+    },
+    {
+     "player": "DJ Giddens",
+     "team": "IND",
+     "opponent": "HOU",
+     "value": 5.0,
+     "detail": "5 yards on 1 carries for IND against HOU",
+     "game_id": "401873066",
+     "field": 8
+    },
+    {
+     "player": "Daniel Jones",
+     "team": "IND",
+     "opponent": "HOU",
+     "value": 3.0,
+     "detail": "3 yards on 1 carries for IND against HOU",
+     "game_id": "401873066",
+     "field": 8
+    },
+    {
+     "player": "Anthony Richardson Sr.",
+     "team": "IND",
+     "opponent": "HOU",
+     "value": 2.0,
+     "detail": "2 yards on 1 carries for IND against HOU",
+     "game_id": "401873066",
+     "field": 8
+    }
+   ]
+  },
+  "nfl_tackles": {
+   "sport": "NFL",
+   "rows": [
+    {
+     "player": "CJ Allen",
+     "team": "IND",
+     "opponent": "HOU",
+     "value": 16.0,
+     "detail": "16 tackles for IND against HOU",
+     "game_id": "401873066",
+     "field": 39
+    },
+    {
+     "player": "A.J. Haulcy",
+     "team": "IND",
+     "opponent": "HOU",
+     "value": 9.0,
+     "detail": "9 tackles for IND against HOU",
+     "game_id": "401873066",
+     "field": 39
+    },
+    {
+     "player": "Adetomiwa Adebawore",
+     "team": "IND",
+     "opponent": "HOU",
+     "value": 7.0,
+     "detail": "7 tackles for IND against HOU",
+     "game_id": "401873066",
+     "field": 39
+    },
+    {
+     "player": "Bryce Boettcher",
+     "team": "IND",
+     "opponent": "HOU",
+     "value": 6.0,
+     "detail": "6 tackles for IND against HOU",
+     "game_id": "401873066",
+     "field": 39
+    },
+    {
+     "player": "Cam Bynum",
+     "team": "IND",
+     "opponent": "HOU",
+     "value": 6.0,
+     "detail": "6 tackles for IND against HOU",
+     "game_id": "401873066",
+     "field": 39
+    },
+    {
+     "player": "Grover Stewart",
+     "team": "IND",
+     "opponent": "HOU",
+     "value": 6.0,
+     "detail": "6 tackles for IND against HOU",
+     "game_id": "401873066",
+     "field": 39
+    },
+    {
+     "player": "Henry To'oTo'o",
+     "team": "HOU",
+     "opponent": "IND",
+     "value": 6.0,
+     "detail": "6 tackles for HOU against IND",
+     "game_id": "401873066",
+     "field": 39
+    },
+    {
+     "player": "Tommy Togiai",
+     "team": "HOU",
+     "opponent": "IND",
+     "value": 6.0,
+     "detail": "6 tackles for HOU against IND",
+     "game_id": "401873066",
+     "field": 39
+    },
+    {
+     "player": "Austin Ajiake",
+     "team": "IND",
+     "opponent": "HOU",
+     "value": 5.0,
+     "detail": "5 tackles for IND against HOU",
+     "game_id": "401873066",
+     "field": 39
+    },
+    {
+     "player": "Jake Hansen",
+     "team": "HOU",
+     "opponent": "IND",
+     "value": 5.0,
+     "detail": "5 tackles for HOU against IND",
+     "game_id": "401873066",
+     "field": 39
     }
    ]
   }
