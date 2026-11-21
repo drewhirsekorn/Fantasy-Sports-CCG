@@ -1,72 +1,76 @@
 {
  "version": 1,
- "date": "2026-11-20",
- "stamp": "ebbb76049049",
- "source_date": "2026-11-19",
- "opens": "2026-11-20T07:00:00-05:00",
+ "date": "2026-11-21",
+ "stamp": "5de99b13ac50",
+ "source_date": "2026-11-20",
+ "opens": "2026-11-21T07:00:00-05:00",
  "questions": [
   {
-   "kind": "led_the_night",
-   "sport": "NFL",
-   "setup": "Last night's box scores list 39 defenders.",
-   "prompt": "Who made the most tackles in the NFL yesterday?",
+   "kind": "last_before",
+   "sport": "NBA",
+   "setup": "James Harden scored 51 points for CLE against IND yesterday.",
+   "prompt": "Before James Harden, who was the last NBA player to score 50 in a game?",
    "options": [
-    "Henry To'oTo'o",
-    "Bryce Boettcher",
-    "CJ Allen",
-    "Jake Hansen"
+    "Shaquille O'Neal",
+    "Jaylen Brown",
+    "Cade Cunningham",
+    "Karl-Anthony Towns"
    ],
    "answer": 2,
-   "explain": "CJ Allen \u2014 16 tackles for IND against HOU.",
+   "explain": "Cade Cunningham \u2014 52 points for DET on November 12, 2026, 8 days earlier.",
    "links": [
     {
-     "label": "November 19, 2026 box score",
-     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401873066"
+     "label": "November 20, 2026 box score",
+     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909307"
+    },
+    {
+     "label": "November 12, 2026 box score",
+     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909977"
     }
    ],
-   "id": "2026-11-20-1"
+   "id": "2026-11-21-1"
   },
   {
    "kind": "led_the_night",
    "sport": "NBA",
-   "setup": "Last night's box scores list 89 players.",
-   "prompt": "Who scored the most in the NBA last night?",
-   "options": [
-    "Jaylen Wells",
-    "Jonathan Kuminga",
-    "Darius Garland",
-    "Damian Lillard"
-   ],
-   "answer": 3,
-   "explain": "Damian Lillard \u2014 33 points in 35 minutes for POR against MIL.",
-   "links": [
-    {
-     "label": "November 19, 2026 box score",
-     "url": "https://www.espn.com/nba/boxscore/_/gameId/401910020"
-    }
-   ],
-   "id": "2026-11-20-2"
-  },
-  {
-   "kind": "led_the_night",
-   "sport": "NBA",
-   "setup": "Last night's box scores list 89 players.",
+   "setup": "Last night's box scores list 181 players.",
    "prompt": "Who had the most assists in the NBA last night?",
    "options": [
-    "Darius Garland",
-    "Stephon Castle",
-    "LaMelo Ball",
-    "Cameron Boozer"
+    "Cade Cunningham",
+    "Darryn Peterson",
+    "Darius Acuff Jr.",
+    "Immanuel Quickley"
    ],
-   "answer": 1,
-   "explain": "Stephon Castle \u2014 12 assists for SA against LAC.",
+   "answer": 2,
+   "explain": "Darius Acuff Jr. \u2014 12 assists for SAC against LAL.",
    "links": [
     {
-     "label": "November 19, 2026 box score",
-     "url": "https://www.espn.com/nba/boxscore/_/gameId/401910022"
+     "label": "November 20, 2026 box score",
+     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909313"
     }
    ],
-   "id": "2026-11-20-3"
+   "id": "2026-11-21-2"
+  },
+  {
+   "kind": "most_recent",
+   "sport": "NFL",
+   "setup": "Nobody managed a three-interception game in the NFL yesterday.",
+   "prompt": "Who had the most recent one?",
+   "options": [
+    "Amani Hooker",
+    "Ty Law",
+    "Greg Wesley",
+    "Deltha O'Neal"
+   ],
+   "answer": 0,
+   "explain": "Amani Hooker \u2014 3 interceptions for TEN vs CIN on November 1, 2026.",
+   "links": [
+    {
+     "label": "November 1, 2026 box score",
+     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401873031"
+    }
+   ],
+   "id": "2026-11-21-3"
   }
  ],
  "coverage": {
@@ -87,7 +91,7 @@
    },
    {
     "from": "2025-01-01",
-    "through": "2026-11-19",
+    "through": "2026-11-20",
     "feats": [
      "mlb_12_k",
      "mlb_15_k",
@@ -131,7 +135,7 @@
    },
    {
     "from": "2023-10-01",
-    "through": "2026-11-19",
+    "through": "2026-11-20",
     "feats": [
      "nba_10_threes",
      "nba_20_assists",
@@ -165,7 +169,7 @@
    },
    {
     "from": "2023-09-01",
-    "through": "2026-11-19",
+    "through": "2026-11-20",
     "feats": [
      "nfl_150_rec_yards",
      "nfl_150_rush_yards",
@@ -183,6 +187,6 @@
    }
   ]
  },
- "built_at": "2026-11-20T19:00:07Z",
- "closes": "2026-11-21T07:00:00-05:00"
+ "built_at": "2026-11-21T17:54:52Z",
+ "closes": "2026-11-22T07:00:00-05:00"
 }
