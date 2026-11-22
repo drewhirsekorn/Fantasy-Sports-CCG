@@ -1,193 +1,288 @@
 {
- "date": "2026-11-20",
+ "date": "2026-11-21",
  "boards": {
-  "nba_points": {
+  "nba_rebounds": {
    "sport": "NBA",
    "rows": [
     {
-     "player": "James Harden",
-     "team": "CLE",
-     "opponent": "IND",
-     "value": 51.0,
-     "detail": "51 points in 40 minutes for CLE against IND",
-     "game_id": "401909307",
-     "field": 181
-    },
-    {
-     "player": "Shai Gilgeous-Alexander",
-     "team": "OKC",
+     "player": "Victor Wembanyama",
+     "team": "SA",
      "opponent": "NO",
-     "value": 40.0,
-     "detail": "40 points in 37 minutes for OKC against NO",
-     "game_id": "401909310",
-     "field": 181
+     "value": 19.0,
+     "detail": "19 rebounds for SA against NO",
+     "game_id": "401910027",
+     "field": 126
     },
     {
-     "player": "Anthony Davis",
-     "team": "WSH",
-     "opponent": "CHI",
-     "value": 36.0,
-     "detail": "36 points in 34 minutes for WSH against CHI",
-     "game_id": "401909309",
-     "field": 181
-    },
-    {
-     "player": "Franz Wagner",
-     "team": "ORL",
-     "opponent": "BKN",
-     "value": 35.0,
-     "detail": "35 points in 36 minutes for ORL against BKN",
-     "game_id": "401909306",
-     "field": 181
-    },
-    {
-     "player": "De'Andre Hunter",
+     "player": "Domantas Sabonis",
      "team": "SAC",
-     "opponent": "LAL",
-     "value": 30.0,
-     "detail": "30 points in 37 minutes for SAC against LAL",
-     "game_id": "401909313",
-     "field": 181
+     "opponent": "BOS",
+     "value": 17.0,
+     "detail": "17 rebounds for SAC against BOS",
+     "game_id": "401910028",
+     "field": 126
     },
     {
-     "player": "Scottie Barnes",
-     "team": "TOR",
-     "opponent": "DET",
-     "value": 29.0,
-     "detail": "29 points in 37 minutes for TOR against DET",
-     "game_id": "401909308",
-     "field": 181
+     "player": "Joel Embiid",
+     "team": "PHI",
+     "opponent": "MIL",
+     "value": 17.0,
+     "detail": "17 rebounds for PHI against MIL",
+     "game_id": "401910023",
+     "field": 126
     },
     {
-     "player": "Alperen Sengun",
-     "team": "HOU",
-     "opponent": "DEN",
-     "value": 28.0,
-     "detail": "28 points in 36 minutes for HOU against DEN",
-     "game_id": "401909312",
-     "field": 181
+     "player": "Derik Queen",
+     "team": "NO",
+     "opponent": "SA",
+     "value": 15.0,
+     "detail": "15 rebounds for NO against SA",
+     "game_id": "401910027",
+     "field": 126
     },
     {
-     "player": "Julius Randle",
-     "team": "BKN",
-     "opponent": "ORL",
-     "value": 27.0,
-     "detail": "27 points in 39 minutes for BKN against ORL",
-     "game_id": "401909306",
-     "field": 181
+     "player": "Andre Drummond",
+     "team": "NY",
+     "opponent": "POR",
+     "value": 13.0,
+     "detail": "13 rebounds for NY against POR",
+     "game_id": "401910024",
+     "field": 126
     },
     {
-     "player": "Jalen Johnson",
-     "team": "ATL",
-     "opponent": "CHA",
-     "value": 26.0,
-     "detail": "26 points in 36 minutes for ATL against CHA",
-     "game_id": "401909305",
-     "field": 181
+     "player": "Donovan Clingan",
+     "team": "POR",
+     "opponent": "NY",
+     "value": 13.0,
+     "detail": "13 rebounds for POR against NY",
+     "game_id": "401910024",
+     "field": 126
     },
     {
-     "player": "Nikola Jokic",
-     "team": "DEN",
-     "opponent": "HOU",
-     "value": 26.0,
-     "detail": "26 points in 38 minutes for DEN against HOU",
-     "game_id": "401909312",
-     "field": 181
+     "player": "Yves Missi",
+     "team": "NO",
+     "opponent": "SA",
+     "value": 13.0,
+     "detail": "13 rebounds for NO against SA",
+     "game_id": "401910027",
+     "field": 126
+    },
+    {
+     "player": "Keegan Murray",
+     "team": "SAC",
+     "opponent": "BOS",
+     "value": 12.0,
+     "detail": "12 rebounds for SAC against BOS",
+     "game_id": "401910028",
+     "field": 126
+    },
+    {
+     "player": "Rudy Gobert",
+     "team": "MIN",
+     "opponent": "MEM",
+     "value": 11.0,
+     "detail": "11 rebounds for MIN against MEM",
+     "game_id": "401910026",
+     "field": 126
+    },
+    {
+     "player": "Tyler Herro",
+     "team": "MIL",
+     "opponent": "PHI",
+     "value": 11.0,
+     "detail": "11 rebounds for MIL against PHI",
+     "game_id": "401910023",
+     "field": 126
     }
    ]
   },
-  "nba_assists": {
+  "nba_threes": {
    "sport": "NBA",
    "rows": [
     {
-     "player": "Darius Acuff Jr.",
-     "team": "SAC",
-     "opponent": "LAL",
-     "value": 12.0,
-     "detail": "12 assists for SAC against LAL",
-     "game_id": "401909313",
-     "field": 181
+     "player": "Tyler Herro",
+     "team": "MIL",
+     "opponent": "PHI",
+     "value": 7.0,
+     "detail": "7 threes and 50 points for MIL against PHI",
+     "game_id": "401910023",
+     "field": 126
     },
     {
-     "player": "Nikola Jokic",
-     "team": "DEN",
-     "opponent": "HOU",
-     "value": 11.0,
-     "detail": "11 assists for DEN against HOU",
-     "game_id": "401909312",
-     "field": 181
+     "player": "Jalen Brunson",
+     "team": "NY",
+     "opponent": "POR",
+     "value": 6.0,
+     "detail": "6 threes and 30 points for NY against POR",
+     "game_id": "401910024",
+     "field": 126
     },
     {
-     "player": "Alperen Sengun",
-     "team": "HOU",
-     "opponent": "DEN",
-     "value": 10.0,
-     "detail": "10 assists for HOU against DEN",
-     "game_id": "401909312",
-     "field": 181
+     "player": "Landry Shamet",
+     "team": "NY",
+     "opponent": "POR",
+     "value": 6.0,
+     "detail": "6 threes and 20 points for NY against POR",
+     "game_id": "401910024",
+     "field": 126
     },
     {
-     "player": "Dyson Daniels",
-     "team": "ATL",
-     "opponent": "CHA",
-     "value": 10.0,
-     "detail": "10 assists for ATL against CHA",
-     "game_id": "401909305",
-     "field": 181
+     "player": "Stephon Castle",
+     "team": "SA",
+     "opponent": "NO",
+     "value": 5.0,
+     "detail": "5 threes and 19 points for SA against NO",
+     "game_id": "401910027",
+     "field": 126
     },
     {
-     "player": "Immanuel Quickley",
-     "team": "TOR",
-     "opponent": "DET",
-     "value": 10.0,
-     "detail": "10 assists for TOR against DET",
-     "game_id": "401909308",
-     "field": 181
+     "player": "Victor Wembanyama",
+     "team": "SA",
+     "opponent": "NO",
+     "value": 5.0,
+     "detail": "5 threes and 50 points for SA against NO",
+     "game_id": "401910027",
+     "field": 126
     },
     {
-     "player": "Cade Cunningham",
-     "team": "DET",
-     "opponent": "TOR",
-     "value": 9.0,
-     "detail": "9 assists for DET against TOR",
-     "game_id": "401909308",
-     "field": 181
+     "player": "Anfernee Simons",
+     "team": "PHI",
+     "opponent": "MIL",
+     "value": 4.0,
+     "detail": "4 threes and 18 points for PHI against MIL",
+     "game_id": "401910023",
+     "field": 126
     },
     {
-     "player": "Coby White",
-     "team": "CHA",
-     "opponent": "ATL",
-     "value": 9.0,
-     "detail": "9 assists for CHA against ATL",
-     "game_id": "401909305",
-     "field": 181
+     "player": "Cedric Coward",
+     "team": "MEM",
+     "opponent": "MIN",
+     "value": 4.0,
+     "detail": "4 threes and 23 points for MEM against MIN",
+     "game_id": "401910026",
+     "field": 126
     },
     {
-     "player": "Fred VanVleet",
-     "team": "HOU",
-     "opponent": "DEN",
-     "value": 9.0,
-     "detail": "9 assists for HOU against DEN",
-     "game_id": "401909312",
-     "field": 181
+     "player": "Mike Conley",
+     "team": "BOS",
+     "opponent": "SAC",
+     "value": 4.0,
+     "detail": "4 threes and 19 points for BOS against SAC",
+     "game_id": "401910028",
+     "field": 126
     },
     {
-     "player": "Andrew Nembhard",
-     "team": "IND",
-     "opponent": "CLE",
-     "value": 8.0,
-     "detail": "8 assists for IND against CLE",
-     "game_id": "401909307",
-     "field": 181
+     "player": "Rui Hachimura",
+     "team": "LAC",
+     "opponent": "DAL",
+     "value": 4.0,
+     "detail": "4 threes and 19 points for LAC against DAL",
+     "game_id": "401910025",
+     "field": 126
     },
     {
-     "player": "Darryn Peterson",
-     "team": "UTAH",
-     "opponent": "PHX",
-     "value": 8.0,
-     "detail": "8 assists for UTAH against PHX",
-     "game_id": "401909311",
-     "field": 181
+     "player": "Sam Hauser",
+     "team": "BOS",
+     "opponent": "SAC",
+     "value": 4.0,
+     "detail": "4 threes and 14 points for BOS against SAC",
+     "game_id": "401910028",
+     "field": 126
+    }
+   ]
+  },
+  "nba_blocks": {
+   "sport": "NBA",
+   "rows": [
+    {
+     "player": "Victor Wembanyama",
+     "team": "SA",
+     "opponent": "NO",
+     "value": 5.0,
+     "detail": "5 blocks for SA against NO",
+     "game_id": "401910027",
+     "field": 126
+    },
+    {
+     "player": "Myles Turner",
+     "team": "MIL",
+     "opponent": "PHI",
+     "value": 4.0,
+     "detail": "4 blocks for MIL against PHI",
+     "game_id": "401910023",
+     "field": 126
+    },
+    {
+     "player": "Andre Drummond",
+     "team": "NY",
+     "opponent": "POR",
+     "value": 3.0,
+     "detail": "3 blocks for NY against POR",
+     "game_id": "401910024",
+     "field": 126
+    },
+    {
+     "player": "Isaiah Stewart",
+     "team": "MEM",
+     "opponent": "MIN",
+     "value": 3.0,
+     "detail": "3 blocks for MEM against MIN",
+     "game_id": "401910026",
+     "field": 126
+    },
+    {
+     "player": "James Wiseman",
+     "team": "NY",
+     "opponent": "POR",
+     "value": 3.0,
+     "detail": "3 blocks for NY against POR",
+     "game_id": "401910024",
+     "field": 126
+    },
+    {
+     "player": "Joan Beringer",
+     "team": "MIN",
+     "opponent": "MEM",
+     "value": 3.0,
+     "detail": "3 blocks for MIN against MEM",
+     "game_id": "401910026",
+     "field": 126
+    },
+    {
+     "player": "Rudy Gobert",
+     "team": "MIN",
+     "opponent": "MEM",
+     "value": 3.0,
+     "detail": "3 blocks for MIN against MEM",
+     "game_id": "401910026",
+     "field": 126
+    },
+    {
+     "player": "Darius Garland",
+     "team": "LAC",
+     "opponent": "DAL",
+     "value": 2.0,
+     "detail": "2 blocks for LAC against DAL",
+     "game_id": "401910025",
+     "field": 126
+    },
+    {
+     "player": "Deni Avdija",
+     "team": "POR",
+     "opponent": "NY",
+     "value": 2.0,
+     "detail": "2 blocks for POR against NY",
+     "game_id": "401910024",
+     "field": 126
+    },
+    {
+     "player": "Devin Vassell",
+     "team": "SA",
+     "opponent": "NO",
+     "value": 2.0,
+     "detail": "2 blocks for SA against NO",
+     "game_id": "401910027",
+     "field": 126
     }
    ]
   }
