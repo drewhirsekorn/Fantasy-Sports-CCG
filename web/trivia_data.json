@@ -1,80 +1,76 @@
 {
  "version": 1,
- "date": "2026-11-22",
- "stamp": "d3db689395c7",
- "source_date": "2026-11-21",
- "opens": "2026-11-22T07:00:00-05:00",
+ "date": "2026-11-23",
+ "stamp": "1668f4129ea3",
+ "source_date": "2026-11-22",
+ "opens": "2026-11-23T07:00:00-05:00",
  "questions": [
   {
    "kind": "last_before",
    "sport": "NBA",
-   "setup": "Tyler Herro scored 50 points for MIL against PHI yesterday.",
-   "prompt": "Before Tyler Herro, who was the last NBA player to score 50 in a game?",
+   "setup": "Josh Giddey handed out 22 assists for CHI yesterday.",
+   "prompt": "Before Josh Giddey, who was the last NBA player with 20 assists in a game?",
    "options": [
-    "James Harden",
-    "CJ McCollum",
-    "Michael Jordan",
-    "Devin Booker"
+    "Elfrid Payton",
+    "Giannis Antetokounmpo",
+    "Ryan Nembhard",
+    "Trae Young"
    ],
-   "answer": 0,
-   "explain": "James Harden \u2014 51 points for CLE on November 20, 2026, 1 days earlier.",
+   "answer": 2,
+   "explain": "Ryan Nembhard \u2014 23 assists for DAL on April 12, 2026, 224 days earlier.",
    "links": [
     {
-     "label": "November 21, 2026 box score",
-     "url": "https://www.espn.com/nba/boxscore/_/gameId/401910023"
+     "label": "November 22, 2026 box score",
+     "url": "https://www.espn.com/nba/boxscore/_/gameId/401910032"
     },
     {
-     "label": "November 20, 2026 box score",
-     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909307"
+     "label": "April 12, 2026 box score",
+     "url": "https://www.espn.com/nba/boxscore/_/gameId/401811048"
     }
    ],
-   "id": "2026-11-22-1"
+   "id": "2026-11-23-1"
   },
   {
    "kind": "led_the_night",
-   "sport": "NBA",
-   "setup": "Last night's box scores list 126 players.",
-   "prompt": "Who blocked the most shots in the NBA last night?",
+   "sport": "NFL",
+   "setup": "Last night's box scores list 93 ball-carriers.",
+   "prompt": "Who ran for the most yards in the NFL yesterday?",
    "options": [
-    "Isaiah Stewart",
-    "Joan Beringer",
-    "Darius Garland",
-    "Victor Wembanyama"
-   ],
-   "answer": 3,
-   "explain": "Victor Wembanyama \u2014 5 blocks for SA against NO.",
-   "links": [
-    {
-     "label": "November 21, 2026 box score",
-     "url": "https://www.espn.com/nba/boxscore/_/gameId/401910027"
-    }
-   ],
-   "id": "2026-11-22-2"
-  },
-  {
-   "kind": "last_before",
-   "sport": "NBA",
-   "setup": "Victor Wembanyama blocked 5 shots for SA yesterday.",
-   "prompt": "Before Victor Wembanyama, who was the last NBA player with five blocks in a game?",
-   "options": [
-    "Stanley Roberts",
-    "Donovan Clingan",
-    "Amen Thompson",
-    "Danny Manning"
+    "Jahmyr Gibbs",
+    "Chuba Hubbard",
+    "Omarion Hampton",
+    "Jonah Coleman"
    ],
    "answer": 1,
-   "explain": "Donovan Clingan \u2014 5 blocks for POR on November 16, 2026, 5 days earlier.",
+   "explain": "Chuba Hubbard \u2014 120 yards on 27 carries for CAR against BAL.",
    "links": [
     {
-     "label": "November 21, 2026 box score",
-     "url": "https://www.espn.com/nba/boxscore/_/gameId/401910027"
-    },
-    {
-     "label": "November 16, 2026 box score",
-     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909999"
+     "label": "November 22, 2026 box score",
+     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401873068"
     }
    ],
-   "id": "2026-11-22-3"
+   "id": "2026-11-23-2"
+  },
+  {
+   "kind": "led_the_night",
+   "sport": "NFL",
+   "setup": "Last night's box scores list 182 pass-catchers.",
+   "prompt": "Who had the most receiving yards in the NFL yesterday?",
+   "options": [
+    "George Pickens",
+    "CeeDee Lamb",
+    "Mike Evans",
+    "Zay Flowers"
+   ],
+   "answer": 1,
+   "explain": "CeeDee Lamb \u2014 132 yards on 11 catches for DAL against TEN.",
+   "links": [
+    {
+     "label": "November 22, 2026 box score",
+     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401873073"
+    }
+   ],
+   "id": "2026-11-23-3"
   }
  ],
  "coverage": {
@@ -95,7 +91,7 @@
    },
    {
     "from": "2025-01-01",
-    "through": "2026-11-21",
+    "through": "2026-11-22",
     "feats": [
      "mlb_12_k",
      "mlb_15_k",
@@ -139,7 +135,7 @@
    },
    {
     "from": "2023-10-01",
-    "through": "2026-11-21",
+    "through": "2026-11-22",
     "feats": [
      "nba_10_threes",
      "nba_20_assists",
@@ -173,7 +169,7 @@
    },
    {
     "from": "2023-09-01",
-    "through": "2026-11-21",
+    "through": "2026-11-22",
     "feats": [
      "nfl_150_rec_yards",
      "nfl_150_rush_yards",
@@ -191,6 +187,6 @@
    }
   ]
  },
- "built_at": "2026-11-22T18:21:13Z",
- "closes": "2026-11-23T07:00:00-05:00"
+ "built_at": "2026-11-23T22:29:22Z",
+ "closes": "2026-11-24T07:00:00-05:00"
 }

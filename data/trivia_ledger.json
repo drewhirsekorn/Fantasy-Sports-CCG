@@ -18,7 +18,7 @@
    },
    {
     "from": "2025-01-01",
-    "through": "2026-11-21",
+    "through": "2026-11-22",
     "feats": [
      "mlb_12_k",
      "mlb_15_k",
@@ -62,7 +62,7 @@
    },
    {
     "from": "2023-10-01",
-    "through": "2026-11-21",
+    "through": "2026-11-22",
     "feats": [
      "nba_10_threes",
      "nba_20_assists",
@@ -96,7 +96,7 @@
    },
    {
     "from": "2023-09-01",
-    "through": "2026-11-21",
+    "through": "2026-11-22",
     "feats": [
      "nfl_150_rec_yards",
      "nfl_150_rush_yards",
@@ -72867,6 +72867,102 @@
     "fgm": 20.0
    },
    "source": "espn:401910027"
+  },
+  {
+   "feat": "nba_10_threes",
+   "sport": "NBA",
+   "date": "2026-11-22",
+   "player": "Svi Mykhailiuk",
+   "player_id": "3133602",
+   "team": "UTAH",
+   "opponent": "DAL",
+   "value": 10.0,
+   "line": {
+    "minutes": 32.0,
+    "points": 39.0,
+    "rebounds": 5.0,
+    "assists": 3.0,
+    "steals": 0.0,
+    "blocks": 0.0,
+    "threes": 10.0,
+    "fgm": 12.0
+   },
+   "source": "espn:401910033"
+  },
+  {
+   "feat": "nba_20_assists",
+   "sport": "NBA",
+   "date": "2026-11-22",
+   "player": "Josh Giddey",
+   "player_id": "4871145",
+   "team": "CHI",
+   "opponent": "DEN",
+   "value": 22.0,
+   "line": {
+    "minutes": 41.0,
+    "points": 23.0,
+    "rebounds": 14.0,
+    "assists": 22.0,
+    "steals": 0.0,
+    "blocks": 1.0,
+    "threes": 2.0,
+    "fgm": 10.0
+   },
+   "source": "espn:401910032"
+  },
+  {
+   "feat": "nba_40_points",
+   "sport": "NBA",
+   "date": "2026-11-22",
+   "player": "Jamal Murray",
+   "player_id": "3936299",
+   "team": "DEN",
+   "opponent": "CHI",
+   "value": 45.0,
+   "line": {
+    "minutes": 45.0,
+    "points": 45.0,
+    "rebounds": 5.0,
+    "assists": 7.0,
+    "steals": 3.0,
+    "blocks": 2.0,
+    "threes": 6.0,
+    "fgm": 13.0
+   },
+   "source": "espn:401910032"
+  },
+  {
+   "feat": "nfl_3_sacks",
+   "sport": "NFL",
+   "date": "2026-11-22",
+   "player": "Jeffery Simmons",
+   "player_id": "4035369",
+   "team": "CHI",
+   "opponent": "NO",
+   "value": 3.0,
+   "line": {
+    "sacks": 3.0,
+    "tackles": 4.0
+   },
+   "source": "espn:401873071"
+  },
+  {
+   "feat": "nfl_4_pass_td",
+   "sport": "NFL",
+   "date": "2026-11-22",
+   "player": "Dak Prescott",
+   "player_id": "2577417",
+   "team": "DAL",
+   "opponent": "TEN",
+   "value": 4.0,
+   "line": {
+    "pass_yards": 325.0,
+    "pass_td": 4.0,
+    "interceptions": 0.0,
+    "completions": 28.0,
+    "attempts": 33.0
+   },
+   "source": "espn:401873073"
   }
  ]
 }
