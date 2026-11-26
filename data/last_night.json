@@ -1,193 +1,383 @@
 {
- "date": "2026-11-24",
+ "date": "2026-11-25",
  "boards": {
   "nba_points": {
    "sport": "NBA",
    "rows": [
     {
-     "player": "Jayson Tatum",
-     "team": "BOS",
-     "opponent": "WSH",
-     "value": 41.0,
-     "detail": "41 points in 37 minutes for BOS against WSH",
-     "game_id": "401909315",
-     "field": 70
+     "player": "Victor Wembanyama",
+     "team": "SA",
+     "opponent": "POR",
+     "value": 44.0,
+     "detail": "44 points in 35 minutes for SA against POR",
+     "game_id": "401909325",
+     "field": 191
     },
     {
-     "player": "Anthony Davis",
-     "team": "WSH",
-     "opponent": "BOS",
+     "player": "Brandon Miller",
+     "team": "CHA",
+     "opponent": "CHI",
+     "value": 35.0,
+     "detail": "35 points in 34 minutes for CHA against CHI",
+     "game_id": "401909318",
+     "field": 191
+    },
+    {
+     "player": "Deni Avdija",
+     "team": "POR",
+     "opponent": "SA",
      "value": 33.0,
-     "detail": "33 points in 37 minutes for WSH against BOS",
-     "game_id": "401909315",
-     "field": 70
+     "detail": "33 points in 36 minutes for POR against SA",
+     "game_id": "401909325",
+     "field": 191
     },
     {
-     "player": "Paul George",
-     "team": "BOS",
-     "opponent": "WSH",
+     "player": "Giannis Antetokounmpo",
+     "team": "MIA",
+     "opponent": "PHI",
+     "value": 32.0,
+     "detail": "32 points in 36 minutes for MIA against PHI",
+     "game_id": "401909317",
+     "field": 191
+    },
+    {
+     "player": "Jaden McDaniels",
+     "team": "MIN",
+     "opponent": "OKC",
+     "value": 32.0,
+     "detail": "32 points in 37 minutes for MIN against OKC",
+     "game_id": "401909320",
+     "field": 191
+    },
+    {
+     "player": "Shai Gilgeous-Alexander",
+     "team": "OKC",
+     "opponent": "MIN",
+     "value": 32.0,
+     "detail": "32 points in 37 minutes for OKC against MIN",
+     "game_id": "401909320",
+     "field": 191
+    },
+    {
+     "player": "Donovan Mitchell",
+     "team": "CLE",
+     "opponent": "NY",
+     "value": 30.0,
+     "detail": "30 points in 34 minutes for CLE against NY",
+     "game_id": "401909319",
+     "field": 191
+    },
+    {
+     "player": "Tyrese Maxey",
+     "team": "PHI",
+     "opponent": "MIA",
+     "value": 30.0,
+     "detail": "30 points in 37 minutes for PHI against MIA",
+     "game_id": "401909317",
+     "field": 191
+    },
+    {
+     "player": "Damian Lillard",
+     "team": "POR",
+     "opponent": "SA",
+     "value": 29.0,
+     "detail": "29 points in 34 minutes for POR against SA",
+     "game_id": "401909325",
+     "field": 191
+    },
+    {
+     "player": "James Harden",
+     "team": "CLE",
+     "opponent": "NY",
      "value": 28.0,
-     "detail": "28 points in 33 minutes for BOS against WSH",
-     "game_id": "401909315",
-     "field": 70
-    },
-    {
-     "player": "Cooper Flagg",
-     "team": "DAL",
-     "opponent": "DEN",
-     "value": 24.0,
-     "detail": "24 points in 31 minutes for DAL against DEN",
-     "game_id": "401909316",
-     "field": 70
-    },
-    {
-     "player": "Kyshawn George",
-     "team": "WSH",
-     "opponent": "BOS",
-     "value": 24.0,
-     "detail": "24 points in 38 minutes for WSH against BOS",
-     "game_id": "401909315",
-     "field": 70
-    },
-    {
-     "player": "Desmond Bane",
-     "team": "ORL",
-     "opponent": "DET",
-     "value": 21.0,
-     "detail": "21 points in 34 minutes for ORL against DET",
-     "game_id": "401909314",
-     "field": 70
-    },
-    {
-     "player": "Isaiah Joe",
-     "team": "DET",
-     "opponent": "ORL",
-     "value": 21.0,
-     "detail": "21 points in 30 minutes for DET against ORL",
-     "game_id": "401909314",
-     "field": 70
-    },
-    {
-     "player": "Neemias Queta",
-     "team": "BOS",
-     "opponent": "WSH",
-     "value": 21.0,
-     "detail": "21 points in 25 minutes for BOS against WSH",
-     "game_id": "401909315",
-     "field": 70
-    },
-    {
-     "player": "AJ Dybantsa",
-     "team": "WSH",
-     "opponent": "BOS",
-     "value": 20.0,
-     "detail": "20 points in 41 minutes for WSH against BOS",
-     "game_id": "401909315",
-     "field": 70
-    },
-    {
-     "player": "Franz Wagner",
-     "team": "ORL",
-     "opponent": "DET",
-     "value": 20.0,
-     "detail": "20 points in 38 minutes for ORL against DET",
-     "game_id": "401909314",
-     "field": 70
+     "detail": "28 points in 36 minutes for CLE against NY",
+     "game_id": "401909319",
+     "field": 191
     }
    ]
   },
-  "nba_blocks": {
+  "nba_assists": {
    "sport": "NBA",
    "rows": [
     {
-     "player": "Ausar Thompson",
-     "team": "DET",
-     "opponent": "ORL",
+     "player": "LeBron James",
+     "team": "PHI",
+     "opponent": "MIA",
+     "value": 12.0,
+     "detail": "12 assists for PHI against MIA",
+     "game_id": "401909317",
+     "field": 191
+    },
+    {
+     "player": "Alperen Sengun",
+     "team": "HOU",
+     "opponent": "PHX",
+     "value": 11.0,
+     "detail": "11 assists for HOU against PHX",
+     "game_id": "401909323",
+     "field": 191
+    },
+    {
+     "player": "Draymond Green",
+     "team": "GS",
+     "opponent": "SAC",
+     "value": 11.0,
+     "detail": "11 assists for GS against SAC",
+     "game_id": "401909324",
+     "field": 191
+    },
+    {
+     "player": "Josh Hart",
+     "team": "NY",
+     "opponent": "CLE",
+     "value": 11.0,
+     "detail": "11 assists for NY against CLE",
+     "game_id": "401909319",
+     "field": 191
+    },
+    {
+     "player": "Davion Mitchell",
+     "team": "MIA",
+     "opponent": "PHI",
+     "value": 10.0,
+     "detail": "10 assists for MIA against PHI",
+     "game_id": "401909317",
+     "field": 191
+    },
+    {
+     "player": "Darius Acuff Jr.",
+     "team": "SAC",
+     "opponent": "GS",
+     "value": 9.0,
+     "detail": "9 assists for SAC against GS",
+     "game_id": "401909324",
+     "field": 191
+    },
+    {
+     "player": "Stephon Castle",
+     "team": "SA",
+     "opponent": "POR",
+     "value": 9.0,
+     "detail": "9 assists for SA against POR",
+     "game_id": "401909325",
+     "field": 191
+    },
+    {
+     "player": "LaMelo Ball",
+     "team": "MIN",
+     "opponent": "OKC",
+     "value": 8.0,
+     "detail": "8 assists for MIN against OKC",
+     "game_id": "401909320",
+     "field": 191
+    },
+    {
+     "player": "Tre Jones",
+     "team": "CHI",
+     "opponent": "CHA",
+     "value": 8.0,
+     "detail": "8 assists for CHI against CHA",
+     "game_id": "401909318",
+     "field": 191
+    },
+    {
+     "player": "Damian Lillard",
+     "team": "POR",
+     "opponent": "SA",
+     "value": 7.0,
+     "detail": "7 assists for POR against SA",
+     "game_id": "401909325",
+     "field": 191
+    }
+   ]
+  },
+  "nba_threes": {
+   "sport": "NBA",
+   "rows": [
+    {
+     "player": "De'Anthony Melton",
+     "team": "GS",
+     "opponent": "SAC",
+     "value": 8.0,
+     "detail": "8 threes and 24 points for GS against SAC",
+     "game_id": "401909324",
+     "field": 191
+    },
+    {
+     "player": "Damian Lillard",
+     "team": "POR",
+     "opponent": "SA",
+     "value": 5.0,
+     "detail": "5 threes and 29 points for POR against SA",
+     "game_id": "401909325",
+     "field": 191
+    },
+    {
+     "player": "Deni Avdija",
+     "team": "POR",
+     "opponent": "SA",
+     "value": 5.0,
+     "detail": "5 threes and 33 points for POR against SA",
+     "game_id": "401909325",
+     "field": 191
+    },
+    {
+     "player": "Jose Alvarado",
+     "team": "NY",
+     "opponent": "CLE",
+     "value": 5.0,
+     "detail": "5 threes and 21 points for NY against CLE",
+     "game_id": "401909319",
+     "field": 191
+    },
+    {
+     "player": "LaMelo Ball",
+     "team": "MIN",
+     "opponent": "OKC",
+     "value": 5.0,
+     "detail": "5 threes and 19 points for MIN against OKC",
+     "game_id": "401909320",
+     "field": 191
+    },
+    {
+     "player": "Ayo Dosunmu",
+     "team": "MIN",
+     "opponent": "OKC",
      "value": 4.0,
-     "detail": "4 blocks for DET against ORL",
-     "game_id": "401909314",
-     "field": 70
+     "detail": "4 threes and 16 points for MIN against OKC",
+     "game_id": "401909320",
+     "field": 191
     },
     {
-     "player": "Caleb Martin",
-     "team": "DAL",
-     "opponent": "DEN",
-     "value": 2.0,
-     "detail": "2 blocks for DAL against DEN",
-     "game_id": "401909316",
-     "field": 70
+     "player": "Brandon Miller",
+     "team": "CHA",
+     "opponent": "CHI",
+     "value": 4.0,
+     "detail": "4 threes and 35 points for CHA against CHI",
+     "game_id": "401909318",
+     "field": 191
     },
     {
-     "player": "Daniel Gafford",
-     "team": "DAL",
-     "opponent": "DEN",
-     "value": 2.0,
-     "detail": "2 blocks for DAL against DEN",
-     "game_id": "401909316",
-     "field": 70
+     "player": "Jaden McDaniels",
+     "team": "MIN",
+     "opponent": "OKC",
+     "value": 4.0,
+     "detail": "4 threes and 32 points for MIN against OKC",
+     "game_id": "401909320",
+     "field": 191
     },
     {
-     "player": "Jamal Murray",
-     "team": "DEN",
-     "opponent": "DAL",
-     "value": 2.0,
-     "detail": "2 blocks for DEN against DAL",
-     "game_id": "401909316",
-     "field": 70
+     "player": "LeBron James",
+     "team": "PHI",
+     "opponent": "MIA",
+     "value": 4.0,
+     "detail": "4 threes and 25 points for PHI against MIA",
+     "game_id": "401909317",
+     "field": 191
     },
     {
-     "player": "Jayson Tatum",
-     "team": "BOS",
-     "opponent": "WSH",
-     "value": 2.0,
-     "detail": "2 blocks for BOS against WSH",
-     "game_id": "401909315",
-     "field": 70
+     "player": "Sidy Cissoko",
+     "team": "POR",
+     "opponent": "SA",
+     "value": 4.0,
+     "detail": "4 threes and 16 points for POR against SA",
+     "game_id": "401909325",
+     "field": 191
+    }
+   ]
+  },
+  "nfl_rush_yards": {
+   "sport": "NFL",
+   "rows": [
+    {
+     "player": "Blake Corum",
+     "team": "LAR",
+     "opponent": "GB",
+     "value": 184.0,
+     "detail": "184 yards on 32 carries for LAR against GB",
+     "game_id": "401873079",
+     "field": 10
     },
     {
-     "player": "John Collins",
-     "team": "DET",
-     "opponent": "ORL",
-     "value": 2.0,
-     "detail": "2 blocks for DET against ORL",
-     "game_id": "401909314",
-     "field": 70
+     "player": "Kyren Williams",
+     "team": "LAR",
+     "opponent": "GB",
+     "value": 46.0,
+     "detail": "46 yards on 12 carries for LAR against GB",
+     "game_id": "401873079",
+     "field": 10
     },
     {
-     "player": "Neemias Queta",
-     "team": "BOS",
-     "opponent": "WSH",
-     "value": 2.0,
-     "detail": "2 blocks for BOS against WSH",
-     "game_id": "401909315",
-     "field": 70
+     "player": "Savion Williams",
+     "team": "GB",
+     "opponent": "LAR",
+     "value": 18.0,
+     "detail": "18 yards on 2 carries for GB against LAR",
+     "game_id": "401873079",
+     "field": 10
     },
     {
-     "player": "Aaron Gordon",
-     "team": "DEN",
-     "opponent": "DAL",
-     "value": 1.0,
-     "detail": "1 blocks for DEN against DAL",
-     "game_id": "401909316",
-     "field": 70
+     "player": "Kaleb Johnson",
+     "team": "GB",
+     "opponent": "LAR",
+     "value": 13.0,
+     "detail": "13 yards on 8 carries for GB against LAR",
+     "game_id": "401873079",
+     "field": 10
     },
     {
-     "player": "Alex Sarr",
-     "team": "WSH",
-     "opponent": "BOS",
-     "value": 1.0,
-     "detail": "1 blocks for WSH against BOS",
-     "game_id": "401909315",
-     "field": 70
+     "player": "Xavier Smith",
+     "team": "LAR",
+     "opponent": "GB",
+     "value": 11.0,
+     "detail": "11 yards on 2 carries for LAR against GB",
+     "game_id": "401873079",
+     "field": 10
     },
     {
-     "player": "Anthony Black",
-     "team": "ORL",
-     "opponent": "DET",
-     "value": 1.0,
-     "detail": "1 blocks for ORL against DET",
-     "game_id": "401909314",
-     "field": 70
+     "player": "MarShawn Lloyd",
+     "team": "GB",
+     "opponent": "LAR",
+     "value": 10.0,
+     "detail": "10 yards on 1 carries for GB against LAR",
+     "game_id": "401873079",
+     "field": 10
+    },
+    {
+     "player": "Jordan Love",
+     "team": "GB",
+     "opponent": "LAR",
+     "value": 7.0,
+     "detail": "7 yards on 1 carries for GB against LAR",
+     "game_id": "401873079",
+     "field": 10
+    },
+    {
+     "player": "Chris Brooks",
+     "team": "GB",
+     "opponent": "LAR",
+     "value": 4.0,
+     "detail": "4 yards on 1 carries for GB against LAR",
+     "game_id": "401873079",
+     "field": 10
+    },
+    {
+     "player": "Bo Melton",
+     "team": "GB",
+     "opponent": "LAR",
+     "value": 3.0,
+     "detail": "3 yards on 1 carries for GB against LAR",
+     "game_id": "401873079",
+     "field": 10
+    },
+    {
+     "player": "Matthew Stafford",
+     "team": "LAR",
+     "opponent": "GB",
+     "value": 0.0,
+     "detail": "0 yards on 1 carries for LAR against GB",
+     "game_id": "401873079",
+     "field": 10
     }
    ]
   }
