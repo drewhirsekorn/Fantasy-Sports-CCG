@@ -18,7 +18,7 @@
    },
    {
     "from": "2025-01-01",
-    "through": "2026-11-25",
+    "through": "2026-11-26",
     "feats": [
      "mlb_12_k",
      "mlb_15_k",
@@ -62,7 +62,7 @@
    },
    {
     "from": "2023-10-01",
-    "through": "2026-11-25",
+    "through": "2026-11-26",
     "feats": [
      "nba_10_threes",
      "nba_20_assists",
@@ -96,7 +96,7 @@
    },
    {
     "from": "2023-09-01",
-    "through": "2026-11-25",
+    "through": "2026-11-26",
     "feats": [
      "nfl_150_rec_yards",
      "nfl_150_rush_yards",
@@ -73057,6 +73057,70 @@
     "carries": 32.0
    },
    "source": "espn:401873079"
+  },
+  {
+   "feat": "nfl_150_rec_yards",
+   "sport": "NFL",
+   "date": "2026-11-26",
+   "player": "DeVonta Smith",
+   "player_id": "4241478",
+   "team": "PHI",
+   "opponent": "DAL",
+   "value": 200.0,
+   "line": {
+    "rec_yards": 200.0,
+    "rec_td": 2.0,
+    "receptions": 11.0
+   },
+   "source": "espn:401873080"
+  },
+  {
+   "feat": "nfl_150_rush_yards",
+   "sport": "NFL",
+   "date": "2026-11-26",
+   "player": "Jahmyr Gibbs",
+   "player_id": "4429795",
+   "team": "DET",
+   "opponent": "CHI",
+   "value": 205.0,
+   "line": {
+    "rush_yards": 205.0,
+    "rush_td": 3.0,
+    "carries": 21.0
+   },
+   "source": "espn:401873081"
+  },
+  {
+   "feat": "nfl_200_rec_yards",
+   "sport": "NFL",
+   "date": "2026-11-26",
+   "player": "DeVonta Smith",
+   "player_id": "4241478",
+   "team": "PHI",
+   "opponent": "DAL",
+   "value": 200.0,
+   "line": {
+    "rec_yards": 200.0,
+    "rec_td": 2.0,
+    "receptions": 11.0
+   },
+   "source": "espn:401873080"
+  },
+  {
+   "feat": "nfl_200_rush_yards",
+   "sport": "NFL",
+   "date": "2026-11-26",
+   "player": "Jahmyr Gibbs",
+   "player_id": "4429795",
+   "team": "DET",
+   "opponent": "CHI",
+   "value": 205.0,
+   "line": {
+    "rush_yards": 205.0,
+    "rush_td": 3.0,
+    "carries": 21.0
+   },
+   "source": "espn:401873081"
   }
  ]
 }

@@ -1,76 +1,76 @@
 {
  "version": 1,
- "date": "2026-11-26",
- "stamp": "8373c899bcfd",
- "source_date": "2026-11-25",
- "opens": "2026-11-26T07:00:00-05:00",
+ "date": "2026-11-27",
+ "stamp": "eb5ef725bc90",
+ "source_date": "2026-11-26",
+ "opens": "2026-11-27T07:00:00-05:00",
  "questions": [
   {
    "kind": "last_before",
-   "sport": "NBA",
-   "setup": "Victor Wembanyama scored 44 points for SA against POR yesterday.",
-   "prompt": "Before Victor Wembanyama, who was the last NBA player to score 40 in a game?",
+   "sport": "NFL",
+   "setup": "Jahmyr Gibbs ran for 205 yards for DET yesterday.",
+   "prompt": "Before Jahmyr Gibbs, who was the last NFL player to rush for 200 yards in a game?",
    "options": [
-    "Kevin Johnson",
-    "Joe Dumars",
-    "Jayson Tatum",
-    "Brice Sensabaugh"
+    "Edgerrin James",
+    "De'Von Achane",
+    "Larry Johnson",
+    "Derrick Henry"
    ],
-   "answer": 2,
-   "explain": "Jayson Tatum \u2014 41 points for BOS on November 24, 2026, 1 days earlier.",
+   "answer": 3,
+   "explain": "Derrick Henry \u2014 216 yards for BAL on December 27, 2025, 334 days earlier.",
    "links": [
     {
-     "label": "November 25, 2026 box score",
-     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909325"
+     "label": "November 26, 2026 box score",
+     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401873081"
     },
     {
-     "label": "November 24, 2026 box score",
-     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909315"
+     "label": "December 27, 2025 box score",
+     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401772953"
     }
    ],
-   "id": "2026-11-26-1"
+   "id": "2026-11-27-1"
   },
   {
    "kind": "led_the_night",
    "sport": "NFL",
-   "setup": "Last night's box scores list 10 ball-carriers.",
-   "prompt": "Who ran for the most yards in the NFL yesterday?",
+   "setup": "Last night's box scores list 49 pass-catchers.",
+   "prompt": "Who had the most receiving yards in the NFL yesterday?",
    "options": [
-    "Blake Corum",
-    "Kaleb Johnson",
-    "Xavier Smith",
-    "Matthew Stafford"
+    "Jameson Williams",
+    "D'Andre Swift",
+    "DeVonta Smith",
+    "George Pickens"
    ],
-   "answer": 0,
-   "explain": "Blake Corum \u2014 184 yards on 32 carries for LAR against GB.",
+   "answer": 2,
+   "explain": "DeVonta Smith \u2014 200 yards on 11 catches for PHI against DAL.",
    "links": [
     {
-     "label": "November 25, 2026 box score",
-     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401873079"
+     "label": "November 26, 2026 box score",
+     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401873080"
     }
    ],
-   "id": "2026-11-26-2"
+   "id": "2026-11-27-2"
   },
   {
    "kind": "led_the_night",
-   "sport": "NBA",
-   "setup": "Last night's box scores list 191 players.",
-   "prompt": "Who made the most three-pointers in the NBA last night?",
+   "sport": "NFL",
+   "setup": "Last night's box scores list 6 quarterbacks.",
+   "prompt": "Who threw the most touchdown passes in the NFL yesterday?",
    "options": [
-    "Sidy Cissoko",
-    "LeBron James",
-    "De'Anthony Melton",
-    "Deni Avdija"
+    "Patrick Mahomes",
+    "Josh Allen",
+    "Dak Prescott",
+    "Joe Milton"
    ],
-   "answer": 2,
-   "explain": "De'Anthony Melton \u2014 8 threes and 24 points for GS against SAC.",
+   "answer": 3,
+   "explain": "Joe Milton \u2014 3 touchdowns and 331 yards for PHI against DAL.",
    "links": [
     {
-     "label": "November 25, 2026 box score",
-     "url": "https://www.espn.com/nba/boxscore/_/gameId/401909324"
+     "label": "November 26, 2026 box score",
+     "url": "https://www.espn.com/nfl/boxscore/_/gameId/401873080"
     }
    ],
-   "id": "2026-11-26-3"
+   "id": "2026-11-27-3"
   }
  ],
  "coverage": {
@@ -91,7 +91,7 @@
    },
    {
     "from": "2025-01-01",
-    "through": "2026-11-25",
+    "through": "2026-11-26",
     "feats": [
      "mlb_12_k",
      "mlb_15_k",
@@ -135,7 +135,7 @@
    },
    {
     "from": "2023-10-01",
-    "through": "2026-11-25",
+    "through": "2026-11-26",
     "feats": [
      "nba_10_threes",
      "nba_20_assists",
@@ -169,7 +169,7 @@
    },
    {
     "from": "2023-09-01",
-    "through": "2026-11-25",
+    "through": "2026-11-26",
     "feats": [
      "nfl_150_rec_yards",
      "nfl_150_rush_yards",
@@ -187,6 +187,6 @@
    }
   ]
  },
- "built_at": "2026-11-26T20:01:43Z",
- "closes": "2026-11-27T07:00:00-05:00"
+ "built_at": "2026-11-27T19:50:20Z",
+ "closes": "2026-11-28T07:00:00-05:00"
 }

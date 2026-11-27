@@ -1,288 +1,62 @@
 {
- "date": "2026-11-25",
+ "date": "2026-11-26",
  "boards": {
-  "nba_points": {
-   "sport": "NBA",
+  "nfl_pass_yards": {
+   "sport": "NFL",
    "rows": [
     {
-     "player": "Victor Wembanyama",
-     "team": "SA",
-     "opponent": "POR",
-     "value": 44.0,
-     "detail": "44 points in 35 minutes for SA against POR",
-     "game_id": "401909325",
-     "field": 191
-    },
-    {
-     "player": "Brandon Miller",
-     "team": "CHA",
-     "opponent": "CHI",
-     "value": 35.0,
-     "detail": "35 points in 34 minutes for CHA against CHI",
-     "game_id": "401909318",
-     "field": 191
-    },
-    {
-     "player": "Deni Avdija",
-     "team": "POR",
-     "opponent": "SA",
-     "value": 33.0,
-     "detail": "33 points in 36 minutes for POR against SA",
-     "game_id": "401909325",
-     "field": 191
-    },
-    {
-     "player": "Giannis Antetokounmpo",
-     "team": "MIA",
-     "opponent": "PHI",
-     "value": 32.0,
-     "detail": "32 points in 36 minutes for MIA against PHI",
-     "game_id": "401909317",
-     "field": 191
-    },
-    {
-     "player": "Jaden McDaniels",
-     "team": "MIN",
-     "opponent": "OKC",
-     "value": 32.0,
-     "detail": "32 points in 37 minutes for MIN against OKC",
-     "game_id": "401909320",
-     "field": 191
-    },
-    {
-     "player": "Shai Gilgeous-Alexander",
-     "team": "OKC",
-     "opponent": "MIN",
-     "value": 32.0,
-     "detail": "32 points in 37 minutes for OKC against MIN",
-     "game_id": "401909320",
-     "field": 191
-    },
-    {
-     "player": "Donovan Mitchell",
-     "team": "CLE",
-     "opponent": "NY",
-     "value": 30.0,
-     "detail": "30 points in 34 minutes for CLE against NY",
-     "game_id": "401909319",
-     "field": 191
-    },
-    {
-     "player": "Tyrese Maxey",
-     "team": "PHI",
-     "opponent": "MIA",
-     "value": 30.0,
-     "detail": "30 points in 37 minutes for PHI against MIA",
-     "game_id": "401909317",
-     "field": 191
-    },
-    {
-     "player": "Damian Lillard",
-     "team": "POR",
-     "opponent": "SA",
-     "value": 29.0,
-     "detail": "29 points in 34 minutes for POR against SA",
-     "game_id": "401909325",
-     "field": 191
-    },
-    {
-     "player": "James Harden",
-     "team": "CLE",
-     "opponent": "NY",
-     "value": 28.0,
-     "detail": "28 points in 36 minutes for CLE against NY",
-     "game_id": "401909319",
-     "field": 191
-    }
-   ]
-  },
-  "nba_assists": {
-   "sport": "NBA",
-   "rows": [
-    {
-     "player": "LeBron James",
-     "team": "PHI",
-     "opponent": "MIA",
-     "value": 12.0,
-     "detail": "12 assists for PHI against MIA",
-     "game_id": "401909317",
-     "field": 191
-    },
-    {
-     "player": "Alperen Sengun",
-     "team": "HOU",
-     "opponent": "PHX",
-     "value": 11.0,
-     "detail": "11 assists for HOU against PHX",
-     "game_id": "401909323",
-     "field": 191
-    },
-    {
-     "player": "Draymond Green",
-     "team": "GS",
-     "opponent": "SAC",
-     "value": 11.0,
-     "detail": "11 assists for GS against SAC",
-     "game_id": "401909324",
-     "field": 191
-    },
-    {
-     "player": "Josh Hart",
-     "team": "NY",
-     "opponent": "CLE",
-     "value": 11.0,
-     "detail": "11 assists for NY against CLE",
-     "game_id": "401909319",
-     "field": 191
-    },
-    {
-     "player": "Davion Mitchell",
-     "team": "MIA",
-     "opponent": "PHI",
-     "value": 10.0,
-     "detail": "10 assists for MIA against PHI",
-     "game_id": "401909317",
-     "field": 191
-    },
-    {
-     "player": "Darius Acuff Jr.",
-     "team": "SAC",
-     "opponent": "GS",
-     "value": 9.0,
-     "detail": "9 assists for SAC against GS",
-     "game_id": "401909324",
-     "field": 191
-    },
-    {
-     "player": "Stephon Castle",
-     "team": "SA",
-     "opponent": "POR",
-     "value": 9.0,
-     "detail": "9 assists for SA against POR",
-     "game_id": "401909325",
-     "field": 191
-    },
-    {
-     "player": "LaMelo Ball",
-     "team": "MIN",
-     "opponent": "OKC",
-     "value": 8.0,
-     "detail": "8 assists for MIN against OKC",
-     "game_id": "401909320",
-     "field": 191
-    },
-    {
-     "player": "Tre Jones",
+     "player": "Caleb Williams",
      "team": "CHI",
-     "opponent": "CHA",
-     "value": 8.0,
-     "detail": "8 assists for CHI against CHA",
-     "game_id": "401909318",
-     "field": 191
+     "opponent": "DET",
+     "value": 345.0,
+     "detail": "345 yards and 2 touchdowns for CHI against DET",
+     "game_id": "401873081",
+     "field": 6
     },
     {
-     "player": "Damian Lillard",
-     "team": "POR",
-     "opponent": "SA",
-     "value": 7.0,
-     "detail": "7 assists for POR against SA",
-     "game_id": "401909325",
-     "field": 191
-    }
-   ]
-  },
-  "nba_threes": {
-   "sport": "NBA",
-   "rows": [
-    {
-     "player": "De'Anthony Melton",
-     "team": "GS",
-     "opponent": "SAC",
-     "value": 8.0,
-     "detail": "8 threes and 24 points for GS against SAC",
-     "game_id": "401909324",
-     "field": 191
-    },
-    {
-     "player": "Damian Lillard",
-     "team": "POR",
-     "opponent": "SA",
-     "value": 5.0,
-     "detail": "5 threes and 29 points for POR against SA",
-     "game_id": "401909325",
-     "field": 191
-    },
-    {
-     "player": "Deni Avdija",
-     "team": "POR",
-     "opponent": "SA",
-     "value": 5.0,
-     "detail": "5 threes and 33 points for POR against SA",
-     "game_id": "401909325",
-     "field": 191
-    },
-    {
-     "player": "Jose Alvarado",
-     "team": "NY",
-     "opponent": "CLE",
-     "value": 5.0,
-     "detail": "5 threes and 21 points for NY against CLE",
-     "game_id": "401909319",
-     "field": 191
-    },
-    {
-     "player": "LaMelo Ball",
-     "team": "MIN",
-     "opponent": "OKC",
-     "value": 5.0,
-     "detail": "5 threes and 19 points for MIN against OKC",
-     "game_id": "401909320",
-     "field": 191
-    },
-    {
-     "player": "Ayo Dosunmu",
-     "team": "MIN",
-     "opponent": "OKC",
-     "value": 4.0,
-     "detail": "4 threes and 16 points for MIN against OKC",
-     "game_id": "401909320",
-     "field": 191
-    },
-    {
-     "player": "Brandon Miller",
-     "team": "CHA",
-     "opponent": "CHI",
-     "value": 4.0,
-     "detail": "4 threes and 35 points for CHA against CHI",
-     "game_id": "401909318",
-     "field": 191
-    },
-    {
-     "player": "Jaden McDaniels",
-     "team": "MIN",
-     "opponent": "OKC",
-     "value": 4.0,
-     "detail": "4 threes and 32 points for MIN against OKC",
-     "game_id": "401909320",
-     "field": 191
-    },
-    {
-     "player": "LeBron James",
+     "player": "Joe Milton",
      "team": "PHI",
-     "opponent": "MIA",
-     "value": 4.0,
-     "detail": "4 threes and 25 points for PHI against MIA",
-     "game_id": "401909317",
-     "field": 191
+     "opponent": "DAL",
+     "value": 331.0,
+     "detail": "331 yards and 3 touchdowns for PHI against DAL",
+     "game_id": "401873080",
+     "field": 6
     },
     {
-     "player": "Sidy Cissoko",
-     "team": "POR",
-     "opponent": "SA",
-     "value": 4.0,
-     "detail": "4 threes and 16 points for POR against SA",
-     "game_id": "401909325",
-     "field": 191
+     "player": "Jared Goff",
+     "team": "DET",
+     "opponent": "CHI",
+     "value": 313.0,
+     "detail": "313 yards and 1 touchdowns for DET against CHI",
+     "game_id": "401873081",
+     "field": 6
+    },
+    {
+     "player": "Dak Prescott",
+     "team": "DAL",
+     "opponent": "PHI",
+     "value": 291.0,
+     "detail": "291 yards and 2 touchdowns for DAL against PHI",
+     "game_id": "401873080",
+     "field": 6
+    },
+    {
+     "player": "Patrick Mahomes",
+     "team": "KC",
+     "opponent": "BUF",
+     "value": 174.0,
+     "detail": "174 yards and 0 touchdowns for KC against BUF",
+     "game_id": "401873082",
+     "field": 6
+    },
+    {
+     "player": "Josh Allen",
+     "team": "BUF",
+     "opponent": "KC",
+     "value": 81.0,
+     "detail": "81 yards and 0 touchdowns for BUF against KC",
+     "game_id": "401873082",
+     "field": 6
     }
    ]
   },
@@ -290,94 +64,343 @@
    "sport": "NFL",
    "rows": [
     {
-     "player": "Blake Corum",
-     "team": "LAR",
-     "opponent": "GB",
-     "value": 184.0,
-     "detail": "184 yards on 32 carries for LAR against GB",
-     "game_id": "401873079",
-     "field": 10
+     "player": "Jahmyr Gibbs",
+     "team": "DET",
+     "opponent": "CHI",
+     "value": 205.0,
+     "detail": "205 yards on 21 carries for DET against CHI",
+     "game_id": "401873081",
+     "field": 21
     },
     {
-     "player": "Kyren Williams",
-     "team": "LAR",
-     "opponent": "GB",
+     "player": "James Cook III",
+     "team": "BUF",
+     "opponent": "KC",
+     "value": 117.0,
+     "detail": "117 yards on 32 carries for BUF against KC",
+     "game_id": "401873082",
+     "field": 21
+    },
+    {
+     "player": "Javonte Williams",
+     "team": "DAL",
+     "opponent": "PHI",
+     "value": 101.0,
+     "detail": "101 yards on 29 carries for DAL against PHI",
+     "game_id": "401873080",
+     "field": 21
+    },
+    {
+     "player": "Emmett Johnson",
+     "team": "KC",
+     "opponent": "BUF",
+     "value": 72.0,
+     "detail": "72 yards on 17 carries for KC against BUF",
+     "game_id": "401873082",
+     "field": 21
+    },
+    {
+     "player": "D'Andre Swift",
+     "team": "CHI",
+     "opponent": "DET",
+     "value": 65.0,
+     "detail": "65 yards on 9 carries for CHI against DET",
+     "game_id": "401873081",
+     "field": 21
+    },
+    {
+     "player": "Salvon Ahmed",
+     "team": "CHI",
+     "opponent": "DET",
+     "value": 50.0,
+     "detail": "50 yards on 3 carries for CHI against DET",
+     "game_id": "401873081",
+     "field": 21
+    },
+    {
+     "player": "Will Shipley",
+     "team": "PHI",
+     "opponent": "DAL",
      "value": 46.0,
-     "detail": "46 yards on 12 carries for LAR against GB",
-     "game_id": "401873079",
-     "field": 10
+     "detail": "46 yards on 10 carries for PHI against DAL",
+     "game_id": "401873080",
+     "field": 21
     },
     {
-     "player": "Savion Williams",
-     "team": "GB",
-     "opponent": "LAR",
-     "value": 18.0,
-     "detail": "18 yards on 2 carries for GB against LAR",
-     "game_id": "401873079",
-     "field": 10
+     "player": "Josh Allen",
+     "team": "BUF",
+     "opponent": "KC",
+     "value": 43.0,
+     "detail": "43 yards on 7 carries for BUF against KC",
+     "game_id": "401873082",
+     "field": 21
     },
     {
-     "player": "Kaleb Johnson",
-     "team": "GB",
-     "opponent": "LAR",
-     "value": 13.0,
-     "detail": "13 yards on 8 carries for GB against LAR",
-     "game_id": "401873079",
-     "field": 10
+     "player": "Jashaun Corbin",
+     "team": "DAL",
+     "opponent": "PHI",
+     "value": 21.0,
+     "detail": "21 yards on 5 carries for DAL against PHI",
+     "game_id": "401873080",
+     "field": 21
     },
     {
-     "player": "Xavier Smith",
-     "team": "LAR",
-     "opponent": "GB",
-     "value": 11.0,
-     "detail": "11 yards on 2 carries for LAR against GB",
-     "game_id": "401873079",
-     "field": 10
+     "player": "Dak Prescott",
+     "team": "DAL",
+     "opponent": "PHI",
+     "value": 19.0,
+     "detail": "19 yards on 2 carries for DAL against PHI",
+     "game_id": "401873080",
+     "field": 21
+    }
+   ]
+  },
+  "nfl_rec_yards": {
+   "sport": "NFL",
+   "rows": [
+    {
+     "player": "DeVonta Smith",
+     "team": "PHI",
+     "opponent": "DAL",
+     "value": 200.0,
+     "detail": "200 yards on 11 catches for PHI against DAL",
+     "game_id": "401873080",
+     "field": 49
     },
     {
-     "player": "MarShawn Lloyd",
-     "team": "GB",
-     "opponent": "LAR",
-     "value": 10.0,
-     "detail": "10 yards on 1 carries for GB against LAR",
-     "game_id": "401873079",
-     "field": 10
+     "player": "Amon-Ra St. Brown",
+     "team": "DET",
+     "opponent": "CHI",
+     "value": 146.0,
+     "detail": "146 yards on 7 catches for DET against CHI",
+     "game_id": "401873081",
+     "field": 49
     },
     {
-     "player": "Jordan Love",
-     "team": "GB",
-     "opponent": "LAR",
-     "value": 7.0,
-     "detail": "7 yards on 1 carries for GB against LAR",
-     "game_id": "401873079",
-     "field": 10
+     "player": "CeeDee Lamb",
+     "team": "DAL",
+     "opponent": "PHI",
+     "value": 134.0,
+     "detail": "134 yards on 7 catches for DAL against PHI",
+     "game_id": "401873080",
+     "field": 49
     },
     {
-     "player": "Chris Brooks",
-     "team": "GB",
-     "opponent": "LAR",
-     "value": 4.0,
-     "detail": "4 yards on 1 carries for GB against LAR",
-     "game_id": "401873079",
-     "field": 10
+     "player": "D'Andre Swift",
+     "team": "CHI",
+     "opponent": "DET",
+     "value": 97.0,
+     "detail": "97 yards on 7 catches for CHI against DET",
+     "game_id": "401873081",
+     "field": 49
     },
     {
-     "player": "Bo Melton",
-     "team": "GB",
-     "opponent": "LAR",
+     "player": "Rome Odunze",
+     "team": "CHI",
+     "opponent": "DET",
+     "value": 87.0,
+     "detail": "87 yards on 6 catches for CHI against DET",
+     "game_id": "401873081",
+     "field": 49
+    },
+    {
+     "player": "Travis Kelce",
+     "team": "KC",
+     "opponent": "BUF",
+     "value": 71.0,
+     "detail": "71 yards on 4 catches for KC against BUF",
+     "game_id": "401873082",
+     "field": 49
+    },
+    {
+     "player": "Jameson Williams",
+     "team": "DET",
+     "opponent": "CHI",
+     "value": 68.0,
+     "detail": "68 yards on 6 catches for DET against CHI",
+     "game_id": "401873081",
+     "field": 49
+    },
+    {
+     "player": "George Pickens",
+     "team": "DAL",
+     "opponent": "PHI",
+     "value": 67.0,
+     "detail": "67 yards on 5 catches for DAL against PHI",
+     "game_id": "401873080",
+     "field": 49
+    },
+    {
+     "player": "Elijah Moore",
+     "team": "PHI",
+     "opponent": "DAL",
+     "value": 57.0,
+     "detail": "57 yards on 3 catches for PHI against DAL",
+     "game_id": "401873080",
+     "field": 49
+    },
+    {
+     "player": "Makai Lemon",
+     "team": "PHI",
+     "opponent": "DAL",
+     "value": 51.0,
+     "detail": "51 yards on 5 catches for PHI against DAL",
+     "game_id": "401873080",
+     "field": 49
+    }
+   ]
+  },
+  "nfl_pass_td": {
+   "sport": "NFL",
+   "rows": [
+    {
+     "player": "Joe Milton",
+     "team": "PHI",
+     "opponent": "DAL",
      "value": 3.0,
-     "detail": "3 yards on 1 carries for GB against LAR",
-     "game_id": "401873079",
-     "field": 10
+     "detail": "3 touchdowns and 331 yards for PHI against DAL",
+     "game_id": "401873080",
+     "field": 6
     },
     {
-     "player": "Matthew Stafford",
-     "team": "LAR",
-     "opponent": "GB",
+     "player": "Caleb Williams",
+     "team": "CHI",
+     "opponent": "DET",
+     "value": 2.0,
+     "detail": "2 touchdowns and 345 yards for CHI against DET",
+     "game_id": "401873081",
+     "field": 6
+    },
+    {
+     "player": "Dak Prescott",
+     "team": "DAL",
+     "opponent": "PHI",
+     "value": 2.0,
+     "detail": "2 touchdowns and 291 yards for DAL against PHI",
+     "game_id": "401873080",
+     "field": 6
+    },
+    {
+     "player": "Jared Goff",
+     "team": "DET",
+     "opponent": "CHI",
+     "value": 1.0,
+     "detail": "1 touchdowns and 313 yards for DET against CHI",
+     "game_id": "401873081",
+     "field": 6
+    },
+    {
+     "player": "Josh Allen",
+     "team": "BUF",
+     "opponent": "KC",
      "value": 0.0,
-     "detail": "0 yards on 1 carries for LAR against GB",
-     "game_id": "401873079",
-     "field": 10
+     "detail": "0 touchdowns and 81 yards for BUF against KC",
+     "game_id": "401873082",
+     "field": 6
+    },
+    {
+     "player": "Patrick Mahomes",
+     "team": "KC",
+     "opponent": "BUF",
+     "value": 0.0,
+     "detail": "0 touchdowns and 174 yards for KC against BUF",
+     "game_id": "401873082",
+     "field": 6
+    }
+   ]
+  },
+  "nfl_tackles": {
+   "sport": "NFL",
+   "rows": [
+    {
+     "player": "Nick Bolton",
+     "team": "KC",
+     "opponent": "BUF",
+     "value": 14.0,
+     "detail": "14 tackles for KC against BUF",
+     "game_id": "401873082",
+     "field": 128
+    },
+    {
+     "player": "Jeremiah Trotter Jr.",
+     "team": "PHI",
+     "opponent": "DAL",
+     "value": 12.0,
+     "detail": "12 tackles for PHI against DAL",
+     "game_id": "401873080",
+     "field": 128
+    },
+    {
+     "player": "Cam Lewis",
+     "team": "CHI",
+     "opponent": "DET",
+     "value": 10.0,
+     "detail": "10 tackles for CHI against DET",
+     "game_id": "401873081",
+     "field": 128
+    },
+    {
+     "player": "Byron Young",
+     "team": "PHI",
+     "opponent": "DAL",
+     "value": 9.0,
+     "detail": "9 tackles for PHI against DAL",
+     "game_id": "401873080",
+     "field": 128
+    },
+    {
+     "player": "Drue Tranquill",
+     "team": "KC",
+     "opponent": "BUF",
+     "value": 8.0,
+     "detail": "8 tackles for KC against BUF",
+     "game_id": "401873082",
+     "field": 128
+    },
+    {
+     "player": "Jihaad Campbell",
+     "team": "PHI",
+     "opponent": "DAL",
+     "value": 8.0,
+     "detail": "8 tackles for PHI against DAL",
+     "game_id": "401873080",
+     "field": 128
+    },
+    {
+     "player": "Dillon Thieneman",
+     "team": "CHI",
+     "opponent": "DET",
+     "value": 7.0,
+     "detail": "7 tackles for CHI against DET",
+     "game_id": "401873081",
+     "field": 128
+    },
+    {
+     "player": "Kerby Joseph",
+     "team": "DET",
+     "opponent": "CHI",
+     "value": 7.0,
+     "detail": "7 tackles for DET against CHI",
+     "game_id": "401873081",
+     "field": 128
+    },
+    {
+     "player": "Malcolm Rodriguez",
+     "team": "DET",
+     "opponent": "CHI",
+     "value": 7.0,
+     "detail": "7 tackles for DET against CHI",
+     "game_id": "401873081",
+     "field": 128
+    },
+    {
+     "player": "Alohi Gilman",
+     "team": "KC",
+     "opponent": "BUF",
+     "value": 6.0,
+     "detail": "6 tackles for KC against BUF",
+     "game_id": "401873082",
+     "field": 128
     }
    ]
   }
